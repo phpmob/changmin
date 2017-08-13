@@ -1,7 +1,3 @@
 phpmob_chang_admin:
     resource: "@PhpmobChangAdminBundle/Resources/config/routing.xml"
     prefix:   /
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
