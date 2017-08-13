@@ -6,8 +6,8 @@
         "js": [
             "{src}/js/boot.js",
             "{node}/jquery/dist/jquery.min.js",
-            "{node}/tether/dist/tether.min.js",
-            "{node}/bootstrap/dist/bootstrap.min.js",
+            "{node}/tether/dist/js/tether.min.js",
+            "{node}/bootstrap/dist/js/bootstrap.min.js",
             "{node}/selectize/dist/js/standalone/selectize.min.js",
             "{node}/sortablejs/Sortable.min.js",
             "{node}/pace/pace.min.js",
