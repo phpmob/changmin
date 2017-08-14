@@ -15,91 +15,87 @@
 
 </head>
 
-<!-- BODY options, add following classes to body to change options
-
-// Header options
-1. '.header-fixed'					- Fixed Header
-
-// Sidebar options
-1. '.sidebar-fixed'					- Fixed Sidebar
-2. '.sidebar-hidden'				- Hidden Sidebar
-3. '.sidebar-off-canvas'		- Off Canvas Sidebar
-4. '.sidebar-minimized'			- Minimized Sidebar (Only icons)
-5. '.sidebar-compact'			  - Compact Sidebar
-
-// Aside options
-1. '.aside-menu-fixed'			- Fixed Aside Menu
-2. '.aside-menu-hidden'			- Hidden Aside Menu
-3. '.aside-menu-off-canvas'	- Off Canvas Aside Menu
-
-// Footer options
-1. '.footer-fixed'						- Fixed footer
-
--->
-
-<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-<header class="app-header navbar">
-    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none" type="button">☰</button>
-    <a class="navbar-brand" href="#"></a>
-    <ul class="nav navbar-nav d-md-down-none">
-        <li class="nav-item">
-            <a class="nav-link navbar-toggler sidebar-toggler" href="#">☰</a>
-        </li>
-
-        <li class="nav-item px-3">
-            <strong class="nav-link" href="#">Dashboard</strong>
-        </li>
-    </ul>
-    <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#"><i class="icon-bell"></i><span class="badge badge-pill badge-danger">5</span></a>
-        </li>
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#"><i class="icon-list"></i></a>
-        </li>
-        <li class="nav-item d-md-down-none">
-            <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                <img src="{{ asset('assets/admin/img/avatars/1.jpg') }}" class="img-avatar" alt="hi@phpmob.io">
-                <span class="d-md-down-none">admin</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right">
-                <div class="dropdown-header text-center">
-                    <strong>Account</strong>
-                </div>
-                <a class="dropdown-item" href="#"><i class="fa fa-shield"></i> Lock Account</a>
-                <a class="dropdown-item" href="#"><i class="fa fa-lock"></i> Logout</a>
-            </div>
-        </li>
-        <li class="nav-item"></li>
-    </ul>
-</header>
-
-<div class="app-body">
-    <div class="sidebar">
-        <nav class="sidebar-nav">
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html"><i class="icon-speedometer"></i> Dashboard <span
-                                class="badge badge-primary">NEW</span></a>
-                </li>
-
-            </ul>
-        </nav>
-    </div>
-    <main class="main">
-        <div class="container-fluid">
-        </div>
-    </main>
-</div>
-
-<footer class="app-footer">
-    <a href="https://phpmob.io">ChangAdmin</a> © 2017.
-    <span class="float-right">Powered by <a href="https://phpmob.io">PhpMob</a>
-        </span>
-</footer>
+<body>
+<div id="root"></div>
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
+{% set sampleContent %}
+    <div class="grid-table">
+        <div class="toolbar toolbar-header">
+            <div class="d-flex justify-content-end">
+                <div class="mr-auto p-1">
+                    <input type="text" class="form-control form-control-sm" placeholder="Search for...">
+                </div>
+                <div class="p-1">
+                    <div class="toolbar-actions">
+                        <button class="btn btn-outline-primary btn-sm">
+                            <span class="icon icon-plus"></span> New
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <table class="table table-sm table-fixed">
+            <thead>
+            <tr>
+                <th>ชื่อ</th>
+                <th>Kind</th>
+                <th>File Size</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for i in 1..10 %}
+                <tr>
+                    <td>photon.css</td>
+                    <td>CSS</td>
+                    <td>28K</td>
+                    <td class="action">
+                        <div class="btn btn-outline-primary btn-sm" data-toggle="dropdown">
+                            <span class="icon icon-cog"></span>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <footer class="toolbar toolbar-footer">
+            <ul class="pagination pagination-sm">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </footer>
+    </div>
+
+{% endset %}
+<script>
+    window.addEventListener('load', function () {
+        var ChangMin = this.ChangMin;
+
+        // sample update menu
+        ChangMin.updateMenu(menu => {
+            return menu.updateIn(['favorite', 'children'], function (children) {
+                return children.addItem({
+                    key: 'dashboard',
+                    label: 'Dashboard',
+                });
+            });
+        });
+
+        ChangMin.content('{{ sampleContent|escape('js') }}')
+    })
+</script>
 </body>
 </html>

@@ -47,11 +47,12 @@ module.exports = function (require, config) {
     config = parseConfig(config);
 
     gulp.task('script', function () {
-        return gulp.src(config['paths'].js)
+        gulp.src(config['paths'].js)
             .pipe(concat('app.js'))
             .pipe(gulpif(env === 'prod', uglify()))
             .pipe(sourcemaps.write('./'))
-            .pipe(gulp.dest(config['paths'].output + '/js'));
+            .pipe(gulp.dest(config['paths'].output + '/js'))
+        ;
     });
 
     gulp.task('style', function () {

@@ -5,8 +5,10 @@ var gulp = require('./private/tasks.js')(require, {
         "src": "./private",
         "js": [
             "{src}/js/boot.js",
+            "{src}/app/dist/static/js/*.js",
             "{node}/jquery/dist/jquery.min.js",
             "{node}/tether/dist/js/tether.min.js",
+            "{node}/popper.js/dist/umd/popper.min.js",
             "{node}/bootstrap/dist/js/bootstrap.min.js",
             "{node}/selectize/dist/js/standalone/selectize.min.js",
             "{node}/sortablejs/Sortable.min.js",
@@ -32,6 +34,7 @@ var gulp = require('./private/tasks.js')(require, {
             ["{output}/fonts", "{src}/fonts/**"],
             ["{output}/fonts", "{node}/font-awesome/fonts/**"],
             ["{output}/fonts", "{node}/simple-line-icons/fonts/**"],
+            ["{output}/fonts", "{node}/photon/fonts/**"],
             ["{output}/flags", "{node}/flag-icon-css/flags/**"]
         ]
     }

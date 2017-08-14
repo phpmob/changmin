@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './reducer';
+import state from './state';
 
 const middlewares = [
     thunk,
@@ -19,7 +20,7 @@ if (process.env.NODE_ENV === 'dev') {
     }
 }
 
-export default createStore(reducer, compose(
+export default createStore(reducer, state, compose(
     applyMiddleware(...middlewares),
     devToolsExtension
 ));
