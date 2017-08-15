@@ -31,7 +31,7 @@ sylius_grid:
                     label: Enabled
                     sortable: ~
                     options:
-                        template: "@ChangMinX/Grid/Field/enabled.html.twig"
+                        template: "@ChangMin/Grid/Field/enabled.html.twig"
             filters:
                 search:
                     type: string

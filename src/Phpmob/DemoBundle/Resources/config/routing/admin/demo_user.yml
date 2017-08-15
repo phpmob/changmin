@@ -3,7 +3,7 @@ sylius_admin_demo_user:
         alias: sylius.demo_user
         section: admin
         path: users
-        templates: ChangMinX:Crud
+        templates: ChangMin:Crud
         except: ['show']
         redirect: index
         grid: demo_admin_demo_user

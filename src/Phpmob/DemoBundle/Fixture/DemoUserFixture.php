@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Phpmob\DemoBundle\Fixture;
 
-use Phpmob\ChangMinXBundle\Fixture\AbstractResourceFixture;
+use Phpmob\ChangMinBundle\Fixture\AbstractResourceFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 
 class DemoUserFixture extends AbstractResourceFixture

@@ -1,5 +1,5 @@
 phpmob_changmin:
-    resource: "@ChangMinX/Resources/config/routing.xml"
+    resource: "@ChangMin/Resources/config/routing.xml"
     prefix:   /
 
 phpmob_demo_admin:

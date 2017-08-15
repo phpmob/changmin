@@ -14,8 +14,8 @@ declare(strict_types=1);
 namespace Phpmob\DemoBundle\Fixture;
 
 use Phpmob\DemoBundle\Model\DemoUserInterface;
-use Phpmob\ChangMinXBundle\Fixture\AbstractExampleFactory;
-use Phpmob\ChangMinXBundle\Fixture\ExampleFactoryInterface;
+use Phpmob\ChangMinBundle\Fixture\AbstractExampleFactory;
+use Phpmob\ChangMinBundle\Fixture\ExampleFactoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
