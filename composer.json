@@ -21,10 +21,14 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "incenteev/composer-parameter-handler": "^2.0",
-        "nochso/html-compress-twig": "^2.0",
+        "symfony/monolog-bundle": "^3.1.0",
+        "symfony/polyfill-apcu": "^1.0",
+        "symfony/swiftmailer-bundle": "^2.3.10",
+        "symfony/symfony": "3.3.*",
+        "twig/twig": "^2.0",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
+        "incenteev/composer-parameter-handler": "^2.0",
         "sonata-project/intl-bundle": "^2.2",
         "doctrine/collections": "^1.3",
         "doctrine/data-fixtures": "^1.1",
@@ -45,12 +49,7 @@
         "sylius/resource-bundle": "1.0.x-dev",
         "sylius/user": "1.0.x-dev",
         "sylius/user-bundle": "1.0.x-dev",
-        "sylius/fixtures-bundle": "1.0.x-dev",
-        "symfony/monolog-bundle": "^3.1.0",
-        "symfony/polyfill-apcu": "^1.0",
-        "symfony/swiftmailer-bundle": "^2.3.10",
-        "symfony/symfony": "3.3.*",
-        "twig/twig": "^2.0"
+        "sylius/fixtures-bundle": "1.0.x-dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

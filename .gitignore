@@ -15,7 +15,7 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
-node_modules
+node_modules/
 
-/web/assets
+/web/assets/
 /scripts/admin/private
