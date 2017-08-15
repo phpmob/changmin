@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('PhpmobChangminBundle:Default:index.html.twig');
+        return $this->render('@Changmin/Default/index.html.twig');
     }
 }

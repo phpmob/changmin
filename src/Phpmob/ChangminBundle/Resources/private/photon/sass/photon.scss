@@ -7,15 +7,15 @@
 // Normalize, Appify, Base, & Utilities CSS
 @import "normalize.scss";
 @import "appify.scss";
-@import "base.scss";
+@import "window.scss";
 @import "utilities.scss";
 
 // Components
 @import "buttons.scss";
 @import "button-groups.scss";
-@import "bars.scss";
+@import "toolbar.scss";
 @import "forms.scss";
-@import "grid.scss";
+@import "pane.scss";
 @import "images.scss";
 @import "lists.scss";
 @import "navs.scss";

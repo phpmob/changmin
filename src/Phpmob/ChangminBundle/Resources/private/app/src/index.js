@@ -10,7 +10,7 @@ import { MenuItem } from './redux/state';
 import App from './App';
 import Root from './Root';
 
-(function (factory) {
+(function (global) {
     const ChangMin = ReactDOM.render(
         <Root store={store}><App /></Root>,
         document.getElementById('root')
@@ -44,16 +44,18 @@ import Root from './Root';
 
     ChangMin.updateMenu = (menuUpdater) => {
         const key = ['sidebar', 'menus'];
-        const menu = store.getState().getIn(key);
-
         updater(key, store.getState().getIn(key).withMutations(menuUpdater));
     };
 
-    ChangMin.content = (content) => {
+    ChangMin.updateTitle = (title) => {
+        updater(['toolbar', 'title'], title);
+    };
+
+    ChangMin.updateContent = (content) => {
         updater('content', content);
     };
 
-    factory.ChangMin = ChangMin;
+    global.ChangMin = ChangMin;
 })(window);
 
 //registerServiceWorker();

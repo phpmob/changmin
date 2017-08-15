@@ -13,7 +13,9 @@ export default class Toolbar extends Component {
         const title = data.get('title');
 
         return (
-            <div>Toolbar</div>
+            <div className="nav-toolbar">
+                <h1 dangerouslySetInnerHTML={{ __html: title }}/>
+            </div>
         );
     }
 }

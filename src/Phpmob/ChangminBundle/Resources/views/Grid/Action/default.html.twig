@@ -1,0 +1,5 @@
+{% set path = options.link.url|default(path(options.link.route, options.link.parameters)) %}
+
+<a href="{{ path }}" class="{{ options.class|default('btn btn-secondary') }}">
+    <i class="{{ action.icon|default('ti-link') }}"></i> <span>{{ action.label|trans }}</span>
+</a>

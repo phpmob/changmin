@@ -4,7 +4,7 @@ namespace Phpmob\ChangminBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class PhpmobChangminBundle extends Bundle
+class ChangminBundle extends Bundle
 {
     protected $name = 'Changmin';
 }

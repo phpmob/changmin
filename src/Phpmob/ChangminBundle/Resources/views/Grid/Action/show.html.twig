@@ -1,0 +1,5 @@
+{% set path = options.link.url|default(path(options.link.route|default(grid.requestConfiguration.getRouteName('show')), options.link.parameters|default({'id': data.id}))) %}
+
+<a href="{{ path }}" class="{{ options.class|default('btn btn-action-show') }}">
+    <i class="{{ action.icon|default('ti-eye') }}"></i> <span>{{ (action.label|trans)|default('toro.ui.show'|trans) }}</span>
+</a>

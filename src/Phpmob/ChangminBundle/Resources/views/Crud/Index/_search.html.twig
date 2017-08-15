@@ -1,0 +1,35 @@
+{% set criteria = null %}
+{% set params = [] %}
+{% set route = app.request.attributes.get('_route') %}
+
+{% for name, filter in definition.filters %}
+    {% if filter.options and filter.options.default|default(null) %}
+        {% set criteria = filter %}
+    {% endif %}
+{% endfor %}
+
+{% for key, param in app.request.query.all() %}
+    {% if key != 'criteria' %}
+        {% set params = params|merge({(key): param}) %}
+    {% endif %}
+{% endfor %}
+
+{% if criteria %}
+    {% set criterias = app.request.query.get('criteria', []) %}
+    {% set criteriaValue = criteria.name in criterias|keys ? criterias[criteria.name]['value'] : null %}
+    {% set filterPath = path(route, params) %}
+
+    <form name="criteria" action="{{ filterPath }}" class="table-grid-search form-inline">
+            <input type="hidden" name="criteria[{{ criteria.name }}][type]" value="contains">
+            <div class="input-group input-group-sm">
+                <input type="text" placeholder="Search for..." autocomplete="off" class="form-control"
+                       name="criteria[{{ criteria.name }}][value]"
+                       value="{{ criteriaValue }}"
+                >
+                {% if criteriaValue %}
+                    <a href="{{ filterPath }}" class="input-group-addon" data-toggle="tooltip" title="Reset">x</a>
+                {% endif %}
+            </div>
+            <button class="btn btn-sm btn-outline-secondary ml-2"><i class="icon icon-search"></i></button>
+    </form>
+{% endif %}

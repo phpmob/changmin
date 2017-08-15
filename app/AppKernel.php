@@ -28,12 +28,17 @@ class AppKernel extends Kernel
             new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new \Sylius\Bundle\GridBundle\SyliusGridBundle(),
             new \winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
-            new \Phpmob\ChangminBundle\PhpmobChangminBundle(),
+            new \Phpmob\ChangminBundle\ChangminBundle(),
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Sylius\Bundle\FixturesBundle\SyliusFixturesBundle(),
             new \Sonata\IntlBundle\SonataIntlBundle(),
+            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new \Liip\ImagineBundle\LiipImagineBundle(),
+            new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

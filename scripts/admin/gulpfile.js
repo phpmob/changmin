@@ -6,12 +6,13 @@ var gulp = require('./private/tasks.js')(require, {
         "js": [
             "{src}/js/boot.js",
             "{src}/app/dist/static/js/*.js",
-            "{node}/jquery/dist/jquery.min.js",
-            "{node}/tether/dist/js/tether.min.js",
-            "{node}/popper.js/dist/umd/popper.min.js",
-            "{node}/bootstrap/dist/js/bootstrap.min.js",
+            "{node}/jquery/dist/jquery.js",
+            "{node}/tether/dist/js/tether.js",
+            "{node}/popper.js/dist/umd/popper.js",
+            "{node}/bootstrap/dist/js/bootstrap.js",
             "{node}/selectize/dist/js/standalone/selectize.min.js",
             "{node}/sortablejs/Sortable.min.js",
+            "{node}/table-resizer/table-resize.js",
             "{node}/pace/pace.min.js",
             "{src}/js/lib/**",
             "{src}/js/partial/**",
@@ -24,6 +25,7 @@ var gulp = require('./private/tasks.js')(require, {
         ],
         "css": [
             "{node}/selectize/dist/css/selectize.css",
+            "{node}/table-resizer/table-resize.css",
             "{src}/css/**",
             "./css/**"
         ],
@@ -32,9 +34,9 @@ var gulp = require('./private/tasks.js')(require, {
             ["{output}/fonts", "./fonts/**"],
             ["{output}/img", "{src}/img/**"],
             ["{output}/fonts", "{src}/fonts/**"],
+            ["{output}/fonts", "{src}/photon/fonts/**"],
             ["{output}/fonts", "{node}/font-awesome/fonts/**"],
             ["{output}/fonts", "{node}/simple-line-icons/fonts/**"],
-            ["{output}/fonts", "{node}/photon/fonts/**"],
             ["{output}/flags", "{node}/flag-icon-css/flags/**"]
         ]
     }

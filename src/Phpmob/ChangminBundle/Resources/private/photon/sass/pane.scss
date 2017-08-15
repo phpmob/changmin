@@ -41,3 +41,14 @@
   width: 33.3%;
   flex: none;
 }
+
+.pane-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.pane-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

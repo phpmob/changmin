@@ -18,83 +18,24 @@
 <body>
 <div id="root"></div>
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
-{% set sampleContent %}
-    <div class="grid-table">
-        <div class="toolbar toolbar-header">
-            <div class="d-flex justify-content-end">
-                <div class="mr-auto p-1">
-                    <input type="text" class="form-control form-control-sm" placeholder="Search for...">
-                </div>
-                <div class="p-1">
-                    <div class="toolbar-actions">
-                        <button class="btn btn-outline-primary btn-sm">
-                            <span class="icon icon-plus"></span> New
-                        </button>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-        <table class="table table-sm table-fixed">
-            <thead>
-            <tr>
-                <th>ชื่อ</th>
-                <th>Kind</th>
-                <th>File Size</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for i in 1..10 %}
-                <tr>
-                    <td>photon.css</td>
-                    <td>CSS</td>
-                    <td>28K</td>
-                    <td class="action">
-                        <div class="btn btn-outline-primary btn-sm" data-toggle="dropdown">
-                            <span class="icon icon-cog"></span>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                                <a class="dropdown-item" href="#">Another action</a>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-        <footer class="toolbar toolbar-footer">
-            <ul class="pagination pagination-sm">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </footer>
-    </div>
-
-{% endset %}
 <script>
     window.addEventListener('load', function () {
         var ChangMin = this.ChangMin;
 
+
         // sample update menu
-        ChangMin.updateMenu(menu => {
+        /*ChangMin.updateMenu(menu => {
             return menu.updateIn(['favorite', 'children'], function (children) {
                 return children.addItem({
                     key: 'dashboard',
                     label: 'Dashboard',
                 });
             });
-        });
+        });*/
 
-        ChangMin.content('{{ sampleContent|escape('js') }}')
+        ChangMin.updateTitle('{{ block('title')|escape('js') }}');
+        ChangMin.updateContent('{{ block('content')|escape('js') }}');
     })
 </script>
 </body>

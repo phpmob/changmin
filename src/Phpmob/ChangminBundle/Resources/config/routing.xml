@@ -5,6 +5,6 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="phpmob_changmin_homepage" path="/">
-        <default key="_controller">PhpmobChangminBundle:Default:index</default>
+        <default key="_controller">Changmin:Default:index</default>
     </route>
 </routes>

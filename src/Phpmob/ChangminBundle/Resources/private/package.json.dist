@@ -17,6 +17,7 @@
         "selectize": "^0.12.4",
         "simple-line-icons": "latest",
         "sortablejs": "^1.6.0",
+        "table-resizer": "https://github.com/liverbool/table-resize.git",
         "tether": "latest"
     },
     "devDependencies": {
