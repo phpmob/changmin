@@ -8,14 +8,32 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
+            // SF3
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new Phpmob\ChangAdminBundle\PhpmobChangAdminBundle(),
+
+            // Resources
+            new \Phpmob\AdminDemoBundle\PhpmobAdminDemoBundle(),
+            new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
+            new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
+
+            // Core
+            new \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            new \JMS\SerializerBundle\JMSSerializerBundle(),
+            new \FOS\RestBundle\FOSRestBundle(),
+            new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+            new \Sylius\Bundle\GridBundle\SyliusGridBundle(),
+            new \winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
+            new \Phpmob\ChangAdminBundle\PhpmobChangAdminBundle(),
+            new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
+            new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new \Sylius\Bundle\FixturesBundle\SyliusFixturesBundle(),
+            new \Sonata\IntlBundle\SonataIntlBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

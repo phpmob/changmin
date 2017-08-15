@@ -1,0 +1,3 @@
+Phpmob\AdminDemoBundle\Model\DemoUser:
+    type: mappedSuperclass
+    table: demo_user

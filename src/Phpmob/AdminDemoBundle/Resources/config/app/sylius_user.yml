@@ -1,0 +1,11 @@
+sylius_user:
+    resources:
+        demo:
+            user:
+                classes:
+                    model: Phpmob\AdminDemoBundle\Model\DemoUser
+        oauth:
+            user:
+                classes:
+                    model: Sylius\Component\User\Model\UserOAuth
+                    interface: Sylius\Component\User\Model\UserOAuthInterface

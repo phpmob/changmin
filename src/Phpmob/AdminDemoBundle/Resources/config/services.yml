@@ -1,0 +1,13 @@
+services:
+    demo.fixture.factory.demo_user:
+        class: Phpmob\AdminDemoBundle\Fixture\DemoUserFactory
+        arguments:
+            - "@sylius.factory.demo_user"
+
+    demo.fixture.user:
+        class: Phpmob\AdminDemoBundle\Fixture\DemoUserFixture
+        arguments:
+            - "@sylius.manager.demo_user"
+            - "@demo.fixture.factory.demo_user"
+        tags:
+            - { name: sylius_fixtures.fixture }
