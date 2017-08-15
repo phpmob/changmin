@@ -1,13 +1,13 @@
 <?php
 
-namespace Phpmob\ChangAdminBundle\DependencyInjection;
+namespace Phpmob\ChangminBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-class PhpmobChangAdminExtension extends Extension
+class PhpmobChangminExtension extends Extension
 {
     /**
      * {@inheritdoc}

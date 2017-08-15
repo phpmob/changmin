@@ -1,3 +1,4 @@
 imports:
     - { resource: "@PhpmobDemoBundle/Resources/config/app/sylius_user.yml" }
     - { resource: "@PhpmobDemoBundle/Resources/config/app/sylius_fixtures.yml" }
+    - { resource: "@PhpmobDemoBundle/Resources/config/grids/admin/main.yml" }

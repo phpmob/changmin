@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Phpmob\ChangAdminBundle\Fixture;
+namespace Phpmob\ChangminBundle\Fixture;
 
 /**
  * @author Kamil Kokot <kamil@kokot.me>

@@ -1,3 +1,7 @@
-phpmob_chang_admin:
-    resource: "@PhpmobChangAdminBundle/Resources/config/routing.xml"
+phpmob_changmin:
+    resource: "@Changmin/Resources/config/routing.xml"
     prefix:   /
+
+phpmob_demo_admin:
+    resource: "@PhpmobDemoBundle/Resources/config/routing/admin/main.yml"
+    prefix: /admin

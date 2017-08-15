@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpmob\ChangAdminBundle\Tests\Controller;
+namespace Phpmob\ChangminBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

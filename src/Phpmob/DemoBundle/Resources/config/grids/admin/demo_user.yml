@@ -1,0 +1,52 @@
+sylius_grid:
+    grids:
+        demo_admin_demo_user:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%sylius.model.demo_user.class%"
+            sorting:
+                createdAt: desc
+            fields:
+                id:
+                    type: string
+                    label: ID
+                    sortable: ~
+                username:
+                    type: string
+                    label: Username
+                    sortable: ~
+                email:
+                    type: string
+                    label: Email
+                    sortable: ~
+                createdAt:
+                    type: datetime
+                    label: Created At
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
+                enabled:
+                    type: twig
+                    label: Enabled
+                    sortable: ~
+                    options:
+                        template: "@Changmin/Grid/Field/enabled.html.twig"
+            filters:
+                search:
+                    type: string
+                    label: Search
+                    options:
+                        fields: [email, username]
+                enabled:
+                    type: boolean
+                    label: Enabled
+            actions:
+                main:
+                    create:
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete
