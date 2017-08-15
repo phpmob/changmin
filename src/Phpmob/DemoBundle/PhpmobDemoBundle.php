@@ -1,12 +1,12 @@
 <?php
 
-namespace Phpmob\AdminDemoBundle;
+namespace Phpmob\DemoBundle;
 
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\ResourceBundleInterface;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 
-class PhpmobAdminDemoBundle extends AbstractResourceBundle
+class PhpmobDemoBundle extends AbstractResourceBundle
 {
     /**
      * @var string namespace
@@ -33,6 +33,6 @@ class PhpmobAdminDemoBundle extends AbstractResourceBundle
      */
     protected function getModelNamespace()
     {
-        return 'Phpmob\AdminDemoBundle\Model';
+        return 'Phpmob\DemoBundle\Model';
     }
 }

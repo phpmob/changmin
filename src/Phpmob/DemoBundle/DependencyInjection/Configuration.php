@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpmob\AdminDemoBundle\DependencyInjection;
+namespace Phpmob\DemoBundle\DependencyInjection;
 
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;

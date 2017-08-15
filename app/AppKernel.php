@@ -17,7 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             // Resources
-            new \Phpmob\AdminDemoBundle\PhpmobAdminDemoBundle(),
+            new \Phpmob\DemoBundle\PhpmobDemoBundle(),
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
 

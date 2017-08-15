@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Phpmob\AdminDemoBundle\Fixture;
+namespace Phpmob\DemoBundle\Fixture;
 
 use Phpmob\ChangAdminBundle\Fixture\AbstractResourceFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;

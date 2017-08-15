@@ -1,3 +1,0 @@
-imports:
-    - { resource: "@PhpmobAdminDemoBundle/Resources/config/app/sylius_user.yml" }
-    - { resource: "@PhpmobAdminDemoBundle/Resources/config/app/sylius_fixtures.yml" }

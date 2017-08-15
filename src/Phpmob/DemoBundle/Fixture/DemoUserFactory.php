@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Phpmob\AdminDemoBundle\Fixture;
+namespace Phpmob\DemoBundle\Fixture;
 
-use Phpmob\AdminDemoBundle\Model\DemoUserInterface;
+use Phpmob\DemoBundle\Model\DemoUserInterface;
 use Phpmob\ChangAdminBundle\Fixture\AbstractExampleFactory;
 use Phpmob\ChangAdminBundle\Fixture\ExampleFactoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;

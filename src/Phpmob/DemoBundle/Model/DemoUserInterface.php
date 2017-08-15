@@ -1,6 +1,6 @@
 <?php
 
-namespace Phpmob\AdminDemoBundle\Model;
+namespace Phpmob\DemoBundle\Model;
 
 use Sylius\Component\User\Model\UserInterface as BaseUserInterface;
 

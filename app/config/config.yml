@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@PhpmobAdminDemoBundle/Resources/config/app/main.yml" }
+    - { resource: "@PhpmobDemoBundle/Resources/config/app/main.yml" }
 
 parameters:
     locale: en

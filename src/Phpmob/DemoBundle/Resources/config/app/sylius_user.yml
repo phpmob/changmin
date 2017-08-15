@@ -3,7 +3,7 @@ sylius_user:
         demo:
             user:
                 classes:
-                    model: Phpmob\AdminDemoBundle\Model\DemoUser
+                    model: Phpmob\DemoBundle\Model\DemoUser
         oauth:
             user:
                 classes:
