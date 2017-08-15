@@ -1,0 +1,48 @@
+{% macro headers(grid, definition, requestAttributes) %}
+    {% import '@ChangMinX/Grid/_sorting.html.twig' as sorting %}
+
+    {% for field in definition.fields|sort_by('position') %}
+        {% if field.enabled %}
+            {% if field.isSortable %}
+                {{ sorting.tableHeader(grid, field, requestAttributes) }}
+            {% else %}
+                {% set align = field.options.vars.align|default('left') %}
+                {% set width = field.options.vars.width|default('auto') %}
+                <th class="grid-table-column-{{ field.name }} text-{{ align }}" style="width: {{ width }};">
+                    {{ field.label|trans }}
+                </th>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
+    {% if definition.actionGroups.item is defined and definition.getActions('item')|length > 0 %}
+        <th class="grid-table-column-actions">{{ '' }}</th>
+    {% endif %}
+{% endmacro %}
+
+{% macro row(grid, definition, row) %}
+    <tr class="item">
+        {% for field in definition.enabledFields|sort_by('position') %}
+            <td class="text-{{ field.options.vars.align|default('left') }}">
+                {{ sylius_grid_render_field(grid, field, row) }}
+            </td>
+        {% endfor %}
+        {% if definition.actionGroups.item is defined and definition.getEnabledActions('item')|length > 0 %}
+            <td class="text-{{ field.options.vars.align|default('left') }}">
+                {#<div class="ui buttons">
+                    {% for action in definition.getEnabledActions('item')|sort_by('position') %}
+                        {{ sylius_grid_render_action(grid, action, row) }}
+                    {% endfor %}
+                </div>
+                {% if definition.actionGroups.subitem is defined and definition.getEnabledActions('subitem')|length > 0 %}
+                    <div class="ui divider"></div>
+                    <div class="ui buttons">
+                        {% for action in definition.getEnabledActions('subitem')|sort_by('position') %}
+                            {{ sylius_grid_render_action(grid, action, row) }}
+                        {% endfor %}
+                    </div>
+                {% endif %}#}
+            </td>
+        {% endif %}
+    </tr>
+{% endmacro %}

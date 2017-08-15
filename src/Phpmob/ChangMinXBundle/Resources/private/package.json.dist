@@ -14,7 +14,6 @@
         "font-awesome": "^4.7.0",
         "jquery": "^3.0.0",
         "pace": "latest",
-        "popper.js": "^1.11.1",
         "selectize": "^0.12.4",
         "simple-line-icons": "latest",
         "sortablejs": "^1.6.0",

@@ -1,2 +1,0 @@
-imports:
-    - { resource: "@Changmin/Resources/config/app/sylius_grid.yml" }

@@ -1,0 +1,14 @@
+sylius_grid:
+    templates:
+        action:
+            apply_transition: "@ChangMinX/Grid/Action/applyTransition.html.twig"
+            show: "@ChangMinX/Grid/Action/show.html.twig"
+            create: "@ChangMinX/Grid/Action/create.html.twig"
+            update: "@ChangMinX/Grid/Action/update.html.twig"
+            delete: "@ChangMinX/Grid/Action/delete.html.twig"
+            link: "@ChangMinX/Grid/Action/link.html.twig"
+            links: "@ChangMinX/Grid/Action/links.html.twig"
+
+#        filter:
+#            string: "ToroAdminBundle:Grid/Filter:string.html.twig"
+#            boolean: "ToroAdminBundle:Grid/Filter:boolean.html.twig"

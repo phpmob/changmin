@@ -9,7 +9,7 @@ var stage = gutil.env.stage;
 var stagePathAdmin = './vendor/phpmob/chang-admin-bundle/Resources/private/gulpfile.js';
 
 if ('dev' === stage) {
-    stagePathAdmin = './src/Phpmob/ChangminBundle/Resources/private/gulpfile.js';
+    stagePathAdmin = './src/Phpmob/ChangMinXBundle/Resources/private/gulpfile.js';
 }
 
 gulp.task('admin', function () {

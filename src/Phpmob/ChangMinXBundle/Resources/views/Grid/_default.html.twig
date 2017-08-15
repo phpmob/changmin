@@ -1,0 +1,46 @@
+{% import '@ChangMinX/Macro/messages.html.twig' as messages %}
+{% import '@ChangMinX/Grid/_paginate.html.twig' as paginate %}
+{% import '@ChangMinX/Grid/_table.html.twig' as table %}
+
+{% set pagers = configuration.vars.pagers|default({ proximity: 10 }) %}
+{% set definition = grid.definition %}
+{% set data = grid.data %}
+
+{% if definition.enabledFilters|length > 0 %}
+    {# TODO #}
+{% endif %}
+
+{% if data|length > 0 %}
+    <table class="table table-sm m-0 scrollable">
+        <thead>
+        <tr>
+            {{ table.headers(grid, definition, app.request.attributes) }}
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in data %}
+            {{ table.row(grid, definition, row) }}
+        {% endfor %}
+        </tbody>
+    </table>
+    <footer class="toolbar toolbar-footer py-1 px-2 d-flex justify-content-end align-items-center">
+        {{ paginate.basic(data, pagers) }}
+    </footer>
+    <script>
+        var $table = $('.table-grid table');
+        new TableResize($table.get(0));
+
+        // scrollable
+        if ($table.hasClass('scrollable')) {
+            var colsWidth = $table.find('thead tr:first').children().map(function () {
+                return $(this).width();
+            }).get();
+
+            $table.find('tbody tr:first').children().each(function (i, v) {
+                $(v).width(colsWidth[i]);
+            });
+        }
+    </script>
+{% else %}
+    {{ messages.info('No results to display') }}
+{% endif %}
