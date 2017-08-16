@@ -1,20 +1,35 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import $ from 'jquery';
 
+import { actions } from './redux/reducer'
+import AppApi from './AppApi'
 import Sidebar from './component/Sidebar'
 import Toolbar from './component/Toolbar'
 
 class App extends Component {
     static propTypes = {
         state: PropTypes.object,
+        action: PropTypes.object,
     };
+
+    constructor(props) {
+        super(props);
+
+        window['ChangMin'] = this.api = new AppApi(this);
+    }
 
     componentDidMount() {
         setTimeout(() => {
+            const nonce = `_${AppApi.makeid()}`;
+
+            // todo: componet context when support render as component type.
+            window[nonce] = this;
+
             $('script', this.refs.content).each((i, tag) => {
-                $(`<script>${$(tag).text()}</script>`).appendTo('body')
+                $('<script>(function(context){' + $(tag).text() + '})(' + nonce + ');</script>').appendTo('body')
             })
         }, 1)
     }
@@ -48,6 +63,13 @@ function mapStateToProps(state) {
     };
 }
 
+function mapDispatchToProps(dispatch) {
+    return {
+        action: bindActionCreators({ ...actions }, dispatch)
+    };
+}
+
 export default connect(
     mapStateToProps,
+    mapDispatchToProps
 )(App);

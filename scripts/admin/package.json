@@ -16,6 +16,7 @@
         "jquery-confirm": "^3.3.1",
         "pace-progress": "^1.0.2",
         "popper.js": "^1.11.1",
+        "primer-css": "^9.2.0",
         "selectize": "^0.12.4",
         "simple-line-icons": "latest",
         "sortablejs": "^1.6.0",

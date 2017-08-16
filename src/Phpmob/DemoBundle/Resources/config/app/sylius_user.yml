@@ -4,6 +4,7 @@ sylius_user:
             user:
                 classes:
                     model: Phpmob\DemoBundle\Model\DemoUser
+                    form: Phpmob\DemoBundle\Form\Type\DemoUserType
         oauth:
             user:
                 classes:

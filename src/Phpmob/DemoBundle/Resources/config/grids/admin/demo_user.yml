@@ -5,8 +5,9 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: "%sylius.model.demo_user.class%"
+            limits: [20]
             sorting:
-                createdAt: desc
+                id: asc
             fields:
                 id:
                     type: text

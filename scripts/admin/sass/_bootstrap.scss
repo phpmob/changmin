@@ -1,3 +1,22 @@
+//https://offroadcode.com/rem-calculator/
+$font-size-base: 0.8125rem !default; // 13px
+$font-size-lg:   .875rem !default; // 14px
+$font-size-sm:   0.75rem !default; // 12px
+
+$font-weight-light: 300 !default;
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+$h1-font-size: 2rem !default; // 32px
+$h2-font-size: 1.5rem !default; // 24px
+$h3-font-size: 1.25rem !default; // 20px
+$h4-font-size: 1rem !default; // 16px
+$h5-font-size: .875rem !default; // 14px
+$h6-font-size: 0.8125rem !default; // 13px
+
 @import "../node_modules/bootstrap/scss/functions";
 @import "../node_modules/bootstrap/scss/variables";
 @import "../node_modules/bootstrap/scss/mixins";

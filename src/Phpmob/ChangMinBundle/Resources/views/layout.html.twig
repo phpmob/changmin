@@ -20,12 +20,9 @@
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
 
 <script>
-    window.addEventListener('load', function () {
-        var ChangMin = this.ChangMin;
-
-
+    $(window).on('load', function () {
         // sample update menu
-        /*ChangMin.updateMenu(menu => {
+        /*this.ChangMin.updateMenu(menu => {
             return menu.updateIn(['favorite', 'children'], function (children) {
                 return children.addItem({
                     key: 'dashboard',
@@ -34,8 +31,8 @@
             });
         });*/
 
-        ChangMin.updateTitle('{{ block('title')|escape('js') }}');
-        ChangMin.updateContent('{{ block('content')|escape('js') }}');
+        this.ChangMin.updateTitle('{{ block('title')|escape('js') }}');
+        this.ChangMin.updateContent('{{ block('content')|escape('js') }}');
     })
 </script>
 </body>

@@ -15,4 +15,7 @@ sylius_admin_demo_user:
             index:
                 icon: icon icon-user
                 header: "Demo Users"
+            create:
+                icon: icon icon-user-add
+                header: "Create User"
     type: sylius.resource

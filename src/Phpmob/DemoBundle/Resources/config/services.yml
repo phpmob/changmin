@@ -4,10 +4,18 @@ services:
         arguments:
             - "@sylius.factory.demo_user"
 
-    demo.fixture.user:
+    demo.fixture.demo_user:
         class: Phpmob\DemoBundle\Fixture\DemoUserFixture
         arguments:
             - "@sylius.manager.demo_user"
             - "@demo.fixture.factory.demo_user"
         tags:
             - { name: sylius_fixtures.fixture }
+
+    demo.form.demo_user:
+        class: Phpmob\DemoBundle\Form\Type\DemoUserType
+        arguments:
+            - "%sylius.model.demo_user.class%"
+            - [ "sylius" ]
+        tags:
+            - { name: form.type }
