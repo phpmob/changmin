@@ -51,9 +51,12 @@ sylius_grid:
             actions:
                 main:
                     create:
+                        icon: icon icon-user-add
                         type: create
                 item:
                     update:
                         type: update
+                    show:
+                        type: show
                     delete:
                         type: delete

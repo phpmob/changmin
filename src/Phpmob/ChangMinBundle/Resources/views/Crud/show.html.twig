@@ -1,5 +1,4 @@
 {% extends "@ChangMin/layout.html.twig" %}
-{% form_theme form configuration.vars.templates.theme|default('@ChangMin/Form/default.html.twig') %}
 {% set name = resource.code|default(
     resource.name|default(
         resource.slug|default(
@@ -13,8 +12,8 @@
 ) %}
 
 {% set title %}
-    {% set title = configuration.vars.header|default(metadata.applicationName~'.ui.edit_'~metadata.name) %}
-    {% set icon = configuration.vars.icon|default('icon icon-pencil') %}
+    {% set title = configuration.vars.header|default(metadata.applicationName~'.ui.show_'~metadata.name) %}
+    {% set icon = configuration.vars.icon|default('icon icon-newspaper') %}
     {% if icon|default %}<i class="{{ icon }}"></i> {% endif %}{{ title }} - {{ name }}
 {% endset %}
 
@@ -25,9 +24,9 @@
 {% endblock %}
 
 {% block content %}
-    {% include configuration.vars.templates.content|default('@ChangMin/Crud/Update/_content.html.twig') %}
+    {% include configuration.vars.templates.content|default('@ChangMin/Crud/Show/_content.html.twig') %}
 {% endblock %}
 
 {% block toolbarHeader %}
-    {% include configuration.vars.templates.toolbarHeader|default('@ChangMin/Crud/Update/_toolbarHeader.html.twig') %}
+    {% include configuration.vars.templates.toolbarHeader|default('@ChangMin/Crud/Show/_toolbarHeader.html.twig') %}
 {% endblock %}

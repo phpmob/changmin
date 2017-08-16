@@ -1,0 +1,9 @@
+{% import "@ChangMin/Macro/messages.html.twig" as message %}
+
+<div class="pane-data-scrollable p-4">
+    {% if configuration.vars.templates.show|default %}
+        {{ include(configuration.vars.templates.show) }}
+    {% else %}
+        {{ message.warning("Missing template to show.") }}
+    {% endif %}
+</div>

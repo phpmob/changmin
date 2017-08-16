@@ -11,11 +11,11 @@
     <div class="btn-group btn-group-sm m-0">
         {% if pager.hasPreviousPage %}
             <a class="btn btn-outline-secondary" href="{{- self.href(pager.previousPage) -}}">
-                <i class="icon icon-left-open-big"></i>
+                <i class="licon licon-arrow-left"></i>
             </a>
         {% else %}
             <button class="btn btn-outline-secondary" disabled>
-                <i class="icon icon-left-open-big"></i>
+                <i class="licon licon-arrow-left"></i>
             </button>
         {% endif %}
 
@@ -27,11 +27,11 @@
         </div>
         {% if pager.hasNextPage %}
             <a class="btn btn-outline-secondary" href="{{- self.href(pager.nextPage) -}}">
-                <i class="icon icon-right-open-big"></i>
+                <i class="licon licon-arrow-right"></i>
             </a>
         {% else %}
             <button class="btn btn-outline-secondary" disabled>
-                <i class="icon icon-right-open-big"></i>
+                <i class="licon licon-arrow-right"></i>
             </button>
         {% endif %}
     </div>

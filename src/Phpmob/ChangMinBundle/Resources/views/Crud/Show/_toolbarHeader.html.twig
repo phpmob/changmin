@@ -1,0 +1,13 @@
+{% set backUrl = smart_referer(
+    path(configuration.vars.route.name|default(configuration.getRouteName('index')), configuration.vars.route.parameters|default({}))
+) %}
+
+<a class="btn btn-sm btn-outline-secondary" href="{{ backUrl }}">
+    <i class="icon icon-left-open"></i> {{ 'Back' }}
+</a>
+
+<div class="float-right">
+    <a class="btn btn-outline-primary btn-sm" href="{{ path(configuration.getRouteName('update'), {id: resource.id}) }}">
+        <i class="fa fa-pencil"></i> {{ 'Edit' }}
+    </a>
+</div>
