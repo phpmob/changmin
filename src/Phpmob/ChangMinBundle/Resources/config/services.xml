@@ -4,6 +4,10 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
+    <imports>
+        <import resource="services/grids.xml"/>
+    </imports>
+
     <services>
         <service id="changmin.twig.extension.sort_by" class="Phpmob\ChangMinBundle\Twig\Extension\SortByExtension">
             <tag name="twig.extension"/>

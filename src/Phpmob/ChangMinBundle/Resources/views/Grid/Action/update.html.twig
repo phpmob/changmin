@@ -1,5 +1,5 @@
 {% set path = options.link.url|default(path(options.link.route|default(grid.requestConfiguration.getRouteName('update')), options.link.parameters|default({'id': data.id}))) %}
 
-<a href="{{ path }}" class="{{ options.class|default('btn btn-action-update') }}">
-    <i class="{{ action.icon|default('ti-pencil') }}"></i> <span>{{ (action.label|trans)|default('toro.ui.edit'|trans) }}</span>
+<a href="{{ path }}" class="{{ options.class|default('btn btn-outline-primary') }}">
+    <i class="{{ action.icon|default('icon icon-pencil') }}"></i> <span>{{ (action.label|trans)|default('Edit') }}</span>
 </a>

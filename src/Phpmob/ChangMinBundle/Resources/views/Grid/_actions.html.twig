@@ -1,0 +1,25 @@
+{% set actions = definition.getActions('item') %}
+{% if actions|length > 1 %}
+    <div class="dropdown">
+        <button class="btn btn-sm btn-outline-primary" type="button" data-toggle="dropdown">
+            <i class="icon icon-cog"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+            {% for action in actions %}
+                <li>{{ sylius_grid_render_action(grid, action, row) }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% else %}
+    {{ sylius_grid_render_action(grid, actions[(actions|keys)[0]], row) }}
+{% endif %}
+
+{# TODO
+{% if definition.actionGroups.subitem is defined and definition.getEnabledActions('subitem')|length > 0 %}
+    <div class="ui divider"></div>
+    <div class="ui buttons">
+        {% for action in definition.getEnabledActions('subitem')|sort_by('position') %}
+            {{ sylius_grid_render_action(grid, action, row) }}
+        {% endfor %}
+    </div>
+{% endif %}#}

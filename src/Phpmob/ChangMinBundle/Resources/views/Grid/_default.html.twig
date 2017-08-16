@@ -28,7 +28,7 @@
     </footer>
     <script>
         var $table = $('.table-grid table');
-        new TableResize($table.get(0));
+        new TableResize($table.get(0), { restoreState: true, fixed: true });
 
         // scrollable
         if ($table.hasClass('scrollable')) {

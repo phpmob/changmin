@@ -7,6 +7,8 @@
             "{src}/js/boot.js",
             "{src}/app/dist/static/js/*.js",
             "{node}/jquery/dist/jquery.min.js",
+            "{node}/jquery-confirm/dist/jquery-confirm.min.js",
+            "{node}/pace-progress/pace.js",
             "{node}/tether/dist/js/tether.min.js",
             "{node}/bootstrap/dist/js/bootstrap.min.js",
             "{node}/selectize/dist/js/standalone/selectize.min.js",
@@ -22,7 +24,10 @@
             "./sass/**"
         ],
         "css": [
+            "{node}/jquery-confirm/dist/jquery-confirm.min.css",
+            "{node}/pace-progress/themes/blue/pace-theme-minimal.css",
             "{node}/selectize/dist/css/selectize.css",
+            "{node}/table-resizer/table-resize.css",
             "{src}/css/**",
             "./css/**"
         ],

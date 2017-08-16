@@ -7,6 +7,8 @@ var gulp = require('./private/tasks.js')(require, {
             "{src}/js/boot.js",
             "{src}/app/dist/static/js/*.js",
             "{node}/jquery/dist/jquery.js",
+            "{node}/jquery-confirm/dist/jquery-confirm.min.js",
+            "{node}/pace-progress/pace.js",
             "{node}/tether/dist/js/tether.js",
             "{node}/popper.js/dist/umd/popper.js",
             "{node}/bootstrap/dist/js/bootstrap.js",
@@ -24,6 +26,8 @@ var gulp = require('./private/tasks.js')(require, {
             "./sass/**"
         ],
         "css": [
+            "{node}/jquery-confirm/dist/jquery-confirm.min.css",
+            "{node}/pace-progress/themes/blue/pace-theme-minimal.css",
             "{node}/selectize/dist/css/selectize.css",
             "{node}/table-resizer/table-resize.css",
             "{src}/css/**",

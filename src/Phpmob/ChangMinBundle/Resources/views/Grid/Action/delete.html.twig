@@ -1,9 +1,9 @@
 {% set path = options.link.url|default(path(options.link.route|default(grid.requestConfiguration.getRouteName('delete')), options.link.parameters|default({'id': data.id}))) %}
 
-<form action="{{ path }}" method="post" class="delete negative item">
+<form action="{{ path }}" method="post" class="delete negative">
     <input type="hidden" name="_method" value="DELETE">
-    <button class="btn" type="submit" data-requires-confirmation data-message="{{ 'toro.ui.are_you_sure_to_delete'|trans }}">
-        <i class="{{ action.icon|default('fa fa-trash-o') }}"></i> <span>{{ (action.label|trans)|default('toro.ui.delete'|trans) }}</span>
+    <button class="btn btn-outline-danger" type="submit" data-delete-confirmation data-message="{{ 'Do you want to delete this item?' }}">
+        <i class="{{ action.icon|default('icon icon-trash') }}"></i> <span>{{ (action.label|trans)|default('Delete') }}</span>
     </button>
     <input type="hidden" name="_csrf_token" value="{{ csrf_token(data.id) }}" />
 </form>

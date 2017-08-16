@@ -27,14 +27,49 @@
         thead {
             background-color: #f5f5f4;
 
+            tr {
+                display: flex;
+                flex-direction: row;
+            }
+
             th {
                 border-right: 1px solid #ddd;
                 border-bottom: 1px solid #ddd;
+                flex: 1;
             }
         }
 
         tbody {
             flex: 1;
+
+            tr:first-child {
+                td {
+                    border-top: none;
+                }
+            }
+        }
+
+        th, td {
+            &.grid-table-column-actions {
+                text-align: center;
+                .dropdown {
+                    > .btn {
+                        font-size: 90%;
+                        padding: $input-btn-padding-y-sm / 4 $input-btn-padding-x-sm;
+                    }
+                }
+
+                .dropdown-menu {
+                    .btn {
+                        display: block;
+                        border: none;
+                        width: 100%;
+                        text-align: left;
+                        border-radius: 0;
+                        padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+                    }
+                }
+            }
         }
 
         tr:nth-child(even) {
@@ -42,8 +77,9 @@
         }
 
         &.scrollable {
-            tbody,
-            thead { display: block; }
+            tbody {
+                display: block;
+            }
 
             tbody {
                 overflow-y: auto;

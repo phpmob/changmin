@@ -10,7 +10,7 @@
 
     <div class="btn-group btn-group-sm m-0">
         {% if pager.hasPreviousPage %}
-            <a class="btn btn-outline-secondary" href="{{ self.href(pager.previousPage) }}">
+            <a class="btn btn-outline-secondary" href="{{- self.href(pager.previousPage) -}}">
                 <i class="icon icon-left-open-big"></i>
             </a>
         {% else %}
@@ -26,7 +26,7 @@
             {{ pagerfanta(pager, 'dropdown', options) }}
         </div>
         {% if pager.hasNextPage %}
-            <a class="btn btn-outline-secondary" href="{{ self.href(pager.nextPage) }}">
+            <a class="btn btn-outline-secondary" href="{{- self.href(pager.nextPage) -}}">
                 <i class="icon icon-right-open-big"></i>
             </a>
         {% else %}
@@ -63,7 +63,7 @@
             </div>
 
             {% if pager.hasNextPage %}
-                <a class="btn btn-default" href="{{ self.href(pager.nextPage) }}">
+                <a class="btn btn-default" href="{{- self.href(pager.nextPage) -}}">
                     <i class="ti-angle-right"></i>
                 </a>
             {% else %}
@@ -76,8 +76,8 @@
 {% endmacro %}
 
 {%- macro href(number) -%}
-    {{ path(
-    app.request.attributes.get('_route'),
-    app.request.attributes.get('_route_params')|merge(app.request.query.all)|merge({'page': number})
-    ) }}
+        {{- path(
+        app.request.attributes.get('_route'),
+        app.request.attributes.get('_route_params')|merge(app.request.query.all)|merge({'page': number})
+        ) -}}
 {%- endmacro -%}
