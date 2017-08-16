@@ -1,16 +1,13 @@
 {% import '@ChangMin/Macro/messages.html.twig' as messages %}
-{% import '@ChangMin/Grid/_paginate.html.twig' as paginate %}
 {% import '@ChangMin/Grid/_table.html.twig' as table %}
 
-{% set pagers = configuration.vars.pagers|default({ proximity: 10 }) %}
 {% set definition = grid.definition %}
-{% set data = grid.data %}
 
 {% if definition.enabledFilters|length > 0 %}
     {# TODO #}
 {% endif %}
 
-{% if data|length > 0 %}
+{% if grid.data|length > 0 %}
     <table class="table table-sm m-0 scrollable">
         <thead>
         <tr>
@@ -18,19 +15,14 @@
         </tr>
         </thead>
         <tbody>
-        {% for row in data %}
+        {% for row in grid.data %}
             {{ table.row(grid, definition, row) }}
         {% endfor %}
         </tbody>
     </table>
-    <footer class="toolbar toolbar-footer py-1 px-2 d-flex justify-content-end align-items-center">
-        {{ paginate.basic(data, pagers) }}
-    </footer>
     <script>
         var $table = $('.table-grid table');
         new TableResize($table.get(0), { restoreState: true, fixed: true });
-console.log(context);
-console.log(ChangMin);
         // scrollable
         if ($table.hasClass('scrollable')) {
             var colsWidth = $table.find('thead tr:first').children().map(function () {

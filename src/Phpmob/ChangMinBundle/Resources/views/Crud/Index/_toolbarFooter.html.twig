@@ -1,0 +1,7 @@
+{% import '@ChangMin/Grid/_paginate.html.twig' as paginate %}
+
+{% if data|length > 0 %}
+    <div class="d-flex justify-content-end align-items-center pane-toolbar-paginate">
+        {{ paginate.basic(data, pagine) }}
+    </div>
+{% endif %}

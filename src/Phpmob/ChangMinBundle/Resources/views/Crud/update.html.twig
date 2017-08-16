@@ -27,3 +27,9 @@
 {% block content %}
     {% include configuration.vars.templates.content|default('@ChangMin/Crud/Update/_content.html.twig') %}
 {% endblock %}
+
+{% block toolbarHeader %}
+    {% include configuration.vars.templates.toolbarHeader|default('@ChangMin/Crud/Update/_toolbarHeader.html.twig') %}
+{% endblock %}
+
+{% block toolbarFooter %}{% endblock %}

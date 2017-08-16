@@ -5,7 +5,6 @@ sylius_admin_demo_user:
         path: users
         templates: ChangMin:Crud
         except: ['show']
-        redirect: index
         grid: demo_admin_demo_user
         permission: true
         vars:

@@ -26,15 +26,17 @@ export const Menu = (menuItems = []) => {
 export default new Map({
     content: '',
     breadcrumb: '',
+    flash: '',
     sidebar: new Map({
         menus: new Menu([
             MenuItem({ key: 'favorite', label: 'Favorites' }),
         ]),
     }),
-    toolbar: new Map({
+    menubar: new Map({
         title: '',
-        actions: new Menu([
-            MenuItem({ key: 'favorite', label: 'Favorites' }),
-        ]),
+    }),
+    toolbar: new Map({
+        header: '',
+        footer: '',
     }),
 })

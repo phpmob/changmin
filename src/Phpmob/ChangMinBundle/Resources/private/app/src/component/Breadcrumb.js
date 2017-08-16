@@ -8,10 +8,8 @@ export default class Breadcrumb extends Component {
     };
 
     render() {
-        const { data } = this.props;
-
         return (
-            <div className="nav-breadcrumb" dangerouslySetInnerHTML={{ __html: data }}/>
+            <div className="nav-breadcrumb" dangerouslySetInnerHTML={{ __html: this.props.data }}/>
         );
     }
 }

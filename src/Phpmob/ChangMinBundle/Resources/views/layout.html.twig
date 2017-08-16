@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ (locale|split('_'))[0] }}">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,13 +11,13 @@
 
     <link rel="shortcut icon" href="{{ asset('assets/admin/img/favicon.png') }}">
     <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
-
 </head>
-
 <body>
+{% set flashs %}
+    {% block flash %}{{ include('@ChangMin/flash.html.twig') }}{% endblock %}
+{% endset %}
 <div id="root"></div>
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
-
 <script>
     $(window).on('load', function () {
         // sample update menu
@@ -31,10 +30,19 @@
             });
         });*/
 
+        {% set breadcrumb = block('breadcrumb') ?? '' %}
+        {% set toolbarHeader = block('toolbarHeader') ?? '' %}
+        {% set toolbarFooter = block('toolbarFooter') ?? '' %}
+        {% set toolbarFooter = block('toolbarFooter') ?? '' %}
+        {% set title = block('title') ?? '' %}
+
         this.ChangMin.set({
-            title: '{{ block('title')|escape('js') }}',
-            breadcrumb: '{{ block('breadcrumb')|escape('js') }}',
-            content: '{{ block('content')|escape('js') }}',
+            title: '{{ title|trim|escape('js') }}',
+            flash: '{{ flashs|trim|escape('js') }}',
+            content: '{{ block('content')|trim|escape('js') }}',
+            breadcrumb: '{{ breadcrumb|trim|escape('js') }}',
+            toolbarHeader: '{{ toolbarHeader|trim|escape('js') }}',
+            toolbarFooter: '{{ toolbarFooter|trim|escape('js') }}',
         });
     })
 </script>

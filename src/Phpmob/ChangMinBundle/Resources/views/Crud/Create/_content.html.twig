@@ -1,13 +1,17 @@
-{{ form_start(form, {
-    'action': path(configuration.vars.route.name|default(configuration.getRouteName('create')), configuration.vars.route.parameters|default({})),
-    'attr': {'class': 'form', 'novalidate': 'novalidate'}
-}) }}
+<div class="pane-data-scrollable p-4">
+    {{ form_start(form, {
+        'action': path(configuration.vars.route.name|default(configuration.getRouteName('create')), configuration.vars.route.parameters|default({})),
+        'attr': {'class': 'form', 'novalidate': 'novalidate'}
+    }) }}
 
-{% if configuration.vars.templates.form is defined %}
-    {% include configuration.vars.templates.form %}
-{% else %}
-    {{ form_widget(form) }}
-{% endif %}
+    <button type="submit" style="position:absolute;z-index:-1;border:none;background:none;width:0;height:0;padding:0;margin:0;"></button>
 
-{{ form_row(form._token) }}
-{{ form_end(form, {'render_rest': false}) }}
+    {% if configuration.vars.templates.form is defined %}
+        {% include configuration.vars.templates.form %}
+    {% else %}
+        {{ form_widget(form) }}
+    {% endif %}
+
+    {{ form_row(form._token) }}
+    {{ form_end(form, {'render_rest': false}) }}
+</div>

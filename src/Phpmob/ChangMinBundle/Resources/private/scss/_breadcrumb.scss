@@ -3,5 +3,9 @@
 
     .breadcrumb {
         @include border-radius($breadcrumb-border-radius);
+
+        a {
+            color: $gray-700;
+        }
     }
 }

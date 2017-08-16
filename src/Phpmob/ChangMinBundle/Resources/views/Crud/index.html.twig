@@ -16,6 +16,14 @@
     {% include configuration.vars.templates.breadcrumb|default('@ChangMin/Crud/_breadcrumbs.html.twig') with { isIndex: true } %}
 {% endblock %}
 
+{% block toolbarHeader %}
+    {% include configuration.vars.templates.toolbarHeader|default('@ChangMin/Crud/Index/_toolbarHeader.html.twig') %}
+{% endblock %}
+
+{% block toolbarFooter %}
+    {% include configuration.vars.templates.toolbarFooter|default('@ChangMin/Crud/Index/_toolbarFooter.html.twig') %}
+{% endblock %}
+
 {% block content %}
     {% include configuration.vars.templates.content|default('@ChangMin/Crud/Index/_content.html.twig') %}
 {% endblock %}

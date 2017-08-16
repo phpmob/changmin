@@ -8,6 +8,7 @@ import { actions } from './redux/reducer'
 import AppApi from './AppApi'
 import Sidebar from './component/Sidebar'
 import Toolbar from './component/Toolbar'
+import Menubar from './component/Menubar'
 import Breadcrumb from './component/Breadcrumb'
 
 class App extends Component {
@@ -29,9 +30,10 @@ class App extends Component {
             // todo: componet context when support render as component type.
             window[nonce] = this;
 
-            $('script', this.refs.content).each((i, tag) => {
+            $('script', this.refs.body).each((i, tag) => {
                 $('<script>(function(context){' + $(tag).text() + '})(' + nonce + ');</script>').appendTo('body')
-            })
+            });
+
         }, 1)
     }
 
@@ -39,7 +41,9 @@ class App extends Component {
         const content = this.props.state.get('content');
         const sidebar = this.props.state.get('sidebar');
         const toolbar = this.props.state.get('toolbar');
+        const menubar = this.props.state.get('menubar');
         const breadcrumb = this.props.state.get('breadcrumb');
+        const flash = this.props.state.get('flash');
 
         return (
             <div className="window">
@@ -48,10 +52,15 @@ class App extends Component {
                         <div className="pane pane-sm pane-sidebar">
                             <Sidebar data={sidebar}/>
                         </div>
-                        <div className="pane pane-body">
-                            <Toolbar data={toolbar}/>
+                        <div className="pane pane-body" ref="body">
+                            <Menubar data={menubar}/>
                             <Breadcrumb data={breadcrumb}/>
-                            <div ref="content" className="pane-content" dangerouslySetInnerHTML={{ __html: content }}/>
+                            { flash && <div className="pane-flash" dangerouslySetInnerHTML={{ __html: flash }}/>}
+                            <div className="pane-content">
+                                <Toolbar data={toolbar} type="header"/>
+                                <div className="pane-data" dangerouslySetInnerHTML={{ __html: content }}/>
+                                <Toolbar data={toolbar} type="footer"/>
+                            </div>
                         </div>
                     </div>
                 </div>

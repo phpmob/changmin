@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import cls from 'classnames';
 
 export default class Toolbar extends Component {
     static propTypes = {
         data: PropTypes.object.isRequired,
+        type: PropTypes.string.isRequired,
     };
 
     render() {
-        const { data } = this.props;
-        const actions = data.get('actions').valueSeq();
-        const title = data.get('title');
+        const { type } = this.props;
+        const content = this.props.data.get(type);
+        const className = `pane-toolbar pane-toolbar-${type}`;
+
+        if (!content) return null;
 
         return (
-            <div className="nav-toolbar">
-                <h1 dangerouslySetInnerHTML={{ __html: title }}/>
-            </div>
+            <div className={className} dangerouslySetInnerHTML={{ __html: content }}/>
         );
     }
 }

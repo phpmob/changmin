@@ -57,15 +57,31 @@ export default class AppApi {
     };
 
     updateTitle(title) {
-        this.update(['toolbar', 'title'], title);
+        this.update(['menubar', 'title'], title);
+    };
+
+    updateToolbar(type, content) {
+        this.update(['toolbar', type], content);
+    };
+
+    updateToolbarHeader(content) {
+        this.update(['toolbar', 'header'], content);
+    };
+
+    updateToolbarFooter(content) {
+        this.update(['toolbar', 'footer'], content);
+    };
+
+    updateBreadcrumb(breadcrumb) {
+        this.update(['breadcrumb'], breadcrumb);
+    };
+
+    updateFlash(flash) {
+        this.update(['flash'], flash);
     };
 
     updateContent(content) {
         this.update('content', content);
-    };
-
-    updateBreadcrumb(breadcrumb) {
-        this.update('breadcrumb', breadcrumb);
     };
 };
 

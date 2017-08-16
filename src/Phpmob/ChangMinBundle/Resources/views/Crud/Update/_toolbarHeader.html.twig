@@ -1,0 +1,13 @@
+{% set backUrl = smart_referer(
+    path(configuration.vars.route.name|default(configuration.getRouteName('index')), configuration.vars.route.parameters|default({}))
+) %}
+
+<a class="btn btn-sm btn-outline-secondary" href="{{ backUrl }}">
+    <i class="icon icon-left-open"></i> {{ 'Back' }}
+</a>
+
+<div class="float-right">
+    <button type="button" class="btn btn-sm btn-primary" data-submit-form="{{ form.vars.name }}">
+        <i class="icon icon-check"></i> {{ 'Save Changes' }}
+    </button>
+</div>
