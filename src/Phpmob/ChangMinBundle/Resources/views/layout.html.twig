@@ -31,8 +31,11 @@
             });
         });*/
 
-        this.ChangMin.updateTitle('{{ block('title')|escape('js') }}');
-        this.ChangMin.updateContent('{{ block('content')|escape('js') }}');
+        this.ChangMin.set({
+            title: '{{ block('title')|escape('js') }}',
+            breadcrumb: '{{ block('breadcrumb')|escape('js') }}',
+            content: '{{ block('content')|escape('js') }}',
+        });
     })
 </script>
 </body>

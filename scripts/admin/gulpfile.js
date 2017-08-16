@@ -27,7 +27,7 @@ var gulp = require('./private/tasks.js')(require, {
         ],
         "css": [
             "{node}/jquery-confirm/dist/jquery-confirm.min.css",
-            "{node}/pace-progress/themes/blue/pace-theme-minimal.css",
+            "{node}/pace-progress/themes/blue/pace-theme-center-simple.css",
             "{node}/selectize/dist/css/selectize.css",
             "{node}/table-resizer/table-resize.css",
             "{src}/css/**",

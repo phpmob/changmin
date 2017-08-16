@@ -1,30 +1,21 @@
 {% extends "@ChangMin/layout.html.twig" %}
-{% import '@ChangMin/Grid/_paginate.html.twig' as paginate %}
 
 {% set data = resources.data is defined ? resources.data : resources %}
 {% set definition = resources.definition is defined ? resources.definition : null %}
-{% set pagers = configuration.vars.pagers|default({ proximity: 10 }) %}
-{% set title = configuration.vars.header|default(metadata.applicationName~'.ui.'~metadata.pluralName) %}
-{% set icon = configuration.vars.icon|default(null) %}
+{% set pagine = configuration.vars.pagine|default(configuration.vars.pagers|default({ proximity: 10 })) %}
 
-{% block title %}{% if icon|default %}<i class="{{ icon }}"></i> {% endif %}{{ title }}{% endblock %}
+{% set title %}
+    {% set title = configuration.vars.header|default(metadata.applicationName~'.ui.'~metadata.pluralName) %}
+    {% set icon = configuration.vars.icon|default(null) %}
+    {% if icon|default %}<i class="{{ icon }}"></i> {% endif %}{{ title }}
+{% endset %}
+
+{% block title %}{{ title|raw }}{% endblock %}
+
+{% block breadcrumb %}
+    {% include configuration.vars.templates.breadcrumb|default('@ChangMin/Crud/_breadcrumbs.html.twig') with { isIndex: true } %}
+{% endblock %}
 
 {% block content %}
-    <div class="table-grid">
-        <div class="toolbar toolbar-header p-2">
-            <div class="align-items-center">
-                <div class="table-grid-tools">
-                    {{ include("@ChangMin/Crud/Index/_actions.html.twig") }}
-                    {{ include("@ChangMin/Crud/Index/_search.html.twig") }}
-                </div>
-                <div class="table-grid-paginate">
-                    {{ paginate.basic(data, pagers) }}
-                </div>
-            </div>
-        </div>
-
-        <div class="table-grid-body">
-            {{ sylius_grid_render(resources, '@ChangMin/Grid/_default.html.twig') }}
-        </div>
-    </div>
+    {% include configuration.vars.templates.content|default('@ChangMin/Crud/Index/_content.html.twig') %}
 {% endblock %}

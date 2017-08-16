@@ -1,22 +1,18 @@
 {% extends "@ChangMin/layout.html.twig" %}
 {% form_theme form configuration.vars.templates.theme|default('@ChangMin/Form/default.html.twig') %}
 
-{% set title = configuration.vars.header|default(metadata.applicationName~'.ui.new_'~metadata.name) %}
-{% set icon = configuration.vars.icon|default('icon icon-plus') %}
+{% set title %}
+    {% set title = configuration.vars.header|default(metadata.applicationName~'.ui.new_'~metadata.name) %}
+    {% set icon = configuration.vars.icon|default('icon icon-plus') %}
+    {% if icon|default %}<i class="{{ icon }}"></i> {% endif %}{{ title }}
+{% endset %}
 
-{% block title %}{% if icon|default %}<i class="{{ icon }}"></i> {% endif %}{{ title }}{% endblock %}
+{% block title %}{{ title|raw }}{% endblock %}
+
+{% block breadcrumb %}
+    {% include configuration.vars.templates.breadcrumb|default('@ChangMin/Crud/_breadcrumbs.html.twig') %}
+{% endblock %}
 
 {% block content %}
-    {{ form_start(form, {
-        'action': path(configuration.vars.route.name|default(configuration.getRouteName('create')), configuration.vars.route.parameters|default({})),
-        'attr': {'class': 'form', 'novalidate': 'novalidate'}
-    }) }}
-    <input type="hidden" name="_method" value="POST"/>
-    {% if configuration.vars.templates.form is defined %}
-        {% include configuration.vars.templates.form %}
-    {% else %}
-        {{ form_widget(form) }}
-    {% endif %}
-    {{ form_row(form._token) }}
-    {{ form_end(form, {'render_rest': false}) }}
+    {% include configuration.vars.templates.content|default('@ChangMin/Crud/Create/_content.html.twig') %}
 {% endblock %}

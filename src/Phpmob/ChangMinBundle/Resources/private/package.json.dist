@@ -1,10 +1,10 @@
 {
-    "name": "phpmob-change-admin",
+    "name": "phpmob-changemin",
     "version": "1.0.0",
     "description": "",
     "main": "index.html",
     "author": "Liverbool <nukboon@gmail.com>",
-    "url": "https://github.com/phpmob/chang-admin",
+    "url": "https://github.com/phpmob/changmin",
     "copyright": "Copyright 2017 Liverbool <nukboon@gmail.com>",
     "license": "MIT",
     "dependencies": {
@@ -15,6 +15,7 @@
         "jquery": "^3.0.0",
         "jquery-confirm": "^3.3.1",
         "pace-progress": "^1.0.2",
+        "primer-css": "^9.2.0",
         "selectize": "^0.12.4",
         "simple-line-icons": "latest",
         "sortablejs": "^1.6.0",

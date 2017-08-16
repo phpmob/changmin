@@ -8,6 +8,7 @@ import { actions } from './redux/reducer'
 import AppApi from './AppApi'
 import Sidebar from './component/Sidebar'
 import Toolbar from './component/Toolbar'
+import Breadcrumb from './component/Breadcrumb'
 
 class App extends Component {
     static propTypes = {
@@ -38,6 +39,7 @@ class App extends Component {
         const content = this.props.state.get('content');
         const sidebar = this.props.state.get('sidebar');
         const toolbar = this.props.state.get('toolbar');
+        const breadcrumb = this.props.state.get('breadcrumb');
 
         return (
             <div className="window">
@@ -48,6 +50,7 @@ class App extends Component {
                         </div>
                         <div className="pane pane-body">
                             <Toolbar data={toolbar}/>
+                            <Breadcrumb data={breadcrumb}/>
                             <div ref="content" className="pane-content" dangerouslySetInnerHTML={{ __html: content }}/>
                         </div>
                     </div>

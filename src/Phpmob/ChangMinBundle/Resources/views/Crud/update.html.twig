@@ -1,0 +1,29 @@
+{% extends "@ChangMin/layout.html.twig" %}
+{% form_theme form configuration.vars.templates.theme|default('@ChangMin/Form/default.html.twig') %}
+{% set name = resource.code|default(
+    resource.name|default(
+        resource.slug|default(
+            resource.fullname|default(
+                resource.username|default(
+                    resource.email|default(resource.id)
+                )
+            )
+        )
+    )
+) %}
+
+{% set title %}
+    {% set title = configuration.vars.header|default(metadata.applicationName~'.ui.edit_'~metadata.name) %}
+    {% set icon = configuration.vars.icon|default('icon icon-pencil') %}
+    {% if icon|default %}<i class="{{ icon }}"></i> {% endif %}{{ title }} - {{ name }}
+{% endset %}
+
+{% block title %}{{ title|raw }}{% endblock %}
+
+{% block breadcrumb %}
+    {% include configuration.vars.templates.breadcrumb|default('@ChangMin/Crud/_breadcrumbs.html.twig') %}
+{% endblock %}
+
+{% block content %}
+    {% include configuration.vars.templates.content|default('@ChangMin/Crud/Update/_content.html.twig') %}
+{% endblock %}

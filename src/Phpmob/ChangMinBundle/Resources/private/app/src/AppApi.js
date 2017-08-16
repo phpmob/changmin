@@ -1,6 +1,10 @@
 import Immutable from 'immutable';
 import { MenuItem } from './redux/state';
 
+function ucfirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 let app;
 export default class AppApi {
     constructor(c) {
@@ -25,6 +29,16 @@ export default class AppApi {
         return app.props.state.getIn(state);
     };
 
+    set(props) {
+        if (arguments.length > 1) {
+            props = { [arguments[0]]: arguments[1] }
+        }
+
+        Object.keys(props).map(k => {
+            this[`update${ucfirst(k)}`](props[k])
+        })
+    }
+
     update(key, state) {
         if (typeof state === 'undefined') {
             app.props.action.update(key)
@@ -48,6 +62,10 @@ export default class AppApi {
 
     updateContent(content) {
         this.update('content', content);
+    };
+
+    updateBreadcrumb(breadcrumb) {
+        this.update('breadcrumb', breadcrumb);
     };
 };
 

@@ -1,0 +1,43 @@
+{% set breadcrumbs = [] %}
+
+{% if configuration.vars.breadcrumb|default %}
+    {% for bcKey, bcValue in configuration.vars.breadcrumb %}
+        {% if bcValue.route|default %}
+            {% if bcValue.route.parameters|default %}
+                {% set link = path(bcValue.route.name, bcValue.route.parameters) %}
+            {% else %}
+                {% set link = path(bcValue.route) %}
+            {% endif %}
+        {% else %}
+            {% set link = path(configuration.getRouteName(bcKey), bcValue.parameters|default({})) %}
+        {% endif %}
+
+        {% set breadcrumbs = breadcrumbs|merge([{
+            icon: bcValue.icon,
+            label: bcValue.label,
+            link: link|default(bcValue.link|default)
+        }]) %}
+    {% endfor %}
+{% endif %}
+
+<nav class="breadcrumb">
+    <span class="breadcrumb-item">
+        <i class="icon icon-home"></i> <a href="{{ path('changmin_dashboard') }}">{{ 'Dashboard' }}</a>
+    </span>
+
+    {% for bc in breadcrumbs %}
+        <span class="breadcrumb-item">
+            <i class="{{ bc.icon }}"></i> <a href="{{ bc.link }}">{{ bc.label|trans|raw }}</a>
+        </span>
+    {% else %}
+        {% if not isIndex|default %}
+            <span class="breadcrumb-item">
+                {% set link = path(configuration.getRouteName('index')) %}
+                {% set label = metadata.applicationName~'.ui.'~metadata.pluralName %}
+                <a href="{{ link }}">{{ label|trans|raw }}</a>
+            </span>
+        {% endif %}
+    {% endfor %}
+
+    <span class="breadcrumb-item active">{{ title|raw }}</span>
+</nav>

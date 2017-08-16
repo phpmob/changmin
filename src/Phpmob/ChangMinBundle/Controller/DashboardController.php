@@ -4,10 +4,10 @@ namespace Phpmob\ChangMinBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class DashboardController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('@ChangMin/Default/index.html.twig');
+        return $this->render('@ChangMin/Dashboard/index.html.twig');
     }
 }

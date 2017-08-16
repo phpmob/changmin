@@ -25,6 +25,7 @@ export const Menu = (menuItems = []) => {
 
 export default new Map({
     content: '',
+    breadcrumb: '',
     sidebar: new Map({
         menus: new Menu([
             MenuItem({ key: 'favorite', label: 'Favorites' }),

@@ -1,0 +1,7 @@
+.nav-breadcrumb {
+    font-size: $breadcrumb-item-font-size;
+
+    .breadcrumb {
+        @include border-radius($breadcrumb-border-radius);
+    }
+}

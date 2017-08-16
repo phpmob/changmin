@@ -1,10 +1,10 @@
 {
-    "name": "phpmob-change-admin",
+    "name": "phpmob-changemin",
     "version": "1.0.0",
     "description": "",
     "main": "index.html",
     "author": "Liverbool <nukboon@gmail.com>",
-    "url": "https://github.com/phpmob/chang-admin",
+    "url": "https://github.com/phpmob/changmin",
     "copyright": "Copyright 2017 Liverbool <nukboon@gmail.com>",
     "license": "MIT",
     "dependencies": {

@@ -1,0 +1,13 @@
+{{ form_start(form, {
+    'action': path(configuration.vars.route.name|default(configuration.getRouteName('update')), configuration.vars.route.parameters|default({ 'id': resource.id })),
+    'attr': {'class': 'form', 'novalidate': 'novalidate'}
+}) }}
+
+{% if configuration.vars.templates.form is defined %}
+    {% include configuration.vars.templates.form %}
+{% else %}
+    {{ form_widget(form) }}
+{% endif %}
+
+{{ form_row(form._token) }}
+{{ form_end(form, {'render_rest': false}) }}

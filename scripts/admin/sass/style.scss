@@ -1,5 +1,6 @@
 $simple-line-icon-prefix: "licon-" !default;
 
+@import "../private/scss/bootstrap";
 @import "bootstrap";
 
 /*
@@ -16,5 +17,7 @@ $simple-line-icon-prefix: "licon-" !default;
 @import "../node_modules/font-awesome/scss/font-awesome";
 @import "../node_modules/simple-line-icons/scss/simple-line-icons";
 @import "../node_modules/flag-icon-css/sass/flag-icon";
+
+//@import "../node_modules/primer-breadcrumb/build/build.css";
 
 @import "../private/scss/main";

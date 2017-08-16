@@ -1,0 +1,19 @@
+{% import '@ChangMin/Grid/_paginate.html.twig' as paginate %}
+
+<div class="table-grid">
+    <div class="toolbar toolbar-header p-2">
+        <div class="align-items-center">
+            <div class="table-grid-tools">
+                {{ include("@ChangMin/Crud/Index/_actions.html.twig") }}
+                {{ include("@ChangMin/Crud/Index/_search.html.twig") }}
+            </div>
+            <div class="table-grid-paginate">
+                {{ paginate.basic(data, pagine) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="table-grid-body">
+        {{ sylius_grid_render(resources, '@ChangMin/Grid/_default.html.twig') }}
+    </div>
+</div>
