@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new \Phpmob\DemoBundle\PhpmobDemoBundle(),
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
+            new \Phpmob\FileBundle\FileBundle(),
 
             // Core
             new \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),

@@ -9,14 +9,17 @@
  * file that was distributed with this source code.
  */
 
-namespace Phpmob\DemoBundle\Model;
+namespace Phpmob\FileBundle\Controller;
 
-use Phpmob\FileBundle\Model\ImageAwareInterface;
-use Sylius\Component\User\Model\UserInterface as BaseUserInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface DemoUserInterface extends BaseUserInterface, ImageAwareInterface
+class DefaultController extends Controller
 {
+    public function indexAction()
+    {
+        return $this->render('FileBundle:Default:index.html.twig');
+    }
 }

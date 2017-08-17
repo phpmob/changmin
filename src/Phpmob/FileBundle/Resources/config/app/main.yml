@@ -1,0 +1,17 @@
+parameters:
+    phpmob.uploader.filesystem: phpmob_filesystem
+
+doctrine:
+    dbal:
+        types:
+            phpmob_image_type: Phpmob\FileBundle\Doctrine\DBAL\Type\ImageType
+
+knp_gaufrette:
+    filesystems:
+        phpmob_filesystem:
+            adapter: "%phpmob.uploader.filesystem%"
+    adapters:
+        phpmob_filesystem:
+            local:
+                directory: "%kernel.root_dir%/../web/media"
+                create: true

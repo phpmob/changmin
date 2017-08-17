@@ -11,21 +11,12 @@
 
 namespace Phpmob\DemoBundle\Model;
 
-use Phpmob\FileBundle\Model\ImageAwareTrait;
-use Sylius\Component\User\Model\User as BaseUser;
+use Phpmob\FileBundle\Model\Image;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class DemoUser extends BaseUser implements DemoUserInterface
+class DemoUserPicture extends Image implements DemoUserPictureInterface
 {
-    use ImageAwareTrait;
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getFileBasePath()
-    {
-        return '/profiles';
-    }
 }

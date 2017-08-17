@@ -19,3 +19,11 @@ services:
             - [ "sylius" ]
         tags:
             - { name: form.type }
+
+    demo.form.demo_user_picture:
+        class: Phpmob\DemoBundle\Form\Type\DemoUserPictureType
+        arguments:
+            - "%demo.model.user_picture.class%"
+            - [ "sylius" ]
+        tags:
+            - { name: form.type }

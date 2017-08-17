@@ -3,6 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@ChangMin/Resources/config/app/main.yml" }
+    - { resource: "@FileBundle/Resources/config/app/main.yml" }
     - { resource: "@PhpmobDemoBundle/Resources/config/app/main.yml" }
 
 parameters:

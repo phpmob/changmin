@@ -1,0 +1,65 @@
+<?php
+
+/*
+ * This file is part of the Phpmob package.
+ *
+ * (c) Ishmael Doss <nukboon@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Phpmob\FileBundle\DependencyInjection;
+
+use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
+
+/**
+ * @author Ishmael Doss <nukboon@gmail.com>
+ */
+class Configuration implements ConfigurationInterface
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigTreeBuilder()
+    {
+        $treeBuilder = new TreeBuilder();
+        $rootNode = $treeBuilder->root('phpmob_file');
+
+        $this->addImageFiltersSection($rootNode);
+
+        $rootNode
+            ->children()
+                ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
+            ->end()
+        ;
+
+        return $treeBuilder;
+    }
+
+    /**
+     * @param ArrayNodeDefinition $node
+     */
+    private function addImageFiltersSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('image_filters')
+                    ->useAttributeAsKey('name')
+                    ->prototype('array')
+                        ->prototype('array')
+                            ->children()
+                                ->scalarNode('code')->cannotBeEmpty()->end()
+                                ->scalarNode('label')->cannotBeEmpty()->end()
+                                ->scalarNode('filter')->defaultNull()->end()
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+}

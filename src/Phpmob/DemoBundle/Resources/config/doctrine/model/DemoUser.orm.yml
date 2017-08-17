@@ -1,3 +1,9 @@
 Phpmob\DemoBundle\Model\DemoUser:
     type: mappedSuperclass
     table: demo_user
+
+    oneToOne:
+        image:
+            targetEntity: Phpmob\DemoBundle\Model\DemoUserPictureInterface
+            mappedBy: owner
+            cascade: [ all ]
