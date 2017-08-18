@@ -1,17 +1,34 @@
-parameters:
-    phpmob.uploader.filesystem: phpmob_filesystem
-
 doctrine:
     dbal:
         types:
             phpmob_image_type: Phpmob\FileBundle\Doctrine\DBAL\Type\ImageType
+    orm:
+        entity_managers:
+            default:
+                connection: "%phpmob.uploader.dbal_connection%"
+                mappings:
+                    FileBundle:
+                        mapping: "%phpmob.uploader.dbal"
+                        type: xml
+                        dir: Resources/config/doctrine/mapping
 
 knp_gaufrette:
     filesystems:
-        phpmob_filesystem:
-            adapter: "%phpmob.uploader.filesystem%"
+        phpmob_filesystem_local:
+            adapter: phpmob_filesystem_local
+        phpmob_filesystem_dbal:
+            adapter: phpmob_filesystem_dbal
     adapters:
-        phpmob_filesystem:
+        phpmob_filesystem_local:
             local:
-                directory: "%kernel.root_dir%/../web/media"
+                directory: "%phpmob.uploader.directory%"
                 create: true
+        phpmob_filesystem_dbal:
+            doctrine_dbal:
+                connection_name: "%phpmob.uploader.dbal_connection%"
+                table: "%phpmob.uploader.dbal_table%"
+                columns:
+                    key: id
+                    content: text
+                    mtime: date
+                    checksum: checksum

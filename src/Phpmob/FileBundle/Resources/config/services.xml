@@ -13,13 +13,22 @@
             <argument type="service">
                 <service class="Gaufrette\Filesystem">
                     <argument>%phpmob.uploader.filesystem%</argument>
-                    <factory service="knp_gaufrette.filesystem_map" method="get" />
+                    <factory service="knp_gaufrette.filesystem_map" method="get"/>
                 </service>
             </argument>
         </service>
 
-        <service id="phpmob.listener.upload_file" class="Phpmob\FileBundle\EventListener\UploadFileListener">
-            <argument type="service" id="phpmob.filesystem_uploader"/>
+        <service id="phpmob.listener.upload_file" class="Phpmob\FileBundle\EventListener\UploadFileListener"
+                 public="false">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+
+        <service id="phpmob.listener.orm_file_storage" class="Phpmob\FileBundle\EventListener\ORMFileStorageSubscriber"
+                 public="false">
+            <argument>%phpmob.uploader.dbal_table%</argument>
             <tag name="doctrine.event_subscriber"/>
         </service>
 

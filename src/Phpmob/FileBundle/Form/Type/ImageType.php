@@ -14,14 +14,12 @@ declare(strict_types=1);
 namespace Phpmob\FileBundle\Form\Type;
 
 use Phpmob\FileBundle\Form\DataTransformer\ImageTypeTransformer;
-use Phpmob\FileBundle\Model\ImageType as ImageTypeChoice;
 use Phpmob\FileBundle\Registry\ImageTypeRegistry;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
@@ -46,39 +44,27 @@ abstract class ImageType extends AbstractResourceType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if (null === $types = $options['types']) {
-            $types = $this->imageTypeRegistry->getSectionTypes($this->getBlockPrefix());
-        }
+        $types = $this->imageTypeRegistry->getSectionTypes($this->getBlockPrefix());
 
         if (!empty($types)) {
-            /*if (count($types) > 1) {
+            if (count($types) > 1) {
                 $builder->add('type', ChoiceType::class, [
-                    'required' => true,
+                    'required' => false,
                     'label' => 'phpmob.form.image.type',
                     'choices' => $types,
-                    'choice_label' => function(ImageTypeChoice $type) {
-                        return $type->getLabel();
-                    }
+                    'choice_value' => 'code',
+                    'choice_label' => 'label'
                 ]);
             } else {
-                $builder->add('type', HiddenType::class, [
-                    'data_class' => null,
-                    'data' => $types[0],
-                ]);
-            }*/
-            $builder->add('type', ChoiceType::class, [
-                'required' => false,
-                'label' => 'phpmob.form.image.type',
-                'choices' => $types,
-                'choice_label' => function($type) {
-                    /** @var ImageTypeChoice $type */
-                    return $type->getLabel();
-                }
-            ]);
-            $builder
-                ->get('type')
-                //->addViewTransformer(new ImageTypeTransformer($this->imageTypeRegistry))
-            ;
+                $builder
+                    ->add('type', HiddenType::class, [
+                        'data_class' => null,
+                        'data' => $types[0],
+                    ])
+                    ->get('type')
+                    ->addViewTransformer(new ImageTypeTransformer($this->imageTypeRegistry))
+                ;
+            }
         }
 
         $builder
@@ -87,20 +73,6 @@ abstract class ImageType extends AbstractResourceType
                 'required' => false,
             ])
         ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        parent::configureOptions($resolver);
-
-        $resolver->setDefaults([
-            'types' => null,
-        ]);
-
-        $resolver->setAllowedTypes('types', ['null', 'array']);
     }
 
     /**

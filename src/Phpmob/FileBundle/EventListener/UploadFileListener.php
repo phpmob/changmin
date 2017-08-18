@@ -7,18 +7,22 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Phpmob\FileBundle\Model\FileInterface;
 use Phpmob\FileBundle\Uploader\FileUploaderInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class UploadFileListener implements EventSubscriber
 {
     /**
-     * @var FileUploaderInterface
+     * @var ContainerInterface
      */
-    private $uploader;
+    private $container;
 
-    public function __construct(FileUploaderInterface $uploader)
+    /**
+     * @param ContainerInterface $container
+     */
+    public function setContainer(ContainerInterface $container)
     {
-        $this->uploader = $uploader;
+        $this->container = $container;
     }
 
     /**
@@ -62,14 +66,15 @@ class UploadFileListener implements EventSubscriber
             return;
         }
 
-
+        /** @var FileUploaderInterface $uploader */
+        $uploader = $this->container->get('phpmob.filesystem_uploader');
         $olderPath = $file->getPath();
-        $this->uploader->upload($file);
+        $uploader->upload($file);
 
         try {
             // remove old file
             if ($olderPath) {
-                $this->uploader->remove($this->uploader->read($olderPath));
+                $uploader->remove($uploader->read($olderPath));
             }
         } catch (\Exception $e) {
         }

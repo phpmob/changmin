@@ -26,14 +26,25 @@ class ImageTypeRegistry
     public function __construct(array $types = [])
     {
         foreach ($types as $section => $_types) {
-            $sectionTypes = [];
-
-            foreach ($_types as $type) {
-                $sectionTypes[] = new ImageType($section, $type['code'], $type['label'], $type['filter']);
-            }
-
-            $this->types[$section] = $sectionTypes;
+            $this->types[$section] = self::makeTypeChoices($_types, $section);
         }
+    }
+
+    /**
+     * @param array $types
+     * @param $section
+     *
+     * @return ImageType[]
+     */
+    public static function makeTypeChoices(array $types, $section)
+    {
+        $sectionTypes = [];
+
+        foreach ($types as $type) {
+            $sectionTypes[] = new ImageType($section, $type['code'], $type['label'], $type['filter']);
+        }
+
+        return $sectionTypes;
     }
 
     /**
@@ -69,6 +80,6 @@ class ImageTypeRegistry
             }
         );
 
-        return $types[0];
+        return array_values($types)[0];
     }
 }

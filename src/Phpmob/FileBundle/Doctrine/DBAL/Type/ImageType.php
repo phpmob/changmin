@@ -73,6 +73,6 @@ class ImageType extends Type
      */
     public function getName()
     {
-        return 'phpmbo_image_type';
+        return 'phpmob_image_type';
     }
 }
