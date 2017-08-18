@@ -16,6 +16,7 @@ namespace Phpmob\FileBundle\Imagine\Cache;
 use Liip\ImagineBundle\Controller\ImagineController;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager as BaseCacheManager;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class CacheManager extends BaseCacheManager
@@ -60,10 +61,14 @@ class CacheManager extends BaseCacheManager
             $params['filters'] = $runtimeConfig;
             $hash = $this->signer->sign($path, $runtimeConfig);
 
-            $filterUrl = $this->controller
-                ->filterRuntimeAction(new Request($params), $hash, $params['path'], $filter)
-                ->getTargetUrl()
-            ;
+            try {
+                $filterUrl = $this->controller
+                    ->filterRuntimeAction(new Request($params), $hash, $path, $filter)
+                    ->getTargetUrl()
+                ;
+            } catch (NotFoundHttpException $e) {
+                return null;
+            }
         }
 
         return $filterUrl;

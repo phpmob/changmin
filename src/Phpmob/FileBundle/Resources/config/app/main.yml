@@ -42,6 +42,7 @@ liip_imagine:
     filter_sets:
         phpmob_imagine:
             quality: "%phpmob.imagine.quality%"
+            data_loader: "%phpmob.imagine.data_loader%"
             filters: ~
 
 twig:

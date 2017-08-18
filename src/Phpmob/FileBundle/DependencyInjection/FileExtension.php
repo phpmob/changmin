@@ -31,15 +31,17 @@ class FileExtension extends AbstractResourceExtension
 
         $this->registerResources('phpmob', $config['driver'], [], $container);
 
+        $isDbal = $config['filesystem'] === 'dbal';
         $container->setParameter('phpmob.filters', $config['filters']);
         $container->setParameter('phpmob.uploader.filesystem', 'phpmob_filesystem_' . $config['filesystem']);
         $container->setParameter('phpmob.uploader.directory', $config['directory']);
-        $container->setParameter('phpmob.uploader.dbal', $config['filesystem'] === 'dbal');
+        $container->setParameter('phpmob.uploader.dbal', $isDbal);
         $container->setParameter('phpmob.uploader.dbal_connection', $config['dbal_connection']);
         $container->setParameter('phpmob.uploader.dbal_table', $config['dbal_table']);
         $container->setParameter('phpmob.imagine.filter', $config['imagine']['filter']);
         $container->setParameter('phpmob.imagine.quality', $config['imagine']['quality']);
         $container->setParameter('phpmob.imagine.form_default_image', $config['imagine']['form_default_image']);
+        $container->setParameter('phpmob.imagine.data_loader', $config['imagine']['data_loader'] ?: ($isDbal ? 'dbal_loader' : null));
 
         $loader->load('services.xml');
     }

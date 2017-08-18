@@ -80,6 +80,7 @@ class Configuration implements ConfigurationInterface
                     ->children()
                         ->scalarNode('filter')->defaultValue('phpmob_imagine')->end()
                         ->scalarNode('quality')->defaultValue(100)->end()
+                        ->scalarNode('data_loader')->defaultValue(null)->end()
                         ->scalarNode('form_default_image')->defaultValue('/bundles/file/img/changmin_100.png')->end()
                     ->end()
                 ->end()

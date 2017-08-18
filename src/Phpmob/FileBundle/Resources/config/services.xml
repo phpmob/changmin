@@ -51,5 +51,15 @@
                 <argument type="service" id="liip_imagine.controller"/>
             </call>
         </service>
+
+        <service id="phpmob.imagine.dbal_loader" class="Phpmob\FileBundle\Imagine\DbalLoader">
+            <argument type="service">
+                <service class="Gaufrette\Filesystem">
+                    <argument>%phpmob.uploader.filesystem%</argument>
+                    <factory service="knp_gaufrette.filesystem_map" method="get"/>
+                </service>
+            </argument>
+            <tag name="liip_imagine.binary.loader" loader="dbal_loader"/>
+        </service>
     </services>
 </container>
