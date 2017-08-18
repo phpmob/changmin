@@ -30,12 +30,13 @@ class Configuration implements ConfigurationInterface
         $rootNode = $treeBuilder->root('phpmob_file');
 
         $this->addImageFiltersSection($rootNode);
+        $this->addImagineSection($rootNode);
 
         $rootNode
             ->children()
                 ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
                 ->scalarNode('filesystem')->defaultValue('local')->end()
-                ->scalarNode('directory')->defaultValue('%kernel.root_dir%/../web/media')->end()
+                ->scalarNode('directory')->defaultValue('%kernel.root_dir%/../var/media')->end()
                 ->scalarNode('dbal_connection')->defaultValue('default')->end()
                 ->scalarNode('dbal_table')->defaultValue('phpmob_files')->end()
             ->end()
@@ -61,6 +62,24 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('filter')->defaultNull()->end()
                             ->end()
                         ->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+    }
+
+    /**
+     * @param ArrayNodeDefinition $node
+     */
+    private function addImagineSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('imagine')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->scalarNode('filter')->defaultValue('phpmob_imagine')->end()
+                        ->scalarNode('quality')->defaultValue(100)->end()
                     ->end()
                 ->end()
             ->end()

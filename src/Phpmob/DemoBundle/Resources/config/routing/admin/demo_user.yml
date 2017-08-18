@@ -10,6 +10,7 @@ sylius_admin_demo_user:
             all:
                 templates:
                     form: PhpmobDemoBundle:DemoUser:_form.html.twig
+                    show: PhpmobDemoBundle:DemoUser:_show.html.twig
             index:
                 icon: icon icon-user
                 header: "Demo Users"

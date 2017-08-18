@@ -17,6 +17,7 @@
 /web/bundles/
 node_modules/
 
+/var/media/
 /web/media/
 /web/assets/
 /scripts/admin/private

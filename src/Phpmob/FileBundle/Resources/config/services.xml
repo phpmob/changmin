@@ -37,5 +37,19 @@
             <argument type="service" id="phpmob.registry.image_types"/>
             <tag name="doctrine.event_listener" event="imageTypeRegistry"/>
         </service>
+
+        <service id="phpmob.twig.imagine" class="Phpmob\FileBundle\Twig\ImagineExtension" public="false">
+            <argument type="service" id="liip_imagine.cache.manager"/>
+            <argument>%phpmob.imagine.filter%</argument>
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="phpmob.imagine.cache_manager" class="Phpmob\FileBundle\Imagine\Cache\CacheManager"
+                 parent="liip_imagine.cache.manager"
+                 decorates="liip_imagine.cache.manager">
+            <call method="setController">
+                <argument type="service" id="liip_imagine.controller"/>
+            </call>
+        </service>
     </services>
 </container>

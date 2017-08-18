@@ -38,6 +38,8 @@ class FileExtension extends AbstractResourceExtension
         $container->setParameter('phpmob.uploader.dbal', $config['filesystem'] === 'dbal');
         $container->setParameter('phpmob.uploader.dbal_connection', $config['dbal_connection']);
         $container->setParameter('phpmob.uploader.dbal_table', $config['dbal_table']);
+        $container->setParameter('phpmob.imagine.filter', $config['imagine']['filter']);
+        $container->setParameter('phpmob.imagine.quality', $config['imagine']['quality']);
 
         $loader->load('services.xml');
     }

@@ -32,3 +32,15 @@ knp_gaufrette:
                     content: text
                     mtime: date
                     checksum: checksum
+
+liip_imagine:
+    loaders:
+        default:
+            filesystem:
+                data_root:
+                    - "%phpmob.uploader.directory%"
+    filter_sets:
+        phpmob_imagine:
+            quality: "%phpmob.imagine.quality%"
+            filters:
+                thumbnail  : { size : [120, 90], mode : inset }

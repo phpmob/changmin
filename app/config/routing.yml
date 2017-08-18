@@ -9,3 +9,6 @@ phpmob_changmin:
 phpmob_demo_admin:
     resource: "@PhpmobDemoBundle/Resources/config/routing/admin/main.yml"
     prefix: /admin
+
+LiipImagineBundle:
+    resource: "@LiipImagineBundle/Resources/config/routing.yaml"
