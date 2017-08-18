@@ -8,7 +8,7 @@ doctrine:
                 connection: "%phpmob.uploader.dbal_connection%"
                 mappings:
                     FileBundle:
-                        mapping: "%phpmob.uploader.dbal"
+                        mapping: "%phpmob.uploader.dbal%"
                         type: xml
                         dir: Resources/config/doctrine/mapping
 

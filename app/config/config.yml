@@ -6,12 +6,9 @@ imports:
     - { resource: "@FileBundle/Resources/config/app/main.yml" }
     - { resource: "@PhpmobDemoBundle/Resources/config/app/main.yml" }
 
-parameters:
-    locale: en
-
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'

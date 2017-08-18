@@ -32,10 +32,10 @@ class FileExtension extends AbstractResourceExtension
 
         $this->registerResources('phpmob', $config['driver'], [], $container);
 
-        $container->setParameter('phpmob.image_filters', $config['image_filters']);
+        $container->setParameter('phpmob.filters', $config['filters']);
         $container->setParameter('phpmob.uploader.filesystem', 'phpmob_filesystem_' . $config['filesystem']);
         $container->setParameter('phpmob.uploader.directory', $config['directory']);
-        $container->setParameter('phpmob.uploader.dbal', $config['filesystem'] === strtolower('dbal'));
+        $container->setParameter('phpmob.uploader.dbal', $config['filesystem'] === 'dbal');
         $container->setParameter('phpmob.uploader.dbal_connection', $config['dbal_connection']);
         $container->setParameter('phpmob.uploader.dbal_table', $config['dbal_table']);
 

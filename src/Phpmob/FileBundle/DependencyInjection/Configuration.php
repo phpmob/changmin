@@ -51,7 +51,7 @@ class Configuration implements ConfigurationInterface
     {
         $node
             ->children()
-                ->arrayNode('image_filters')
+                ->arrayNode('filters')
                     ->useAttributeAsKey('name')
                     ->prototype('array')
                         ->prototype('array')

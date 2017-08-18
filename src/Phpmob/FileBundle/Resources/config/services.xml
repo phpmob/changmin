@@ -6,7 +6,7 @@
 
     <services>
         <service id="phpmob.registry.image_types" class="Phpmob\FileBundle\Registry\ImageTypeRegistry">
-            <argument>%phpmob.image_filters%</argument>
+            <argument>%phpmob.filters%</argument>
         </service>
 
         <service id="phpmob.filesystem_uploader" class="Phpmob\FileBundle\Uploader\FilesystemUploader">
