@@ -44,7 +44,7 @@ class FilesystemUploader implements FileUploaderInterface
         }
 
         if (null !== $file->getPath() && $this->has($file->getPath())) {
-            $this->remove($file);
+            $this->remove($file->getPath());
         }
 
         do {
@@ -63,18 +63,10 @@ class FilesystemUploader implements FileUploaderInterface
     /**
      * {@inheritdoc}
      */
-    public function read($path)
+    public function remove($path = null)
     {
-        return $this->filesystem->read($path);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function remove(FileInterface $file = null)
-    {
-        if ($file) {
-            return $this->filesystem->delete($file->getPath());
+        if ($path) {
+            return $this->filesystem->delete($path);
         }
 
         return true;

@@ -65,4 +65,14 @@ interface FileInterface extends ResourceInterface, TimestampableInterface
      * @param string $basePath
      */
     public function setBasePath($basePath);
+
+    /**
+     * @return bool
+     */
+    public function isShouldRemove();
+
+    /**
+     * @param bool $shouldRemove
+     */
+    public function setShouldRemove($shouldRemove);
 }

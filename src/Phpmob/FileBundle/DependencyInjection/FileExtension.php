@@ -11,7 +11,6 @@
 
 namespace Phpmob\FileBundle\DependencyInjection;
 
-use Phpmob\FileBundle\FileBundle;
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -40,6 +39,7 @@ class FileExtension extends AbstractResourceExtension
         $container->setParameter('phpmob.uploader.dbal_table', $config['dbal_table']);
         $container->setParameter('phpmob.imagine.filter', $config['imagine']['filter']);
         $container->setParameter('phpmob.imagine.quality', $config['imagine']['quality']);
+        $container->setParameter('phpmob.imagine.form_default_image', $config['imagine']['form_default_image']);
 
         $loader->load('services.xml');
     }

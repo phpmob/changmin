@@ -47,6 +47,11 @@ abstract class File implements FileInterface
      */
     protected $basePath;
 
+    /**
+     * @var bool
+     */
+    protected $shouldRemove = false;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -143,5 +148,22 @@ abstract class File implements FileInterface
     public function setBasePath($basePath)
     {
         $this->basePath = $basePath;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isShouldRemove()
+    {
+        return $this->shouldRemove;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setShouldRemove($shouldRemove)
+    {
+        $this->shouldRemove = $shouldRemove;
+        $this->updatedAt = new \DateTime();
     }
 }

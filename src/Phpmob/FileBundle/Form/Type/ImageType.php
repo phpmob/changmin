@@ -16,6 +16,7 @@ namespace Phpmob\FileBundle\Form\Type;
 use Phpmob\FileBundle\Form\DataTransformer\ImageTypeTransformer;
 use Phpmob\FileBundle\Registry\ImageTypeRegistry;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -44,13 +45,14 @@ abstract class ImageType extends AbstractResourceType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $types = $this->imageTypeRegistry->getSectionTypes($this->getBlockPrefix());
+        $types = $this->imageTypeRegistry->getSectionTypes($this->getFilterSection());
 
         if (!empty($types)) {
             if (count($types) > 1) {
                 $builder->add('type', ChoiceType::class, [
                     'required' => false,
                     'label' => 'phpmob.form.image.type',
+                    'placeholder' => 'phpmob.form.image.type',
                     'choices' => $types,
                     'choice_value' => 'code',
                     'choice_label' => 'label'
@@ -72,6 +74,10 @@ abstract class ImageType extends AbstractResourceType
                 'label' => 'phpmob.form.image.file',
                 'required' => false,
             ])
+            ->add('shouldRemove', CheckboxType::class, [
+                'label' => 'phpmob.form.image.remove_file',
+                'required' => false,
+            ])
         ;
     }
 
@@ -82,4 +88,9 @@ abstract class ImageType extends AbstractResourceType
     {
         return 'phpmob_image';
     }
+
+    /**
+     * @return string
+     */
+    abstract public function getFilterSection();
 }

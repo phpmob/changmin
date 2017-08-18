@@ -61,21 +61,35 @@ class UploadFileListener implements EventSubscriber
             return;
         }
 
-        // only upload new files
-        if (!$file->getFile() instanceof UploadedFile) {
+        /** @var FileUploaderInterface $uploader */
+        $uploader = $this->container->get('phpmob.filesystem_uploader');
+        $isUploadFile = $file->getFile() instanceof UploadedFile;
+
+        // user click remove file
+        if ($file->isShouldRemove() && !$isUploadFile) {
+            $this->removeFile($uploader, $file->getPath());
+            $file->setPath(null);
+
             return;
         }
 
-        /** @var FileUploaderInterface $uploader */
-        $uploader = $this->container->get('phpmob.filesystem_uploader');
-        $olderPath = $file->getPath();
-        $uploader->upload($file);
+        // only upload new files
+        if (!$isUploadFile) {
+            return;
+        }
 
+        $uploader->upload($file);
+    }
+
+    /**
+     * @param FileUploaderInterface $uploader
+     * @param $path
+     */
+    private function removeFile(FileUploaderInterface $uploader, $path)
+    {
         try {
             // remove old file
-            if ($olderPath) {
-                $uploader->remove($uploader->read($olderPath));
-            }
+            $uploader->remove($path);
         } catch (\Exception $e) {
         }
     }

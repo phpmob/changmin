@@ -42,5 +42,11 @@ liip_imagine:
     filter_sets:
         phpmob_imagine:
             quality: "%phpmob.imagine.quality%"
-            filters:
-                thumbnail  : { size : [120, 90], mode : inset }
+            filters: ~
+
+twig:
+    form_themes:
+        - "@File/form.html.twig"
+    globals:
+        phpmob_imagine:
+            form_default_image_preview: "%phpmob.imagine.form_default_image%"

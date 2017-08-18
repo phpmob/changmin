@@ -1,4 +1,5 @@
 phpmob_file:
     filters:
-        phpmob_image:
+        user_picture:
             - { code: profile, label: Profile, filter: ~ }
+            #- { code: profile2, label: Profile 2, filter: ~ }

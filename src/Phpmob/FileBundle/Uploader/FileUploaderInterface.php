@@ -26,16 +26,9 @@ interface FileUploaderInterface
     public function upload(FileInterface $file);
 
     /**
-     * @param FileInterface|null $file
+     * @param string|null $path
      *
      * @return boolean
      */
-    public function remove(FileInterface $file = null);
-
-    /**
-     * @param string $path
-     *
-     * @return boolean|string
-     */
-    public function read($path);
+    public function remove($path = null);
 }

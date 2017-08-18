@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Phpmob\FileBundle\Twig;
 
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Phpmob\FileBundle\Model\ImageInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
@@ -53,14 +54,23 @@ class ImagineExtension extends \Twig_Extension
     }
 
     /**
-     * @param $path
+     * @param string|ImageInterface $path
      * @param $sizing
      * @param bool $inset
+     * @param string $default = null
      *
      * @return string
      */
-    public function filter($path, $sizing, $inset = true)
+    public function filter($path, $sizing, $inset = true, $default = null)
     {
+        if ($path instanceof ImageInterface) {
+            $path = $path->getPath();
+        }
+
+        if (empty($path)) {
+            return $default;
+        }
+
         $runtimeConfig = [
             'thumbnail' => [
                 'size' => explode('x', strtolower($sizing)),

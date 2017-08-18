@@ -8,6 +8,12 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
+            // Resources -- First!
+            new \Phpmob\DemoBundle\PhpmobDemoBundle(),
+            new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
+            new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
+            new \Phpmob\FileBundle\FileBundle(),
+
             // SF3
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
@@ -15,12 +21,6 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-
-            // Resources
-            new \Phpmob\DemoBundle\PhpmobDemoBundle(),
-            new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
-            new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
-            new \Phpmob\FileBundle\FileBundle(),
 
             // Core
             new \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
