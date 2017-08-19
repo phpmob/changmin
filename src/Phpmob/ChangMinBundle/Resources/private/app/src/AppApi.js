@@ -1,5 +1,4 @@
 import Immutable from 'immutable';
-import { MenuItem } from './redux/state';
 
 function ucfirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -7,8 +6,11 @@ function ucfirst(string) {
 
 let app;
 export default class AppApi {
+    Immutable = Immutable;
+
     constructor(c) {
         app = c;
+        this.state = c.props.state;
     }
 
     static makeid() {
@@ -21,12 +23,20 @@ export default class AppApi {
         return text;
     }
 
+    update(updater) {
+        if (updater) {
+            app.props.action.update(this.state.withMutations(updater));
+        } else {
+            app.props.action.update(this.state);
+        }
+    }
+
     get(state) {
         if (typeof state === 'string') {
             state = state.split('.');
         }
 
-        return app.props.state.getIn(state);
+        return this.state.getIn(state);
     };
 
     set(props) {
@@ -35,55 +45,71 @@ export default class AppApi {
         }
 
         Object.keys(props).map(k => {
-            this[`update${ucfirst(k)}`](props[k])
-        })
+            return this[`set${ucfirst(k)}`](props[k])
+        });
+        
+        return this;
     }
 
-    update(key, state) {
-        if (typeof state === 'undefined') {
-            app.props.action.update(key)
-        } else {
-            if (typeof key === 'string') {
-                key = key.split('.');
-            }
-
-            app.props.action.update(app.props.state.setIn(key, state));
+    updater(key, state) {
+        if (typeof key === 'string') {
+            key = key.split('.');
         }
+
+        this.state = this.state.setIn(key, state);
     };
 
-    updateMenu(menuUpdater) {
+    updateMenu(updater) {
         const key = ['sidebar', 'menus'];
-        this.update(key, app.props.state.getIn(key).withMutations(menuUpdater));
+        const menus = this.state.getIn(key) || new Immutable.Map();
+        this.updater(key, menus.withMutations(updater));
     };
 
-    updateTitle(title) {
-        this.update(['menubar', 'title'], title);
+    updateBranding(updater) {
+        const key = ['sidebar', 'brand'];
+        const brand = this.state.getIn(key) || new Immutable.Map();
+        this.updater(key, brand.withMutations(updater));
     };
 
-    updateToolbar(type, content) {
-        this.update(['toolbar', type], content);
+    updateUser(updater) {
+        const key = ['menubar', 'user'];
+        this.updater(key, this.state.getIn(key).withMutations(updater));
     };
 
-    updateToolbarHeader(content) {
-        this.update(['toolbar', 'header'], content);
+    updateNavbar(updater) {
+        const key = ['menubar', 'navbar'];
+        this.updater(key, this.state.getIn(key).withMutations(updater));
     };
 
-    updateToolbarFooter(content) {
-        this.update(['toolbar', 'footer'], content);
+    setTitle(title) {
+        this.updater(['menubar', 'title'], title);
     };
 
-    updateBreadcrumb(breadcrumb) {
-        this.update(['breadcrumb'], breadcrumb);
+    setToolbar(type, content) {
+        this.updater(['toolbar', type], content);
     };
 
-    updateFlash(flash) {
-        this.update(['flash'], flash);
+    setToolbarHeader(content) {
+        this.updater(['toolbar', 'header'], content);
     };
 
-    updateContent(content) {
-        this.update('content', content);
+    setToolbarFooter(content) {
+        this.updater(['toolbar', 'footer'], content);
     };
+
+    setBreadcrumb(breadcrumb) {
+        this.updater(['breadcrumb'], breadcrumb);
+    };
+
+    setFlash(flash) {
+        this.updater(['flash'], flash);
+    };
+
+    setContent(content) {
+        this.updater('content', content);
+    };
+
+    createMap(items) {
+        return Immutable.fromJS(items);
+    }
 };
-
-AppApi.Immutable = Immutable;
-AppApi.MenuItem = MenuItem;

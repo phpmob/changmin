@@ -1,10 +1,17 @@
+$chang-base-color: darken($gray-500, 35%);
+$chang-bg-color: rgba($gray-200, .5);
+$chang-border-color: darken($gray-500, 10%);
+
 @import "../photon/sass/variables";
 @import "../photon/sass/mixins";
 @import "../photon/sass/window";
 @import "../photon/sass/icons";
 
+@import "avatar";
 @import "breadcrumb";
 @import "pace";
 @import "pane";
 @import "menubar";
+@import "sidebar";
+@import "splitter";
 @import "table-grid";

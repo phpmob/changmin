@@ -16,19 +16,78 @@
 {% set flashs %}
     {% block flash %}{{ include('@ChangMin/flash.html.twig') }}{% endblock %}
 {% endset %}
-<div id="root"></div>
+<div id="root" style="opacity: 0"></div>
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
+{% jshrink %}
 <script>
     $(window).on('load', function () {
-        // sample update menu
-        /*this.ChangMin.updateMenu(menu => {
-            return menu.updateIn(['favorite', 'children'], function (children) {
-                return children.addItem({
-                    key: 'dashboard',
-                    label: 'Dashboard',
-                });
-            });
-        });*/
+        var ChangMin = this.ChangMin;
+
+        ChangMin.updateMenu(function (menu) {
+            return menu.set('favorite', ChangMin.createMap({
+                label: 'Favorite',
+                children: {
+                    dashboard: {
+                        icon: 'icon icon-home',
+                        label: 'Dashboard',
+                        link: '{{ path('changmin_dashboard') }}',
+                    },
+                    demoUser: {
+                        icon: 'icon icon-user',
+                        label: 'Demo Users',
+                        link: '{{ path('sylius_admin_demo_user_index') }}',
+                    }
+                }
+            }));
+        });
+
+        ChangMin.updateBranding(function (brand) {
+            return brand.set('name', 'ChangMin!');
+        });
+
+        ChangMin.updateUser(function (user) {
+            return user
+                .set('name', 'Ishmael Doss')
+                .set('avatar', '{{ asset('assets/admin/img/avatars/5.jpg') }}')
+                .set('menu', user.get('menu').withMutations(function (menu) {
+                    return menu
+                        .set('profile', {
+                            divider: 'top',
+                            icon: 'icon icon-vcard',
+                            label: 'Profile',
+                            link: '/profile'
+                        })
+                        .set('logout', {
+                            icon: 'icon icon-logout',
+                            label: 'Logout',
+                            link: '/logout'
+                        })
+                        ;
+                }))
+                ;
+        });
+
+        ChangMin.updateNavbar(function (navbar) {
+            return navbar.mergeDeep(ChangMin.createMap({
+                'bath': {
+                    icon: 'fa fa-bath',
+                    label: 'Bath',
+                    menu: {
+                        a: {
+                            icon: 'fa fa-grav',
+                            label: 'Gravity'
+                        },
+                        b: {
+                            icon: 'fa fa-free-code-camp',
+                            label: 'Free code camp'
+                        },
+                    }
+                },
+                'notify': {
+                    icon: 'licon licon-bell',
+                },
+            }));
+        });
 
         {% set breadcrumb = block('breadcrumb') ?? '' %}
         {% set toolbarHeader = block('toolbarHeader') ?? '' %}
@@ -36,7 +95,7 @@
         {% set toolbarFooter = block('toolbarFooter') ?? '' %}
         {% set title = block('title') ?? '' %}
 
-        this.ChangMin.set({
+        ChangMin.set({
             title: '{{ title|trim|escape('js') }}',
             flash: '{{ flashs|trim|escape('js') }}',
             content: '{{ block('content')|trim|escape('js') }}',
@@ -44,7 +103,21 @@
             toolbarHeader: '{{ toolbarHeader|trim|escape('js') }}',
             toolbarFooter: '{{ toolbarFooter|trim|escape('js') }}',
         });
+
+        ChangMin.update();
+        $('#root').css('opacity', 1);
+
+
+        // demo update state after first init
+        ChangMin.updateNavbar(function (navbar) {
+            return navbar.mergeDeepIn(['notify'], {
+                badge: { data: 1, type: 'danger' }
+            });
+        });
+
+        ChangMin.update();
     })
 </script>
+{% endjshrink %}
 </body>
 </html>

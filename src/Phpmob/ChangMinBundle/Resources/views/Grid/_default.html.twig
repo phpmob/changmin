@@ -8,7 +8,7 @@
 {% endif %}
 
 {% if grid.data|length > 0 %}
-    <table class="table table-sm m-0 scrollable">
+    <table class="table table-sm m-0">
         <thead>
         <tr>
             {{ table.headers(grid, definition, app.request.attributes) }}
@@ -21,10 +21,12 @@
         </tbody>
     </table>
     <script>
-        var $table = $('.table-grid table');
+        /*
+        var $grid = $('.table-grid');
+        var $table = $('table', $grid);
         new TableResize($table.get(0), { restoreState: true, fixed: true });
         // scrollable
-        if ($table.hasClass('scrollable')) {
+        if ($grid.hasClass('scrollable')) {
             var colsWidth = $table.find('thead tr:first').children().map(function () {
                 return $(this).width();
             }).get();
@@ -32,7 +34,7 @@
             $table.find('tbody tr:first').children().each(function (i, v) {
                 $(v).width(colsWidth[i]);
             });
-        }
+        }*/
     </script>
 {% else %}
     {{ messages.info('No results to display') }}

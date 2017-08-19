@@ -1,0 +1,67 @@
+.Pane {
+    display: flex;
+}
+
+.Resizer {
+    z-index: 1;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+}
+
+.Resizer.horizontal {
+    height: 12px;
+    margin: -6px 0;
+    cursor: row-resize;
+    width: 100%;
+    position: relative;
+
+    &:before {
+        content: "";
+        width: 30px;
+        height: 5px;
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        display: block;
+    }
+
+    &:hover {
+        &:before {
+            background-color: $chang-border-color;
+        }
+    }
+}
+
+.Resizer.vertical {
+    width: 12px;
+    margin: 0 -6px;
+    cursor: col-resize;
+    position: relative;
+
+    &:before {
+        content: "";
+        width: 5px;
+        height: 30px;
+        position: absolute;
+        top: 50%;
+        left: 4px;
+        display: block;
+    }
+
+    &:hover {
+        &:before {
+            background-color: $chang-border-color;
+        }
+    }
+}
+
+.Resizer.disabled {
+    cursor: not-allowed;
+}
+.Resizer.disabled:hover {
+    border-color: transparent;
+}

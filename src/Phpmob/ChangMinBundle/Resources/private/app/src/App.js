@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import SplitPane from 'react-split-pane';
 import $ from 'jquery';
 
 import { actions } from './redux/reducer'
@@ -48,8 +49,8 @@ class App extends Component {
         return (
             <div className="window">
                 <div className="window-content">
-                    <div className="pane-group">
-                        <div className="pane pane-sm pane-sidebar">
+                    <SplitPane className="pane-group" split="vertical" minSize={50} defaultSize={220}>
+                        <div className="pane pane-sidebar">
                             <Sidebar data={sidebar}/>
                         </div>
                         <div className="pane pane-body" ref="body">
@@ -62,7 +63,7 @@ class App extends Component {
                                 <Toolbar data={toolbar} type="footer"/>
                             </div>
                         </div>
-                    </div>
+                    </SplitPane>
                 </div>
             </div>
         );

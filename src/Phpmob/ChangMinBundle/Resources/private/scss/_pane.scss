@@ -15,40 +15,16 @@
     position: relative;
     overflow-y: auto;
     flex: 1;
-    border-left: 1px solid darken($gray-500, 0%);
-
-    &:first-child {
-        border-left: 0;
-    }
 }
 
 .pane-sidebar {
-    background-color: #eeeded;
-}
-
-.pane-sm {
-    max-width: 220px;
-    min-width: 150px;
-}
-
-.pane-mini {
-    width: 80px;
-    flex: none;
-}
-
-.pane-one-fourth {
-    width: 25%;
-    flex: none;
-}
-
-.pane-one-third {
-    width: 33.3%;
-    flex: none;
+    background-color: $chang-bg-color;
 }
 
 .pane-body {
     display: flex;
     flex-direction: column;
+    border-left: 1px solid rgba($chang-border-color, .6);
 }
 
 .pane-content {
