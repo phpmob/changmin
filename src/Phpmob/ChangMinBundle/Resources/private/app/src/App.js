@@ -6,7 +6,7 @@ import SplitPane from 'react-split-pane';
 import $ from 'jquery';
 
 import { actions } from './redux/reducer'
-import AppApi from './AppApi'
+import ChangMin from './ChangMin'
 import Sidebar from './component/Sidebar'
 import Toolbar from './component/Toolbar'
 import Menubar from './component/Menubar'
@@ -21,12 +21,12 @@ class App extends Component {
     constructor(props) {
         super(props);
 
-        window['ChangMin'] = this.api = new AppApi(this);
+        window['ChangMin'] = this.api = new ChangMin(this);
     }
 
     componentDidMount() {
         setTimeout(() => {
-            const nonce = `_${AppApi.makeid()}`;
+            const nonce = `_${ChangMin.makeid()}`;
 
             // todo: componet context when support render as component type.
             window[nonce] = this;

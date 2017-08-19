@@ -5,7 +5,7 @@ function ucfirst(string) {
 }
 
 let app;
-export default class AppApi {
+export default class ChangMin {
     Immutable = Immutable;
 
     constructor(c) {
