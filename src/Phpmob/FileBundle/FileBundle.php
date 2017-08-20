@@ -17,6 +17,9 @@ use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
+/**
+ * @author Ishmael Doss <nukboon@gmail.com>
+ */
 class FileBundle extends AbstractResourceBundle
 {
     public function build(ContainerBuilder $container)

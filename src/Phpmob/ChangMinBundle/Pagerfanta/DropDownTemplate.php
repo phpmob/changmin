@@ -13,6 +13,9 @@ namespace Phpmob\ChangMinBundle\Pagerfanta;
 
 use Pagerfanta\View\Template\DefaultTemplate;
 
+/**
+ * @author Ishmael Doss <nukboon@gmail.com>
+ */
 class DropDownTemplate extends DefaultTemplate
 {
     static protected $defaultOptions = array(

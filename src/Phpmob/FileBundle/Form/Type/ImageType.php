@@ -20,6 +20,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -72,6 +73,13 @@ abstract class ImageType extends AbstractResourceType
         $builder
             ->add('file', FileType::class, [
                 'label' => 'phpmob.form.image.file',
+                'required' => false,
+            ])
+            ->add('caption', TextType::class, [
+                'label' => 'phpmob.form.image.caption',
+                'attr' => [
+                    'placeholder' => 'phpmob.form.image.caption',
+                ],
                 'required' => false,
             ])
             ->add('shouldRemove', CheckboxType::class, [

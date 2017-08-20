@@ -38,6 +38,11 @@ abstract class File implements FileInterface
     protected $path;
 
     /**
+     * @var string
+     */
+    protected $caption;
+
+    /**
      * @var ImageAwareInterface|FileAwareInterface
      */
     protected $owner;
@@ -116,6 +121,22 @@ abstract class File implements FileInterface
     public function hasPath()
     {
         return null !== $this->path;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCaption()
+    {
+        return $this->caption;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCaption($caption)
+    {
+        $this->caption = $caption;
     }
 
     /**

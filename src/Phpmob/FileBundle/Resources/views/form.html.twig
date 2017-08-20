@@ -19,6 +19,7 @@
                     </td>
                     <td class="file-widget">
                         {{ form_widget(form.file) }}
+                        {{ form_row(form.caption, { label: false }) }}
                         {{ form_row(form.shouldRemove, { label_attr: removeAttr }) }}
                     </td>
                 </tr>
@@ -30,6 +31,7 @@
                 <tr class="file-widget">
                     <td>
                         {{ form_widget(form.file) }}
+                        {{ form_widget(form.caption) }}
                         {{ form_row(form.shouldRemove, { label_attr: removeAttr }) }}
                     </td>
                 </tr>

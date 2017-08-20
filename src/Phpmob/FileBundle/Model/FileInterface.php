@@ -47,6 +47,16 @@ interface FileInterface extends ResourceInterface, TimestampableInterface
     public function setPath($path);
 
     /**
+     * @return string
+     */
+    public function getCaption();
+
+    /**
+     * @param string $caption
+     */
+    public function setCaption($caption);
+
+    /**
      * @return object
      */
     public function getOwner();

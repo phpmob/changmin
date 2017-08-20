@@ -19,6 +19,7 @@
             <generator strategy="AUTO"/>
         </id>
 
+        <field name="caption" type="string" nullable="true"/>
         <field name="path" type="string" nullable="true"/>
 
         <field name="createdAt" type="datetime">
