@@ -1,0 +1,26 @@
+{{ form_errors(form) }}
+{# FIXME: nested tab bug #}
+<div class="row">
+    <div class="col-3">
+        {{ form_row(form.template) }}
+        {{ form_row(form.enabled) }}
+    </div>
+    <div class="col-9">
+        <ul class="nav nav-tabs" id="cms-page">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#page-content">{{ 'Content' }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#page-script">{{ form.script.vars.label|trans }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#page-style">{{ form.style.vars.label|trans }}</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="page-content">{{ form_row(form.translations) }}</div>
+            <div class="tab-pane" id="page-script">{{ form_row(form.script, { label: false }) }}</div>
+            <div class="tab-pane" id="page-style">{{ form_row(form.style, { label: false }) }}</div>
+        </div>
+    </div>
+</div>

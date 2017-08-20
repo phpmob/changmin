@@ -1,0 +1,59 @@
+sylius_grid:
+    grids:
+        phpmob_admin_page:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%phpmob.model.page.class%"
+            limits: [20]
+            sorting:
+                createdAt: desc
+            fields:
+                id:
+                    type: text
+                    label: ID
+                    sortable: ~
+                    options:
+                        align: center
+                        width: 80px
+                title:
+                    type: text
+                    label: Title
+                    sortable: translation.title
+                createdAt:
+                    type: datetime
+                    label: Created At
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
+#                enabled:
+#                    type: tpl
+#                    label: Enabled
+#                    sortable: ~
+#                    options:
+#                        template: "@ChangMin/Grid/Field/enabled.html.twig"
+#                        align: center
+#                        width: 80px
+            filters:
+                search:
+                    type: string
+                    label: Search
+                    options:
+                        default: true
+                        fields:
+                            - translation.title
+                            - translation.body
+                            - translation.metaDescription
+                            - translation.metaKeywords
+            actions:
+                main:
+                    create:
+                        icon: icon icon-user-add
+                        type: create
+                item:
+                    update:
+                        type: update
+                    show:
+                        type: show
+                    delete:
+                        type: delete

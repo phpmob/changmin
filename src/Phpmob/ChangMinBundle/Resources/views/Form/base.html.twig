@@ -240,3 +240,40 @@
         </div>
     {% endspaceless %}
 {%- endblock %}
+
+{% block sylius_translations_row -%}
+    <div class="card card-translations">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs justify-content-end">
+                {% for translation in form %}
+                    {% set active = loop.index0 ? '' : 'active' %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ active }}" href="#{{ translation.vars.id }}">
+                            {{ translation.vars.name|flag_icon }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+            {% if form.vars.label %}
+                <h3 class="nav-title">{{ form_label(form) }}</h3>
+            {% endif %}
+        </div>
+
+        <div class="card-body tab-content">
+            {% for translation in form %}
+                {% set active = loop.index0 ? '' : 'active' %}
+                <div class="tab-pane {{ active }}" id="{{ translation.vars.id }}">
+                    {% for field in translation %}
+                        {% if exclude is defined %}
+                            {% if field.vars.name not in exclude %}
+                                {{ form_row(field) }}
+                            {% endif %}
+                        {% else %}
+                            {{ form_row(field) }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{%- endblock sylius_translations_row %}

@@ -1,0 +1,12 @@
+ChangMin.updateMenu(function (menu) {
+    return menu.set('cms', ChangMin.createMap({
+        label: 'CMS',
+        children: {
+            page: {
+                icon: 'licon licon-note',
+                label: 'Pages',
+                link: '{{ path('phpmob_admin_page_index') }}',
+            },
+        }
+    }));
+});

@@ -22,20 +22,24 @@
     </table>
     <script>
         /*
-        var $grid = $('.table-grid');
-        var $table = $('table', $grid);
-        new TableResize($table.get(0), { restoreState: true, fixed: true });
-        // scrollable
-        if ($grid.hasClass('scrollable')) {
-            var colsWidth = $table.find('thead tr:first').children().map(function () {
-                return $(this).width();
-            }).get();
+         var $grid = $('.table-grid');
+         var $table = $('table', $grid);
+         new TableResize($table.get(0), { restoreState: true, fixed: true });
+         // scrollable
+         if ($grid.hasClass('scrollable')) {
+         var colsWidth = $table.find('thead tr:first').children().map(function () {
+         return $(this).width();
+         }).get();
 
-            $table.find('tbody tr:first').children().each(function (i, v) {
-                $(v).width(colsWidth[i]);
-            });
-        }*/
+         $table.find('tbody tr:first').children().each(function (i, v) {
+         $(v).width(colsWidth[i]);
+         });
+         }*/
     </script>
 {% else %}
-    {{ messages.info('No results to display') }}
+    <div class="no-results justify-content-center">
+        <div class="align-self-center">
+            {{ messages.default('No results to display', 'licon licon-info') }}
+        </div>
+    </div>
 {% endif %}

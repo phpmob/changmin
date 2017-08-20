@@ -1,0 +1,6 @@
+phpmob_file:
+    #filesystem: dbal
+    filters:
+        user_picture:
+            - { code: profile, label: Profile, filter: ~ }
+            #- { code: profile2, label: Profile 2, filter: ~ }

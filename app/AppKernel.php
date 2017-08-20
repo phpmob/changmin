@@ -13,6 +13,7 @@ class AppKernel extends Kernel
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
             new \Phpmob\FileBundle\FileBundle(),
+            new \Phpmob\CmsBundle\PhpmobCmsBundle(),
 
             // SF3
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),

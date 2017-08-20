@@ -2,7 +2,6 @@ sylius_admin_demo_user:
     resource: |
         alias: sylius.demo_user
         section: admin
-        path: users
         templates: ChangMin:Crud
         grid: demo_admin_demo_user
         permission: true

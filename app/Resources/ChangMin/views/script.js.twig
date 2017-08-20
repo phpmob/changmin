@@ -1,0 +1,19 @@
+ChangMin.updateMenu(function (menu) {
+    return menu.set('favorite', ChangMin.createMap({
+        label: 'Favorite',
+        children: {
+            dashboard: {
+                icon: 'icon icon-home',
+                label: 'Dashboard',
+                link: '{{ path('changmin_dashboard') }}',
+            },
+            demoUser: {
+                icon: 'icon icon-user',
+                label: 'Demo Users',
+                link: '{{ path('sylius_admin_demo_user_index') }}',
+            }
+        }
+    }));
+});
+
+{{ include('@PhpmobCms/Admin/script.js.twig') }}

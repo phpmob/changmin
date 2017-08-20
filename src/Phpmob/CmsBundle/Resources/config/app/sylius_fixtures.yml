@@ -1,0 +1,17 @@
+sylius_fixtures:
+    suites:
+        default:
+            listeners:
+                orm_purger: ~
+                logger: ~
+
+            fixtures:
+                demo_user:
+                    name: "demo_user"
+                    options:
+                        random: 30
+                        custom:
+                            -
+                                email: "demo@chanmin.io"
+                                username: "demo"
+                                password: "demo"

@@ -1,4 +1,4 @@
-{% macro default(message, icon, type, header) %}
+{% macro default(message, icon, type = 'secondary', header) %}
     <div class="alert alert-{{ type }}" role="alert">
         {% if header %}
             <h4 class="alert-heading">{% if icon %} <i class="{{ icon }}"></i> {% endif %}{{ header }}</h4>

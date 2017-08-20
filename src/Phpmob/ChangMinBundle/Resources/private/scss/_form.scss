@@ -1,0 +1,33 @@
+.card-translations {
+    .card-header {
+        position: relative;
+
+        .nav-title {
+            position: absolute;
+            top: 25%;
+        }
+    }
+}
+
+.tab-pane.active {
+    > .card-translations {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-top: -1px;
+
+        .card-header {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+}
+
+.form-control-label {
+    &.required {
+        &:after {
+            content: "*";
+            margin-left: 4px;
+            color: $red;
+        }
+    }
+}

@@ -23,24 +23,6 @@
     $(window).on('load', function () {
         var ChangMin = this.ChangMin;
 
-        ChangMin.updateMenu(function (menu) {
-            return menu.set('favorite', ChangMin.createMap({
-                label: 'Favorite',
-                children: {
-                    dashboard: {
-                        icon: 'icon icon-home',
-                        label: 'Dashboard',
-                        link: '{{ path('changmin_dashboard') }}',
-                    },
-                    demoUser: {
-                        icon: 'icon icon-user',
-                        label: 'Demo Users',
-                        link: '{{ path('sylius_admin_demo_user_index') }}',
-                    }
-                }
-            }));
-        });
-
         ChangMin.updateBranding(function (brand) {
             return brand.set('name', 'ChangMin!');
         });
@@ -104,20 +86,22 @@
             toolbarFooter: '{{ toolbarFooter|trim|escape('js') }}',
         });
 
+        {{ include('@ChangMin/script.js.twig') }}
+
         ChangMin.update();
         $('#root').css('opacity', 1);
 
-
         // demo update state after first init
-        ChangMin.updateNavbar(function (navbar) {
+        /*ChangMin.updateNavbar(function (navbar) {
             return navbar.mergeDeepIn(['notify'], {
                 badge: { data: 1, type: 'danger' }
             });
         });
 
-        ChangMin.update();
+        ChangMin.update();*/
     })
 </script>
+<style type="text/css">{{ include('@ChangMin/style.css.twig') }}</style>
 {% endjshrink %}
 </body>
 </html>
