@@ -208,10 +208,11 @@
 {%- endblock datetime_row %}
 
 {% block collection_widget -%}
+    {% import '@ChangMin/Form/macro.html.twig' as macro %}
     {% set attr = attr|merge({'class': attr.class|default ~ ' controls collection-widget'}) %}
 
     {% if prototype is defined and allow_add %}
-        {% set attr = attr|merge({ 'data-prototype': form_widget(prototype) }) %}
+        {% set attr = attr|merge({ 'data-prototype': macro.collection_item(prototype, allow_delete, button_delete_label, '__name__')|e }) %}
     {%- endif -%}
 
     {% spaceless %}
@@ -221,13 +222,13 @@
 
             {% if prototypes|default is iterable %}
                 {% for key, subPrototype in prototypes %}
-                    <input type="hidden" data-form-prototype="{{ key }}" value="{{ form_widget(subPrototype)|e }}"/>
+                    <input type="hidden" data-form-prototype="{{ key }}" value="{{ macro.collection_item(subPrototype, allow_delete, button_delete_label, '__name__')|e }}"/>
                 {% endfor %}
             {% endif %}
 
             <div data-form-collection="list" class="row collection-list">
                 {% for child in form %}
-                    {{ form_widget(child) }}
+                    {{ macro.collection_item(child, allow_delete, button_delete_label, loop.index0) }}
                 {% endfor %}
             </div>
 
@@ -239,13 +240,3 @@
         </div>
     {% endspaceless %}
 {%- endblock %}
-
-{% block cmf_media_image_widget %}
-    {% block cmf_media_image_widget_preview %}{% endblock %}
-    {{ form_widget(form) }}
-{% endblock %}
-
-{% block cmf_media_file_widget %}
-    {{ form_widget(form) }}
-    {% block cmf_media_file_widget_download %}{% endblock %}
-{% endblock %}

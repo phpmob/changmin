@@ -1,5 +1,7 @@
 {% block phpmob_image_widget %}
     {% spaceless %}
+        {% set isCollection = form.parent.vars.allow_delete|default %}
+        {% set removeAttr = isCollection ? {style: 'display: none'} : {} %}
         {% set sizing = filter.sizing|default('100x100') %}
         {% set default = filter.default|default(phpmob_imagine.form_default_image_preview) %}
         {% set inset = filter.inset is defined and filter.inset == true %}
@@ -17,7 +19,7 @@
                     </td>
                     <td class="file-widget">
                         {{ form_widget(form.file) }}
-                        {{ form_row(form.shouldRemove) }}
+                        {{ form_row(form.shouldRemove, { label_attr: removeAttr }) }}
                     </td>
                 </tr>
             {% else %}
@@ -28,7 +30,7 @@
                 <tr class="file-widget">
                     <td>
                         {{ form_widget(form.file) }}
-                        {{ form_row(form.shouldRemove) }}
+                        {{ form_row(form.shouldRemove, { label_attr: removeAttr }) }}
                     </td>
                 </tr>
             {% endif %}

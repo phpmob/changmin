@@ -43,8 +43,8 @@ class App extends Component {
         const sidebar = this.props.state.get('sidebar');
         const toolbar = this.props.state.get('toolbar');
         const menubar = this.props.state.get('menubar');
-        const breadcrumb = this.props.state.get('breadcrumb');
         const flash = this.props.state.get('flash');
+        const breadcrumb = this.props.state.get('breadcrumb');
 
         return (
             <div className="window">

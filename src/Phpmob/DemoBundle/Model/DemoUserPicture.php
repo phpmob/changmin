@@ -12,11 +12,31 @@
 namespace Phpmob\DemoBundle\Model;
 
 use Phpmob\FileBundle\Model\Image;
+use Sylius\Component\User\Model\UserInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
 class DemoUserPicture extends Image implements DemoUserPictureInterface
 {
+    /**
+     * @var UserInterface
+     */
+    private $user;
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUser(UserInterface $user = null)
+    {
+        $this->user = $user;
+    }
 }

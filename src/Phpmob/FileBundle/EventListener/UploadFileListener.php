@@ -33,6 +33,7 @@ class UploadFileListener implements EventSubscriber
         return [
             'prePersist',
             'preUpdate',
+            'postRemove',
         ];
     }
 
@@ -53,6 +54,20 @@ class UploadFileListener implements EventSubscriber
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function postRemove(LifecycleEventArgs $args)
+    {
+        $object = $args->getObject();
+
+        if (!$object instanceof FileInterface) {
+            return;
+        }
+
+        $this->removeFile($this->getUploader(), $object->getPath());
+    }
+
+    /**
      * @param $file
      */
     private function uploadFile($file)
@@ -61,8 +76,7 @@ class UploadFileListener implements EventSubscriber
             return;
         }
 
-        /** @var FileUploaderInterface $uploader */
-        $uploader = $this->container->get('phpmob.filesystem_uploader');
+        $uploader = $this->getUploader();
         $isUploadFile = $file->getFile() instanceof UploadedFile;
 
         // user click remove file
@@ -92,5 +106,13 @@ class UploadFileListener implements EventSubscriber
             $uploader->remove($path);
         } catch (\Exception $e) {
         }
+    }
+
+    /**
+     * @return FileUploaderInterface
+     */
+    private function getUploader()
+    {
+        return $this->container->get('phpmob.filesystem_uploader');
     }
 }

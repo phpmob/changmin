@@ -9,6 +9,10 @@
     </imports>
 
     <services>
+        <service id="toro.form.convert_rawdata_extension" class="Phpmob\ChangMinBundle\Form\Extension\ConvertRawDataFormExtension">
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
+        </service>
+
         <service id="changmin.twig.extension.sort_by" class="Phpmob\ChangMinBundle\Twig\Extension\SortByExtension">
             <tag name="twig.extension"/>
         </service>

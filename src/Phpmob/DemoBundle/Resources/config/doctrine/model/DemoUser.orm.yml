@@ -7,3 +7,10 @@ Phpmob\DemoBundle\Model\DemoUser:
             targetEntity: Phpmob\DemoBundle\Model\DemoUserPictureInterface
             mappedBy: owner
             cascade: [ all ]
+
+    oneToMany:
+        images:
+            targetEntity: Phpmob\DemoBundle\Model\DemoUserPictureInterface
+            mappedBy: user
+            orphanRemoval: true
+            cascade: [ all ]

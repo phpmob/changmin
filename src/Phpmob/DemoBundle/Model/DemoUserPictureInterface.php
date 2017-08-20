@@ -12,11 +12,12 @@
 namespace Phpmob\DemoBundle\Model;
 
 use Phpmob\FileBundle\Model\ImageInterface;
+use Sylius\Component\User\Model\UserAwareInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface DemoUserPictureInterface extends ImageInterface
+interface DemoUserPictureInterface extends ImageInterface, UserAwareInterface
 {
 
 }
