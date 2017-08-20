@@ -5,5 +5,7 @@
         {{ include("@ChangMin/Crud/Index/_actions.html.twig") }}
         {{ include("@ChangMin/Crud/Index/_search.html.twig") }}
     </div>
-    <div class="col-auto pane-toolbar-paginate">{{ paginate.basic(data, pagine) }}</div>
+    {% if data|length %}
+        <div class="col-auto pane-toolbar-paginate">{{ paginate.basic(data, pagine) }}</div>
+    {% endif %}
 </div>

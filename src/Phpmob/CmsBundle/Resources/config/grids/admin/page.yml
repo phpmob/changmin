@@ -48,7 +48,8 @@ sylius_grid:
             actions:
                 main:
                     create:
-                        icon: icon icon-user-add
+                        icon: fa fa-plus
+                        label: Create Page
                         type: create
                 item:
                     update:
