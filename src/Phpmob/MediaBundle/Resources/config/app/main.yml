@@ -1,0 +1,53 @@
+doctrine:
+    dbal:
+        types:
+            phpmob_image_type: Phpmob\MediaBundle\Doctrine\DBAL\Type\ImageType
+    orm:
+        entity_managers:
+            default:
+                connection: "%phpmob.uploader.dbal_connection%"
+                mappings:
+                    MediaBundle:
+                        mapping: "%phpmob.uploader.dbal%"
+                        type: xml
+                        dir: Resources/config/doctrine/mapping
+
+knp_gaufrette:
+    filesystems:
+        phpmob_filesystem_local:
+            adapter: phpmob_filesystem_local
+        phpmob_filesystem_dbal:
+            adapter: phpmob_filesystem_dbal
+    adapters:
+        phpmob_filesystem_local:
+            local:
+                directory: "%phpmob.uploader.directory%"
+                create: true
+        phpmob_filesystem_dbal:
+            doctrine_dbal:
+                connection_name: "%phpmob.uploader.dbal_connection%"
+                table: "%phpmob.uploader.dbal_table%"
+                columns:
+                    key: id
+                    content: text
+                    mtime: date
+                    checksum: checksum
+
+liip_imagine:
+    loaders:
+        default:
+            filesystem:
+                data_root:
+                    - "%phpmob.uploader.directory%"
+    filter_sets:
+        phpmob_imagine:
+            quality: "%phpmob.imagine.quality%"
+            data_loader: "%phpmob.imagine.data_loader%"
+            filters: ~
+
+twig:
+    form_themes:
+        - "@PhpmobMedia/form.html.twig"
+    globals:
+        phpmob_imagine:
+            form_default_image_preview: "%phpmob.imagine.form_default_image%"

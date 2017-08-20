@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="phpmob.registry.image_types" class="Phpmob\MediaBundle\Registry\ImageTypeRegistry">
+            <argument>%phpmob.filters%</argument>
+        </service>
+
+        <service id="phpmob.filesystem_uploader" class="Phpmob\MediaBundle\Uploader\FilesystemUploader">
+            <argument type="service">
+                <service class="Gaufrette\Filesystem">
+                    <argument>%phpmob.uploader.filesystem%</argument>
+                    <factory service="knp_gaufrette.filesystem_map" method="get"/>
+                </service>
+            </argument>
+        </service>
+
+        <service id="phpmob.listener.upload_file" class="Phpmob\MediaBundle\EventListener\UploadFileListener"
+                 public="false">
+            <call method="setContainer">
+                <argument type="service" id="service_container"/>
+            </call>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+
+        <service id="phpmob.listener.orm_file_storage" class="Phpmob\MediaBundle\EventListener\ORMFileStorageSubscriber"
+                 public="false">
+            <argument>%phpmob.uploader.dbal_table%</argument>
+            <tag name="doctrine.event_subscriber"/>
+        </service>
+
+        <service id="phpmob.listener.doctrine_image_type_registry"
+                 class="Phpmob\MediaBundle\EventListener\DoctrineEventManagerImageTypeRegistryListener">
+            <argument type="service" id="phpmob.registry.image_types"/>
+            <tag name="doctrine.event_listener" event="imageTypeRegistry"/>
+        </service>
+
+        <service id="phpmob.twig.imagine" class="Phpmob\MediaBundle\Twig\ImagineExtension" public="false">
+            <argument type="service" id="liip_imagine.cache.manager"/>
+            <argument>%phpmob.imagine.filter%</argument>
+            <tag name="twig.extension"/>
+        </service>
+
+        <service id="phpmob.imagine.cache_manager" class="Phpmob\MediaBundle\Imagine\Cache\CacheManager"
+                 parent="liip_imagine.cache.manager"
+                 decorates="liip_imagine.cache.manager">
+            <call method="setController">
+                <argument type="service" id="liip_imagine.controller"/>
+            </call>
+        </service>
+
+        <service id="phpmob.imagine.dbal_loader" class="Phpmob\MediaBundle\Imagine\DbalLoader">
+            <argument type="service">
+                <service class="Gaufrette\Filesystem">
+                    <argument>%phpmob.uploader.filesystem%</argument>
+                    <factory service="knp_gaufrette.filesystem_map" method="get"/>
+                </service>
+            </argument>
+            <tag name="liip_imagine.binary.loader" loader="dbal_loader"/>
+        </service>
+    </services>
+</container>

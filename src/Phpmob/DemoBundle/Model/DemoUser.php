@@ -13,7 +13,7 @@ namespace Phpmob\DemoBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Phpmob\FileBundle\Model\ImageAwareTrait;
+use Phpmob\MediaBundle\Model\ImageAwareTrait;
 use Sylius\Component\User\Model\User as BaseUser;
 
 /**

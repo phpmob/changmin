@@ -1,7 +1,3 @@
-file:
-    resource: "@FileBundle/Resources/config/routing.xml"
-    prefix:   /
-
 phpmob_changmin:
     resource: "@ChangMin/Resources/config/routing.xml"
     prefix:   /admin

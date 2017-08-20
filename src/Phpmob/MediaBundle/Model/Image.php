@@ -9,34 +9,33 @@
  * file that was distributed with this source code.
  */
 
-namespace Phpmob\DemoBundle\Model;
+declare(strict_types=1);
 
-use Phpmob\MediaBundle\Model\Image;
-use Sylius\Component\User\Model\UserInterface;
+namespace Phpmob\MediaBundle\Model;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class DemoUserPicture extends Image implements DemoUserPictureInterface
+abstract class Image extends File implements ImageInterface
 {
     /**
-     * @var UserInterface
+     * @var string
      */
-    private $user;
+    protected $type;
 
     /**
      * {@inheritdoc}
      */
-    public function getUser()
+    public function getType()
     {
-        return $this->user;
+        return $this->type;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setUser(UserInterface $user = null)
+    public function setType(ImageType $type = null)
     {
-        $this->user = $user;
+        $this->type = $type;
     }
 }

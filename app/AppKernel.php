@@ -12,7 +12,7 @@ class AppKernel extends Kernel
             new \Phpmob\DemoBundle\PhpmobDemoBundle(),
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
-            new \Phpmob\FileBundle\FileBundle(),
+            new \Phpmob\MediaBundle\PhpmobMediaBundle(),
             new \Phpmob\CmsBundle\PhpmobCmsBundle(),
 
             // SF3

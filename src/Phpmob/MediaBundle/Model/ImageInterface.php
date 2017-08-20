@@ -9,15 +9,22 @@
  * file that was distributed with this source code.
  */
 
-namespace Phpmob\DemoBundle\Model;
+declare(strict_types=1);
 
-use Phpmob\MediaBundle\Model\ImageInterface;
-use Sylius\Component\User\Model\UserAwareInterface;
+namespace Phpmob\MediaBundle\Model;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface DemoUserPictureInterface extends ImageInterface, UserAwareInterface
+interface ImageInterface extends FileInterface
 {
+    /**
+     * @return ImageType|null
+     */
+    public function getType();
 
+    /**
+     * @param ImageType|null $type
+     */
+    public function setType(ImageType $type = null);
 }

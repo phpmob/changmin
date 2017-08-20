@@ -11,7 +11,7 @@
 
 namespace Phpmob\DemoBundle\Model;
 
-use Phpmob\FileBundle\Model\ImageAwareInterface;
+use Phpmob\MediaBundle\Model\ImageAwareInterface;
 use Sylius\Component\User\Model\UserInterface as BaseUserInterface;
 
 /**
