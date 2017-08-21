@@ -1,0 +1,32 @@
+PhpMob\CmsBundle\Model\Page:
+    type: mappedSuperclass
+    table: phpmob_cms_page
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        enabled:
+            type: boolean
+        template:
+            type: string
+            nullable: true
+        script:
+            type: text
+            nullable: true
+        style:
+            type: text
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update

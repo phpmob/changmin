@@ -9,11 +9,11 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // Resources -- First!
-            new \Phpmob\DemoBundle\PhpmobDemoBundle(),
+            new \PhpMob\DemoBundle\PhpMobDemoBundle(),
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
-            new \Phpmob\MediaBundle\PhpmobMediaBundle(),
-            new \Phpmob\CmsBundle\PhpmobCmsBundle(),
+            new \PhpMob\MediaBundle\PhpMobMediaBundle(),
+            new \PhpMob\CmsBundle\PhpMobCmsBundle(),
 
             // SF3
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -30,7 +30,7 @@ class AppKernel extends Kernel
             new \Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new \Sylius\Bundle\GridBundle\SyliusGridBundle(),
             new \winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
-            new \Phpmob\ChangMinBundle\ChangMinBundle(),
+            new \PhpMob\ChangMinBundle\ChangMinBundle(),
             new \Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),

@@ -1,2 +1,0 @@
-demo_admin_demo_user:
-    resource: "@PhpmobDemoBundle/Resources/config/routing/admin/demo_user.yml"

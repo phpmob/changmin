@@ -1,0 +1,12 @@
+sylius_resource:
+    resources:
+        phpmob.page:
+            classes:
+                model: PhpMob\CmsBundle\Model\Page
+                interface: PhpMob\CmsBundle\Model\PageInterface
+                form: PhpMob\CmsBundle\Form\Type\PageType
+            translation:
+                classes:
+                    model: PhpMob\CmsBundle\Model\PageTranslation
+                    interface: PhpMob\CmsBundle\Model\PageTranslationInterface
+                    form: PhpMob\CmsBundle\Form\Type\PageTranslationType

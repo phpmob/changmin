@@ -1,0 +1,2 @@
+phpmob_admin_page:
+    resource: "@PhpMobCmsBundle/Resources/config/routing/admin/page.yml"

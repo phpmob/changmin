@@ -1,0 +1,16 @@
+services:
+    phpmob.form.page_type:
+        class: PhpMob\CmsBundle\Form\Type\PageType
+        arguments:
+            - "%phpmob.model.page.class%"
+            - [ phpmob ]
+        tags:
+            - { name: form.type }
+
+    phpmob.form.page_translation_type:
+        class: PhpMob\CmsBundle\Form\Type\PageTranslationType
+        arguments:
+            - "%phpmob.model.page_translation.class%"
+            - [ phpmob ]
+        tags:
+            - { name: form.type }

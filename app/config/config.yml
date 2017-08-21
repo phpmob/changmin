@@ -3,9 +3,9 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@ChangMin/Resources/config/app/main.yml" }
-    - { resource: "@PhpmobMediaBundle/Resources/config/app/main.yml" }
-    - { resource: "@PhpmobCmsBundle/Resources/config/app/main.yml" }
-    - { resource: "@PhpmobDemoBundle/Resources/config/app/main.yml" }
+    - { resource: "@PhpMobMediaBundle/Resources/config/app/main.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/main.yml" }
+    - { resource: "@PhpMobDemoBundle/Resources/config/app/main.yml" }
 
 framework:
     #esi: ~

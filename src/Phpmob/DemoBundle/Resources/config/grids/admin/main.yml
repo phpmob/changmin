@@ -1,2 +1,0 @@
-imports:
-    - { resource: "@PhpmobDemoBundle/Resources/config/grids/admin/demo_user.yml" }

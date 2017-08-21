@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="changmin.grid_field.text" class="PhpMob\Grid\FieldType\TextFieldType" public="false">
+            <argument type="service" id="sylius.grid.data_extractor"/>
+            <tag name="sylius.grid_field" type="text"/>
+        </service>
+
+        <service id="changmin.grid_field.twig" class="PhpMob\Grid\FieldType\TplFieldType" public="false">
+            <argument type="service" id="sylius.grid.data_extractor"/>
+            <argument type="service" id="twig"/>
+            <tag name="sylius.grid_field" type="tpl"/>
+        </service>
+
+        <service id="changmin.grid_field.badge" class="PhpMob\Grid\FieldType\BadgeFieldType" public="false">
+            <argument type="service" id="sylius.grid.data_extractor"/>
+            <argument type="service" id="twig"/>
+            <argument type="string">@ChangMin/Grid/Field/badge.html.twig</argument>
+            <tag name="sylius.grid_field" type="badge"/>
+        </service>
+    </services>
+</container>

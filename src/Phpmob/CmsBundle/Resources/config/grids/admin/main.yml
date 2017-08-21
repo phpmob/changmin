@@ -1,2 +1,0 @@
-imports:
-    - { resource: "@PhpmobCmsBundle/Resources/config/grids/admin/page.yml" }

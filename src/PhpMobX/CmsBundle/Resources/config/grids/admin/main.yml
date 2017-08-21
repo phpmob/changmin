@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@PhpMobCmsBundle/Resources/config/grids/admin/page.yml" }

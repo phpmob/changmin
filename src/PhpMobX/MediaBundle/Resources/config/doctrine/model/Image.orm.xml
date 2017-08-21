@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+
+ This file is part of the PhpMob package.
+
+ (c) Ishmael Doss <nukboon@gmail.com>
+
+ For the full copyright and license information, please view the LICENSE
+ file that was distributed with this source code.
+
+-->
+
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+
+    <mapped-superclass name="PhpMob\MediaBundle\Model\Image">
+        <field name="type" type="phpmob_image_type" nullable="true" length="100"/>
+    </mapped-superclass>
+
+</doctrine-mapping>

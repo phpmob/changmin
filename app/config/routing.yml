@@ -3,16 +3,16 @@ phpmob_changmin:
     prefix:   /admin
 
 phpmob_admin_demo:
-    resource: "@PhpmobDemoBundle/Resources/config/routing/admin/main.yml"
+    resource: "@PhpMobDemoBundle/Resources/config/routing/admin/main.yml"
     prefix: /admin
 
 phpmob_admin_cms:
-    resource: "@PhpmobCmsBundle/Resources/config/routing/admin/main.yml"
+    resource: "@PhpMobCmsBundle/Resources/config/routing/admin/main.yml"
     prefix: /admin/cms
 
 LiipImagineBundle:
     resource: "@LiipImagineBundle/Resources/config/routing.yaml"
 
 phpmob_cms:
-    resource: "@PhpmobCmsBundle/Resources/config/routing.yml"
+    resource: "@PhpMobCmsBundle/Resources/config/routing.yml"
     prefix:   /
