@@ -8,7 +8,7 @@ sylius_admin_demo_user:
         vars:
             all:
                 templates:
-                    form: PhpmobCmsBundle:Admin/Page:_form.html.twig
+                    form: PhpmobCmsBundle:Page:_form.html.twig
             index:
                 icon: licon licon-note
                 header: "Pages"
