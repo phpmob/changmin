@@ -1,0 +1,37 @@
+sylius_admin_demo_user:
+    resource: |
+        alias: sylius.demo_user
+        section: admin
+        templates: ChangMin:Crud
+        grid: demo_admin_demo_user
+        permission: true
+        vars:
+            all:
+                templates:
+                    form: CoolDemoBundle:DemoUser:_form.html.twig
+                    show: CoolDemoBundle:DemoUser:_show.html.twig
+            index:
+                icon: icon icon-user
+                header: "Demo Users"
+            create:
+                icon: icon icon-user-add
+                header: "Create User"
+                breadcrumb:
+                    index:
+                        icon: icon icon-user
+                        label: "Demo Users"
+            update:
+                icon: icon icon-pencil
+                header: "Edit User"
+                breadcrumb:
+                    index:
+                        icon: icon icon-user
+                        label: "Demo Users"
+            show:
+                icon: icon icon-newspaper
+                header: "See"
+                breadcrumb:
+                    index:
+                        icon: icon icon-user
+                        label: "Demo Users"
+    type: sylius.resource

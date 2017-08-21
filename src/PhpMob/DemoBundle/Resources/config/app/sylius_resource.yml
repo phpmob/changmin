@@ -1,6 +1,0 @@
-sylius_resource:
-    resources:
-        demo.user_picture:
-            classes:
-                model: PhpMob\DemoBundle\Model\DemoUserPicture
-                interface: PhpMob\DemoBundle\Model\DemoUserPictureInterface

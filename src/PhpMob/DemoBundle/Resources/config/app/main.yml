@@ -1,6 +1,0 @@
-imports:
-    - { resource: "@PhpMobDemoBundle/Resources/config/app/phpmob_media.yml" }
-    - { resource: "@PhpMobDemoBundle/Resources/config/app/sylius_user.yml" }
-    - { resource: "@PhpMobDemoBundle/Resources/config/app/sylius_resource.yml" }
-    - { resource: "@PhpMobDemoBundle/Resources/config/app/sylius_fixtures.yml" }
-    - { resource: "@PhpMobDemoBundle/Resources/config/grids/admin/main.yml" }

@@ -1,0 +1,6 @@
+imports:
+    - { resource: "@CoolDemoBundle/Resources/config/app/phpmob_media.yml" }
+    - { resource: "@CoolDemoBundle/Resources/config/app/sylius_user.yml" }
+    - { resource: "@CoolDemoBundle/Resources/config/app/sylius_resource.yml" }
+    - { resource: "@CoolDemoBundle/Resources/config/app/sylius_fixtures.yml" }
+    - { resource: "@CoolDemoBundle/Resources/config/grids/admin/main.yml" }

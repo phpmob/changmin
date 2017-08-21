@@ -9,7 +9,7 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // Resources -- First!
-            new \PhpMob\DemoBundle\PhpMobDemoBundle(),
+            new \Cool\DemoBundle\CoolDemoBundle(),
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
             new \PhpMob\MediaBundle\PhpMobMediaBundle(),

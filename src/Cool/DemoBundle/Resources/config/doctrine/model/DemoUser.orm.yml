@@ -1,0 +1,16 @@
+Cool\DemoBundle\Model\DemoUser:
+    type: mappedSuperclass
+    table: demo_user
+
+    oneToOne:
+        image:
+            targetEntity: Cool\DemoBundle\Model\DemoUserPictureInterface
+            mappedBy: owner
+            cascade: [ all ]
+
+    oneToMany:
+        images:
+            targetEntity: Cool\DemoBundle\Model\DemoUserPictureInterface
+            mappedBy: user
+            orphanRemoval: true
+            cascade: [ all ]

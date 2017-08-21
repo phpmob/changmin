@@ -2,8 +2,8 @@ phpmob_changmin:
     resource: "@ChangMin/Resources/config/routing.xml"
     prefix:   /admin
 
-phpmob_admin_demo:
-    resource: "@PhpMobDemoBundle/Resources/config/routing/admin/main.yml"
+cool_admin_demo:
+    resource: "@CoolDemoBundle/Resources/config/routing/admin/main.yml"
     prefix: /admin
 
 phpmob_admin_cms:
