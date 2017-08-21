@@ -11,6 +11,7 @@
 
 namespace PhpMob\CmsBundle;
 
+use PhpMob\CmsBundle\DependencyInjection\PhpMobCmsExtension;
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 
@@ -23,6 +24,11 @@ class PhpMobCmsBundle extends AbstractResourceBundle
      * @var string
      */
     protected $mappingFormat = self::MAPPING_YAML;
+
+    public function __construct()
+    {
+        $this->extension = new PhpMobCmsExtension();
+    }
 
     /**
      * {@inheritdoc}
@@ -41,5 +47,13 @@ class PhpMobCmsBundle extends AbstractResourceBundle
     protected function getModelNamespace()
     {
         return 'PhpMob\CmsBundle\Model';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getBundlePrefix()
+    {
+        return $this->extension->getAlias();
     }
 }

@@ -13,12 +13,20 @@ class PhpMobDemoExtension extends AbstractResourceExtension
     /**
      * {@inheritdoc}
      */
+    public function getAlias()
+    {
+        return 'phpmob_demo';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function load(array $config, ContainerBuilder $container)
     {
         $config = $this->processConfiguration($this->getConfiguration($config, $container), $config);
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $this->registerResources(PhpMobDemoBundle::APPLICATION_NAME, $config['driver'], [], $container);
+        $this->registerResources('demo', $config['driver'], [], $container);
 
         $loader->load('services.yml');
     }

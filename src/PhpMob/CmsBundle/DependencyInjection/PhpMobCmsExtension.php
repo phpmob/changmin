@@ -24,6 +24,14 @@ class PhpMobCmsExtension extends AbstractResourceExtension
     /**
      * {@inheritdoc}
      */
+    public function getAlias()
+    {
+        return 'phpmob_cms';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();

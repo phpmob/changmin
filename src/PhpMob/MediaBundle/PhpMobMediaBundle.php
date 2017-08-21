@@ -12,6 +12,7 @@
 namespace PhpMob\MediaBundle;
 
 use PhpMob\MediaBundle\DependencyInjection\Compiler;
+use PhpMob\MediaBundle\DependencyInjection\PhpMobMediaExtension;
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -21,6 +22,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class PhpMobMediaBundle extends AbstractResourceBundle
 {
+    public function __construct()
+    {
+        $this->extension = new PhpMobMediaExtension();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
@@ -45,5 +54,13 @@ class PhpMobMediaBundle extends AbstractResourceBundle
     protected function getModelNamespace()
     {
         return 'PhpMob\MediaBundle\Model';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getBundlePrefix()
+    {
+        return $this->extension->getAlias();
     }
 }

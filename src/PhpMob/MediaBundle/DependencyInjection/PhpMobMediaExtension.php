@@ -24,6 +24,14 @@ class PhpMobMediaExtension extends AbstractResourceExtension
     /**
      * {@inheritdoc}
      */
+    public function getAlias()
+    {
+        return 'phpmob_media';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function load(array $config, ContainerBuilder $container)
     {
         $config = $this->processConfiguration($this->getConfiguration($config, $container), $config);
