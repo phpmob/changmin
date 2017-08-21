@@ -12,18 +12,6 @@ if ('dev' === stage) {
     stagePathAdmin = './src/Phpmob/ChangMinBundle/Resources/private/gulpfile.js';
 }
 
-gulp.task('admin', function () {
-    gulp.src(stagePathAdmin, {read: false})
-        .pipe(chug({
-            'tasks': ['default'],
-            'args': [
-                '--env=' + env,
-                '--stage=' + stage
-            ]
-        }))
-    ;
-});
-
 gulp.task('theme', function () {
     gulp.src('./app/themes/**/gulpfile.js', {read: false})
         .pipe(chug({
