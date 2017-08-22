@@ -72,11 +72,12 @@
             }));
         });
 
-        {% set breadcrumb = block('breadcrumb') ?? '' %}
-        {% set toolbarHeader = block('toolbarHeader') ?? '' %}
-        {% set toolbarFooter = block('toolbarFooter') ?? '' %}
-        {% set toolbarFooter = block('toolbarFooter') ?? '' %}
-        {% set title = block('title') ?? '' %}
+        {%- set breadcrumb = block('breadcrumb') ?? '' -%}
+        {%- set toolbarHeader = block('toolbarHeader') ?? '' -%}
+        {%- set toolbarFooter = block('toolbarFooter') ?? '' -%}
+        {%- set toolbarFooter = block('toolbarFooter') ?? '' -%}
+        {#{%- set content = block('content') ?? '' -%} BUG with form #}
+        {%- set title = block('title') ?? '' -%}
 
         ChangMin.set({
             title: '{{ title|trim|escape('js') }}',

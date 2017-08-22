@@ -38,6 +38,7 @@
         "jms/serializer-bundle": "^1.1",
         "knplabs/knp-gaufrette-bundle": "^0.3",
         "knplabs/knp-menu-bundle": "^2.1",
+        "kriswallsmith/assetic": "^1.4",
         "liip/imagine-bundle": "^1.6",
         "ocramius/proxy-manager": "^1.0",
         "salva/jshrink-bundle": "^1.1",
