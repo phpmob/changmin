@@ -11,7 +11,9 @@
 
     <link rel="shortcut icon" href="{{ asset('assets/admin/img/favicon.png') }}">
     <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
+    {% modify cssmin %}
     <style type="text/css">{{ include('@ChangMin/style.css.twig') }}</style>
+    {% endmodify %}
 </head>
 <body>
 {% set flashs %}
@@ -19,7 +21,7 @@
 {% endset %}
 <div id="root" style="opacity: 0"></div>
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
-{% jshrink %}
+{% modify jsmin %}
 <script>
     $(window).on('load', function () {
         var ChangMin = this.ChangMin;
@@ -103,6 +105,6 @@
         ChangMin.update();
     })
 </script>
-{% endjshrink %}
+{% endmodify %}
 </body>
 </html>

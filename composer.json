@@ -29,6 +29,7 @@
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "doctrine/orm": "^2.5",
         "exercise/htmlpurifier-bundle": "^0.2.4",
+        "ezyang/htmlpurifier": "^4.9",
         "friendsofsymfony/oauth-server-bundle": "^1.5",
         "friendsofsymfony/rest-bundle": "^2.1",
         "fzaninotto/faker": "^1.6",
@@ -38,10 +39,8 @@
         "jms/serializer-bundle": "^1.1",
         "knplabs/knp-gaufrette-bundle": "^0.3",
         "knplabs/knp-menu-bundle": "^2.1",
-        "kriswallsmith/assetic": "^1.4",
         "liip/imagine-bundle": "^1.6",
         "ocramius/proxy-manager": "^1.0",
-        "salva/jshrink-bundle": "^1.1",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
         "sonata-project/intl-bundle": "^2.2",
@@ -59,6 +58,9 @@
         "symfony/polyfill-apcu": "^1.0",
         "symfony/swiftmailer-bundle": "^2.3.10",
         "symfony/symfony": "3.3.*",
+        "symfony/twig-bundle": "^3.3",
+        "tedivm/jshrink": "^1.2",
+        "tubalmartin/cssmin": "^4.1",
         "twig/twig": "^2.0"
     },
     "require-dev": {
