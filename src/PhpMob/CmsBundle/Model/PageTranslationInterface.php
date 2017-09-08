@@ -13,7 +13,6 @@ namespace PhpMob\CmsBundle\Model;
 
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\SlugAwareInterface;
-use Sylius\Component\Resource\Model\TimestampableInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>

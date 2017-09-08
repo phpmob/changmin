@@ -16,7 +16,7 @@ class CoolDemoBundle extends AbstractResourceBundle
     /**
      * {@inheritdoc}
      */
-    public function getSupportedDrivers()
+    public function getSupportedDrivers(): array
     {
         return [
             SyliusResourceBundle::DRIVER_DOCTRINE_ORM,
@@ -26,7 +26,7 @@ class CoolDemoBundle extends AbstractResourceBundle
     /**
      * {@inheritdoc}
      */
-    protected function getModelNamespace()
+    protected function getModelNamespace(): ?string
     {
         return 'Cool\DemoBundle\Model';
     }

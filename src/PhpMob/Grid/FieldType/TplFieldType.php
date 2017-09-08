@@ -41,10 +41,12 @@ class TplFieldType implements FieldTypeInterface
         return $this->twig->render($options['template'], ['data' => $data, 'options' => $options]);
     }
 
+
+
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired('template');
         $resolver->setAllowedTypes('template', 'string');

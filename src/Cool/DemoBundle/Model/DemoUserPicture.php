@@ -27,7 +27,7 @@ class DemoUserPicture extends Image implements DemoUserPictureInterface
     /**
      * {@inheritdoc}
      */
-    public function getUser()
+    public function getUser(): ?UserInterface
     {
         return $this->user;
     }

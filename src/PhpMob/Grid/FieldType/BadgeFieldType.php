@@ -51,7 +51,7 @@ class BadgeFieldType implements FieldTypeInterface
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefault('template', $this->defaultTemplate);
         $resolver->setAllowedTypes('template', 'string');

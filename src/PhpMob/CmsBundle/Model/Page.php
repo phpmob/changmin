@@ -18,7 +18,7 @@ use Sylius\Component\Resource\Model\TranslatableTrait;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  *
- * @method PageTranslation getTranslation($local = null)
+ * @method PageTranslation getTranslation()
  */
 class Page implements PageInterface
 {
@@ -97,7 +97,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getSlug()
+    public function getSlug(): string
     {
         return $this->getTranslation()->getSlug();
     }
@@ -105,7 +105,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setSlug($slug = null)
+    public function setSlug(?string $slug): void
     {
         $this->getTranslation()->setSlug($slug);
     }

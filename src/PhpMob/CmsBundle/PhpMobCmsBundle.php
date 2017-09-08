@@ -33,7 +33,7 @@ class PhpMobCmsBundle extends AbstractResourceBundle
     /**
      * {@inheritdoc}
      */
-    public function getSupportedDrivers()
+    public function getSupportedDrivers(): array
     {
         return [
             SyliusResourceBundle::DRIVER_DOCTRINE_ORM,
@@ -44,7 +44,7 @@ class PhpMobCmsBundle extends AbstractResourceBundle
     /**
      * {@inheritdoc}
      */
-    protected function getModelNamespace()
+    protected function getModelNamespace(): ?string
     {
         return 'PhpMob\CmsBundle\Model';
     }
@@ -52,7 +52,7 @@ class PhpMobCmsBundle extends AbstractResourceBundle
     /**
      * {@inheritdoc}
      */
-    protected function getBundlePrefix()
+    protected function getBundlePrefix(): string
     {
         return $this->extension->getAlias();
     }
