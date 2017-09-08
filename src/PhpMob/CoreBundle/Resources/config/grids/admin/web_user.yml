@@ -1,0 +1,62 @@
+sylius_grid:
+    grids:
+        admin_web_user:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%sylius.model.web_user.class%"
+            limits: [20]
+            sorting:
+                id: asc
+            fields:
+                id:
+                    type: text
+                    label: ID
+                    sortable: ~
+                    options:
+                        align: center
+                        width: 80px
+                username:
+                    type: string
+                    label: Username
+                    sortable: ~
+                email:
+                    type: string
+                    label: Email
+                    sortable: ~
+                createdAt:
+                    type: datetime
+                    label: Created At
+                    sortable: ~
+                    options:
+                        format: d-m-Y H:i
+                enabled:
+                    type: tpl
+                    label: Enabled
+                    sortable: ~
+                    options:
+                        template: "@ChangMin/Grid/Field/enabled.html.twig"
+                        align: center
+                        width: 80px
+            filters:
+                search:
+                    type: string
+                    label: Search
+                    options:
+                        default: true
+                        fields: [email, username]
+                enabled:
+                    type: boolean
+                    label: Enabled
+            actions:
+                main:
+                    create:
+                        icon: fa fa-user-plus
+                        type: create
+                item:
+                    update:
+                        type: update
+                    show:
+                        type: show
+                    delete:
+                        type: delete

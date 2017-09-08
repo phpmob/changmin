@@ -5,7 +5,7 @@ imports:
     - { resource: "@ChangMin/Resources/config/app/main.yml" }
     - { resource: "@PhpMobMediaBundle/Resources/config/app/main.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/main.yml" }
-    - { resource: "@CoolDemoBundle/Resources/config/app/main.yml" }
+    - { resource: "@PhpMobCoreBundle/Resources/config/app/main.yml" }
 
 framework:
     #esi: ~

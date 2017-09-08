@@ -1,0 +1,17 @@
+sylius_fixtures:
+    suites:
+        default:
+            listeners:
+                orm_purger: ~
+                logger: ~
+
+            fixtures:
+                web_user:
+                    name: "web_user"
+                    options:
+                        random: 30
+                        custom:
+                            -
+                                email: "web@torocoin.io"
+                                username: "web"
+                                password: "web1234"

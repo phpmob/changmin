@@ -1,7 +1,7 @@
 security:
     providers:
-        demo_user_provider:
-            id: sylius.demo_user_provider.email_or_name_based
+        web_user_provider:
+            id: sylius.web_user_provider.email_or_name_based
 
     encoders:
         Sylius\Component\User\Model\UserInterface: sha512

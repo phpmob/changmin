@@ -9,11 +9,11 @@ class AppKernel extends Kernel
     {
         $bundles = [
             // Resources -- First!
-            new \Cool\DemoBundle\CoolDemoBundle(),
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
             new \PhpMob\MediaBundle\PhpMobMediaBundle(),
             new \PhpMob\CmsBundle\PhpMobCmsBundle(),
+            new \PhpMob\CoreBundle\PhpMobCoreBundle(),
 
             // SF3
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),

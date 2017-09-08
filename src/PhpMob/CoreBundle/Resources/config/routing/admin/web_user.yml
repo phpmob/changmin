@@ -1,0 +1,37 @@
+sylius_admin_web_user:
+    type: sylius.resource
+    resource: |
+        alias: sylius.web_user
+        section: admin
+        templates: ChangMin:Crud
+        grid: admin_web_user
+        permission: true
+        vars:
+            all:
+                templates:
+                    form: PhpMobCoreBundle:WebUser:_form.html.twig
+                    show: PhpMobCoreBundle:WebUser:_show.html.twig
+            index:
+                icon: fa fa-user
+                header: "Web Users"
+            create:
+                icon: fa fa-user-plus
+                header: "Create User"
+                breadcrumb:
+                    index:
+                        icon: fa fa-user
+                        label: "Web Users"
+            update:
+                icon: fa fa-pencil
+                header: "Edit User"
+                breadcrumb:
+                    index:
+                        icon: fa fa-user
+                        label: "Web Users"
+            show:
+                icon: icon icon-newspaper
+                header: "See"
+                breadcrumb:
+                    index:
+                        icon: fa fa-user
+                        label: "Web Users"

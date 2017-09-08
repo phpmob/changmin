@@ -1,6 +1,0 @@
-sylius_resource:
-    resources:
-        demo.user_picture:
-            classes:
-                model: Cool\DemoBundle\Model\DemoUserPicture
-                interface: Cool\DemoBundle\Model\DemoUserPictureInterface

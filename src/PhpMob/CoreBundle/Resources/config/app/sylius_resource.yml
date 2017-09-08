@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        phpmob.web_user_picture:
+            classes:
+                model: PhpMob\CoreBundle\Model\WebUserPicture
+                interface: PhpMob\CoreBundle\Model\WebUserPictureInterface

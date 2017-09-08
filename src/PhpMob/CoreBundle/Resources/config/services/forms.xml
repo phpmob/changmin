@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="toro_coin_core.form.web_user" class="PhpMob\CoreBundle\Form\Type\WebUserType">
+            <argument>%sylius.model.web_user.class%</argument>
+            <argument type="collection">
+                <argument>phpmob</argument>
+            </argument>
+            <tag name="form.type"/>
+        </service>
+        <service id="toro_coin_core.form.web_user_picture" class="PhpMob\CoreBundle\Form\Type\WebUserPictureType">
+            <argument>%phpmob.model.web_user_picture.class%</argument>
+            <argument type="collection">
+                <argument>phpmob</argument>
+            </argument>
+            <tag name="form.type"/>
+        </service>
+    </services>
+</container>

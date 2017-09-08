@@ -1,0 +1,12 @@
+sylius_user:
+    resources:
+        web:
+            user:
+                classes:
+                    model: PhpMob\CoreBundle\Model\WebUser
+                    form: PhpMob\CoreBundle\Form\Type\WebUserType
+        oauth:
+            user:
+                classes:
+                    model: Sylius\Component\User\Model\UserOAuth
+                    interface: Sylius\Component\User\Model\UserOAuthInterface
