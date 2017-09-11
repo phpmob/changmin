@@ -5,6 +5,8 @@ namespace PhpMob\MediaBundle\EventListener;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Liip\ImagineBundle\Imagine\Cache\CacheManager;
+use Liip\ImagineBundle\Imagine\Filter\FilterManager;
 use PhpMob\MediaBundle\Model\FileInterface;
 use PhpMob\MediaBundle\Uploader\FileUploaderInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -64,7 +66,7 @@ class UploadFileListener implements EventSubscriber
             return;
         }
 
-        $this->removeFile($this->getUploader(), $object->getPath());
+        $this->removeFile($object->getPath());
     }
 
     /**
@@ -76,12 +78,11 @@ class UploadFileListener implements EventSubscriber
             return;
         }
 
-        $uploader = $this->getUploader();
         $isUploadFile = $file->getFile() instanceof UploadedFile;
 
         // user click remove file
         if ($file->isShouldRemove() && !$isUploadFile) {
-            $this->removeFile($uploader, $file->getPath());
+            $this->removeFile($file->getPath());
             $file->setPath(null);
 
             return;
@@ -92,18 +93,21 @@ class UploadFileListener implements EventSubscriber
             return;
         }
 
-        $uploader->upload($file);
+        $this->getUploader()->upload($file);
     }
 
     /**
-     * @param FileUploaderInterface $uploader
      * @param $path
      */
-    private function removeFile(FileUploaderInterface $uploader, $path)
+    private function removeFile($path)
     {
+        $filters = array_keys($this->getFilterManager()->getFilterConfiguration()->all());
+
         try {
             // remove old file
-            $uploader->remove($path);
+            $this->getUploader()->remove($path);
+            // TODO: should check ImageInterface instance, Binary file like pdf has no filter.
+            $this->getCacheManager()->remove($path, $filters);
         } catch (\Exception $e) {
         }
     }
@@ -114,5 +118,21 @@ class UploadFileListener implements EventSubscriber
     private function getUploader()
     {
         return $this->container->get('phpmob.filesystem_uploader');
+    }
+
+    /**
+     * @return CacheManager
+     */
+    private function getCacheManager()
+    {
+        return $this->container->get('liip_imagine.cache.manager');
+    }
+
+    /**
+     * @return FilterManager
+     */
+    private function getFilterManager()
+    {
+        return $this->container->get('liip_imagine.filter.manager');
     }
 }
