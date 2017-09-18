@@ -6,8 +6,8 @@ namespace PhpMob\CoreBundle\Fixture;
 
 use PhpMob\ChangMinBundle\Fixture\AbstractExampleFactory;
 use PhpMob\ChangMinBundle\Fixture\ExampleFactoryInterface;
+use PhpMob\CoreBundle\Model\AdminUserInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\User\Model\UserInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -48,7 +48,7 @@ class AdminUserFactory extends AbstractExampleFactory implements ExampleFactoryI
     {
         $options = $this->optionsResolver->resolve($options);
 
-        /** @var UserInterface $user */
+        /** @var AdminUserInterface $user */
         $user = $this->userFactory->createNew();
         $user->setEmail($options['email']);
         $user->setUsername($options['username']);
