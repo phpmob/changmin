@@ -10,7 +10,7 @@ phpmob_admin_user_group:
         vars:
             all:
                 templates:
-                    form: PhpMobCoreBundle:WebUserGroup:_form.html.twig
+                    form: PhpMobCoreBundle:UserGroup:_form.html.twig
             index:
                 icon: fa fa-group
                 header: "Groups"

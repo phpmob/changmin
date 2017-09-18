@@ -12,19 +12,19 @@ sylius_admin_user:
                 templates:
                     form: PhpMobCoreBundle:AdminUser:_form.html.twig
             index:
-                icon: fa fa-user
+                icon: fa fa-user-secret
                 header: "Admin Users"
             create:
-                icon: fa fa-user-plus
+                icon: fa fa-user-secret
                 header: "Create User"
                 breadcrumb:
                     index:
-                        icon: fa fa-user
+                        icon: fa fa-user-secret
                         label: "Admin Users"
             update:
                 icon: fa fa-pencil
                 header: "Edit User"
                 breadcrumb:
                     index:
-                        icon: fa fa-user
+                        icon: fa fa-user-secret
                         label: "Admin Users"

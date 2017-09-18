@@ -51,7 +51,7 @@ sylius_grid:
             actions:
                 main:
                     create:
-                        icon: fa fa-user-plus
+                        icon: fa fa-user-secret
                         type: create
                 item:
                     update:
