@@ -16,4 +16,5 @@ sylius_user:
             user:
                 classes:
                     model: PhpMob\CoreBundle\Model\AdminUser
+                    interface: PhpMob\CoreBundle\Model\AdminUserInterface
                     form: PhpMob\CoreBundle\Form\Type\AdminUserType
