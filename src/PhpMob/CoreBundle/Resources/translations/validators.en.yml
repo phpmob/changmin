@@ -1,0 +1,10 @@
+phpmob:
+    user_group:
+        code:
+            unique: Code has to be unique.
+            not_blank: Please enter a code.
+            regex: Code can only be comprised of letters, numbers, dashes and underscores.
+        name:
+            not_blank: Please enter a group name.
+            min: Group name must not be longer than {{ limit }} characters.
+            max: Group name must be at least {{ limit }} characters long.

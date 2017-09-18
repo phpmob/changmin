@@ -1,2 +1,4 @@
 imports:
     - { resource: "@PhpMobCoreBundle/Resources/config/grids/admin/web_user.yml" }
+    - { resource: "@PhpMobCoreBundle/Resources/config/grids/admin/admin_user.yml" }
+    - { resource: "@PhpMobCoreBundle/Resources/config/grids/admin/user_group.yml" }

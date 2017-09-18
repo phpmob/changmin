@@ -1,0 +1,30 @@
+phpmob_admin_user_group:
+    type: sylius.resource
+    resource: |
+        alias: phpmob.user_group
+        section: admin
+        except: ['show']
+        templates: ChangMin:Crud
+        grid: phpmob_user_group
+        permission: true
+        vars:
+            all:
+                templates:
+                    form: PhpMobCoreBundle:UserGroup:_form.html.twig
+            index:
+                icon: fa fa-group
+                header: "Groups"
+            create:
+                icon: fa fa-group
+                header: "Create Group"
+                breadcrumb:
+                    index:
+                        icon: fa fa-group
+                        label: "Groups"
+            update:
+                icon: fa fa-pencil
+                header: "Edit Group"
+                breadcrumb:
+                    index:
+                        icon: fa fa-group
+                        label: "Groups"

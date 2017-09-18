@@ -4,3 +4,9 @@ sylius_resource:
             classes:
                 model: PhpMob\CoreBundle\Model\WebUserPicture
                 interface: PhpMob\CoreBundle\Model\WebUserPictureInterface
+
+        phpmob.user_group:
+            classes:
+                model: PhpMob\CoreBundle\Model\UserGroup
+                interface: PhpMob\CoreBundle\Model\UserGroupInterface
+                form: PhpMob\CoreBundle\Form\Type\UserGroupType

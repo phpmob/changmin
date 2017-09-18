@@ -3,14 +3,24 @@ ChangMin.updateMenu(function (menu) {
         label: 'Favorite',
         children: {
             dashboard: {
-                icon: 'icon icon-home',
+                icon: 'fa fa-home',
                 label: 'Dashboard',
                 link: '{{ path('changmin_dashboard') }}',
             },
-            demoUser: {
-                icon: 'icon icon-user',
-                label: 'Demo Users',
-                link: '{{ path('sylius_admin_demo_user_index') }}',
+            webUser: {
+                icon: 'fa fa-user',
+                label: 'Web Users',
+                link: '{{ path('sylius_admin_web_user_index') }}',
+            },
+            adminUser: {
+                icon: 'fa fa-user-secret',
+                label: 'Admin Users',
+                link: '{{ path('sylius_admin_admin_user_index') }}',
+            },
+            userGroup: {
+                icon: 'fa fa-users',
+                label: 'User Groups',
+                link: '{{ path('phpmob_admin_user_group_index') }}',
             }
         }
     }));
