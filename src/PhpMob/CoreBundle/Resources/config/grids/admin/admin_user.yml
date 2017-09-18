@@ -7,7 +7,7 @@ sylius_grid:
                     class: "%sylius.model.admin_user.class%"
             limits: [20]
             sorting:
-                id: asc
+                username: asc
             fields:
                 id:
                     type: text
