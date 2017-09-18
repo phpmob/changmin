@@ -1,4 +1,6 @@
-<img src="{{ resource.image.path|phpmob_imagine('70x70') }}">
-{{ resource.image.path|phpmob_imagine('70x70') }}
+{% if resource.picture %}
+    <img src="{{ resource.picture.path|phpmob_imagine('70x70') }}">
+    {{ resource.picture.path|phpmob_imagine('70x70') }}
+{% endif %}
 
 {{ dump(resource) }}
