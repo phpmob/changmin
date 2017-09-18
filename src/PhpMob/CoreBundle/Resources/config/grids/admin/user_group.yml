@@ -1,0 +1,35 @@
+sylius_grid:
+    grids:
+        phpmob_user_group:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%phpmob.model.user_group.class%"
+            limits: [20]
+            sorting:
+                id: asc
+            fields:
+                id:
+                    type: text
+                    label: ID
+                    sortable: ~
+                    options:
+                        align: center
+                        width: 80px
+                code:
+                    type: string
+                    label: Code
+                name:
+                    type: string
+                    label: Name
+
+            actions:
+                main:
+                    create:
+                        icon: fa fa-group
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

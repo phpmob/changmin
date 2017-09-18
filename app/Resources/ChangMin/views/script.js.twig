@@ -7,10 +7,20 @@ ChangMin.updateMenu(function (menu) {
                 label: 'Dashboard',
                 link: '{{ path('changmin_dashboard') }}',
             },
-            demoUser: {
+            webUser: {
                 icon: 'icon icon-user',
                 label: 'Web Users',
                 link: '{{ path('sylius_admin_web_user_index') }}',
+            },
+            adminUser: {
+                icon: 'icon icon-user',
+                label: 'Admin Users',
+                link: '{{ path('sylius_admin_admin_user_index') }}',
+            },
+            userGroup: {
+                icon: 'icon icon-group',
+                label: 'User Groups',
+                link: '{{ path('phpmob_admin_user_group_index') }}',
             }
         }
     }));

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                                        http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
+
+    <class name="PhpMob\CoreBundle\Model\UserGroup">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="message">phpmob.web_user_group.code.unique</option>
+            <option name="fields">code</option>
+            <option name="errorPath">code</option>
+            <option name="groups">phpmob</option>
+        </constraint>
+        <property name="code">
+            <constraint name="NotBlank">
+                <option name="message">phpmob.web_user_group.code.not_blank</option>
+                <option name="groups">phpmob</option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="message">phpmob.web_user_group.code.regex</option>
+                <option name="pattern">/^[\w-]*$/</option>
+                <option name="groups">phpmob</option>
+            </constraint>
+        </property>
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">phpmob.web_user_group.name.not_blank</option>
+                <option name="groups">phpmob</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="min">2</option>
+                <option name="minMessage">phpmob.web_user_group.name.min</option>
+                <option name="max">255</option>
+                <option name="maxMessage">phpmob.web_user_group.name.max</option>
+                <option name="groups">phpmob</option>
+            </constraint>
+        </property>
+    </class>
+
+</constraint-mapping>

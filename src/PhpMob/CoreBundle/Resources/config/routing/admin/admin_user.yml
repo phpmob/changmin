@@ -1,0 +1,30 @@
+sylius_admin_user:
+    type: sylius.resource
+    resource: |
+        alias: sylius.admin_user
+        section: admin
+        except: ['show']
+        templates: ChangMin:Crud
+        grid: sylius_admin_user
+        permission: true
+        vars:
+            all:
+                templates:
+                    form: PhpMobCoreBundle:AdminUser:_form.html.twig
+            index:
+                icon: fa fa-user
+                header: "Admin Users"
+            create:
+                icon: fa fa-user-plus
+                header: "Create User"
+                breadcrumb:
+                    index:
+                        icon: fa fa-user
+                        label: "Admin Users"
+            update:
+                icon: fa fa-pencil
+                header: "Edit User"
+                breadcrumb:
+                    index:
+                        icon: fa fa-user
+                        label: "Admin Users"

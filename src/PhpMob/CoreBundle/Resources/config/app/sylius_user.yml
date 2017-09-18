@@ -5,8 +5,15 @@ sylius_user:
                 classes:
                     model: PhpMob\CoreBundle\Model\WebUser
                     form: PhpMob\CoreBundle\Form\Type\WebUserType
+
         oauth:
             user:
                 classes:
                     model: Sylius\Component\User\Model\UserOAuth
                     interface: Sylius\Component\User\Model\UserOAuthInterface
+
+        admin:
+            user:
+                classes:
+                    model: PhpMob\CoreBundle\Model\AdminUser
+                    form: PhpMob\CoreBundle\Form\Type\AdminUserType
