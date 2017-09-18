@@ -16,12 +16,6 @@ sylius_fixtures:
                                 username: "web"
                                 password: "web1234"
 
-        user:
-            listeners:
-                orm_purger: ~
-                logger: ~
-
-            fixtures:
                 admin_user:
                     name: "admin_user"
                     options:
