@@ -12,6 +12,30 @@ sylius_fixtures:
                         random: 30
                         custom:
                             -
-                                email: "web@torocoin.io"
+                                email: "web@phpmob.com"
                                 username: "web"
                                 password: "web1234"
+
+        user:
+            listeners:
+                orm_purger: ~
+                logger: ~
+
+            fixtures:
+                admin_user:
+                    name: "admin_user"
+                    options:
+                        random: 30
+                        custom:
+                            -
+                                email: "admin@phpmob.com"
+                                username: "admin"
+                                password: "admin1234"
+
+                user_group:
+                    name: "user_group"
+                    options:
+                        custom:
+                            -
+                                code: "general"
+                                name: "General"

@@ -5,7 +5,8 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="toro_coin_core.fixture.web_user" class="PhpMob\CoreBundle\Fixture\WebUserFixture">
+
+        <service id="phpmob.fixture.web_user" class="PhpMob\CoreBundle\Fixture\WebUserFixture">
             <argument type="service" id="sylius.manager.web_user"/>
             <argument type="service">
                 <service class="PhpMob\CoreBundle\Fixture\WebUserFactory">
@@ -14,5 +15,26 @@
             </argument>
             <tag name="sylius_fixtures.fixture"/>
         </service>
+
+        <service id="phpmob.fixture.admin_user" class="PhpMob\CoreBundle\Fixture\AdminUserFixture">
+            <argument type="service" id="sylius.manager.admin_user"/>
+            <argument type="service">
+                <service class="PhpMob\CoreBundle\Fixture\AdminUserFactory">
+                    <argument type="service" id="sylius.factory.admin_user"/>
+                </service>
+            </argument>
+            <tag name="sylius_fixtures.fixture"/>
+        </service>
+
+        <service id="phpmob.fixture.user_group" class="PhpMob\CoreBundle\Fixture\UserGroupFixture">
+            <argument type="service" id="phpmob.manager.user_group"/>
+            <argument type="service">
+                <service class="PhpMob\CoreBundle\Fixture\UserGroupFactory">
+                    <argument type="service" id="phpmob.factory.user_group"/>
+                </service>
+            </argument>
+            <tag name="sylius_fixtures.fixture"/>
+        </service>
+
     </services>
 </container>
