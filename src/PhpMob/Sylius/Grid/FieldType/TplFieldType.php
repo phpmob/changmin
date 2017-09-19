@@ -1,13 +1,13 @@
 <?php
 
-namespace PhpMob\Grid\FieldType;
+namespace PhpMob\Sylius\Grid\FieldType;
 
 use Sylius\Component\Grid\DataExtractor\DataExtractorInterface;
 use Sylius\Component\Grid\Definition\Field;
 use Sylius\Component\Grid\FieldTypes\FieldTypeInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BadgeFieldType implements FieldTypeInterface
+class TplFieldType implements FieldTypeInterface
 {
     /**
      * @var DataExtractorInterface
@@ -20,20 +20,13 @@ class BadgeFieldType implements FieldTypeInterface
     private $twig;
 
     /**
-     * @var string
-     */
-    private $defaultTemplate;
-
-    /**
      * @param DataExtractorInterface $dataExtractor
      * @param \Twig_Environment $twig
-     * @param string $defaultTemplate
      */
-    public function __construct(DataExtractorInterface $dataExtractor, \Twig_Environment $twig, $defaultTemplate)
+    public function __construct(DataExtractorInterface $dataExtractor, \Twig_Environment $twig)
     {
         $this->dataExtractor = $dataExtractor;
         $this->twig = $twig;
-        $this->defaultTemplate = $defaultTemplate;
     }
 
     /**
@@ -48,12 +41,14 @@ class BadgeFieldType implements FieldTypeInterface
         return $this->twig->render($options['template'], ['data' => $data, 'options' => $options]);
     }
 
+
+
     /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefault('template', $this->defaultTemplate);
+        $resolver->setRequired('template');
         $resolver->setAllowedTypes('template', 'string');
 
         $resolver->setDefined('vars');
@@ -62,11 +57,9 @@ class BadgeFieldType implements FieldTypeInterface
         $resolver->setDefaults([
             'width' => 'auto',
             'align' => 'left',
-            'type' => 'info',
         ]);
 
         $resolver->setAllowedTypes('align', 'string');
         $resolver->setAllowedTypes('width', 'string');
-        $resolver->setAllowedTypes('type', 'string');
     }
 }

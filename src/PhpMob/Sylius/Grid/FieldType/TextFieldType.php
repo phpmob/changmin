@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMob\Grid\FieldType;
+namespace PhpMob\Sylius\Grid\FieldType;
 
 use Sylius\Component\Grid\DataExtractor\DataExtractorInterface;
 use Sylius\Component\Grid\Definition\Field;
