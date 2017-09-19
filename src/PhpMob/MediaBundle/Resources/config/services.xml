@@ -47,8 +47,8 @@
         <service id="phpmob.imagine.cache_manager" class="PhpMob\MediaBundle\Imagine\Cache\CacheManager"
                  parent="liip_imagine.cache.manager"
                  decorates="liip_imagine.cache.manager">
-            <call method="setController">
-                <argument type="service" id="liip_imagine.controller"/>
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
             </call>
         </service>
 

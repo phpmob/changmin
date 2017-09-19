@@ -15,23 +15,21 @@ namespace PhpMob\MediaBundle\Imagine\Cache;
 
 use Liip\ImagineBundle\Controller\ImagineController;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager as BaseCacheManager;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class CacheManager extends BaseCacheManager
 {
-    /**
-     * @var ImagineController
-     */
-    private $controller;
+    use ContainerAwareTrait;
 
     /**
-     * @param ImagineController $controller
+     * @return ImagineController
      */
-    public function setController(ImagineController $controller)
+    private function getImagineController()
     {
-        $this->controller = $controller;
+        return $this->container->get('liip_imagine.controller');
     }
 
     /**
@@ -62,7 +60,7 @@ class CacheManager extends BaseCacheManager
             $hash = $this->signer->sign($path, $runtimeConfig);
 
             try {
-                $filterUrl = $this->controller
+                $filterUrl = $this->getImagineController()
                     ->filterRuntimeAction(new Request($params), $hash, $path, $filter)
                     ->getTargetUrl()
                 ;
