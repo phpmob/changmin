@@ -1,6 +1,13 @@
 {% if resource.picture %}
     <img src="{{ resource.picture.path|phpmob_imagine('70x70') }}">
-    {{ resource.picture.path|phpmob_imagine('70x70') }}
+    {#<img src="{{ resource.picture.path|phpmob_imagine('70x70', false) }}">#}
+    <img src="{{ resource.picture.path|phpmob_imagine('100x100') }}">
+    {#<img src="{{ resource.picture.path|phpmob_imagine('100x100', false) }}">#}
+    {#<img src="{{ resource.picture.path|phpmob_imagine('200x200') }}">#}
+    {#<img src="{{ resource.picture.path|phpmob_imagine('200x200', false) }}">#}
+    {#<img src="{{ resource.picture.path|phpmob_imagine('80x80') }}">#}
+    {#<img src="{{ resource.picture.path|phpmob_imagine('80x80', false) }}">#}
+    {#{{ resource.picture.path|phpmob_imagine('70x70') }}#}
 {% endif %}
 
-{{ dump(resource) }}
+{#{{ dump(resource) }}#}

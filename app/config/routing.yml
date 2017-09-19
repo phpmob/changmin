@@ -20,3 +20,13 @@ phpmob_cms:
 phpmob_api_core:
     resource: "@PhpMobCoreBundle/Resources/config/routing/api/main.yml"
     prefix: /api/v{version}
+
+phpmob_image_test:
+    path: image/test/{filter}/{path}
+    defaults:
+        _controller: PhpMobCoreBundle:Image:test
+    methods:
+        - GET
+    requirements:
+        filter: '[A-z0-9_-]*'
+        path: .+
