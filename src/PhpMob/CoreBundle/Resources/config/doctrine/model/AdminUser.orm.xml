@@ -6,6 +6,11 @@
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <mapped-superclass name="PhpMob\CoreBundle\Model\AdminUser" table="phpmob_admin_user">
+        <one-to-one field="picture" target-entity="PhpMob\CoreBundle\Model\AdminUserPictureInterface" mapped-by="owner">
+            <cascade>
+                <cascade-all />
+            </cascade>
+        </one-to-one>
     </mapped-superclass>
 
 </doctrine-mapping>

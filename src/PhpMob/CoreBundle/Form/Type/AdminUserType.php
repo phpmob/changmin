@@ -14,5 +14,8 @@ class AdminUserType extends UserType
     {
         parent::buildForm($builder, $options);
 
+        $builder
+            ->add('picture', AdminUserPictureType::class, [])
+        ;
     }
 }

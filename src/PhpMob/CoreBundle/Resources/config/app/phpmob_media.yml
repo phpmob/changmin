@@ -3,3 +3,6 @@ phpmob_media:
     filters:
         web_user_picture:
             - { code: profile, label: Profile, filter: ~ }
+
+        admin_user_picture:
+            - { code: profile, label: Profile, filter: ~ }

@@ -12,7 +12,7 @@ class WebUser extends BaseUser implements WebUserInterface
     /**
      * @var WebUserPictureInterface
      */
-    private $picture;
+    protected $picture;
 
     /**
      * {@inheritdoc}

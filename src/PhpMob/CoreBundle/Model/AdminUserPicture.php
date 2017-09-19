@@ -13,9 +13,6 @@ namespace PhpMob\CoreBundle\Model;
 
 use PhpMob\MediaBundle\Model\Image;
 
-/**
- * @author Ishmael Doss <nukboon@gmail.com>
- */
-class WebUserPicture extends Image implements WebUserPictureInterface
+class AdminUserPicture extends Image implements AdminUserPictureInterface
 {
 }
