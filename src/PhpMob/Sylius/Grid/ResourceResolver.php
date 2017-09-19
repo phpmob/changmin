@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMob\Grid;
+namespace PhpMob\Sylius\Grid;
 
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Sylius\Bundle\ResourceBundle\Controller\ResourcesResolverInterface;
