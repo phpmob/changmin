@@ -7,5 +7,6 @@
     <imports>
         <import resource="services/fixtures.xml"/>
         <import resource="services/forms.xml"/>
+        <import resource="services/listeners.xml"/>
     </imports>
 </container>
