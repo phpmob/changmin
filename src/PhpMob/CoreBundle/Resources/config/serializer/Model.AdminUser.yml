@@ -1,0 +1,24 @@
+PhpMob\CoreBundle\Model\AdminUser:
+    exclusion_policy: ALL
+    xml_root_name: sylius_admin_user
+
+    relations:
+        -   rel: picture_70x70
+            exclusion:
+                exclude_if: expr(!object.getPicture())
+            href:
+                absolute: true
+                route: liip_imagine_filter
+                parameters:
+                    path: expr(object.getPicture().getPath())
+                    filter: 70x70
+
+        -   rel: picture_100x100
+            exclusion:
+                exclude_if: expr(!object.getPicture())
+            href:
+                absolute: true
+                route: liip_imagine_filter
+                parameters:
+                    path: expr(object.getPicture().getPath())
+                    filter: 100x100
