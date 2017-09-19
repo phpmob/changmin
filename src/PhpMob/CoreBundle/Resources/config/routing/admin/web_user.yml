@@ -35,3 +35,12 @@ sylius_admin_web_user:
                     index:
                         icon: fa fa-user
                         label: "Web Users"
+
+ajax_admin_web_user_search:
+    path: /_ajax/web-users/search
+    defaults:
+        _format: json
+        _controller: sylius.controller.web_user:indexAction
+        _sylius:
+            section: admin
+            grid: admin_web_user

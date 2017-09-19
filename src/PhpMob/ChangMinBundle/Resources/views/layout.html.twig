@@ -1,3 +1,10 @@
+{%- set breadcrumb = block('breadcrumb') ?? '' -%}
+{%- set toolbarHeader = block('toolbarHeader') ?? '' -%}
+{%- set toolbarFooter = block('toolbarFooter') ?? '' -%}
+{%- set toolbarFooter = block('toolbarFooter') ?? '' -%}
+{#{%- set content = block('content') ?? '' -%} BUG with form #}
+{%- set title = block('title') ?? 'Change Admin' -%}
+
 <!DOCTYPE html>
 <html lang="{{ (locale|split('_'))[0] }}">
 <head>
@@ -7,7 +14,7 @@
     <meta name="description" content="Chang Admin UI">
     <meta name="author" content="liverbool">
 
-    <title>Change Admin</title>
+    <title>{{ title|striptags }}</title>
 
     <link rel="shortcut icon" href="{{ asset('assets/admin/img/favicon.png') }}">
     <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
@@ -73,13 +80,6 @@
                 },
             }));
         });
-
-        {%- set breadcrumb = block('breadcrumb') ?? '' -%}
-        {%- set toolbarHeader = block('toolbarHeader') ?? '' -%}
-        {%- set toolbarFooter = block('toolbarFooter') ?? '' -%}
-        {%- set toolbarFooter = block('toolbarFooter') ?? '' -%}
-        {#{%- set content = block('content') ?? '' -%} BUG with form #}
-        {%- set title = block('title') ?? '' -%}
 
         ChangMin.set({
             title: '{{ title|trim|escape('js') }}',

@@ -14,7 +14,9 @@
             "{node}/selectize/dist/js/standalone/selectize.min.js",
             "{node}/sortablejs/Sortable.min.js",
             "{node}/pace/pace.min.js",
+            "{node}/holderjs/holderjs.min.js",
             "{src}/js/lib/**",
+            "./js/lib/**",
             "{src}/js/partial/**",
             "./js/partial/**",
             "{src}/js/start.js"
