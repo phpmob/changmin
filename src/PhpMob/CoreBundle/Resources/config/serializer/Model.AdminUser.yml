@@ -8,18 +8,17 @@ PhpMob\CoreBundle\Model\AdminUser:
                 exclude_if: expr(!object.getPicture())
             href:
                 absolute: true
-                route: phpmob_image_test
+                route: liip_imagine_filter
+                parameters:
+                    path: expr(object.getPicture().getPath())
+                    filter: 70x70
+
+        -   rel: picture_100x100
+            exclusion:
+                exclude_if: expr(!object.getPicture())
+            href:
+                absolute: true
+                route: liip_imagine_filter
                 parameters:
                     path: expr(object.getPicture().getPath())
                     filter: 100x100
-#                    inset: false
-
-#        -   rel: picture_100x100
-#            exclusion:
-#                exclude_if: expr(!object.getPicture())
-#            href:
-#                absolute: true
-#                route: liip_imagine_filter
-#                parameters:
-#                    path: expr(object.getPicture().getPath())
-#                    filter: phpmob_imagine
