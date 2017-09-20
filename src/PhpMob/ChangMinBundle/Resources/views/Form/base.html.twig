@@ -277,3 +277,23 @@
         </div>
     </div>
 {%- endblock sylius_translations_row %}
+
+{% block sylius_resource_autocomplete_choice_row %}
+    {% set chooser = {
+        maxItems: multiple ? null : 1,
+        remote: {
+            grid: true,
+            query_search_key: 'search',
+        }
+    }|merge_deep(chooser) %}
+    <div class="form-group">
+        {{- form_label(form) -}}
+        {{- form_widget(form, {
+            'attr': {
+                'placeholder': placeholder is defined ? placeholder|trans : '',
+                'data-chooser' : chooser|json_encode,
+            }
+        }) -}}
+    </div>
+    {{- form_errors(form) -}}
+{% endblock %}
