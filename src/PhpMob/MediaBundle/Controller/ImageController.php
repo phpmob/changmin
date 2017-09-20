@@ -23,7 +23,7 @@ class ImageController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function filterRuntimeAction($path, $filter, $mode)
+    public function filterRuntimeAction($path, $filter, $mode = 'inset')
     {
         if ($path instanceof ImageInterface) {
             $path = $path->getPath();
