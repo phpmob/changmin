@@ -5,7 +5,7 @@
 {% block form_widget_simple -%}
     {%- if type is not defined or type not in ['file', 'hidden'] -%}
         {%- if not valid -%}
-            {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control-danger')|trim}) -%}
+            {%- set attr = attr|merge({class: (attr.class|default('') ~ ' is-invalid')|trim}) -%}
         {%- endif -%}
     {%- endif -%}
     {%- if type is defined and type == 'file' -%}
@@ -16,7 +16,7 @@
 
 {% block textarea_widget -%}
     {%- if not valid -%}
-        {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control-danger')|trim}) -%}
+        {%- set attr = attr|merge({class: (attr.class|default('') ~ ' is-invalid')|trim}) -%}
     {%- endif -%}
     {{- parent() -}}
 {%- endblock textarea_widget %}
@@ -129,7 +129,7 @@
 
 {% block form_errors -%}
     {%- if errors|length > 0 -%}
-        <div class="{% if form.parent %}form-control-feedback{% else %}alert alert-danger{% endif %}">
+        <div class="{% if form.parent %}invalid-feedback{% else %}alert alert-danger{% endif %}">
             <ul class="list-unstyled mb-0">
                 {% set displayErrors = [] %}
                 {%- for error in errors -%}
