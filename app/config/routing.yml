@@ -17,6 +17,9 @@ phpmob_cms:
     resource: "@PhpMobCmsBundle/Resources/config/routing.yml"
     prefix:   /
 
+phpmob_media:
+    resource: "@PhpMobMediaBundle/Resources/config/routing/main.yml"
+
 phpmob_api_core:
     resource: "@PhpMobCoreBundle/Resources/config/routing/api/main.yml"
     prefix: /api/v{version}
