@@ -1,0 +1,10 @@
+phpmob_liip_imagine_filter:
+    path: /media-phpmob/cache/resolve/{filter}/{mode}/{path}
+    defaults:
+        _controller: PhpMobMediaBundle:Image:filterRuntime
+    methods:
+        - GET
+    requirements:
+        filter: '[A-z0-9_-]*'
+        path: .+
+        mode: "inset|outbound"
