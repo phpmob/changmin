@@ -1,0 +1,41 @@
+{% form_theme form "@ChangMin/Form/default.html.twig" %}
+{% import "@ChangMin/Macro/messages.html.twig" as messages %}
+
+<!DOCTYPE html>
+<html lang="{{ (locale|split('_'))[0] }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="ChangMin Security Login">
+    <meta name="author" content="@liverbool">
+
+    <title>{{ 'ui.security.login_title'|trans }}</title>
+
+    <link rel="shortcut icon" href="{{ asset('assets/admin/img/favicon.png') }}">
+    <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid login-container">
+    <div class="card">
+        <div class="avatar avatar-lg">
+            <img class="img-avatar img-avatar-user"/>
+        </div>
+
+        {% if last_error %}
+            {{ messages.error(last_error.message) }}
+        {% endif %}
+
+        {{ form_start(form, {'action': path('changmin_admin_login_check'), 'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(form._username, { 'value': last_username|default('') }) }}
+        {{ form_row(form._password) }}
+        {{ form_row(form._remember_me) }}
+
+        <input type="hidden" name="_csrf_admin_security_token" value="{{ csrf_token('admin_authenticate') }}">
+        <button type="submit" class="btn btn-primary btn-lg">{{ 'ui.security.login_btn'|trans }}</button>
+
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+</div>
+</body>
+</html>

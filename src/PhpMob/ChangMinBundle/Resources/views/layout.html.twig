@@ -39,24 +39,18 @@
 
         ChangMin.updateUser(function (user) {
             return user
-                .set('name', 'Ishmael Doss')
+                .set('name', '{{ app.user.displayName }}')
                 .set('avatar', '{{ asset('assets/admin/img/avatars/5.jpg') }}')
                 .set('menu', user.get('menu').withMutations(function (menu) {
                     return menu
-                        .set('profile', {
-                            divider: 'top',
-                            icon: 'icon icon-vcard',
-                            label: 'Profile',
-                            link: '/profile'
-                        })
                         .set('logout', {
                             icon: 'icon icon-logout',
-                            label: 'Logout',
-                            link: '/logout'
+                            label: '{{ "ui.security.logout"|trans }}',
+                            link: '{{ path('changmin_admin_logout') }}'
                         })
-                        ;
+                    ;
                 }))
-                ;
+            ;
         });
 
         ChangMin.updateNavbar(function (navbar) {

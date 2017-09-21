@@ -15,4 +15,14 @@ interface AdminUserInterface extends BaseUserInterface
      * @param null|AdminUserPictureInterface $picture
      */
     public function setPicture(?AdminUserPictureInterface $picture): void;
+
+    /**
+     * @return string
+     */
+    public function getDisplayName(): string;
+
+    /**
+     * @param string $displayName
+     */
+    public function setDisplayName(?string $displayName): void;
 }

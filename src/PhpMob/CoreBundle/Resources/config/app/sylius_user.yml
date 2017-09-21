@@ -5,6 +5,7 @@ sylius_user:
                 classes:
                     model: PhpMob\CoreBundle\Model\WebUser
                     form: PhpMob\CoreBundle\Form\Type\WebUserType
+                    repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
 
         oauth:
             user:
@@ -17,4 +18,5 @@ sylius_user:
                 classes:
                     model: PhpMob\CoreBundle\Model\AdminUser
                     interface: PhpMob\CoreBundle\Model\AdminUserInterface
+                    repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
                     form: PhpMob\CoreBundle\Form\Type\AdminUserType

@@ -26,6 +26,7 @@ class WebUserFixture extends AbstractResourceFixture
             ->children()
             ->scalarNode('email')->cannotBeEmpty()->end()
             ->scalarNode('username')->cannotBeEmpty()->end()
+            ->scalarNode('displayName')->cannotBeEmpty()->end()
             ->booleanNode('enabled')->end()
             ->scalarNode('password')->cannotBeEmpty()->end()
         ;

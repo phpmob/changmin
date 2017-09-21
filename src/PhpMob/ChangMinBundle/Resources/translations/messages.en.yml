@@ -1,0 +1,11 @@
+changmin:
+    form:
+        login:
+            username: Username
+            password: Password
+            remember_me: Remember Me?
+
+ui.security:
+    login_title: Login
+    login_btn: Login
+    logout: Logout

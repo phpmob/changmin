@@ -1,0 +1,19 @@
+changmin_admin_login:
+    path: /login
+    methods: [GET]
+    defaults:
+        _controller: changmin.controller.security:loginAction
+        _sylius:
+            template: "@ChangMin/Security/login.html.twig"
+            permission: true
+            logged_in_route: changmin_admin_dashboard
+
+changmin_admin_login_check:
+    path: /login-check
+    methods: [POST]
+    defaults:
+        _controller: changmin.controller.security:checkAction
+
+changmin_admin_logout:
+    path: /logout
+    methods: [GET]

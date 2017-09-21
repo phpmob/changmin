@@ -1,0 +1,5 @@
+changmin_admin_dashboard:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: ChangMin:Dashboard:index

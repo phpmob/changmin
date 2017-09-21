@@ -1,6 +1,10 @@
 phpmob_changmin:
-    resource: "@ChangMin/Resources/config/routing.xml"
-    prefix:   /admin
+    resource: "@ChangMin/Resources/config/routing/routing.yml"
+    prefix: /admin
+
+phpmob_changmin_security:
+    resource: "@ChangMin/Resources/config/routing/security.yml"
+    prefix: /admin
 
 phpmob_admin_core:
     resource: "@PhpMobCoreBundle/Resources/config/routing/admin/main.yml"
@@ -15,7 +19,7 @@ LiipImagineBundle:
 
 phpmob_cms:
     resource: "@PhpMobCmsBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix: /
 
 phpmob_media:
     resource: "@PhpMobMediaBundle/Resources/config/routing/main.yml"

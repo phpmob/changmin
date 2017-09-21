@@ -10,6 +10,7 @@ module.exports = function (require, config) {
     var merge = require('merge-stream');
     var gutil = require('gulp-util');
     var fs = require('fs');
+    var livereload = require('gulp-livereload');
 
     /**
      * @param file
@@ -88,13 +89,16 @@ module.exports = function (require, config) {
         }
     });
 
-    gulp.task('watch', function () {
+    gulp.task('watching', function () {
+        livereload.listen();
+
         gulp.watch(config['paths'].js, ['script']);
         gulp.watch(config['paths'].sass, ['style']);
         gulp.watch(config['paths'].css, ['style']);
     });
 
     gulp.task('default', ['script', 'style', 'copy']);
+    gulp.task('watch', ['default', 'watching']);
 
     return gulp;
 };
