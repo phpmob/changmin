@@ -15,6 +15,7 @@ sylius_fixtures:
                                 email: "web@phpmob.com"
                                 username: "web"
                                 password: "web1234"
+                                displayName: "Web User"
 
                 admin_user:
                     name: "admin_user"
@@ -25,6 +26,7 @@ sylius_fixtures:
                                 email: "admin@phpmob.com"
                                 username: "admin"
                                 password: "admin1234"
+                                displayName: "Admin User"
 
                 user_group:
                     name: "user_group"

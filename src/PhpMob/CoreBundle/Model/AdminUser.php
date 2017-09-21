@@ -12,6 +12,11 @@ class AdminUser extends BaseUser implements AdminUserInterface
     protected $picture;
 
     /**
+     * @var string
+     */
+    protected $displayName;
+
+    /**
      * {@inheritdoc}
      */
     public function getFileBasePath()
@@ -37,5 +42,21 @@ class AdminUser extends BaseUser implements AdminUserInterface
         if ($this->picture) {
             $picture->setOwner($this);
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDisplayName(): string
+    {
+        return (string) ($this->displayName ? $this->displayName : $this->email);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDisplayName(?string $displayName): void
+    {
+        $this->displayName = $displayName;
     }
 }

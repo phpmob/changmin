@@ -5,36 +5,25 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <imports>
+        <import resource="services/forms.xml"/>
         <import resource="services/sylius.xml"/>
+        <import resource="services/twigs.xml"/>
     </imports>
 
     <services>
-        <service id="toro.form.convert_rawdata_extension" class="PhpMob\ChangMinBundle\Form\Extension\ConvertRawDataFormExtension">
-            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
-        </service>
-
-        <service id="changmin.twig.extension.sort_by" class="PhpMob\ChangMinBundle\Twig\Extension\SortByExtension">
-            <tag name="twig.extension"/>
-        </service>
-
-        <service id="changmin.twig.extension.smart_referer" class="PhpMob\ChangMinBundle\Twig\Extension\SmartRefererExtension">
-            <argument type="service" id="request_stack"/>
-            <tag name="twig.extension"/>
-        </service>
-
-        <service id="changmin.twig.extension.flag_icon" class="PhpMob\ChangMinBundle\Twig\Extension\FlagIconExtension">
-            <tag name="twig.extension"/>
-        </service>
-
-        <service id="changmin.twig.extension.merge_deep" class="PhpMob\ChangMinBundle\Twig\Extension\MergeDeepExtension">
-            <tag name="twig.extension"/>
-        </service>
-
         <service id="changmin.pagerfanta.view.dropdown" class="Pagerfanta\View\DefaultView" public="false">
             <argument type="service">
                 <service id="changmin.pagerfanta.dropdown" class="PhpMob\ChangMinBundle\Pagerfanta\DropDownTemplate"/>
             </argument>
             <tag name="pagerfanta.view" alias="dropdown"/>
+        </service>
+
+        <service id="changmin.controller.security" class="PhpMob\ChangMinBundle\Controller\SecurityController">
+            <argument type="service" id="security.authentication_utils" />
+            <argument type="service" id="form.factory" />
+            <argument type="service" id="templating" />
+            <argument type="service" id="security.authorization_checker" />
+            <argument type="service" id="router" />
         </service>
     </services>
 </container>

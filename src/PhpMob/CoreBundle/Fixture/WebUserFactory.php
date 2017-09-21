@@ -53,6 +53,7 @@ class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInt
         $user->setEmail($options['email']);
         $user->setUsername($options['username']);
         $user->setPlainPassword($options['password']);
+        $user->setDisplayName($options['displayName']);
         $user->setEnabled($options['enabled']);
         $user->addRole('ROLE_USER');
 
@@ -70,6 +71,9 @@ class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInt
             })
             ->setDefault('username', function (Options $options) {
                 return $this->faker->userName;
+            })
+            ->setDefault('displayName', function (Options $options) {
+                return $this->faker->name;
             })
             ->setDefault('enabled', true)
             ->setAllowedTypes('enabled', 'bool')

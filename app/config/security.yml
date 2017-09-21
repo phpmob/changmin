@@ -1,23 +1,99 @@
+parameters:
+    changmin.security.regex_admin: "^/admin"
+#    changmin.security.regex_api: "^/api"
+#    changmin.security.regex_web: "^/(?!admin|api/.*|api$)[^/]++"
+
 security:
     providers:
-        web_user_provider:
-            id: sylius.web_user_provider.email_or_name_based
-
+        changmin_admin_user_provider:
+            id: sylius.admin_user_provider.email_or_name_based
+#        changmin_web_user_provider:
+#            id: sylius.shop_user_provider.email_or_name_based
     encoders:
         Sylius\Component\User\Model\UserInterface: sha512
-
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
+        admin:
+            switch_user: true
+            context: admin
+            pattern: "%changmin.security.regex_admin%"
+            form_login:
+                provider: changmin_admin_user_provider
+                login_path: changmin_admin_login
+                check_path: changmin_admin_login_check
+                failure_path: changmin_admin_login
+                default_target_path: changmin_admin_dashboard
+                use_forward: false
+                use_referer: true
+                csrf_token_generator: security.csrf.token_manager
+                csrf_parameter: _csrf_admin_security_token
+                csrf_token_id: admin_authenticate
+            remember_me:
+                secret: "%secret%"
+                path: /admin
+                name: APP_ADMIN_REMEMBER_ME
+                lifetime: 31536000
+                remember_me_parameter: _remember_me
+            logout:
+                path: changmin_admin_logout
+                target: changmin_admin_login
+            anonymous: true
+
+#        oauth_token:
+#            pattern: "%changmin.security.regex_api%/oauth/v2/token"
+#            security: false
+
+#        api:
+#            pattern: "%changmin.security.regex_api%/.*"
+#            fos_oauth:  true
+#            stateless:  true
+#            anonymous:  true
+
+#        shop:
+#            switch_user: { role: ROLE_ALLOWED_TO_SWITCH }
+#            context: shop
+#            pattern: "%changmin.security.regex_web%"
+#            form_login:
+#                success_handler: sylius.authentication.success_handler
+#                failure_handler: sylius.authentication.failure_handler
+#                provider: sylius_shop_user_provider
+#                login_path: sylius_shop_login
+#                check_path: sylius_shop_login_check
+#                failure_path: sylius_shop_login
+#                default_target_path: sylius_shop_homepage
+#                use_forward: false
+#                use_referer: true
+#                csrf_token_generator: security.csrf.token_manager
+#                csrf_parameter: _csrf_shop_security_token
+#                csrf_token_id: shop_authenticate
+#            remember_me:
+#                secret: "%secret%"
+#                name: APP_SHOP_REMEMBER_ME
+#                lifetime: 31536000
+#                remember_me_parameter: _remember_me
+#            logout:
+#                path: sylius_shop_logout
+#                target: sylius_shop_login
+#                invalidate_session: false
+#                success_handler: sylius.handler.shop_user_logout
+#            anonymous: true
+
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+    access_control:
+        - { path: "%changmin.security.regex_admin%/_partial", role: IS_AUTHENTICATED_ANONYMOUSLY, ips: [127.0.0.1, ::1] }
+        - { path: "%changmin.security.regex_admin%/_partial", role: ROLE_NO_ACCESS }
+#        - { path: "%changmin.security.regex_web%/_partial", role: IS_AUTHENTICATED_ANONYMOUSLY, ips: [127.0.0.1, ::1] }
+#        - { path: "%changmin.security.regex_web%/_partial", role: ROLE_NO_ACCESS }
 
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+        - { path: "%changmin.security.regex_admin%/login", role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: "%changmin.security.regex_api%/login", role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: "%changmin.security.regex_web%/login", role: IS_AUTHENTICATED_ANONYMOUSLY }
 
-            # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+#        - { path: "%changmin.security.regex_web%/register", role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: "%changmin.security.regex_web%/verify", role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: "%changmin.security.regex_admin%", role: ROLE_ADMINISTRATION_ACCESS }
+#        - { path: "%changmin.security.regex_api%/.*", role: ROLE_API_ACCESS }
+#        - { path: "%changmin.security.regex_web%/account", role: ROLE_USER }

@@ -53,6 +53,7 @@ class AdminUserFactory extends AbstractExampleFactory implements ExampleFactoryI
         $user->setEmail($options['email']);
         $user->setUsername($options['username']);
         $user->setPlainPassword($options['password']);
+        $user->setDisplayName($options['displayName']);
         $user->setEnabled($options['enabled']);
         $user->addRole('ROLE_ADMINISTRATION_ACCESS');
 
@@ -70,6 +71,9 @@ class AdminUserFactory extends AbstractExampleFactory implements ExampleFactoryI
             })
             ->setDefault('username', function (Options $options) {
                 return $this->faker->userName;
+            })
+            ->setDefault('displayName', function (Options $options) {
+                return $this->faker->name;
             })
             ->setDefault('enabled', true)
             ->setAllowedTypes('enabled', 'bool')
