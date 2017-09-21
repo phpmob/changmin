@@ -1,0 +1,9 @@
+sylius_user:
+    resources:
+        admin:
+            user:
+                classes:
+                    model: PhpMob\ChangMinBundle\Model\AdminUser
+                    interface: PhpMob\ChangMinBundle\Model\AdminUserInterface
+                    repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
+                    form: PhpMob\ChangMinBundle\Form\Type\AdminUserType

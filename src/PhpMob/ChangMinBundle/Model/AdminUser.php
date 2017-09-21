@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMob\CoreBundle\Model;
+namespace PhpMob\ChangMinBundle\Model;
 
 use Sylius\Component\User\Model\User as BaseUser;
 

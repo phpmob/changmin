@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMob\CoreBundle\Form\Type;
+namespace PhpMob\ChangMinBundle\Form\Type;
 
 use PhpMob\MediaBundle\Form\Type\ImageType;
 

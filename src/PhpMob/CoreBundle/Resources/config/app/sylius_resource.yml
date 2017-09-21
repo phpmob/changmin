@@ -5,11 +5,6 @@ sylius_resource:
                 model: PhpMob\CoreBundle\Model\WebUserPicture
                 interface: PhpMob\CoreBundle\Model\WebUserPictureInterface
 
-        phpmob.admin_user_picture:
-            classes:
-                model: PhpMob\CoreBundle\Model\AdminUserPicture
-                interface: PhpMob\CoreBundle\Model\AdminUserPictureInterface
-
         phpmob.user_group:
             classes:
                 model: PhpMob\CoreBundle\Model\UserGroup

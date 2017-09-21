@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PhpMob\CoreBundle\Fixture;
+namespace PhpMob\ChangMinBundle\Fixture;
 
 use PhpMob\ChangMinBundle\Fixture\AbstractResourceFixture;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;

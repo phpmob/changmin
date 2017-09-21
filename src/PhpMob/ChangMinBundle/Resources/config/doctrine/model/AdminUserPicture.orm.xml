@@ -5,14 +5,9 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="PhpMob\CoreBundle\Model\AdminUser" table="phpmob_admin_user">
-        <field name="displayName" type="string" length="100" nullable="true"/>
-
-        <one-to-one field="picture" target-entity="PhpMob\CoreBundle\Model\AdminUserPictureInterface" mapped-by="owner">
-            <cascade>
-                <cascade-all />
-            </cascade>
+    <mapped-superclass name="PhpMob\ChangMinBundle\Model\AdminUserPicture" table="phpmob_admin_user_picture">
+        <one-to-one field="owner" target-entity="PhpMob\ChangMinBundle\Model\AdminUserInterface" inversed-by="picture">
+            <join-column name="owner_id" referenced-column-name="id" nullable="true"/>
         </one-to-one>
     </mapped-superclass>
-
 </doctrine-mapping>

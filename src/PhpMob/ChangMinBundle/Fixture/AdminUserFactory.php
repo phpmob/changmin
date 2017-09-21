@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PhpMob\CoreBundle\Fixture;
+namespace PhpMob\ChangMinBundle\Fixture;
 
 use PhpMob\ChangMinBundle\Fixture\AbstractExampleFactory;
 use PhpMob\ChangMinBundle\Fixture\ExampleFactoryInterface;
-use PhpMob\CoreBundle\Model\AdminUserInterface;
+use PhpMob\ChangMinBundle\Model\AdminUserInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;

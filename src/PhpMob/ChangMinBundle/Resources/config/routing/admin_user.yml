@@ -10,7 +10,7 @@ sylius_admin_user:
         vars:
             all:
                 templates:
-                    form: PhpMobCoreBundle:AdminUser:_form.html.twig
+                    form: ChangMin:AdminUser:_form.html.twig
             index:
                 icon: fa fa-user-secret
                 header: "Admin Users"

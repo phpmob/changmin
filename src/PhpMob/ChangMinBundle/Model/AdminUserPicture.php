@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace PhpMob\CoreBundle\Model;
+namespace PhpMob\ChangMinBundle\Model;
 
 use PhpMob\MediaBundle\Model\Image;
 
