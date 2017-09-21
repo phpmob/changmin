@@ -21,22 +21,6 @@
             <tag name="form.type"/>
         </service>
 
-        <service id="phpmob.form.admin_user" class="PhpMob\CoreBundle\Form\Type\AdminUserType">
-            <argument>%sylius.model.admin_user.class%</argument>
-            <argument type="collection">
-                <argument>phpmob</argument>
-            </argument>
-            <tag name="form.type" />
-        </service>
-
-        <service id="phpmob.form.admin_user_picture" class="PhpMob\CoreBundle\Form\Type\AdminUserPictureType">
-            <argument>%phpmob.model.admin_user_picture.class%</argument>
-            <argument type="collection">
-                <argument>phpmob</argument>
-            </argument>
-            <tag name="form.type"/>
-        </service>
-
         <service id="phpmob.form.type.user_group" class="PhpMob\CoreBundle\Form\Type\UserGroupType">
             <argument>%phpmob.model.user_group.class%</argument>
             <argument type="collection">

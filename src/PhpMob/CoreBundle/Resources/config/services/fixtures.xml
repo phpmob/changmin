@@ -16,16 +16,6 @@
             <tag name="sylius_fixtures.fixture"/>
         </service>
 
-        <service id="phpmob.fixture.admin_user" class="PhpMob\CoreBundle\Fixture\AdminUserFixture">
-            <argument type="service" id="sylius.manager.admin_user"/>
-            <argument type="service">
-                <service class="PhpMob\CoreBundle\Fixture\AdminUserFactory">
-                    <argument type="service" id="sylius.factory.admin_user"/>
-                </service>
-            </argument>
-            <tag name="sylius_fixtures.fixture"/>
-        </service>
-
         <service id="phpmob.fixture.user_group" class="PhpMob\CoreBundle\Fixture\UserGroupFixture">
             <argument type="service" id="phpmob.manager.user_group"/>
             <argument type="service">

@@ -12,11 +12,3 @@ sylius_user:
                 classes:
                     model: Sylius\Component\User\Model\UserOAuth
                     interface: Sylius\Component\User\Model\UserOAuthInterface
-
-        admin:
-            user:
-                classes:
-                    model: PhpMob\CoreBundle\Model\AdminUser
-                    interface: PhpMob\CoreBundle\Model\AdminUserInterface
-                    repository: Sylius\Bundle\UserBundle\Doctrine\ORM\UserRepository
-                    form: PhpMob\CoreBundle\Form\Type\AdminUserType

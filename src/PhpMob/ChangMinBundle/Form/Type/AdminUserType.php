@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpMob\CoreBundle\Form\Type;
+namespace PhpMob\ChangMinBundle\Form\Type;
 
 use Sylius\Bundle\UserBundle\Form\Type\UserType;
 use Symfony\Component\Form\FormBuilderInterface;

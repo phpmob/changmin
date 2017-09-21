@@ -17,17 +17,6 @@ sylius_fixtures:
                                 password: "web1234"
                                 displayName: "Web User"
 
-                admin_user:
-                    name: "admin_user"
-                    options:
-                        random: 30
-                        custom:
-                            -
-                                email: "admin@phpmob.com"
-                                username: "admin"
-                                password: "admin1234"
-                                displayName: "Admin User"
-
                 user_group:
                     name: "user_group"
                     options:

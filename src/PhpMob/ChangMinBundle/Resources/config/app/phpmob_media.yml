@@ -1,5 +1,4 @@
 phpmob_media:
-    #filesystem: dbal
     filters:
-        web_user_picture:
+        admin_user_picture:
             - { code: profile, label: Profile, filter: ~ }

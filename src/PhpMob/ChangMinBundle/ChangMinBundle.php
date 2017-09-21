@@ -11,12 +11,45 @@
 
 namespace PhpMob\ChangMinBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use PhpMob\ChangMinBundle\DependencyInjection\ChangMinExtension;
+use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
+use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class ChangMinBundle extends Bundle
+class ChangMinBundle extends AbstractResourceBundle
 {
     protected $name = 'ChangMin';
+
+    public function __construct()
+    {
+        $this->extension = new ChangMinExtension();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSupportedDrivers(): array
+    {
+        return [
+            SyliusResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getModelNamespace(): ?string
+    {
+        return 'PhpMob\ChangMinBundle\Model';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getBundlePrefix(): string
+    {
+        return $this->extension->getAlias();
+    }
 }

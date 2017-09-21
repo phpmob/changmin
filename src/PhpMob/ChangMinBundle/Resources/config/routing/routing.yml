@@ -3,3 +3,6 @@ changmin_admin_dashboard:
     methods: [GET]
     defaults:
         _controller: ChangMin:Dashboard:index
+
+admin_admin_user:
+    resource: "@ChangMin/Resources/config/routing/admin_user.yml"

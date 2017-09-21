@@ -11,15 +11,15 @@
 
 namespace PhpMob\ChangMinBundle\DependencyInjection;
 
+use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class ChangMinExtension extends Extension
+class ChangMinExtension extends AbstractResourceExtension
 {
     /**
      * {@inheritdoc}
@@ -28,6 +28,8 @@ class ChangMinExtension extends Extension
     {
         $config = $this->processConfiguration($this->getConfiguration($config, $container), $config);
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+
+        $this->registerResources('changmin', $config['driver'], [], $container);
 
         $loader->load('services.xml');
     }

@@ -1,8 +1,5 @@
 admin_web_user:
     resource: "@PhpMobCoreBundle/Resources/config/routing/admin/web_user.yml"
 
-admin_admin_user:
-    resource: "@PhpMobCoreBundle/Resources/config/routing/admin/admin_user.yml"
-
 admin_user_group:
     resource: "@PhpMobCoreBundle/Resources/config/routing/admin/user_group.yml"

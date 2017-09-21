@@ -1,0 +1,6 @@
+sylius_resource:
+    resources:
+        changmin.admin_user_picture:
+            classes:
+                model: PhpMob\ChangMinBundle\Model\AdminUserPicture
+                interface: PhpMob\ChangMinBundle\Model\AdminUserPictureInterface

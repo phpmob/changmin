@@ -1,2 +1,7 @@
 imports:
+    - { resource: "@ChangMin/Resources/config/app/sylius_resource.yml" }
     - { resource: "@ChangMin/Resources/config/app/sylius_grid.yml" }
+    - { resource: "@ChangMin/Resources/config/app/sylius_user.yml" }
+    - { resource: "@ChangMin/Resources/config/app/sylius_fixtures.yml" }
+    - { resource: "@ChangMin/Resources/config/app/phpmob_media.yml" }
+    - { resource: "@ChangMin/Resources/config/grids/main.yml" }

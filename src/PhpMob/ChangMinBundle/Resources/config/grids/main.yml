@@ -1,0 +1,2 @@
+imports:
+    - { resource: "@ChangMin/Resources/config/grids/admin_user.yml" }

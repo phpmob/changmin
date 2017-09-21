@@ -8,5 +8,21 @@
         <service id="toro.form.convert_rawdata_extension" class="PhpMob\ChangMinBundle\Form\Extension\ConvertRawDataFormExtension">
             <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
         </service>
+
+        <service id="changmin.form.admin_user" class="PhpMob\ChangMinBundle\Form\Type\AdminUserType">
+            <argument>%sylius.model.admin_user.class%</argument>
+            <argument type="collection">
+                <argument>changmin</argument>
+            </argument>
+            <tag name="form.type" />
+        </service>
+
+        <service id="changmin.form.admin_user_picture" class="PhpMob\ChangMinBundle\Form\Type\AdminUserPictureType">
+            <argument>%changmin.model.admin_user_picture.class%</argument>
+            <argument type="collection">
+                <argument>changmin</argument>
+            </argument>
+            <tag name="form.type"/>
+        </service>
     </services>
 </container>
