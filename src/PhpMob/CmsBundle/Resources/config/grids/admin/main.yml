@@ -1,3 +1,4 @@
 imports:
+    - { resource: "@PhpMobCmsBundle/Resources/config/grids/admin/locale.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/grids/admin/page.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/grids/admin/template.yml" }

@@ -55,8 +55,8 @@ class PageType extends AbstractResourceType
                 'label' => 'phpmob.form.page.options',
                 'required' => false,
             ])
-            ->add('userTranslations', YamlType::class, [
-                'label' => 'phpmob.form.page.user_translations',
+            ->add('definedTranslations', YamlType::class, [
+                'label' => 'phpmob.form.page.defined_translations',
                 'required' => false,
             ])
         ;

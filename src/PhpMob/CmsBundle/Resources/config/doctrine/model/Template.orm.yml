@@ -36,7 +36,7 @@ PhpMob\CmsBundle\Model\Template:
         options:
             type: json
             nullable: true
-        userTranslations:
+        definedTranslations:
             type: json
             nullable: true
         createdAt:

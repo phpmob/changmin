@@ -5,30 +5,24 @@ sylius_admin_page:
         section: admin
         templates: ChangMin:Crud
         grid: phpmob_admin_page
+        redirect: update
         permission: true
         vars:
             all:
                 templates:
                     form: PhpMobCmsBundle:Page:_form.html.twig
             index:
-                icon: licon licon-note
+                icon: fa fa-wpforms
                 header: "Pages"
             create:
                 header: "Create Page"
                 breadcrumb:
                     index:
-                        icon: licon licon-note
+                        icon: fa fa-wpforms
                         label: "Pages"
             update:
                 header: "Edit Page"
                 breadcrumb:
                     index:
-                        icon: licon licon-note
-                        label: "Pages"
-            show:
-                icon: icon icon-newspaper
-                header: "See"
-                breadcrumb:
-                    index:
-                        icon: licon licon-note
+                        icon: fa fa-wpforms
                         label: "Pages"

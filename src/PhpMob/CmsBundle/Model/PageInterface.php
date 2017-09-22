@@ -20,7 +20,14 @@ use Sylius\Component\Resource\Model\TranslatableInterface;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface PageInterface extends ResourceInterface, TimestampableInterface, SlugAwareInterface, TranslatableInterface, ToggleableInterface
+interface PageInterface extends
+    DefinedTranslationInterface,
+    ResourceInterface,
+    TimestampableInterface,
+    SlugAwareInterface,
+    TranslatableInterface,
+    ToggleableInterface,
+    TemplateAwareInterface
 {
     /**
      * @return string
@@ -63,21 +70,6 @@ interface PageInterface extends ResourceInterface, TimestampableInterface, SlugA
     public function setMetaKeywords($metaKeywords);
 
     /**
-     * @return TemplateInterface|null
-     */
-    public function getTemplate(): ?TemplateInterface;
-
-    /**
-     * @return null|string
-     */
-    public function getTemplateName(): ?string;
-
-    /**
-     * @param TemplateInterface|null $template
-     */
-    public function setTemplate(?TemplateInterface $template);
-
-    /**
      * @return string
      */
     public function getScript();
@@ -106,14 +98,4 @@ interface PageInterface extends ResourceInterface, TimestampableInterface, SlugA
      * @param array $options
      */
     public function setOptions(array $options);
-
-    /**
-     * @return array
-     */
-    public function getUserTranslations(): array;
-
-    /**
-     * @param array $trans
-     */
-    public function setUserTranslations(array $trans);
 }

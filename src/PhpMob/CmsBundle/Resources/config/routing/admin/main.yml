@@ -1,3 +1,6 @@
+phpmob_admin_locale:
+    resource: "@PhpMobCmsBundle/Resources/config/routing/admin/locale.yml"
+
 phpmob_admin_page:
     resource: "@PhpMobCmsBundle/Resources/config/routing/admin/page.yml"
 

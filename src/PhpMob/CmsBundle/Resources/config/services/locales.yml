@@ -1,0 +1,24 @@
+services:
+    phpmob.locale.context_immutable:
+        public: false
+        class: Sylius\Component\Locale\Context\ImmutableLocaleContext
+        arguments:
+            - "%sylius_locale.locale%"
+        tags:
+            - { name: sylius.context.locale, priority: -100 }
+
+    phpmob.locale.context_requested_base:
+        public: false
+        class: Sylius\Bundle\LocaleBundle\Context\RequestBasedLocaleContext
+        arguments:
+            - "@request_stack"
+            - "@sylius.locale_provider"
+        tags:
+            - { name: sylius.context.locale, priority: -101 }
+
+    phpmob.locale.add_defined_translation:
+        public: true
+        class: PhpMob\CmsBundle\Translation\AddDefinedTranslation
+        arguments:
+            - "@sylius.context.locale"
+            - "@translator"

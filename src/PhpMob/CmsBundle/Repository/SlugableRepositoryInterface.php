@@ -11,18 +11,18 @@
 
 namespace PhpMob\CmsBundle\Repository;
 
-use PhpMob\CmsBundle\Model\PageInterface;
+use Sylius\Component\Resource\Model\SlugAwareInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface PageRepositoryInterface
+interface SlugableRepositoryInterface
 {
     /**
      * @param string $slug
      * @param null|string $locale
      *
-     * @return null|object|PageInterface
+     * @return null|object|SlugAwareInterface
      */
-    public function findPageBySlug(string $slug, ?string $locale): ?PageInterface;
+    public function findBySlug(string $slug, ?string $locale): ?SlugAwareInterface;
 }

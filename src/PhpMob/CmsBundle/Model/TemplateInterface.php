@@ -17,7 +17,7 @@ use Sylius\Component\Resource\Model\TimestampableInterface;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface TemplateInterface extends ResourceInterface, TimestampableInterface
+interface TemplateInterface extends DefinedTranslationInterface, ResourceInterface, TimestampableInterface
 {
     const PREFIX = '@tpl/';
 
@@ -75,16 +75,6 @@ interface TemplateInterface extends ResourceInterface, TimestampableInterface
      * @param array $options
      */
     public function setOptions(array $options);
-
-    /**
-     * @return array
-     */
-    public function getUserTranslations(): array;
-
-    /**
-     * @param array $trans
-     */
-    public function setUserTranslations(array $trans);
 
     /**
      * @return string

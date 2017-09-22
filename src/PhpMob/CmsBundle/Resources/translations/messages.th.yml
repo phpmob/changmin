@@ -22,4 +22,4 @@ phpmob:
             type_normal: Normal
             type_abstract: Extendable Only
             options: Options
-            user_translations: Translation
+            defined_translations: Translation

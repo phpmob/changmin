@@ -11,19 +11,19 @@
 
 namespace PhpMob\CmsBundle\Doctrine\ORM;
 
-use PhpMob\CmsBundle\Model\PageInterface;
-use PhpMob\CmsBundle\Repository\PageRepositoryInterface;
+use PhpMob\CmsBundle\Repository\SlugableRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use Sylius\Component\Resource\Model\SlugAwareInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class PageRepository extends EntityRepository implements PageRepositoryInterface
+class PageRepository extends EntityRepository implements SlugableRepositoryInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function findPageBySlug(string $slug, ?string $locale): ?PageInterface
+    public function findBySlug(string $slug, ?string $locale): ?SlugAwareInterface
     {
         $queryBuilder = $this->createQueryBuilder('o');
 

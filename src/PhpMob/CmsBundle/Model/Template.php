@@ -48,7 +48,7 @@ class Template implements TemplateInterface
     /**
      * @var array
      */
-    protected $userTranslations = [];
+    protected $definedTranslations = [];
 
     /**
      * {@inheritdoc}
@@ -133,17 +133,17 @@ class Template implements TemplateInterface
     /**
      * {@inheritdoc}
      */
-    public function getUserTranslations(): array
+    public function getDefinedTranslations(): array
     {
-        return (array)$this->userTranslations;
+        return $this->definedTranslations;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setUserTranslations(array $userTranslations)
+    public function setDefinedTranslations(array $definedTranslations)
     {
-        $this->userTranslations = $userTranslations;
+        $this->definedTranslations = $definedTranslations;
     }
 
     /**

@@ -12,8 +12,10 @@
 namespace PhpMob\CmsBundle\Controller;
 
 use FOS\RestBundle\View\View;
-use PhpMob\CmsBundle\Model\PageInterface;
+use PhpMob\CmsBundle\Model\DefinedTranslationInterface;
+use PhpMob\CmsBundle\Model\TemplateAwareInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
+use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,6 +26,14 @@ use Symfony\Component\HttpFoundation\Response;
 class PageController extends ResourceController
 {
     /**
+     * @param DefinedTranslationInterface $resource
+     */
+    private function addTranslations(DefinedTranslationInterface $resource)
+    {
+        $this->get('phpmob.locale.add_defined_translation')->addTranslations($resource);
+    }
+
+    /**
      * @param Request $request
      *
      * @return Response
@@ -33,7 +43,8 @@ class PageController extends ResourceController
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
 
         $this->isGrantedOr403($configuration, ResourceActions::SHOW);
-        /** @var PageInterface $resource */
+
+        /** @var DefinedTranslationInterface|TemplateAwareInterface|ResourceInterface $resource */
         $resource = $this->findOr404($configuration);
 
         $this->eventDispatcher->dispatch(ResourceActions::SHOW, $configuration, $resource);
@@ -41,20 +52,32 @@ class PageController extends ResourceController
         $view = View::create($resource);
 
         if ($configuration->isHtmlRequest()) {
-            if (!$tpl = $resource->getTemplateName()) {
-                $tpl = $configuration->getTemplate(ResourceActions::SHOW . '.html');
+            $template = $resource->getTemplate();
+
+            if ($template) {
+                $this->addTranslations($template);
+
+                $tpl = $resource->getTemplateName();
+                $options = $template->getOptions();
+            } else {
+                $tpl = $configuration->getTemplate(ResourceActions::SHOW.'.html');
+                $options = [];
             }
+
+            $this->addTranslations($resource);
 
             $view
                 ->setTemplate($tpl)
                 ->setTemplateVar($this->metadata->getName())
-                ->setData([
-                    'configuration' => $configuration,
-                    'metadata' => $this->metadata,
-                    'resource' => $resource,
-                    $this->metadata->getName() => $resource,
-                ])
-            ;
+                ->setData(
+                    [
+                        'configuration' => $configuration,
+                        'metadata' => $this->metadata,
+                        'resource' => $resource,
+                        'tpl' => ['options' => $options],
+                        $this->metadata->getName() => $resource,
+                    ]
+                );
         }
 
         return $this->viewHandler->handle($configuration, $view);

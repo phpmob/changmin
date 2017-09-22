@@ -49,8 +49,8 @@ class TemplateType extends AbstractResourceType
                 'label' => 'phpmob.form.template.options',
                 'required' => false,
             ])
-            ->add('userTranslations', YamlType::class, [
-                'label' => 'phpmob.form.template.user_translations',
+            ->add('definedTranslations', YamlType::class, [
+                'label' => 'phpmob.form.template.defined_translations',
                 'required' => false,
             ])
         ;

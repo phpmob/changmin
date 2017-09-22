@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "18566b538ad68aec4040a6ec0cf9ab65",
+    "content-hash": "a9dcd05b3942e6eccd37eca0c235128a",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3642,6 +3642,80 @@
                 "localization"
             ],
             "time": "2017-08-22T10:57:53+00:00"
+        },
+        {
+            "name": "sylius/locale-bundle",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Sylius/SyliusLocaleBundle.git",
+                "reference": "a137e75ce60bb92b1272f991b438c43c286e424d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Sylius/SyliusLocaleBundle/zipball/a137e75ce60bb92b1272f991b438c43c286e424d",
+                "reference": "a137e75ce60bb92b1272f991b438c43c286e424d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "sylius/locale": "^1.0",
+                "sylius/resource-bundle": "^1.0",
+                "symfony/framework-bundle": "^3.2",
+                "symfony/templating": "^3.2"
+            },
+            "require-dev": {
+                "doctrine/orm": "~2.5.0",
+                "incenteev/composer-parameter-handler": "~2.0",
+                "ocramius/proxy-manager": "^2.0",
+                "phpspec/phpspec": "^4.0",
+                "phpunit/phpunit": "^5.6",
+                "polishsymfonycommunity/symfony-mocker-container": "^1.0",
+                "symfony/browser-kit": "^3.2",
+                "twig/twig": "^2.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "incenteev-parameters": {
+                    "file": "test/app/config/parameters.yml"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sylius\\Bundle\\LocaleBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sylius project",
+                    "homepage": "http://sylius.org"
+                },
+                {
+                    "name": "Community contributions",
+                    "homepage": "http://github.com/Sylius/Sylius/contributors"
+                },
+                {
+                    "name": "Paweł Jędrzejewski",
+                    "homepage": "http://pjedrzejewski.com"
+                }
+            ],
+            "description": "Locales management for Symfony2 projects.",
+            "homepage": "http://sylius.org",
+            "keywords": [
+                "i18n",
+                "internationalization",
+                "language",
+                "locale",
+                "localization"
+            ],
+            "time": "2017-09-12T16:26:23+00:00"
         },
         {
             "name": "sylius/mailer",

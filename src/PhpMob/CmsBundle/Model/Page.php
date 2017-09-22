@@ -81,7 +81,7 @@ class Page implements PageInterface
     /**
      * @var array
      */
-    protected $userTranslations = [];
+    protected $definedTranslations = [];
 
     public function __construct()
     {
@@ -195,7 +195,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setTemplate(?TemplateInterface $template)
+    public function setTemplate(?TemplateInterface $template): void
     {
         $this->template = $template;
     }
@@ -259,16 +259,16 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getUserTranslations(): array
+    public function getDefinedTranslations(): array
     {
-        return $this->userTranslations;
+        return $this->definedTranslations;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setUserTranslations(array $userTranslations)
+    public function setDefinedTranslations(array $definedTranslations)
     {
-        $this->userTranslations = $userTranslations;
+        $this->definedTranslations = $definedTranslations;
     }
 }

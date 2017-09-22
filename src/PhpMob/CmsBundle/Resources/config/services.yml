@@ -3,5 +3,4 @@ parameters:
     phpmob_gif64: "data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
 
 imports:
-    - { resource: "services/forms.yml" }
-    - { resource: "services/twigs.yml" }
+    - { resource: "services/**" }
