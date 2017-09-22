@@ -19,6 +19,18 @@ use Sylius\Component\Resource\Model\TimestampableInterface;
  */
 interface TemplateInterface extends ResourceInterface, TimestampableInterface
 {
+    const PREFIX = '@tpl/';
+
+    /**
+     * @var string extends only
+     */
+    const TYPE_ABSTRACT = 'a';
+
+    /**
+     * @var string full html template
+     */
+    const TYPE_NORMAL = 'n';
+
     /**
      * @return string
      */
@@ -38,6 +50,41 @@ interface TemplateInterface extends ResourceInterface, TimestampableInterface
      * @param string $content
      */
     public function setContent(?string $content);
+
+    /**
+     * @return string
+     */
+    public function getType(): string;
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type): void;
+
+    /**
+     * @return boolean
+     */
+    public function isAbstractType();
+
+    /**
+     * @return array
+     */
+    public function getOptions(): array;
+
+    /**
+     * @param array $options
+     */
+    public function setOptions(array $options);
+
+    /**
+     * @return array
+     */
+    public function getUserTranslations(): array;
+
+    /**
+     * @param array $trans
+     */
+    public function setUserTranslations(array $trans);
 
     /**
      * @return string

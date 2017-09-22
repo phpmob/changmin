@@ -28,6 +28,7 @@ class TextFieldType implements FieldTypeInterface
     public function render(Field $field, $data, array $options)
     {
         $value = $this->dataExtractor->get($field, $data);
+        $field->setOptions($options);
 
         return is_string($value) ? htmlspecialchars($value) : $value;
     }

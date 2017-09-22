@@ -13,7 +13,9 @@ var initScripting = function (scope)
     $('.holderjs, img[data-src^="holder.js"]', scope).each(function () {
         Holder.run({images: this});
     });
-}
+
+    $('[data-toggle="tooltip"]').tooltip();
+};
 
 $(function () {
     $(document).on('dom-node-inserted', function (e, scope) {

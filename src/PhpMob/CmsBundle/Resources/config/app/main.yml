@@ -3,3 +3,4 @@ imports:
     - { resource: "@PhpMobCmsBundle/Resources/config/app/sylius_resource.yml" }
     #- { resource: "@PhpMobCmsBundle/Resources/config/app/sylius_fixtures.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/grids/admin/main.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/twig.yml" }

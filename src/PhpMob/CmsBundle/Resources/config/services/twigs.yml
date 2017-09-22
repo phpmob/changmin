@@ -1,0 +1,14 @@
+services:
+    phpmob.twig.intl:
+        public: false
+        class: \Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
+    phpmob.twig.template_loader:
+        public: false
+        class: PhpMob\CmsBundle\Twig\TemplateLoader
+        arguments:
+            - "@phpmob.repository.template"
+        tags:
+            - { name: twig.loader }

@@ -1,0 +1,15 @@
+phpmob_cms_page_view:
+    path: /{slug}
+    methods: ['GET']
+    requirements:
+        slug: .*
+    defaults:
+        _controller: phpmob.controller.page:viewAction
+        _sylius:
+            event: page_view
+            flash: flase
+            permission: false
+            template: "@PhpMobCms/tpls/page.html.twig"
+            repository:
+                method: findPageBySlug
+                arguments: [ $slug, "%locale%" ]

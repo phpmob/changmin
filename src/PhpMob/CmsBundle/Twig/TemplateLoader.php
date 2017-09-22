@@ -12,7 +12,7 @@
 namespace PhpMob\CmsBundle\Twig;
 
 use PhpMob\CmsBundle\Model\TemplateInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use PhpMob\CmsBundle\Repository\TemplateRepositoryInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
@@ -24,10 +24,10 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
     /**
      * @var string
      */
-    const PREFIX = '@tpl/';
+    const PREFIX = TemplateInterface::PREFIX;
 
     /**
-     * @var RepositoryInterface
+     * @var TemplateRepositoryInterface
      */
     private $repository;
 
@@ -36,7 +36,7 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
      */
     private $hits = [];
 
-    public function __construct(RepositoryInterface $repository)
+    public function __construct(TemplateRepositoryInterface $repository)
     {
         $this->repository = $repository;
     }
@@ -54,7 +54,7 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
      */
     public function getCacheKey($name)
     {
-        return $name;
+        return (string)$name;
     }
 
     /**
@@ -62,7 +62,7 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
      */
     public function isFresh($name, $time)
     {
-        return $this->getLastUpdated($name) <= $time;
+        return $this->getLastUpdated((string)$name) <= $time;
     }
 
     /**
@@ -70,6 +70,8 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
      */
     public function exists($name)
     {
+        $name = (string)$name;
+
         if (isset($this->hits[$name])) {
             return true;
         }
@@ -88,15 +90,15 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
      *
      * @return integer
      */
-    private function getLastUpdated($name)
+    private function getLastUpdated(string $name)
     {
         if (!isset($this->hits[$name])) {
-            $this->hits[$name] = $this->findTemplate($name)
-                ->getUpdatedAt()
-                ->getTimestamp();
+            $this->hits[$name] = $this->findTemplate($name);
         }
 
-        return $this->hits[$name];
+        return $this->hits[$name]
+            ->getUpdatedAt()
+            ->getTimestamp();
     }
 
     /**
@@ -104,7 +106,7 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
      *
      * @return bool|string
      */
-    private function getTemplateName($name)
+    private function getTemplateName(string $name)
     {
         return substr($name, strlen(self::PREFIX));
     }
@@ -115,9 +117,14 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
      * @return null|object|TemplateInterface
      * @throws \Twig_Error_Loader
      */
-    private function findTemplate($name)
+    private function findTemplate(string $name)
     {
-        if ($template = $this->repository->findOneBy(['name' => $this->getTemplateName($name)])) {
+        if (!preg_match(sprintf('|^%s|', preg_quote(self::PREFIX)), $name)) {
+            $prefix = self::PREFIX;
+            throw new \Twig_Error_Loader("Only supported template starts with $prefix.");
+        }
+
+        if ($template = $this->repository->findTemplate($this->getTemplateName($name))) {
             return $template;
         }
 

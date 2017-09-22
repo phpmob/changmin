@@ -6,6 +6,7 @@ sylius_admin_template:
         templates: ChangMin:Crud
         grid: phpmob_admin_template
         except: [ "show" ]
+        redirect: update
         permission: true
         vars:
             all:

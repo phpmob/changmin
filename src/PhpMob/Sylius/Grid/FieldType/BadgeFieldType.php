@@ -45,6 +45,8 @@ class BadgeFieldType implements FieldTypeInterface
             $data = $this->dataExtractor->get($field, $data);
         }
 
+        $field->setOptions($options);
+
         return $this->twig->render($options['template'], ['data' => $data, 'options' => $options]);
     }
 

@@ -36,6 +36,21 @@ class Template implements TemplateInterface
     protected $content;
 
     /**
+     * @var string
+     */
+    protected $type = self::TYPE_NORMAL;
+
+    /**
+     * @var array
+     */
+    protected $options = [];
+
+    /**
+     * @var array
+     */
+    protected $userTranslations = [];
+
+    /**
      * {@inheritdoc}
      */
     public function getId(): int
@@ -48,7 +63,7 @@ class Template implements TemplateInterface
      */
     public function getName(): string
     {
-        return (string) $this->name;
+        return (string)$this->name;
     }
 
     /**
@@ -73,6 +88,62 @@ class Template implements TemplateInterface
     public function setContent(?string $content): void
     {
         $this->content = $content;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getType(): string
+    {
+        return (string)$this->type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setType(string $type): void
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isAbstractType()
+    {
+        return $this->type === self::TYPE_ABSTRACT;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOptions(): array
+    {
+        return (array)$this->options;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUserTranslations(): array
+    {
+        return (array)$this->userTranslations;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUserTranslations(array $userTranslations)
+    {
+        $this->userTranslations = $userTranslations;
     }
 
     /**

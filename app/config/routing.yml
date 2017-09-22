@@ -27,3 +27,7 @@ phpmob_media:
 phpmob_api_core:
     resource: "@PhpMobCoreBundle/Resources/config/routing/api/main.yml"
     prefix: /api/v{version}
+
+phpmob_cms_page:
+    resource: "@PhpMobCmsBundle/Resources/config/routing.yml"
+    prefix: /page

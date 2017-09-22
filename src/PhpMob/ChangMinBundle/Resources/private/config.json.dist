@@ -5,24 +5,20 @@
         "src": "./private",
         "js": [
             "{src}/js/boot.js",
-            "./js/boot.js",
             "{src}/app/dist/static/js/*.js",
             "{node}/jquery/dist/jquery.js",
             "{node}/jquery-confirm/dist/jquery-confirm.min.js",
-            "{node}/pace-progress/pace.min.js",
+            "{node}/pace-progress/pace.js",
             "{node}/tether/dist/js/tether.js",
             "{node}/popper.js/dist/umd/popper.js",
             "{node}/bootstrap/dist/js/bootstrap.js",
             "{node}/selectize/dist/js/standalone/selectize.min.js",
             "{node}/sortablejs/Sortable.min.js",
             "{node}/table-resizer/table-resize.js",
-            "{node}/holderjs/holderjs.min.js",
             "{src}/js/lib/**",
-            "./js/lib/**",
             "{src}/js/partial/**",
             "./js/partial/**",
-            "{src}/js/start.js",
-            "./js/start.js"
+            "{src}/js/start.js"
         ],
         "sass": [
             "{src}/sass/**",
@@ -30,7 +26,7 @@
         ],
         "css": [
             "{node}/jquery-confirm/dist/jquery-confirm.min.css",
-            "{node}/pace-progress/themes/blue/pace-theme-minimal.css",
+            "{node}/pace-progress/themes/blue/pace-theme-center-simple.css",
             "{node}/selectize/dist/css/selectize.css",
             "{node}/table-resizer/table-resize.css",
             "{src}/css/**",

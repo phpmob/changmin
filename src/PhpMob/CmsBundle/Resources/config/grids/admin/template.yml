@@ -5,28 +5,33 @@ sylius_grid:
                 name: doctrine/orm
                 options:
                     class: "%phpmob.model.template.class%"
-            limits: [20]
+            limits: [100]
             sorting:
                 name: asc
             fields:
+                type:
+                    type: tpl
+                    label: Type
+                    sortable: ~
+                    options:
+                        width: 60px
+                        align: center
+                        template: "@PhpMobCms/Template/Grid/Field/type.html.twig"
                 name:
-                    type: text
+                    type: tpl
                     label: Name
                     sortable: ~
                     options:
                         width: auto
+                        template: "@PhpMobCms/Template/Grid/Field/name.html.twig"
                 createdAt:
-                    type: datetime
+                    type: localizeddate
                     label: Created At
                     sortable: ~
-                    options:
-                        format: d-m-Y H:i
                 updatedAt:
-                    type: datetime
+                    type: localizeddate
                     label: Updated At
                     sortable: ~
-                    options:
-                        format: d-m-Y H:i
             filters:
                 search:
                     type: string

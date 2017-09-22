@@ -4,6 +4,8 @@ sylius_resource:
             classes:
                 model: PhpMob\CmsBundle\Model\Page
                 interface: PhpMob\CmsBundle\Model\PageInterface
+                repository: PhpMob\CmsBundle\Doctrine\ORM\PageRepository
+                controller: PhpMob\CmsBundle\Controller\PageController
                 form: PhpMob\CmsBundle\Form\Type\PageType
             translation:
                 classes:
@@ -14,6 +16,7 @@ sylius_resource:
             classes:
                 model: PhpMob\CmsBundle\Model\Template
                 interface: PhpMob\CmsBundle\Model\TemplateInterface
+                repository: PhpMob\CmsBundle\Doctrine\ORM\TemplateRepository
                 form: PhpMob\CmsBundle\Form\Type\TemplateType
         phpmob.template_log_enty:
             classes:

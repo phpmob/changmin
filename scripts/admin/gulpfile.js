@@ -15,7 +15,6 @@ var gulp = require('./private/tasks.js')(require, {
             "{node}/selectize/dist/js/standalone/selectize.min.js",
             "{node}/sortablejs/Sortable.min.js",
             "{node}/table-resizer/table-resize.js",
-            "{node}/pace/pace.min.js",
             "{src}/js/lib/**",
             "{src}/js/partial/**",
             "./js/partial/**",

@@ -11,7 +11,7 @@
 
 namespace PhpMob\CmsBundle\Form\Type;
 
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use PhpMob\CmsBundle\Repository\TemplateRepositoryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\Options;
@@ -23,16 +23,16 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 final class TemplateChoiceType extends AbstractType
 {
     /**
-     * @var RepositoryInterface
+     * @var TemplateRepositoryInterface
      */
-    private $templateRepository;
+    private $repository;
 
     /**
-     * @param RepositoryInterface $templateRepository
+     * @param TemplateRepositoryInterface $repository
      */
-    public function __construct(RepositoryInterface $templateRepository)
+    public function __construct(TemplateRepositoryInterface $repository)
     {
-        $this->templateRepository = $templateRepository;
+        $this->repository = $repository;
     }
 
     /**
@@ -41,8 +41,8 @@ final class TemplateChoiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'choices' => function (Options $options): iterable {
-                return $this->templateRepository->findBy([], ['name' => 'asc']);
+            'choices' => function (Options $options) {
+                return $this->repository->findNoneAbstractTemplates();
             },
             'choice_value' => 'id',
             'choice_label' => 'name',

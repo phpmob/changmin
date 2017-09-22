@@ -1,0 +1,5 @@
+{% if data == constant('PhpMob\\CmsBundle\\Model\\Template::TYPE_ABSTRACT') %}
+    <span class="badge badge-warning" data-toggle="tooltip" title="{{ 'phpmob.form.template.type_abstract'|trans }}">{{ data|upper }}</span>
+{% else %}
+    <span class="badge badge-info" data-toggle="tooltip" title="{{ 'phpmob.form.template.type_normal'|trans }}">{{ data|upper }}</span>
+{% endif %}

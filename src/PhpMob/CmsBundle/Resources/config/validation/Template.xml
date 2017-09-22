@@ -25,7 +25,12 @@
             </constraint>
             <constraint name="Regex">
                 <option name="message">phpmob.cms.template.name.regex</option>
-                <option name="pattern">/^[\w-\.]*$/</option>
+                <option name="pattern">/^[\w-\/\.]*$/</option>
+                <option name="groups">phpmob</option>
+            </constraint>
+            <constraint name="Length">
+                <option name="max">60</option>
+                <option name="maxMessage">This value is too long. It should have 60 characters or less.</option>
                 <option name="groups">phpmob</option>
             </constraint>
         </property>

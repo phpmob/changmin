@@ -203,6 +203,14 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
+    public function getTemplateName(): ?string
+    {
+        return $this->template ? TemplateInterface::PREFIX.$this->template->getName() : null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getScript()
     {
         return $this->script;

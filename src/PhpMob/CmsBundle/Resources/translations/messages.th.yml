@@ -18,3 +18,8 @@ phpmob:
         template:
             name: Name
             content: Content
+            type: Type
+            type_normal: Normal
+            type_abstract: Extendable Only
+            options: Options
+            user_translations: Translation

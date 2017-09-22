@@ -8,6 +8,12 @@ PhpMob\CmsBundle\Model\PageTranslation:
             generator:
                 strategy: AUTO
 
+    indexes:
+        IDX_SLUGS:
+            columns:
+                - slug
+                - locale
+
     fields:
         title:
             type: string

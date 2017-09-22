@@ -68,6 +68,11 @@ interface PageInterface extends ResourceInterface, TimestampableInterface, SlugA
     public function getTemplate(): ?TemplateInterface;
 
     /**
+     * @return null|string
+     */
+    public function getTemplateName(): ?string;
+
+    /**
      * @param TemplateInterface|null $template
      */
     public function setTemplate(?TemplateInterface $template);
