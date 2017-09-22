@@ -27,7 +27,7 @@ sylius_grid:
                     type: tpl
                     label: Template
                     sortable: false
-                    path: templateName
+                    path: template.name
                     options:
                         width: auto
                         template: "@PhpMobCms/Template/Grid/Field/name.html.twig"
