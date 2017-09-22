@@ -13,6 +13,7 @@ namespace PhpMob\CmsBundle\Twig;
 
 use PhpMob\CmsBundle\Model\TemplateInterface;
 use PhpMob\CmsBundle\Repository\TemplateRepositoryInterface;
+use PhpMob\CmsBundle\Translation\AddDefinedTranslationInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
@@ -32,13 +33,21 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
     private $repository;
 
     /**
+     * @var AddDefinedTranslationInterface
+     */
+    private $definedTranslation;
+
+    /**
      * @var array
      */
     private $hits = [];
 
-    public function __construct(TemplateRepositoryInterface $repository)
-    {
+    public function __construct(
+        TemplateRepositoryInterface $repository,
+        AddDefinedTranslationInterface $definedTranslation
+    ) {
         $this->repository = $repository;
+        $this->definedTranslation = $definedTranslation;
     }
 
     /**
@@ -125,6 +134,8 @@ final class TemplateLoader implements \Twig_LoaderInterface, \Twig_ExistsLoaderI
         }
 
         if ($template = $this->repository->findTemplate($this->getTemplateName($name))) {
+            $this->definedTranslation->addTranslations($template);
+
             return $template;
         }
 

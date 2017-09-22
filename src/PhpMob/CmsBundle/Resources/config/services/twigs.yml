@@ -10,5 +10,6 @@ services:
         class: PhpMob\CmsBundle\Twig\TemplateLoader
         arguments:
             - "@phpmob.repository.template"
+            - "@phpmob.locale.add_defined_translation"
         tags:
             - { name: twig.loader }

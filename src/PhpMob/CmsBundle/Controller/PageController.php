@@ -55,8 +55,6 @@ class PageController extends ResourceController
             $template = $resource->getTemplate();
 
             if ($template) {
-                $this->addTranslations($template);
-
                 $tpl = $resource->getTemplateName();
                 $options = $template->getOptions();
             } else {
