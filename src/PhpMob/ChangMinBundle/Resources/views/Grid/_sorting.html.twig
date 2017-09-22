@@ -5,13 +5,13 @@
     {% set width = field.options.width|default('auto') %}
 
     {% if grid.isSortedBy(field.name) %}
-        <th class="sortable sorted {{ order == 'desc' ? 'descending' : 'ascending' }} grid-table-column-{{ field.name }} text-{{ align }}" style="max-width: {{ width }};">
+        <th class="sortable sorted {{ order == 'desc' ? 'descending' : 'ascending' }} grid-table-column-{{ field.name }} text-{{ align }}" style="width: {{ width }};">
             <a href="{{- link(field.name, attributes, (order == 'desc' ? 'asc' : 'desc'), grid.parameters.all) -}}">
                 {{- field.label|trans -}} <i class="icon icon-{{ (order == 'desc' ? 'down' : 'up') }}-open-mini"></i>
             </a>
         </th>
     {% else %}
-        <th class="sortable grid-table-column-{{ field.name }} text-{{ align }}" style="max-width: {{ width }};">
+        <th class="sortable grid-table-column-{{ field.name }} text-{{ align }}" style="width: {{ width }};">
             <a href="{{- link(field.name, attributes, order, grid.parameters.all) -}}">{{ field.label|trans }}</a>
         </th>
     {% endif %}

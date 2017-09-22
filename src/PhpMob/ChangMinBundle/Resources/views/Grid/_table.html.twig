@@ -8,7 +8,7 @@
             {% else %}
                 {% set align = field.options.align|default('left') %}
                 {% set width = field.options.width|default('auto') %}
-                <th class="grid-table-column-{{ field.name }} text-{{ align }}" style="max-width: {{ width }};">
+                <th class="grid-table-column-{{ field.name }} text-{{ align }}" style="width: {{ width }};">
                     {{ field.label|trans }}
                 </th>
             {% endif %}

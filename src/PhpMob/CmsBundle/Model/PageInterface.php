@@ -63,14 +63,14 @@ interface PageInterface extends ResourceInterface, TimestampableInterface, SlugA
     public function setMetaKeywords($metaKeywords);
 
     /**
-     * @return string
+     * @return TemplateInterface|null
      */
-    public function getTemplate();
+    public function getTemplate(): ?TemplateInterface;
 
     /**
-     * @param string $template
+     * @param TemplateInterface|null $template
      */
-    public function setTemplate($template);
+    public function setTemplate(?TemplateInterface $template);
 
     /**
      * @return string
@@ -91,4 +91,24 @@ interface PageInterface extends ResourceInterface, TimestampableInterface, SlugA
      * @param string $style
      */
     public function setStyle($style);
+
+    /**
+     * @return array
+     */
+    public function getOptions(): array;
+
+    /**
+     * @param array $options
+     */
+    public function setOptions(array $options);
+
+    /**
+     * @return array
+     */
+    public function getUserTranslations(): array;
+
+    /**
+     * @param array $trans
+     */
+    public function setUserTranslations(array $trans);
 }

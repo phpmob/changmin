@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                                        http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
+
+    <class name="PhpMob\CmsBundle\Model\Template">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">
+                <value>name</value>
+            </option>
+            <option name="errorPath">name</option>
+            <option name="message">This name already in used.</option>
+            <option name="groups">
+                <value>phpmob</value>
+            </option>
+        </constraint>
+        <property name="name">
+            <constraint name="NotBlank">
+                <option name="message">This value should not be blank.</option>
+                <option name="groups">
+                    <value>phpmob</value>
+                </option>
+            </constraint>
+            <constraint name="Regex">
+                <option name="message">phpmob.cms.template.name.regex</option>
+                <option name="pattern">/^[\w-\.]*$/</option>
+                <option name="groups">phpmob</option>
+            </constraint>
+        </property>
+        <property name="content">
+            <constraint name="NotBlank">
+                <option name="message">This value should not be blank.</option>
+                <option name="groups">
+                    <value>phpmob</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

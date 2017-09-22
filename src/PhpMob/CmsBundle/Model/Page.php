@@ -18,7 +18,7 @@ use Sylius\Component\Resource\Model\TranslatableTrait;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  *
- * @method PageTranslation getTranslation()
+ * @method PageTranslation getTranslation(?string $locale = null)
  */
 class Page implements PageInterface
 {
@@ -59,7 +59,7 @@ class Page implements PageInterface
     protected $metaKeywords;
 
     /**
-     * @var string
+     * @var TemplateInterface
      */
     protected $template;
 
@@ -72,6 +72,16 @@ class Page implements PageInterface
      * @var string
      */
     protected $style;
+
+    /**
+     * @var array
+     */
+    protected $options = [];
+
+    /**
+     * @var array
+     */
+    protected $userTranslations = [];
 
     public function __construct()
     {
@@ -177,7 +187,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function getTemplate()
+    public function getTemplate(): ?TemplateInterface
     {
         return $this->template;
     }
@@ -185,7 +195,7 @@ class Page implements PageInterface
     /**
      * {@inheritdoc}
      */
-    public function setTemplate($template)
+    public function setTemplate(?TemplateInterface $template)
     {
         $this->template = $template;
     }
@@ -220,5 +230,37 @@ class Page implements PageInterface
     public function setStyle($style)
     {
         $this->style = $style;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOptions(): array
+    {
+        return $this->options;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setOptions(array $options)
+    {
+        $this->options = $options;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUserTranslations(): array
+    {
+        return $this->userTranslations;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUserTranslations(array $userTranslations)
+    {
+        $this->userTranslations = $userTranslations;
     }
 }

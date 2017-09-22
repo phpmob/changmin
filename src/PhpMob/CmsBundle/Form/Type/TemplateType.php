@@ -19,7 +19,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class PageTranslationType extends AbstractResourceType
+class TemplateType extends AbstractResourceType
 {
     /**
      * {@inheritdoc}
@@ -27,25 +27,14 @@ class PageTranslationType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, [
-                'label' => 'phpmob.form.page.title',
+
+            ->add('name', TextType::class, [
+                'label' => 'phpmob.form.template.name',
                 'required' => true,
             ])
-            ->add('slug', TextType::class, [
-                'label' => 'phpmob.form.page.slug',
+            ->add('content', TextareaType::class, [
+                'label' => 'phpmob.form.template.content',
                 'required' => true,
-            ])
-            ->add('body', TextareaType::class, [
-                'label' => 'phpmob.form.page.body',
-                'required' => false,
-            ])
-            ->add('metaDescription', TextType::class, [
-                'label' => 'phpmob.form.page.meta_description',
-                'required' => false,
-            ])
-            ->add('metaKeywords', TextType::class, [
-                'label' => 'phpmob.form.page.meta_keywords',
-                'required' => false,
             ])
         ;
     }

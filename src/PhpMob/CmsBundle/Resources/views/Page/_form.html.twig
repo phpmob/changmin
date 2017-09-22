@@ -1,11 +1,11 @@
 {{ form_errors(form) }}
 {# FIXME: nested tab bug #}
 <div class="row">
-    <div class="col-3">
+    <div class="col-2">
         {{ form_row(form.template) }}
         {{ form_row(form.enabled) }}
     </div>
-    <div class="col-9">
+    <div class="col-10">
         <ul class="nav nav-tabs" id="cms-page">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#page-content">{{ 'Content' }}</a>
@@ -16,11 +16,19 @@
             <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#page-style">{{ form.style.vars.label|trans }}</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#page-options">{{ form.options.vars.label|trans }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#page-user-translations">{{ form.userTranslations.vars.label|trans }}</a>
+            </li>
         </ul>
         <div class="tab-content">
             <div class="tab-pane active" id="page-content">{{ form_row(form.translations) }}</div>
             <div class="tab-pane" id="page-script">{{ form_row(form.script, { label: false }) }}</div>
             <div class="tab-pane" id="page-style">{{ form_row(form.style, { label: false }) }}</div>
+            <div class="tab-pane" id="page-options">{{ form_row(form.options, { label: false }) }}</div>
+            <div class="tab-pane" id="page-user-translations">{{ form_row(form.userTranslations, { label: false }) }}</div>
         </div>
     </div>
 </div>

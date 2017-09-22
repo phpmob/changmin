@@ -10,3 +10,12 @@ sylius_resource:
                     model: PhpMob\CmsBundle\Model\PageTranslation
                     interface: PhpMob\CmsBundle\Model\PageTranslationInterface
                     form: PhpMob\CmsBundle\Form\Type\PageTranslationType
+        phpmob.template:
+            classes:
+                model: PhpMob\CmsBundle\Model\Template
+                interface: PhpMob\CmsBundle\Model\TemplateInterface
+                form: PhpMob\CmsBundle\Form\Type\TemplateType
+        phpmob.template_log_enty:
+            classes:
+                model: PhpMob\CmsBundle\Model\TemplateLogEntry
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\ResourceLogEntryRepository

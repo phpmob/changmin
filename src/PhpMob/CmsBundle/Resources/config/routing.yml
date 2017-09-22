@@ -1,3 +1,0 @@
-phpmob_cms_homepage:
-    path:     /
-    defaults: { _controller: PhpMobCmsBundle:Default:index }

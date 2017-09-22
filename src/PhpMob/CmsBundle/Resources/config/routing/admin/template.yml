@@ -1,0 +1,28 @@
+sylius_admin_template:
+    type: sylius.resource
+    resource: |
+        alias: phpmob.template
+        section: admin
+        templates: ChangMin:Crud
+        grid: phpmob_admin_template
+        except: [ "show" ]
+        permission: true
+        vars:
+            all:
+                templates:
+                    form: PhpMobCmsBundle:Template:_form.html.twig
+            index:
+                icon: fa fa-code
+                header: "Templates"
+            create:
+                header: "Create Template"
+                breadcrumb:
+                    index:
+                        icon: fa fa-code
+                        label: "Templates"
+            update:
+                header: "Edit Template"
+                breadcrumb:
+                    index:
+                        icon: fa fa-code
+                        label: "Templates"

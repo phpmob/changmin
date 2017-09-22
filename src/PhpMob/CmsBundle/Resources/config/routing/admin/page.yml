@@ -1,4 +1,5 @@
-sylius_admin_demo_user:
+sylius_admin_page:
+    type: sylius.resource
     resource: |
         alias: phpmob.page
         section: admin
@@ -31,4 +32,3 @@ sylius_admin_demo_user:
                     index:
                         icon: licon licon-note
                         label: "Pages"
-    type: sylius.resource

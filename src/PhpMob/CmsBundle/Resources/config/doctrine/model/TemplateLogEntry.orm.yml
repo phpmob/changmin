@@ -1,0 +1,32 @@
+PhpMob\CmsBundle\Model\TemplateLogEntry:
+    type: mappedSuperclass
+    table: phpmob_cms_template_log_entry
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    fields:
+        action:
+            type: string
+            nullable: true
+        loggedAt:
+            type: datetime
+            nullable: true
+        objectId:
+            type: string
+            nullable: true
+        objectClass:
+            type: string
+            nullable: true
+        version:
+            type: integer
+            nullable: true
+        data:
+            type: array
+            nullable: true
+        username:
+            type: string
+            nullable: true

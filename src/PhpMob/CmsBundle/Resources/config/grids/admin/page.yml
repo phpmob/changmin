@@ -20,6 +20,8 @@ sylius_grid:
                     type: text
                     label: Title
                     sortable: translation.title
+                    options:
+                        width: auto
                 createdAt:
                     type: datetime
                     label: Created At

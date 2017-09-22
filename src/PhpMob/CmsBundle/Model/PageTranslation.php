@@ -62,7 +62,7 @@ class PageTranslation extends AbstractTranslation implements PageTranslationInte
      */
     public function getSlug(): string
     {
-        return $this->slug;
+        return (string) $this->slug;
     }
 
     /**

@@ -2,6 +2,11 @@ ChangMin.updateMenu(function (menu) {
     return menu.set('cms', ChangMin.createMap({
         label: 'CMS',
         children: {
+            template: {
+                icon: 'fa fa-code',
+                label: 'Templates',
+                link: '{{ path('phpmob_admin_template_index') }}',
+            },
             page: {
                 icon: 'licon licon-note',
                 label: 'Pages',
