@@ -1,3 +1,4 @@
+var PHPMOB_ASSET_PATH = PHPMOB_ASSET_PATH || document.currentScript.src.replace('/js/app.js', '');
 var initScripting = function (scope)
 {
     SelectizeSetup('select, [data-chooser]', scope);
@@ -13,7 +14,9 @@ var initScripting = function (scope)
     $('.holderjs, img[data-src^="holder.js"]', scope).each(function () {
         Holder.run({images: this});
     });
-}
+
+    $('[data-toggle="tooltip"]').tooltip();
+};
 
 $(function () {
     $(document).on('dom-node-inserted', function (e, scope) {

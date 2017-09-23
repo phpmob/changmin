@@ -1,0 +1,51 @@
+PhpMob\CmsBundle\Model\Template:
+    type: mappedSuperclass
+    table: phpmob_cms_template
+
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+
+    gedmo:
+        loggable:
+            logEntryClass: PhpMob\CmsBundle\Model\TemplateLogEntry
+
+    indexes:
+        IDX_NAME:
+            columns:
+                - name
+        IDX_TYPE:
+            columns:
+                - type
+
+    fields:
+        name:
+            type: string
+            nullable: true
+            unique: true
+            length: 60
+        type:
+            type: string
+            nullable: true
+            length: 4
+        content:
+            type: text
+            nullable: true
+        options:
+            type: json
+            nullable: true
+        definedTranslations:
+            type: json
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update

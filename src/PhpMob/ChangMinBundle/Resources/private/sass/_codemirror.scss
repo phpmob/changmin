@@ -1,0 +1,10 @@
+$codemirror-font-size-base: 14px !default;
+
+.CodeMirror {
+    font-size: $codemirror-font-size-base;
+}
+
+.CodeMirror-gutters {
+    border-right: none !important;;
+    background-color: transparent !important;
+}

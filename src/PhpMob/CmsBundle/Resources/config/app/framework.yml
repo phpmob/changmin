@@ -1,0 +1,4 @@
+framework:
+    translator:
+        enabled: true
+        fallbacks: ['%locale%']

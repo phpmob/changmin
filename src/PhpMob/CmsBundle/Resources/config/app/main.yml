@@ -1,5 +1,8 @@
 imports:
     #- { resource: "@PhpMobCmsBundle/Resources/config/app/phpmob_media.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/sylius_resource.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/sylius_locale.yml" }
     #- { resource: "@PhpMobCmsBundle/Resources/config/app/sylius_fixtures.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/grids/admin/main.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/framework.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/twig.yml" }

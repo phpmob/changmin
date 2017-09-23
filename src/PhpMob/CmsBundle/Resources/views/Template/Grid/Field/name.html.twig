@@ -1,0 +1,3 @@
+{% if data %}
+    <span class="text-muted">{{ constant('PhpMob\\CmsBundle\\Model\\Template::PREFIX') }}</span>{{ data.name|default(data) }}
+{% endif %}

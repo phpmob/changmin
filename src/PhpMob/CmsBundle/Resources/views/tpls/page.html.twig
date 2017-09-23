@@ -1,0 +1,8 @@
+{% extends "@PhpMobCms/tpls/default.html.twig" %}
+
+{% block content %}
+    {{ 'x_test'|trans }}
+    {{ 'foo_test'|trans }}
+    {{ 'tpl.trans.x'|trans }}
+    {{ dump(_context) }}
+{% endblock content %}

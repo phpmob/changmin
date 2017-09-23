@@ -1,0 +1,2 @@
+{% set locales = data|split('_') %}
+<span class="flag-icon flag-icon-{{ locales[1]|default(locales[0]) }}"></span>

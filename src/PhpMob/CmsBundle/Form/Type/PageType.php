@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the PhpMob package.
+ *
+ * (c) Ishmael Doss <nukboon@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace PhpMob\CmsBundle\Form\Type;
 
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
@@ -9,6 +18,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+/**
+ * @author Ishmael Doss <nukboon@gmail.com>
+ */
 class PageType extends AbstractResourceType
 {
     /**
@@ -20,15 +32,15 @@ class PageType extends AbstractResourceType
             ->add('translations', ResourceTranslationsType::class, [
                 'label' => 'phpmob.form.page.translations',
                 //'label' => false,
-                'required' => false,
                 'entry_type' => PageTranslationType::class,
             ])
             ->add('enabled', CheckboxType::class, [
                 'label' => 'phpmob.form.page.enabled',
                 'required' => false,
             ])
-            ->add('template', TextType::class, [
+            ->add('template', TemplateChoiceType::class, [
                 'label' => 'phpmob.form.page.template',
+                'placeholder' => 'phpmob.form.page.template_select',
                 'required' => false,
             ])
             ->add('script', TextareaType::class, [
@@ -37,6 +49,14 @@ class PageType extends AbstractResourceType
             ])
             ->add('style', TextareaType::class, [
                 'label' => 'phpmob.form.page.style',
+                'required' => false,
+            ])
+            ->add('options', YamlType::class, [
+                'label' => 'phpmob.form.page.options',
+                'required' => false,
+            ])
+            ->add('definedTranslations', YamlType::class, [
+                'label' => 'phpmob.form.page.defined_translations',
                 'required' => false,
             ])
         ;

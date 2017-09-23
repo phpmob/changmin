@@ -1,10 +1,25 @@
-phpmob.form.page.translations: Translation
-phpmob.form.page.enabled: Enabled
-phpmob.form.page.template: Template
-phpmob.form.page.title: Title
-phpmob.form.page.slug: Slug
-phpmob.form.page.body: Body
-phpmob.form.page.meta_description: Meta Description
-phpmob.form.page.meta_keywords: Meta Keywords
-phpmob.form.page.script: Script
-phpmob.form.page.style: Style
+phpmob:
+    form:
+        page:
+            translations: Translation
+            enabled: Enabled
+            template: Template
+            template_select: Select Template
+            title: Title
+            slug: Slug
+            body: Body
+            meta_description: Meta Description
+            meta_keywords: Meta Keywords
+            script: Script
+            style: Style
+            options: Options
+            defined_translations: Translation
+
+        template:
+            name: Name
+            content: Content
+            type: Type
+            type_normal: Normal
+            type_abstract: Extendable Only
+            options: Options
+            defined_translations: Translation

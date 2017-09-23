@@ -1,0 +1,29 @@
+sylius_admin_locale:
+    type: sylius.resource
+    resource: |
+        alias: sylius.locale
+        section: admin
+        templates: ChangMin:Crud
+        grid: phpmob_admin_locale
+        except: [ "show" ]
+        redirect: index
+        permission: true
+        vars:
+            all:
+                templates:
+                    form: PhpMobCmsBundle:Locale:_form.html.twig
+            index:
+                icon: fa fa-language
+                header: "Locales"
+            create:
+                header: "Create Locale"
+                breadcrumb:
+                    index:
+                        icon: fa fa-language
+                        label: "Locales"
+            update:
+                header: "Edit Locale"
+                breadcrumb:
+                    index:
+                        icon: fa fa-language
+                        label: "Locales"

@@ -1,0 +1,5 @@
+twig:
+    globals:
+        phpmob_assets_version: "%phpmob_assets_version%"
+        phpmob_gif64: "%phpmob_gif64%"
+        cx_locale: "@sylius.context.locale"

@@ -1,0 +1,53 @@
+sylius_grid:
+    grids:
+        phpmob_admin_template:
+            driver:
+                name: doctrine/orm
+                options:
+                    class: "%phpmob.model.template.class%"
+            limits: [100]
+            sorting:
+                name: asc
+            fields:
+                type:
+                    type: tpl
+                    label: Type
+                    sortable: ~
+                    options:
+                        width: 60px
+                        align: center
+                        template: "@PhpMobCms/Template/Grid/Field/type.html.twig"
+                name:
+                    type: tpl
+                    label: Name
+                    sortable: ~
+                    options:
+                        width: auto
+                        template: "@PhpMobCms/Template/Grid/Field/name.html.twig"
+                createdAt:
+                    type: localizeddate
+                    label: Created At
+                    sortable: ~
+                updatedAt:
+                    type: localizeddate
+                    label: Updated At
+                    sortable: ~
+            filters:
+                search:
+                    type: string
+                    label: Search
+                    options:
+                        default: true
+                        fields:
+                            - name
+            actions:
+                main:
+                    create:
+                        icon: fa fa-plus
+                        label: Create Template
+                        type: create
+                item:
+                    update:
+                        type: update
+                    delete:
+                        type: delete

@@ -1,4 +1,4 @@
-var gulp = require('./private/tasks.js')(require, {
+require('./private/tasks.js')(require, {
     "paths": {
         "node": "./node_modules",
         "output": "../../web/assets/admin",
@@ -15,7 +15,7 @@ var gulp = require('./private/tasks.js')(require, {
             "{node}/selectize/dist/js/standalone/selectize.min.js",
             "{node}/sortablejs/Sortable.min.js",
             "{node}/table-resizer/table-resize.js",
-            "{node}/pace/pace.min.js",
+            "{node}/currentscript/dist/document.currentScript.js",
             "{src}/js/lib/**",
             "{src}/js/partial/**",
             "./js/partial/**",

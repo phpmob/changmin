@@ -9,31 +9,36 @@ sylius_grid:
             sorting:
                 createdAt: desc
             fields:
-                id:
-                    type: text
-                    label: ID
+                enabled:
+                    type: tpl
+                    label: Enabled
                     sortable: ~
                     options:
+                        template: "@ChangMin/Grid/Field/enabled.html.twig"
                         align: center
                         width: 80px
                 title:
                     type: text
                     label: Title
                     sortable: translation.title
+                    options:
+                        width: auto
+                template:
+                    type: tpl
+                    label: Template
+                    sortable: false
+                    path: template
+                    options:
+                        width: auto
+                        template: "@PhpMobCms/Template/Grid/Field/name.html.twig"
                 createdAt:
-                    type: datetime
+                    type: localizeddate
                     label: Created At
                     sortable: ~
-                    options:
-                        format: d-m-Y H:i
-#                enabled:
-#                    type: tpl
-#                    label: Enabled
-#                    sortable: ~
-#                    options:
-#                        template: "@ChangMin/Grid/Field/enabled.html.twig"
-#                        align: center
-#                        width: 80px
+                updatedAt:
+                    type: localizeddate
+                    label: Updated At
+                    sortable: ~
             filters:
                 search:
                     type: string

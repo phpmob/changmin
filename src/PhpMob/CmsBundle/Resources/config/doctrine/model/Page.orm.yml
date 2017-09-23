@@ -11,14 +11,17 @@ PhpMob\CmsBundle\Model\Page:
     fields:
         enabled:
             type: boolean
-        template:
-            type: string
-            nullable: true
         script:
             type: text
             nullable: true
         style:
             type: text
+            nullable: true
+        options:
+            type: json
+            nullable: true
+        definedTranslations:
+            type: json
             nullable: true
         createdAt:
             type: datetime
@@ -30,3 +33,10 @@ PhpMob\CmsBundle\Model\Page:
             gedmo:
                 timestampable:
                     on: update
+
+    manyToOne:
+        template:
+            targetEntity: PhpMob\CmsBundle\Model\TemplateInterface
+            joinColumn:
+                nullable: true
+                onDelete: "SET NULL"

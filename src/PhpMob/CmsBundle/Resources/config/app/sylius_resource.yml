@@ -4,9 +4,21 @@ sylius_resource:
             classes:
                 model: PhpMob\CmsBundle\Model\Page
                 interface: PhpMob\CmsBundle\Model\PageInterface
+                repository: PhpMob\CmsBundle\Doctrine\ORM\PageRepository
+                controller: PhpMob\CmsBundle\Controller\PageController
                 form: PhpMob\CmsBundle\Form\Type\PageType
             translation:
                 classes:
                     model: PhpMob\CmsBundle\Model\PageTranslation
                     interface: PhpMob\CmsBundle\Model\PageTranslationInterface
                     form: PhpMob\CmsBundle\Form\Type\PageTranslationType
+        phpmob.template:
+            classes:
+                model: PhpMob\CmsBundle\Model\Template
+                interface: PhpMob\CmsBundle\Model\TemplateInterface
+                repository: PhpMob\CmsBundle\Doctrine\ORM\TemplateRepository
+                form: PhpMob\CmsBundle\Form\Type\TemplateType
+        phpmob.template_log_enty:
+            classes:
+                model: PhpMob\CmsBundle\Model\TemplateLogEntry
+                repository: Sylius\Bundle\ResourceBundle\Doctrine\ORM\ResourceLogEntryRepository

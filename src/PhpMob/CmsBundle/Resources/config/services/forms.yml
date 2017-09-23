@@ -1,4 +1,19 @@
 services:
+    phpmob.form.template_type:
+        class: PhpMob\CmsBundle\Form\Type\TemplateType
+        arguments:
+            - "%phpmob.model.template.class%"
+            - [ phpmob ]
+        tags:
+            - { name: form.type }
+
+    phpmob.form.template_choice_type:
+        class: PhpMob\CmsBundle\Form\Type\TemplateChoiceType
+        arguments:
+            - "@phpmob.repository.template"
+        tags:
+            - { name: form.type }
+
     phpmob.form.page_type:
         class: PhpMob\CmsBundle\Form\Type\PageType
         arguments:

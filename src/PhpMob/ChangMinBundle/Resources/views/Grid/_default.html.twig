@@ -8,6 +8,12 @@
 {% endif %}
 
 {% if grid.data|length > 0 %}
+    {% set rows %}
+        {# to use default options render before headers #}
+        {% for row in grid.data %}
+            {{ table.row(grid, definition, row) }}
+        {% endfor %}
+    {% endset %}
     <table class="table table-sm m-0">
         <thead>
         <tr>
@@ -15,13 +21,10 @@
         </tr>
         </thead>
         <tbody>
-        {% for row in grid.data %}
-            {{ table.row(grid, definition, row) }}
-        {% endfor %}
+        {{ rows|raw }}
         </tbody>
     </table>
-    <script>
-        /*
+    {#<script>
          var $grid = $('.table-grid');
          var $table = $('table', $grid);
          new TableResize($table.get(0), { restoreState: true, fixed: true });
@@ -34,8 +37,8 @@
          $table.find('tbody tr:first').children().each(function (i, v) {
          $(v).width(colsWidth[i]);
          });
-         }*/
-    </script>
+         }
+    </script>#}
 {% else %}
     <div class="no-results justify-content-center">
         <div class="align-self-center">

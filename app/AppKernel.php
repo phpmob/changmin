@@ -11,6 +11,7 @@ class AppKernel extends Kernel
             // Resources -- First!
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
+            new \Sylius\Bundle\LocaleBundle\SyliusLocaleBundle(),
             new \PhpMob\MediaBundle\PhpMobMediaBundle(),
             new \PhpMob\CmsBundle\PhpMobCmsBundle(),
             new \PhpMob\CoreBundle\PhpMobCoreBundle(),

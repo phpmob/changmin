@@ -1,6 +1,6 @@
 $simple-line-icon-prefix: "licon-" !default;
 
-@import "../private/scss/bootstrap";
+@import "../private/sass/bootstrap";
 @import "bootstrap";
 
 /*
@@ -20,4 +20,4 @@ $simple-line-icon-prefix: "licon-" !default;
 
 //@import "../node_modules/primer-breadcrumb/build/build.css";
 
-@import "../private/scss/main";
+@import "../private/sass/main";
