@@ -1,4 +1,4 @@
-var gulp = require('./private/tasks.js')(require, {
+require('./private/tasks.js')(require, {
     "paths": {
         "node": "./node_modules",
         "output": "../../web/assets/admin",
