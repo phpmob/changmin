@@ -36,13 +36,6 @@ module.exports = function (require, config) {
     };
 
     var isProd = gutil.env.env === 'prod';
-    var buildFile = function (name, ext) {
-        if (isProd) {
-            return name + '.min.' + ext;
-        }
-
-        return name + '.' + ext;
-    };
 
     if (!config) {
         config = './private/config.yml.dist'
@@ -56,7 +49,7 @@ module.exports = function (require, config) {
 
     gulp.task('script', function () {
         gulp.src(config['paths'].js)
-            .pipe(concat(buildFile('app', 'js')))
+            .pipe(concat('app.js'))
             .pipe(gulpif(isProd, uglify()))
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(config['paths'].output + '/js'))
@@ -75,7 +68,7 @@ module.exports = function (require, config) {
 
         return merge(cssStream, sassStream)
             .pipe(order(['css-files.css', 'sass-files.scss']))
-            .pipe(concat(buildFile('style', 'css')))
+            .pipe(concat('style.css'))
             .pipe(gulpif(isProd, uglifycss()))
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(config['paths'].output + '/css'))

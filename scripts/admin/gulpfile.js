@@ -15,6 +15,7 @@ require('./private/tasks.js')(require, {
             "{node}/selectize/dist/js/standalone/selectize.min.js",
             "{node}/sortablejs/Sortable.min.js",
             "{node}/table-resizer/table-resize.js",
+            "{node}/currentscript/dist/document.currentScript.js",
             "{src}/js/lib/**",
             "{src}/js/partial/**",
             "./js/partial/**",

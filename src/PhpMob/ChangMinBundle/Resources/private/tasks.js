@@ -36,13 +36,6 @@ module.exports = function (require, config) {
     };
 
     var isProd = gutil.env.env === 'prod';
-    var buildFile = function (name, ext) {
-        if (isProd) {
-            return name + '.min.' + ext;
-        }
-
-        return name + '.' + ext;
-    };
 
     if (!config) {
         config = './private/config.yml.dist'
@@ -54,9 +47,33 @@ module.exports = function (require, config) {
 
     config = parseConfig(config);
 
+    gulp.task('codemirror', function () {
+        var paths = [
+            config.paths.node + '/codemirror/lib/codemirror.js',
+            config.paths.node + '/codemirror/mode/twig/twig.js',
+            config.paths.node + '/codemirror/mode/xml/xml.js',
+            config.paths.node + '/codemirror/mode/yaml/yaml.js',
+            config.paths.node + '/codemirror/mode/css/css.js',
+            config.paths.node + '/codemirror/mode/javascript/javascript.js',
+        ];
+
+        gulp.src(paths)
+            .pipe(concat('codemirror.js'))
+            .pipe(gulpif(isProd, uglify()))
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest(config['paths'].output + '/js'))
+        ;
+
+        gulp.src(config.paths.node + '/codemirror/lib/codemirror.css')
+            .pipe(gulpif(isProd, uglifycss()))
+            .pipe(sourcemaps.write('./'))
+            .pipe(gulp.dest(config['paths'].output + '/css'))
+        ;
+    });
+
     gulp.task('script', function () {
         gulp.src(config['paths'].js)
-            .pipe(concat(buildFile('app', 'js')))
+            .pipe(concat('app.js'))
             .pipe(gulpif(isProd, uglify()))
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(config['paths'].output + '/js'))
@@ -75,7 +92,7 @@ module.exports = function (require, config) {
 
         return merge(cssStream, sassStream)
             .pipe(order(['css-files.css', 'sass-files.scss']))
-            .pipe(concat(buildFile('style', 'css')))
+            .pipe(concat('style.css'))
             .pipe(gulpif(isProd, uglifycss()))
             .pipe(sourcemaps.write('./'))
             .pipe(gulp.dest(config['paths'].output + '/css'))
@@ -97,7 +114,7 @@ module.exports = function (require, config) {
         gulp.watch(config['paths'].css, ['style']);
     });
 
-    gulp.task('default', ['script', 'style', 'copy']);
+    gulp.task('default', ['codemirror', 'script', 'style', 'copy']);
     gulp.task('watch', ['default', 'watching']);
 
     return gulp;

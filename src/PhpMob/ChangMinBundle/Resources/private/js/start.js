@@ -1,3 +1,4 @@
+var PHPMOB_ASSET_PATH = PHPMOB_ASSET_PATH || document.currentScript.src.replace('/js/app.js', '');
 var initScripting = function (scope)
 {
     SelectizeSetup('select, [data-chooser]', scope);

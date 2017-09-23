@@ -1,26 +1,34 @@
 {{ form_errors(form) }}
-{# FIXME: nested tab bug #}
+
 <div class="row">
     <div class="col-2">
         {{ form_row(form.template) }}
         {{ form_row(form.enabled) }}
     </div>
     <div class="col-10">
-        <ul class="nav nav-tabs" id="cms-page">
+        <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#page-content">{{ 'Content' }}</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#page-script">{{ form.script.vars.label|trans }}</a>
+            <li class="nav-item" data-code-mirror-mode="javascript" data-code-mirror-id="{{ form.script.vars.id }}">
+                <a class="nav-link" data-toggle="tab" href="#page-script">
+                    {{ form.script.vars.label|trans }}
+                </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#page-style">{{ form.style.vars.label|trans }}</a>
+            <li class="nav-item" data-code-mirror-mode="css" data-code-mirror-id="{{ form.style.vars.id }}">
+                <a class="nav-link" data-toggle="tab" href="#page-style">
+                    {{ form.style.vars.label|trans }}
+                </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#page-options">{{ form.options.vars.label|trans }}</a>
+            <li class="nav-item" data-code-mirror-mode="yaml" data-code-mirror-id="{{ form.options.vars.id }}">
+                <a class="nav-link" data-toggle="tab" href="#page-options">
+                    {{ form.options.vars.label|trans }}
+                </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#page-defined-translations">{{ form.definedTranslations.vars.label|trans }}</a>
+            <li class="nav-item" data-code-mirror-mode="yaml" data-code-mirror-id="{{ form.definedTranslations.vars.id }}">
+                <a class="nav-link" data-toggle="tab" href="#page-defined-translations">
+                    {{ form.definedTranslations.vars.label|trans }}
+                </a>
             </li>
         </ul>
         <div class="tab-content">

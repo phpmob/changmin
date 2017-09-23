@@ -7,6 +7,7 @@ $chang-border-color: darken($gray-500, 10%);
 @import "../photon/sass/window";
 @import "../photon/sass/icons";
 
+@import "codemirror";
 @import "avatar";
 @import "breadcrumb";
 @import "pace";
@@ -17,3 +18,5 @@ $chang-border-color: darken($gray-500, 10%);
 @import "form";
 @import "table-grid";
 @import "admin-login";
+@import "bs-form";
+@import "bs-tab";

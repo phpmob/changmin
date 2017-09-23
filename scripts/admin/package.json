@@ -10,6 +10,8 @@
     "dependencies": {
         "bootstrap": "https://github.com/twbs/bootstrap.git#v4-dev",
         "chart.js": "^2.3.0",
+        "codemirror": "^5.30.0",
+        "currentscript": "^1.1.1",
         "flag-icon-css": "^2.8.0",
         "flatpickr": "^3.0.7",
         "font-awesome": "^4.7.0",
