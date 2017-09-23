@@ -13,7 +13,7 @@ class ImageController extends Controller
      */
     private function getImagineCacheManager()
     {
-        return $this->container->get('phpmob.imagine.cache_manager');
+        return $this->container->get('liip_imagine.cache.manager');
     }
 
     /**
