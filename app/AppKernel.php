@@ -12,9 +12,13 @@ class AppKernel extends Kernel
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
             new \Sylius\Bundle\LocaleBundle\SyliusLocaleBundle(),
-            new \PhpMob\MediaBundle\PhpMobMediaBundle(),
             new \PhpMob\CmsBundle\PhpMobCmsBundle(),
             new \PhpMob\CoreBundle\PhpMobCoreBundle(),
+
+            // Media
+            new \PhpMob\MediaBundle\PhpMobMediaBundle(),
+            new \Oneup\FlysystemBundle\OneupFlysystemBundle(),
+            new \Liip\ImagineBundle\LiipImagineBundle(),
 
             // SF3
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
@@ -38,9 +42,6 @@ class AppKernel extends Kernel
             new \Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Sylius\Bundle\FixturesBundle\SyliusFixturesBundle(),
             new \Sonata\IntlBundle\SonataIntlBundle(),
-            new \Knp\Bundle\GaufretteBundle\KnpGaufretteBundle(),
-            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new \Liip\ImagineBundle\LiipImagineBundle(),
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new \PhpMob\TwigModifyBundle\PhpMobTwigModifyBundle(),

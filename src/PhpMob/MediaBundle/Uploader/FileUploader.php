@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace PhpMob\MediaBundle\Uploader;
 
-use Gaufrette\FilesystemInterface;
+use League\Flysystem\FilesystemInterface;
 use PhpMob\MediaBundle\Model\FileInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class FilesystemUploader implements FileUploaderInterface
+class FileUploader implements FileUploaderInterface
 {
     /**
      * @var FilesystemInterface

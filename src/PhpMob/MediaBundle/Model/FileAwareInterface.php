@@ -22,14 +22,4 @@ interface FileAwareInterface
      * @return string|null
      */
     public function getFileBasePath();
-
-    /**
-     * @return FileInterface|null
-     */
-    public function getFile();
-
-    /**
-     * @param FileInterface $file
-     */
-    public function setFile(FileInterface $file = null);
 }

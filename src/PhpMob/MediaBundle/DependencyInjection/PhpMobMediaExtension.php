@@ -43,9 +43,6 @@ class PhpMobMediaExtension extends AbstractResourceExtension
         $container->setParameter('phpmob.filters', $config['filters']);
         $container->setParameter('phpmob.uploader.filesystem', 'phpmob_filesystem_' . $config['filesystem']);
         $container->setParameter('phpmob.uploader.directory', $config['directory']);
-        $container->setParameter('phpmob.uploader.dbal', $isDbal);
-        $container->setParameter('phpmob.uploader.dbal_connection', $config['dbal_connection']);
-        $container->setParameter('phpmob.uploader.dbal_table', $config['dbal_table']);
         $container->setParameter('phpmob.imagine.filter', $config['imagine']['filter']);
         $container->setParameter('phpmob.imagine.quality', $config['imagine']['quality']);
         $container->setParameter('phpmob.imagine.form_default_image', $config['imagine']['form_default_image']);
