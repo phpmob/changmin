@@ -1,3 +1,6 @@
+imports:
+    - { resource: "@PhpMobMediaBundle/Resources/config/app/fm_elfinder.yml" }
+
 doctrine:
     dbal:
         types:
@@ -10,6 +13,10 @@ liip_imagine:
                 data_root:
                     - "%phpmob.uploader.directory%"
     filter_sets:
+        strip:
+            quality: "%phpmob.imagine.quality%"
+            data_loader: "%phpmob.imagine.data_loader%"
+            filters: ~
         phpmob_imagine:
             quality: "%phpmob.imagine.quality%"
             data_loader: "%phpmob.imagine.data_loader%"
@@ -36,13 +43,11 @@ oneup_flysystem:
                 key: phpmob_media
                 expires: ~
     adapters:
-        local_adapter:
+        phpmob_local:
             local:
                 directory: "%phpmob.uploader.directory%"
-        phpcr_adapter:
-            custom:
-                service: "phpmob.flysystem.phpcr_adapter"
     filesystems:
         phpmob:
-            adapter: local_adapter
-            cache: phpmob_cache
+            adapter: phpmob_local
+            #https://github.com/thephpleague/flysystem-cached-adapter/issues/29
+            #cache: phpmob_cache

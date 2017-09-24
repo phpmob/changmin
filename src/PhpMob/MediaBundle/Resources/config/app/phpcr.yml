@@ -28,6 +28,6 @@ doctrine_phpcr:
 
 oneup_flysystem:
     adapters:
-        phpcr_adapter:
+        phpmob_phpcr:
             custom:
                 service: "phpmob.flysystem.phpcr_adapter"

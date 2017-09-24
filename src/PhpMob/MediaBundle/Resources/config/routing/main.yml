@@ -1,5 +1,5 @@
-phpmob_liip_imagine_filter:
-    path: /medias/cache/resolve/{filter}/{path}
+phpmob_imagine_filter:
+    path: /phpmob/cache/resolve/{filter}/{path}
     defaults:
         _controller: PhpMobMediaBundle:Image:filterRuntime
     methods:
@@ -8,3 +8,7 @@ phpmob_liip_imagine_filter:
         filter: '^[0-9]+x[0-9]+'
         path: .+
         mode: "inset|outbound"
+
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"
+     prefix: /phpmob-finder

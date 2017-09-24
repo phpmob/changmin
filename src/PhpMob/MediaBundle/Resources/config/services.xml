@@ -35,8 +35,12 @@
                  parent="liip_imagine.cache.manager"
                  decorates="liip_imagine.cache.manager">
             <call method="setContainer">
-                <argument type="service" id="service_container" />
+                <argument type="service" id="service_container"/>
             </call>
+        </service>
+
+        <service class="League\Flysystem\AdapterInterface" id="phpmob.filesystem.adapter" public="true">
+            <factory service="oneup_flysystem.phpmob_filesystem" method="getAdapter"/>
         </service>
     </services>
 </container>

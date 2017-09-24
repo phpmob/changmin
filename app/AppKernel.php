@@ -19,7 +19,8 @@ class AppKernel extends Kernel
             new \PhpMob\MediaBundle\PhpMobMediaBundle(),
             new \Oneup\FlysystemBundle\OneupFlysystemBundle(),
             new \Liip\ImagineBundle\LiipImagineBundle(),
-            new \Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
+            //new \Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
+            new \FM\ElfinderBundle\FMElfinderBundle(),
 
             // SF3
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
