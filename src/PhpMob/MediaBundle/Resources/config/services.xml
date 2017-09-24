@@ -38,5 +38,10 @@
                 <argument type="service" id="service_container" />
             </call>
         </service>
+
+        <service id="phpmob.flysystem.phpcr_adapter" class="League\Flysystem\Phpcr\PhpcrAdapter" public="true">
+            <argument type="service" id="doctrine_phpcr.session"/>
+            <argument>/media</argument>
+        </service>
     </services>
 </container>
