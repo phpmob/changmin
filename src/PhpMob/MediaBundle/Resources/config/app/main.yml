@@ -2,31 +2,6 @@ doctrine:
     dbal:
         types:
             phpmob_image_type: PhpMob\MediaBundle\Doctrine\DBAL\Type\ImageType
-        connections:
-            media:
-                driver: pdo_mysql
-                host: "%database_host%"
-                port: "%database_port%"
-                dbname: "%database_name%_media"
-                user: "%database_user%"
-                password: "%database_password%"
-
-doctrine_cache:
-    providers:
-        phpcr_meta:
-            type: file_system
-        phpcr_nodes:
-            type: file_system
-
-doctrine_phpcr:
-    session:
-        workspace: default
-        backend:
-            type: doctrinedbal
-            connection: media
-            caches:
-                meta: doctrine_cache.providers.phpcr_meta
-                nodes: doctrine_cache.providers.phpcr_nodes
 
 liip_imagine:
     loaders:
