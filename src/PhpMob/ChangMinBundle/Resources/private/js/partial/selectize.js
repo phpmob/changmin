@@ -189,7 +189,12 @@ window.SelectizeSetup = function (selector, scope) {
                             });
                         });
 
-                        return callback(items);
+                        callback(items);
+
+                        setTimeout(function () {
+                            me.blur();
+                            me.focus();
+                        }, 1);
                     }
                 });
             };
