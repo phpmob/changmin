@@ -11,10 +11,12 @@ class AppKernel extends Kernel
             // Resources -- First!
             new \Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
-            new \Sylius\Bundle\LocaleBundle\SyliusLocaleBundle(),
-            new \PhpMob\CmsBundle\PhpMobCmsBundle(),
-            new \Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new \PhpMob\CoreBundle\PhpMobCoreBundle(),
+
+            // CMS
+            new \PhpMob\CmsBundle\PhpMobCmsBundle(),
+            new \Sylius\Bundle\LocaleBundle\SyliusLocaleBundle(),
+            new \Ivory\CKEditorBundle\IvoryCKEditorBundle(),
 
             // Media
             new \PhpMob\MediaBundle\PhpMobMediaBundle(),
