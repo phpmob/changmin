@@ -35,10 +35,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
-                ->scalarNode('filesystem')->defaultValue('local')->end()
-                ->scalarNode('directory')->defaultValue('%kernel.root_dir%/../var/media')->end()
-                ->scalarNode('dbal_connection')->defaultValue('default')->end()
-                ->scalarNode('dbal_table')->defaultValue('phpmob_files')->end()
             ->end()
         ;
 

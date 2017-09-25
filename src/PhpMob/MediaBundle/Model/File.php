@@ -43,7 +43,7 @@ abstract class File implements FileInterface
     protected $caption;
 
     /**
-     * @var ImageAwareInterface|FileAwareInterface
+     * @var FileAwareInterface
      */
     protected $owner;
 

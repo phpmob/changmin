@@ -1,0 +1,60 @@
+fm_elfinder:
+    assets_path: /assets #this is where css/js elfinder files are
+    instances:
+        phpmob:
+            locale: "LANG" # defaults to current request locale
+            #editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+            #editor_template: custom template for your editor # default null
+            #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+            #theme: smoothness # jquery theme, default is 'smoothness'
+            include_assets: true # disable if you want to manage loading of javascript and css assets manually
+            #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+            connector:
+                #debug: true|false # defaults to false
+                roots:       # at least one root must be defined, defines root filemanager directories
+                    private:
+                        url: media/cache/resolve/strip/private
+                        tmb_path: "%kernel.root_dir%/../web/thumbnail"
+                        tmb_url: /thumbnail
+                        tmb_path_mode: 0755
+                        #show_hidden: true|false # defaults to false, hides dotfiles
+                        driver: Flysystem
+                        flysystem:
+                            type: custom
+                            adapter_service: "phpmob.filesystem.adapter"
+                            options: ~
+                        path: private
+                        upload_allow: ['*/*']
+                        upload_deny: ['none']
+                        upload_max_size: 10M
+                        accepted_name: /^\w[\w\s\.\%\-\~]*$/u
+                        attributes:
+                            - { pattern: '/private(.*?)/', read: true, write: false, locked: true }
+                        plugins:
+                            - name: 'Sanitizer'
+                              value:
+                                enable: true
+                                targets: ['\','/',':','*','?','"','<','>','|', ' ']
+                                replace: "-"
+                    public:
+                        url: media/cache/resolve/strip/public
+                        tmb_path: "%kernel.root_dir%/../web/thumbnail"
+                        tmb_url: /thumbnail
+                        tmb_path_mode: 0755
+                        driver: Flysystem
+                        flysystem:
+                            type: custom
+                            adapter_service: "phpmob.filesystem.adapter"
+                            options: ~
+                        path: public
+                        upload_allow: ['*/*']
+                        upload_deny: ['none']
+                        upload_max_size: 10M
+                        accepted_name: /^\w[\w\s\.\%\-\~]*$/u
+                        plugins:
+                            - name: 'Sanitizer'
+                              value:
+                                enable: true
+                                targets: ['\','/',':','*','?','"','<','>','|', ' ']
+                                replace: "-"

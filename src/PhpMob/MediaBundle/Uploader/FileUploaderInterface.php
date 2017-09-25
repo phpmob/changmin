@@ -31,4 +31,11 @@ interface FileUploaderInterface
      * @return boolean
      */
     public function remove($path = null);
+
+    /**
+     * @param string $path
+     *
+     * @return bool
+     */
+    public function has($path);
 }

@@ -2,9 +2,10 @@
 
 namespace PhpMob\ChangMinBundle\Model;
 
+use PhpMob\MediaBundle\Model\FileAwareInterface;
 use Sylius\Component\User\Model\UserInterface as BaseUserInterface;
 
-interface AdminUserInterface extends BaseUserInterface
+interface AdminUserInterface extends BaseUserInterface, FileAwareInterface
 {
     /**
      * @return null|AdminUserPictureInterface

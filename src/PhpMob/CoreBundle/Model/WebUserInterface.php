@@ -2,12 +2,13 @@
 
 namespace PhpMob\CoreBundle\Model;
 
+use PhpMob\MediaBundle\Model\FileAwareInterface;
 use Sylius\Component\User\Model\UserInterface as BaseUserInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface WebUserInterface extends BaseUserInterface
+interface WebUserInterface extends BaseUserInterface, FileAwareInterface
 {
     /**
      * @return null|WebUserPictureInterface

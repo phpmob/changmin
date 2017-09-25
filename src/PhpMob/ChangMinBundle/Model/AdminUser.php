@@ -21,7 +21,7 @@ class AdminUser extends BaseUser implements AdminUserInterface
      */
     public function getFileBasePath()
     {
-        return null;
+        return '/private/admins';
     }
 
     /**

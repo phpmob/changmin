@@ -13,13 +13,13 @@ declare(strict_types=1);
 
 namespace PhpMob\MediaBundle\Uploader;
 
-use Gaufrette\FilesystemInterface;
+use League\Flysystem\FilesystemInterface;
 use PhpMob\MediaBundle\Model\FileInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class FilesystemUploader implements FileUploaderInterface
+class FileUploader implements FileUploaderInterface
 {
     /**
      * @var FilesystemInterface
@@ -50,7 +50,7 @@ class FilesystemUploader implements FileUploaderInterface
         do {
             $hash = md5(uniqid((string)mt_rand(), true));
             $path = preg_replace('|/+|', '/', $file->getBasePath().'/'.$hash.'.'.$file->getFile()->guessExtension());
-        } while ($this->filesystem->has($path));
+        } while ($this->has($path));
 
         $file->setPath($path);
 
@@ -73,11 +73,9 @@ class FilesystemUploader implements FileUploaderInterface
     }
 
     /**
-     * @param string $path
-     *
-     * @return bool
+     * {@inheritdoc}
      */
-    private function has($path)
+    public function has($path)
     {
         return $this->filesystem->has($path);
     }

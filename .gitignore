@@ -17,7 +17,12 @@
 /web/bundles/
 node_modules/
 
-/var/media/
 /web/media/
 /web/assets/
+/web/thumbnail
 /scripts/admin/private
+
+
+/bin/*
+!/bin/console
+!/bin/symfony_requirements
