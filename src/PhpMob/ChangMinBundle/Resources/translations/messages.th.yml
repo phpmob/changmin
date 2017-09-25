@@ -1,4 +1,9 @@
 changmin:
+    ui:
+        sucess: Success
+        error: Error
+        warning: Warning
+        info: Info
     form:
         login:
             username: Username
