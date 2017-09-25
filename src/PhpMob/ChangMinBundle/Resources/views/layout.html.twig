@@ -40,7 +40,7 @@
         ChangMin.updateUser(function (user) {
             return user
                 .set('name', '{{ app.user.displayName }}')
-                .set('avatar', '{{ asset('assets/admin/img/avatars/5.jpg') }}')
+                .set('avatar', '{{ app.user.picture|phpmob_imagine('32x32', true, asset('assets/admin/img/avatar.png')) }}')
                 .set('menu', user.get('menu').withMutations(function (menu) {
                     return menu
                         .set('logout', {
