@@ -191,6 +191,7 @@ window.SelectizeSetup = function (selector, scope) {
 
                         callback(items);
 
+                        // fix it's not open after loaded
                         setTimeout(function () {
                             me.blur();
                             me.focus();
