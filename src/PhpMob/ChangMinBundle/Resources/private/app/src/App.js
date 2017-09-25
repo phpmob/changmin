@@ -22,6 +22,7 @@ class App extends Component {
         super(props);
 
         window['ChangMin'] = this.api = new ChangMin(this);
+        window['_external_scripts'] = {};
     }
 
     componentDidMount() {
@@ -32,9 +33,13 @@ class App extends Component {
             window[nonce] = this;
 
             $('script', this.refs.body).each((i, tag) => {
-                $('<script>(function(context){' + $(tag).text() + '})(' + nonce + ');</script>').appendTo('body')
+                if (tag.src && !window['_external_scripts'][tag.src]) {
+                    $('<script src="' + tag.src + '"></script>').appendTo('body');
+                    window['_external_scripts'][tag.src] = true;
+                } else {
+                    $('<script>(function(context){' + $(tag).text() + '})(' + nonce + ');</script>').appendTo('body');
+                }
             });
-
         }, 1)
     }
 

@@ -6,3 +6,4 @@ imports:
     - { resource: "@PhpMobCmsBundle/Resources/config/grids/admin/main.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/framework.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/twig.yml" }
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/ck_editor.yml" }

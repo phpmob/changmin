@@ -25,6 +25,7 @@
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "doctrine/doctrine-migrations-bundle": "^1.2",
         "doctrine/phpcr-bundle": "^1.3",
+        "egeloen/ckeditor-bundle": "^6.0",
         "friendsofsymfony/rest-bundle": "^2.1",
         "fzaninotto/faker": "^1.6",
         "helios-ag/fm-elfinder-bundle": "^6.2",
@@ -63,6 +64,7 @@
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Ivory\\CKEditorBundle\\Composer\\CKEditorScriptHandler::install",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
