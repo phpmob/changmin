@@ -5,7 +5,7 @@ PhpMob\CoreBundle\Model\AdminUser:
     relations:
         -   rel: picture_70x70
             exclusion:
-                exclude_if: expr(!object.getPicture())
+                exclude_if: expr(!object.getPicture() || !object.getPicture().getPath())
             href:
                 absolute: true
                 route: phpmob_imagine_filter
@@ -15,7 +15,7 @@ PhpMob\CoreBundle\Model\AdminUser:
 
         -   rel: picture_100x100
             exclusion:
-                exclude_if: expr(!object.getPicture())
+                exclude_if: expr(!object.getPicture() || !object.getPicture().getPath())
             href:
                 absolute: true
                 route: phpmob_imagine_filter
