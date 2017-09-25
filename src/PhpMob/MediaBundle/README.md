@@ -3,6 +3,11 @@
 ## Phpcr Filesystem
 
 ```yaml
+# composer
+    "doctrine/phpcr-bundle": "^1.3",
+    "jackalope/jackalope-doctrine-dbal": "^1.3",
+    "league/flysystem-phpcr": "dev-master",
+
 # enable DoctrinePHPCRBundle in appKernel.php
 new \Doctrine\Bundle\PHPCRBundle\DoctrinePHPCRBundle(),
 
