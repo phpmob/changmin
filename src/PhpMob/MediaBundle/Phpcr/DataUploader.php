@@ -9,29 +9,26 @@
  * file that was distributed with this source code.
  */
 
-declare(strict_types=1);
+namespace PhpMob\MediaBundle\Phpcr;
 
-namespace PhpMob\MediaBundle\Uploader;
-
-use League\Flysystem\FilesystemInterface;
+use League\Flysystem\Config;
+use League\Flysystem\Phpcr\PhpcrAdapter;
 use PhpMob\MediaBundle\Model\FileInterface;
+use PhpMob\MediaBundle\Uploader\FileUploaderInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class FileUploader implements FileUploaderInterface
+class DataUploader implements FileUploaderInterface
 {
     /**
-     * @var FilesystemInterface
+     * @var PhpcrAdapter
      */
-    protected $filesystem;
+    private $adapter;
 
-    /**
-     * @param FilesystemInterface $filesystem
-     */
-    public function __construct(FilesystemInterface $filesystem)
+    public function __construct(PhpcrAdapter $adapter)
     {
-        $this->filesystem = $filesystem;
+        $this->adapter = $adapter;
     }
 
     /**
@@ -54,9 +51,10 @@ class FileUploader implements FileUploaderInterface
 
         $file->setPath($path);
 
-        $this->filesystem->write(
+        $this->adapter->writeStream(
             $file->getPath(),
-            file_get_contents($file->getFile()->getPathname())
+            fopen($file->getFile()->getPathname(), 'rb'),
+            new Config()
         );
     }
 
@@ -66,7 +64,7 @@ class FileUploader implements FileUploaderInterface
     public function remove($path = null)
     {
         if ($path) {
-            return $this->filesystem->delete($path);
+            return $this->adapter->delete($path);
         }
 
         return true;
@@ -75,8 +73,8 @@ class FileUploader implements FileUploaderInterface
     /**
      * {@inheritdoc}
      */
-    public function has($path)
+    public function has($path = null)
     {
-        return $this->filesystem->has($path);
+        return $this->adapter->has($path);
     }
 }

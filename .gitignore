@@ -21,3 +21,8 @@ node_modules/
 /web/assets/
 /web/thumbnail
 /scripts/admin/private
+
+
+/bin/*
+!/bin/console
+!/bin/symfony_requirements

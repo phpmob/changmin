@@ -1,21 +1,28 @@
 # https://github.com/thephpleague/flysystem-phpcr/issues/5
+parameters:
+    phpmob.imagine.loader: phpcr_loader
+    phpmob.flysystem.phpcr.connection: default
+    phpmob.flysystem.phpcr.basepath: /phpmob/media
+
 services:
     phpmob.flysystem.phpcr_adapter:
         class: League\Flysystem\Phpcr\PhpcrAdapter
         arguments:
             - "@doctrine_phpcr.session"
-            - "/media"
+            - "%phpmob.flysystem.phpcr.basepath%"
 
-doctrine:
-    dbal:
-        connections:
-            media:
-                driver: pdo_mysql
-                host: "%database_host%"
-                port: "%database_port%"
-                dbname: "%database_name%_media"
-                user: "%database_user%"
-                password: "%database_password%"
+    phpmob.flysystem.phpcr_loader:
+        class: PhpMob\MediaBundle\Phpcr\DataLoader
+        arguments:
+            - "@phpmob.flysystem.phpcr_adapter"
+        tags:
+            - { name: "liip_imagine.binary.loader", loader: phpcr_loader }
+
+    phpmob.flysystem.phpcr_uploader:
+        decorates: phpmob.filesystem_uploader
+        class: PhpMob\MediaBundle\Phpcr\DataUploader
+        arguments:
+            - "@phpmob.flysystem.phpcr_adapter"
 
 doctrine_cache:
     providers:
@@ -29,7 +36,7 @@ doctrine_phpcr:
         workspace: default
         backend:
             type: doctrinedbal
-            connection: media
+            connection: "%phpmob.flysystem.phpcr.connection%"
             caches:
                 meta: doctrine_cache.providers.phpcr_meta
                 nodes: doctrine_cache.providers.phpcr_nodes
@@ -39,3 +46,6 @@ oneup_flysystem:
         phpmob_phpcr:
             custom:
                 service: "phpmob.flysystem.phpcr_adapter"
+    filesystems:
+        phpmob:
+            adapter: phpmob_phpcr

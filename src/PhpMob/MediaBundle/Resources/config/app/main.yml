@@ -1,3 +1,8 @@
+parameters:
+    phpmob.imagine.loader: default
+    phpmob.uploader.local_directory: "%kernel.root_dir%/../var/media"
+    phpmob.flysystem.cache_adapter: "cache.app"
+
 imports:
     - { resource: "@PhpMobMediaBundle/Resources/config/app/fm_elfinder.yml" }
 
@@ -11,15 +16,15 @@ liip_imagine:
         default:
             filesystem:
                 data_root:
-                    - "%phpmob.uploader.directory%"
+                    - "%phpmob.uploader.local_directory%"
     filter_sets:
         strip:
             quality: "%phpmob.imagine.quality%"
-            data_loader: "%phpmob.imagine.data_loader%"
+            data_loader: "%phpmob.imagine.loader%"
             filters: ~
         phpmob_imagine:
             quality: "%phpmob.imagine.quality%"
-            data_loader: "%phpmob.imagine.data_loader%"
+            data_loader: "%phpmob.imagine.loader%"
             filters: ~
 
 twig:
@@ -33,7 +38,7 @@ framework:
     cache:
         pools:
             cache.flysystem:
-                adapter: cache.app
+                adapter: "%phpmob.flysystem.cache_adapter%"
 
 oneup_flysystem:
     cache:
@@ -45,7 +50,7 @@ oneup_flysystem:
     adapters:
         phpmob_local:
             local:
-                directory: "%phpmob.uploader.directory%"
+                directory: "%phpmob.uploader.local_directory%"
     filesystems:
         phpmob:
             adapter: phpmob_local

@@ -76,6 +76,7 @@
     },
     "config": {
         "sort-packages": true,
+        "bin-dir": "bin",
         "component-dir": "web/assets"
     },
     "extra": {

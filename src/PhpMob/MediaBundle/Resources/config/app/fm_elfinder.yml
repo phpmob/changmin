@@ -28,6 +28,7 @@ fm_elfinder:
                         upload_allow: ['*/*']
                         upload_deny: ['none']
                         upload_max_size: 10M
+                        accepted_name: /^\w[\w\s\.\%\-\~]*$/u
                         attributes:
                             - { pattern: '/private(.*?)/', read: true, write: false, locked: true }
                         plugins:
@@ -50,6 +51,7 @@ fm_elfinder:
                         upload_allow: ['*/*']
                         upload_deny: ['none']
                         upload_max_size: 10M
+                        accepted_name: /^\w[\w\s\.\%\-\~]*$/u
                         plugins:
                             - name: 'Sanitizer'
                               value:
