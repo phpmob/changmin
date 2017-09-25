@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "70e9588e752f49f16d78b864c7b9d795",
+    "content-hash": "a0d96209cc6572ee3f40aab57b9a9a93",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -5847,16 +5847,16 @@
         },
         {
             "name": "voku/portable-utf8",
-            "version": "3.1.25",
+            "version": "3.1.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/voku/portable-utf8.git",
-                "reference": "607d481a647f81b685e32d0313c0c700699dc321"
+                "reference": "89c05dc7ccd1e482f1f5fa7074c5114f76d8fc60"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/607d481a647f81b685e32d0313c0c700699dc321",
-                "reference": "607d481a647f81b685e32d0313c0c700699dc321",
+                "url": "https://api.github.com/repos/voku/portable-utf8/zipball/89c05dc7ccd1e482f1f5fa7074c5114f76d8fc60",
+                "reference": "89c05dc7ccd1e482f1f5fa7074c5114f76d8fc60",
                 "shasum": ""
             },
             "require": {
@@ -5913,7 +5913,7 @@
                 "utf-8",
                 "utf8"
             ],
-            "time": "2017-08-05T00:21:32+00:00"
+            "time": "2017-09-24T18:27:57+00:00"
         },
         {
             "name": "webmozart/assert",

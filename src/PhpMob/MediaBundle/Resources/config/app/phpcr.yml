@@ -1,3 +1,11 @@
+# https://github.com/thephpleague/flysystem-phpcr/issues/5
+services:
+    phpmob.flysystem.phpcr_adapter:
+        class: League\Flysystem\Phpcr\PhpcrAdapter
+        arguments:
+            - "@doctrine_phpcr.session"
+            - "/media"
+
 doctrine:
     dbal:
         connections:
