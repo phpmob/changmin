@@ -12,7 +12,6 @@ PhpMob\CoreBundle\Model\AdminUser:
                 parameters:
                     path: expr(object.getPicture().getPath())
                     filter: 70x70
-                    mode: inset
 
         -   rel: picture_100x100
             exclusion:
@@ -23,4 +22,3 @@ PhpMob\CoreBundle\Model\AdminUser:
                 parameters:
                     path: expr(object.getPicture().getPath())
                     filter: 100x100
-                    mode: inset
