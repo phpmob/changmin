@@ -11,6 +11,7 @@
 
 namespace PhpMob\CmsBundle\Form\Type;
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,7 +36,7 @@ class PageTranslationType extends AbstractResourceType
                 'label' => 'phpmob.form.page.slug',
                 'required' => true,
             ])
-            ->add('body', TextareaType::class, [
+            ->add('body', CKEditorType::class, [
                 'label' => 'phpmob.form.page.body',
                 'required' => false,
             ])

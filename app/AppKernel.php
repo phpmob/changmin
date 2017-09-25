@@ -13,6 +13,7 @@ class AppKernel extends Kernel
             new \Sylius\Bundle\UserBundle\SyliusUserBundle(),
             new \Sylius\Bundle\LocaleBundle\SyliusLocaleBundle(),
             new \PhpMob\CmsBundle\PhpMobCmsBundle(),
+            new \Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new \PhpMob\CoreBundle\PhpMobCoreBundle(),
 
             // Media
