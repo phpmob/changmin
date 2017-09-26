@@ -44,8 +44,13 @@
                 border-top: 0;
                 border-right: 1px solid $gray-300;
                 border-bottom: 1px solid $gray-300;
+
                 a {
                     color: $gray-600;
+                }
+
+                &.sorted i {
+                    margin-left: .3rem;
                 }
             }
         }
@@ -64,10 +69,19 @@
             }
             &.grid-table-column-actions {
                 text-align: center;
+                padding: 0.2rem;
+
+                > .btn-group-sm {
+                    > .btn {
+                        //font-size: 95%;
+                        padding: $input-btn-padding-y-sm / 2 $input-btn-padding-x-sm / 2;
+                    }
+                }
+
                 .dropdown {
                     > .btn {
-                        font-size: 90%;
-                        padding: $input-btn-padding-y-sm / 4 $input-btn-padding-x-sm;
+                        //font-size: 95%;
+                        padding: $input-btn-padding-y-sm / 2 $input-btn-padding-x-sm;
                     }
                 }
 

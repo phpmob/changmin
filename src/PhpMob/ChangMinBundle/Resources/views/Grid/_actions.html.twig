@@ -11,7 +11,9 @@
         </ul>
     </div>
 {% else %}
-    {{ sylius_grid_render_action(grid, actions[(actions|keys)[0]], row) }}
+    <div class="btn-group btn-group-sm">
+        {{ sylius_grid_render_action(grid, actions[(actions|keys)[0]], row) }}
+    </div>
 {% endif %}
 
 {# TODO
