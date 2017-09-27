@@ -29,6 +29,7 @@ class AdminUserFixture extends AbstractResourceFixture
             ->scalarNode('displayName')->cannotBeEmpty()->end()
             ->booleanNode('enabled')->end()
             ->scalarNode('password')->cannotBeEmpty()->end()
+            ->arrayNode('roles')->scalarPrototype()->cannotBeEmpty()->end()
         ;
     }
 }

@@ -55,7 +55,9 @@ class AdminUserFactory extends AbstractExampleFactory implements ExampleFactoryI
         $user->setPlainPassword($options['password']);
         $user->setDisplayName($options['displayName']);
         $user->setEnabled($options['enabled']);
-        $user->addRole('ROLE_ADMINISTRATION_ACCESS');
+        foreach ($options['roles'] as $role) {
+            $user->addRole($role);
+        }
 
         return $user;
     }
@@ -78,6 +80,7 @@ class AdminUserFactory extends AbstractExampleFactory implements ExampleFactoryI
             ->setDefault('enabled', true)
             ->setAllowedTypes('enabled', 'bool')
             ->setDefault('password', 'password123')
+            ->setDefault('roles', ['ROLE_ADMINISTRATION_ACCESS'])
         ;
     }
 }
