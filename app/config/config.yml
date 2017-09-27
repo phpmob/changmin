@@ -4,12 +4,12 @@ imports:
     - { resource: services.yml }
     - { resource: "@ChangMin/Resources/config/app/main.yml" }
     - { resource: "@PhpMobMediaBundle/Resources/config/app/main.yml" }
-#    - { resource: "@PhpMobMediaBundle/Resources/config/app/phpcr.yml" }
+    - { resource: "@PhpMobMediaBundle/Resources/config/app/phpcr.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/main.yml" }
     - { resource: "@PhpMobCoreBundle/Resources/config/app/main.yml" }
 
-#parameters:
-#    phpmob.flysystem.phpcr.connection: media
+parameters:
+    phpmob.flysystem.phpcr.connection: media
 
 framework:
     #esi: ~
@@ -58,17 +58,17 @@ doctrine:
                 default_table_options:
                     charset: utf8mb4
                     collate: utf8mb4_unicode_ci
-#            media:
-#                driver: pdo_mysql
-#                host: "%database_host%"
-#                port: "%database_port%"
-#                dbname: "%database_name%"
-#                user: "%database_user%"
-#                password: "%database_password%"
-#                charset: utf8
-#                default_table_options:
-#                    charset: utf8
-#                    collate: utf8_unicode_ci
+            media:
+                driver: pdo_mysql
+                host: "%database_host%"
+                port: "%database_port%"
+                dbname: "%database_name%"
+                user: "%database_user%"
+                password: "%database_password%"
+                charset: utf8
+                default_table_options:
+                    charset: utf8
+                    collate: utf8_unicode_ci
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
@@ -82,15 +82,3 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
-
-fos_rest:
-    exception: ~
-    view:
-        formats:
-            json: true
-            xml:  true
-        empty_content: 204
-    format_listener:
-        rules:
-            - { path: '^/api/.*', priorities: ['json'], fallback_format: json, prefer_extension: true }
-            - { path: '^/', stop: true }

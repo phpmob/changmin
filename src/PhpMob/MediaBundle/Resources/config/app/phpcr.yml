@@ -18,11 +18,11 @@ services:
         tags:
             - { name: "liip_imagine.binary.loader", loader: phpcr_loader }
 
-    phpmob.flysystem.phpcr_uploader:
-        decorates: phpmob.filesystem_uploader
-        class: PhpMob\MediaBundle\Phpcr\DataUploader
-        arguments:
-            - "@phpmob.flysystem.phpcr_adapter"
+#    phpmob.flysystem.phpcr_uploader:
+#        decorates: phpmob.filesystem_uploader
+#        class: PhpMob\MediaBundle\Phpcr\DataUploader
+#        arguments:
+#            - "@phpmob.flysystem.phpcr_adapter"
 
 doctrine_cache:
     providers:

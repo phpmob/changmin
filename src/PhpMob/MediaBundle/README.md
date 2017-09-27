@@ -22,3 +22,9 @@ parameters:
     phpmob.flysystem.phpcr.connection: media
 
 ```
+
+## Setup Phpcr
+
+```bash
+sf doctrine:phpcr:repository:init 
+```
