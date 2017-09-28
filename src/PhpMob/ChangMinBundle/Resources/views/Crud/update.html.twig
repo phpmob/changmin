@@ -14,7 +14,7 @@
 
 {% set title %}
     {% set title = configuration.vars.header|default(metadata.applicationName~'.ui.edit_'~metadata.name) %}
-    {% set icon = configuration.vars.icon|default('icon icon-pencil') %}
+    {% set icon = configuration.vars.icon|default('fa fa-pencil') %}
     {% if icon|default %}<i class="{{ icon }}"></i> {% endif %}{{ title|trans }} - {{ name }}
 {% endset %}
 

@@ -44,7 +44,7 @@
                 .set('menu', user.get('menu').withMutations(function (menu) {
                     return menu
                         .set('logout', {
-                            icon: 'icon icon-logout',
+                            icon: 'fa fa-logout',
                             label: '{{ "ui.security.logout"|trans }}',
                             link: '{{ path('changmin_admin_logout') }}'
                         })

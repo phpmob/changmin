@@ -6,7 +6,7 @@ $(document).on('click', '[data-delete-confirmation]', function (e) {
     $.confirm({
         theme: 'modern',
         title: 'Delete?',
-        icon: 'icon icon-attention',
+        icon: 'fa fa-attention',
         content: $el.data('message') || 'Do you want to delete this item?',
         buttons: {
             confirm: {
