@@ -1,28 +1,21 @@
-# https://github.com/thephpleague/flysystem-phpcr/issues/5
 parameters:
     phpmob.imagine.loader: phpcr_loader
     phpmob.flysystem.phpcr.connection: default
     phpmob.flysystem.phpcr.basepath: /phpmob/media
 
 services:
+    PhpMob\MediaBundle\Phpcr\LiipDataLoader:
+        public: false
+        arguments:
+            - "@oneup_flysystem.phpmob_filesystem"
+        tags:
+            - { name: "liip_imagine.binary.loader", loader: phpcr_loader }
+
     phpmob.flysystem.phpcr_adapter:
         class: League\Flysystem\Phpcr\PhpcrAdapter
         arguments:
             - "@doctrine_phpcr.session"
             - "%phpmob.flysystem.phpcr.basepath%"
-
-    phpmob.flysystem.phpcr_loader:
-        class: PhpMob\MediaBundle\Phpcr\DataLoader
-        arguments:
-            - "@phpmob.flysystem.phpcr_adapter"
-        tags:
-            - { name: "liip_imagine.binary.loader", loader: phpcr_loader }
-
-    phpmob.flysystem.phpcr_uploader:
-        decorates: phpmob.filesystem_uploader
-        class: PhpMob\MediaBundle\Phpcr\DataUploader
-        arguments:
-            - "@phpmob.flysystem.phpcr_adapter"
 
 doctrine_cache:
     providers:
