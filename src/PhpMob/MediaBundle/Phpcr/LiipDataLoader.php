@@ -17,7 +17,7 @@ use Liip\ImagineBundle\Binary\Loader\LoaderInterface;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class DataLoader implements LoaderInterface
+class LiipDataLoader implements LoaderInterface
 {
     /**
      * @var FilesystemInterface

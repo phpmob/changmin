@@ -11,7 +11,7 @@ services:
             - "%phpmob.flysystem.phpcr.basepath%"
 
     phpmob.flysystem.phpcr_loader:
-        class: PhpMob\MediaBundle\Phpcr\DataLoader
+        class: PhpMob\MediaBundle\Phpcr\LiipDataLoader
         arguments:
             - "@oneup_flysystem.phpmob_filesystem"
         tags:
