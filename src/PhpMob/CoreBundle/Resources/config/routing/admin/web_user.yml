@@ -29,7 +29,7 @@ sylius_admin_web_user:
                         icon: fa fa-user
                         label: "Web Users"
             show:
-                icon: icon icon-newspaper
+                icon: fa fa-newspaper
                 header: "See"
                 breadcrumb:
                     index:

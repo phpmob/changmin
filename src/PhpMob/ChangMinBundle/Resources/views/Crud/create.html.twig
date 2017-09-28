@@ -3,7 +3,7 @@
 
 {% set title %}
     {% set title = configuration.vars.header|default(metadata.applicationName~'.ui.new_'~metadata.name) %}
-    {% set icon = configuration.vars.icon|default('icon icon-plus') %}
+    {% set icon = configuration.vars.icon|default('fa fa-plus') %}
     {% if icon|default %}<i class="{{ icon }}"></i> {% endif %}{{ title }}
 {% endset %}
 

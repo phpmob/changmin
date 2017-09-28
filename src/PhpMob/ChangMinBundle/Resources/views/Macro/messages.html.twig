@@ -10,20 +10,20 @@
 
 {% macro info(message) %}
     {% import _self as messages %}
-    {{ messages.default(message, 'icon icon-info-circled', 'info', 'Info') }}
+    {{ messages.default(message, 'fa fa-info-circled', 'info', 'Info') }}
 {% endmacro %}
 
 {% macro success(message) %}
     {% import _self as messages %}
-    {{ messages.default(message, 'icon icon-check', 'success', 'Success') }}
+    {{ messages.default(message, 'fa fa-check', 'success', 'Success') }}
 {% endmacro %}
 
 {% macro error(message) %}
     {% import _self as messages %}
-    {{ messages.default(message, 'icon icon-attention', 'danger', 'Error') }}
+    {{ messages.default(message, 'fa fa-attention', 'danger', 'Error') }}
 {% endmacro %}
 
 {% macro warning(message) %}
     {% import _self as messages %}
-    {{ messages.default(message, 'icon icon-attention', 'warning', 'Warning') }}
+    {{ messages.default(message, 'fa fa-attention', 'warning', 'Warning') }}
 {% endmacro %}

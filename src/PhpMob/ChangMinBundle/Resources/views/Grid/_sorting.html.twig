@@ -7,7 +7,7 @@
     {% if grid.isSortedBy(field.name) %}
         <th class="sortable sorted {{ order == 'desc' ? 'descending' : 'ascending' }} grid-table-column-{{ field.name }} text-{{ align }}" style="width: {{ width }};">
             <a href="{{- link(field.name, attributes, (order == 'desc' ? 'asc' : 'desc'), grid.parameters.all) -}}">
-                {{- field.label|trans -}} <i class="icon icon-{{ (order == 'desc' ? 'down' : 'up') }}-open-mini"></i>
+                {{- field.label|trans -}} <i class="fa fa-{{ (order == 'desc' ? 'down' : 'up') }}-open-mini"></i>
             </a>
         </th>
     {% else %}
