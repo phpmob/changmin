@@ -11,7 +11,7 @@
 
 namespace PhpMob\MediaBundle\Phpcr;
 
-use League\Flysystem\Phpcr\PhpcrAdapter;
+use League\Flysystem\FilesystemInterface;
 use Liip\ImagineBundle\Binary\Loader\LoaderInterface;
 
 /**
@@ -20,13 +20,16 @@ use Liip\ImagineBundle\Binary\Loader\LoaderInterface;
 class DataLoader implements LoaderInterface
 {
     /**
-     * @var PhpcrAdapter
+     * @var FilesystemInterface
      */
-    private $adapter;
+    private $filesystem;
 
-    public function __construct(PhpcrAdapter $adapter)
+    /**
+     * @param FilesystemInterface $filesystem
+     */
+    public function __construct(FilesystemInterface $filesystem)
     {
-        $this->adapter = $adapter;
+        $this->filesystem = $filesystem;
     }
 
     /**
@@ -34,10 +37,6 @@ class DataLoader implements LoaderInterface
      */
     public function find($path)
     {
-        if ($result = $this->adapter->read($path)) {
-            return $result['contents'];
-        }
-
-        return null;
+        return $this->filesystem->read($path);
     }
 }
