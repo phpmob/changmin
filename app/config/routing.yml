@@ -14,20 +14,30 @@ phpmob_admin_cms:
     resource: "@PhpMobCmsBundle/Resources/config/routing/admin/main.yml"
     prefix: /admin/cms
 
-LiipImagineBundle:
-    resource: "@LiipImagineBundle/Resources/config/routing.yaml"
-
-phpmob_cms:
-    resource: "@PhpMobCmsBundle/Resources/config/routing.yml"
-    prefix: /
-
-phpmob_media:
-    resource: "@PhpMobMediaBundle/Resources/config/routing/main.yml"
-
 phpmob_api_core:
     resource: "@PhpMobCoreBundle/Resources/config/routing/api/main.yml"
     prefix: /api/v{version}
 
+phpmob_media:
+    resource: "@PhpMobMediaBundle/Resources/config/routing/main.yml"
+    prefix: /media
+
 phpmob_cms_page:
     resource: "@PhpMobCmsBundle/Resources/config/routing.yml"
     prefix: /page
+
+phpmob_cms_view:
+    path: /{slug}
+    methods: ['GET']
+    requirements:
+        slug: .*
+    defaults:
+        _controller: phpmob.controller.page:viewAction
+        _sylius:
+            event: page_view
+            flash: flase
+            permission: false
+            template: "@PhpMobCms/tpls/page.html.twig"
+            repository:
+                method: findBySlug
+                arguments: [ $slug, "%locale%" ]

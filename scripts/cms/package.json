@@ -13,7 +13,8 @@
         "jquery": "^3.0.0",
         "jquery-confirm": "^3.3.1",
         "popper.js": "^1.11.1",
-        "tether": "latest"
+        "tether": "latest",
+        "zoom.js": "git+https://github.com/fat/zoom.js.git"
     },
     "devDependencies": {
         "gulp": "^3.9.1",
