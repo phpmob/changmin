@@ -6,6 +6,7 @@ $chang-border-color: darken($gray-500, 10%);
 @import "../photon/sass/mixins";
 @import "../photon/sass/window";
 
+@import "text-color";
 @import "codemirror";
 @import "avatar";
 @import "breadcrumb";
