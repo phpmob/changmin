@@ -1,14 +1,14 @@
 .text-color {
-    &-blue { color: colors('blue') }
-    &-indigo { color: colors('indigo') }
-    &-purple { color: colors('purple') }
-    &-pink { color: colors('pink') }
-    &-red { color: colors('red') }
-    &-orange { color: colors('orange') }
-    &-yellow { color: colors('yellow') }
-    &-green { color: colors('green') }
-    &-teal { color: colors('teal') }
-    &-cyan { color: colors('cyan') }
+    &-blue { color: color('blue') }
+    &-indigo { color: color('indigo') }
+    &-purple { color: color('purple') }
+    &-pink { color: color('pink') }
+    &-red { color: color('red') }
+    &-orange { color: color('orange') }
+    &-yellow { color: color('yellow') }
+    &-green { color: color('green') }
+    &-teal { color: color('teal') }
+    &-cyan { color: color('cyan') }
     &-primary { color: theme-color('primary') }
     &-secondary { color: theme-color('secondary') }
     &-success { color: theme-color('success') }
