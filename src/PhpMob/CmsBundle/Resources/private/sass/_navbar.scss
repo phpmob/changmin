@@ -1,0 +1,13 @@
+.navbar {
+    &-brand {
+        padding: 0;
+        img {
+            height: 32px;
+        }
+    }
+
+    .collapsing,
+    .collapse.show {
+        flex-basis: 100%;
+    }
+}

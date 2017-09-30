@@ -1,0 +1,15 @@
+{% set picture = app.user.picture|phpmob_imagine('24x24', true, asset('assets/account/img/avatar/white/leonardo-di-caprio.svg')) %}
+{% embed "@PhpMobCms/tpls/header.html.twig" %}
+    {% block toggle %}
+        {{ include('@PhpMobCms/tpls/account/header/_toggle.html.twig') }}
+    {% endblock %}
+
+    {% block collapse %}
+        {{ include('@PhpMobCms/tpls/account/header/_collapse.html.twig') }}
+        {{ parent() }}
+    {% endblock %}
+
+    {% block tools %}
+        {{ include('@PhpMobCms/tpls/account/header/_tools.html.twig') }}
+    {% endblock %}
+{% endembed %}

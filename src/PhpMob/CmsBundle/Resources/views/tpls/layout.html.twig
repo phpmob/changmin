@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    {#<link rel="icon" href="../../../../favicon.ico">#}
+    <link rel="icon" href="{{ asset('assets/cms/img/favicon.png') }}">
 
     <title>Carousel Template for Bootstrap</title>
 
@@ -28,8 +28,16 @@
 <body>
 
 {% block body %}
-    {% block header %}{% endblock %}
+    {% block header %}
+        {% if app.user %}
+            {{ include('@PhpMobCms/tpls/account/header.html.twig') }}
+        {% else %}
+            {{ include('@PhpMobCms/tpls/header.html.twig') }}
+        {% endif %}
+    {% endblock %}
+
     {% block carousel %}{% endblock %}
+
     <div class="container-fluid">
         {% block content %}{% endblock %}
     </div>
@@ -38,6 +46,9 @@
         <footer>
             <p class="float-right"><a href="#">Back to top</a></p>
             <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+            <div>Icons made by <a href="https://www.flaticon.com/authors/business-dubai" title="Business Dubai">Business Dubai</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+            <div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
         </footer>
     {% endblock %}
 {% endblock body %}

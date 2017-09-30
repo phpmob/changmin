@@ -83,11 +83,9 @@ module.exports = function (require, config) {
     });
 
     gulp.task('watching', function () {
-        livereload.listen();
-
         gulp.watch(config['paths'].js, ['script']);
-        gulp.watch(config['paths'].sass, ['style']);
         gulp.watch(config['paths'].css, ['style']);
+        gulp.watch(config['paths'].sass, ['style']);
     });
 
     gulp.task('default', ['script', 'style', 'copy']);

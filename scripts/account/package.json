@@ -1,0 +1,31 @@
+{
+    "name": "phpmob-cms",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.html",
+    "author": "Liverbool <nukboon@gmail.com>",
+    "url": "https://github.com/phpmob/changmin",
+    "copyright": "Copyright 2017 Liverbool <nukboon@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "bootstrap": "4.0.0-beta"
+    },
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-chug": "^0.5",
+        "gulp-concat": "^2.6.0",
+        "gulp-debug": "^2.1.2",
+        "gulp-if": "^2.0.0",
+        "gulp-livereload": "^3.8.1",
+        "gulp-order": "^1.1.1",
+        "gulp-sass": "^2.1.1",
+        "gulp-sourcemaps": "^1.6.0",
+        "gulp-uglify": "^1.5.1",
+        "gulp-uglifycss": "^1.0.5",
+        "gulp-util": "^3.0.7",
+        "merge-stream": "^1.0.0"
+    },
+    "scripts": {
+        "symlink": "ln -sf ../../src/PhpMob/CmsBundle/Resources/private ./"
+    }
+}

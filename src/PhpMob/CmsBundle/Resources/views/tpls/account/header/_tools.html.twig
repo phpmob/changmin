@@ -1,0 +1,21 @@
+<ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex align-items-center">
+    <li class="nav-item">
+        <a class="nav-item nav-link mr-2" href="#">
+            <i class="fa fa-bell-o"></i>
+        </a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-item nav-link dropdown-toggle mr-2" href="#" data-toggle="dropdown">
+            <img src="{{ picture }}" class="avatar avatar-xs mr-1"> {{ app.user.displayName }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="{{ path('web_account_dashboard') }}">
+                <i class="fa fa-dashboard"></i> {{ "Dashboard" }}
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ path('web_security_logout') }}">
+                <i class="fa fa-sign-out"></i> {{ "Logout" }}
+            </a>
+        </div>
+    </li>
+</ul>

@@ -1,0 +1,22 @@
+<header class="navbar navbar-expand-md navbar-dark fixed-top bg-primary">
+    {% block brand %}
+        <a class="navbar-brand" href="{{ path('web_homepage') }}">
+           <img src="{{ asset('assets/account/img/logo-white.svg') }}" alt="{{ "Coin" }}">
+        </a>
+    {% endblock %}
+
+    {% block toggle %}
+        {% include "@PhpMobCms/tpls/header/_toggle.html.twig" %}
+    {% endblock %}
+
+    {% block collapse %}
+        <div class="collapse navbar-collapse" id="navbarMainCollapse">
+            {% block links %}
+                {% include "@PhpMobCms/tpls/header/_links.html.twig" %}
+            {% endblock %}
+            {% block tools %}
+                {% include "@PhpMobCms/tpls/header/_tools.html.twig" %}
+            {% endblock %}
+        </div>
+    {% endblock %}
+</header>

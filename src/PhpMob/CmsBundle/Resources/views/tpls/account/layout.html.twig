@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ (locale|split('_'))[0] }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="{{ asset('assets/account/img/favicon.png') }}">
+
+    <title>Account</title>
+
+    {% block stylesheet %}
+        <link href="{{ asset('assets/cms/css/style.css?v='~phpmob_assets_version) }}" rel="stylesheet">
+        <link href="{{ asset('assets/account/css/style.css?v='~phpmob_assets_version) }}" rel="stylesheet">
+    {% endblock stylesheet %}
+
+    {% modify jsmin %}
+    {% block scripts %}
+        <script type="text/javascript">
+            window['PhpMobCms'] = {
+                boots: [],
+                inits: [],
+                defers: [],
+            };
+        </script>
+    {% endblock %}
+    {% endmodify %}
+</head>
+<body>
+
+{% block body %}
+
+    {% block header %}
+        {{ include('@PhpMobCms/tpls/account/header.html.twig') }}
+    {% endblock %}
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    {% block footer %}
+        <hr class="featurette-divider">
+        <footer>
+            <p class="float-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2017 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+    {% endblock %}
+{% endblock body %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('assets/cms/js/app.js?v='~phpmob_assets_version) }}"></script>
+    <script type="text/javascript" src="{{ asset('assets/account/js/app.js?v='~phpmob_assets_version) }}"></script>
+{% endblock %}
+</body>
+</html>
