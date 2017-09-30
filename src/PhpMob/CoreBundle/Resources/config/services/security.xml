@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service class="PhpMob\CoreBundle\EventListener\UserRegistrationListener">
+            <argument type="service" id="sylius.manager.web_user" />
+            <argument type="service" id="sylius.web_user.token_generator.email_verification" />
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="sylius.security.user_login" />
+            <argument>%phpmob.security_firewall_context_name%</argument>
+            <tag name="kernel.event_listener" event="sylius.web_user.post_register" method="handleUserVerification" />
+        </service>
+
+        <service class="PhpMob\CoreBundle\EventListener\UserMailerListener" decorates="sylius.listener.user_mailer_listener">
+            <argument type="service" id="sylius.email_sender" />
+            <tag name="kernel.event_listener" event="sylius.user.password_reset.request.pin" method="sendResetPasswordPinEmail" />
+            <tag name="kernel.event_listener" event="sylius.user.password_reset.request.token" method="sendResetPasswordTokenEmail" />
+            <tag name="kernel.event_listener" event="sylius.user.email_verification.token" method="sendVerificationTokenEmail" />
+            <tag name="kernel.event_listener" event="sylius.web_user.post_register" method="sendUserRegistrationEmail" />
+        </service>
+
+        <service class="PhpMob\CoreBundle\Form\Type\WebUserRegistrationType">
+            <argument>%sylius.model.web_user.class%</argument>
+            <argument type="collection">
+                <argument>phpmob</argument>
+                <argument>registration</argument>
+            </argument>
+            <tag name="form.type"/>
+        </service>
+
+        <service class="PhpMob\CoreBundle\Validator\PasswordRequirementValidator">
+            <argument>%phpmob.security_password_requirements%</argument>
+            <tag name="validator.constraint_validator" alias="phpmob.password_requirement" />
+        </service>
+
+        <service class="PhpMob\CoreBundle\Validator\PasswordStrengthValidator">
+            <argument type="service" id="translator" on-invalid="null"/>
+            <argument>%phpmob.security_password_strengths%</argument>
+            <tag name="validator.constraint_validator" alias="phpmob.password_strength" />
+        </service>
+    </services>
+</container>

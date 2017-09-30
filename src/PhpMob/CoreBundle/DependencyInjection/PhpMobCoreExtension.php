@@ -12,6 +12,14 @@ class PhpMobCoreExtension extends AbstractResourceExtension
     /**
      * {@inheritdoc}
      */
+    public function getAlias()
+    {
+        return 'phpmob_core';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function load(array $configs, ContainerBuilder $container)
     {
         $configuration = new Configuration();
@@ -21,5 +29,14 @@ class PhpMobCoreExtension extends AbstractResourceExtension
         $this->registerResources('phpmob', $config['driver'], [], $container);
 
         $loader->load('services.xml');
+
+        $container->setParameter('phpmob.security_firewall_context_name', $config['security']['firewall_context_name']);
+        $container->setParameter('phpmob.security_reserved_words', $config['security']['username']['reserved_words']);
+        $container->setParameter('phpmob.security_password_requirements', $config['security']['password']['requirements']);
+        $container->setParameter('phpmob.security_password_strengths', $config['security']['password']['strengths']);
+
+        if ($config['security']['enabled']) {
+            $loader->load('services/security.xml');
+        }
     }
 }

@@ -5,7 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="phpmob.form.web_user" class="PhpMob\CoreBundle\Form\Type\WebUserType">
+        <service class="PhpMob\CoreBundle\Form\Type\WebUserType">
             <argument>%sylius.model.web_user.class%</argument>
             <argument type="collection">
                 <argument>phpmob</argument>
@@ -13,7 +13,7 @@
             <tag name="form.type"/>
         </service>
 
-        <service id="phpmob.form.web_user_picture" class="PhpMob\CoreBundle\Form\Type\WebUserPictureType">
+        <service class="PhpMob\CoreBundle\Form\Type\WebUserPictureType">
             <argument>%phpmob.model.web_user_picture.class%</argument>
             <argument type="collection">
                 <argument>phpmob</argument>
@@ -21,7 +21,7 @@
             <tag name="form.type"/>
         </service>
 
-        <service id="phpmob.form.type.user_group" class="PhpMob\CoreBundle\Form\Type\UserGroupType">
+        <service class="PhpMob\CoreBundle\Form\Type\UserGroupType">
             <argument>%phpmob.model.user_group.class%</argument>
             <argument type="collection">
                 <argument>phpmob</argument>

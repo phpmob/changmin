@@ -1,0 +1,18 @@
+{% extends '@PhpMobCms/tpls/layout.html.twig' %}
+
+{% form_theme form '@PhpMobCms/tpls/form/default.html.twig' %}
+
+{% block content %}
+    <div class="container container-register">
+        {{ form_start(form, {'action': path('web_security_register'), 'attr': {'novalidate': 'novalidate'}}) }}
+
+        {{ form_row(form.username) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.plainPassword) }}
+
+        <button type="submit" class="btn btn-lg btn-primary w-100 mb-2">{{ "Register" }}</button>
+
+        {{ form_row(form._token) }}
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+{% endblock %}

@@ -18,20 +18,20 @@ web_security_login_check:
 web_security_logout:
     path: /logout
     methods: [GET]
-#
-#web_security_register:
-#    path: /register
-#    methods: [GET, POST]
-#    defaults:
-#        _controller: sylius.controller.customer:createAction
-#        _sylius:
-#            template: "@SyliusShop/register.html.twig"
-#            form: Sylius\Bundle\CoreBundle\Form\Type\Customer\CustomerRegistrationType
-#            event: register
-#            redirect:
-#                route: web_security_account_dashboard
-#            flash: sylius.customer.register
-#
+
+web_security_register:
+    path: /register
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.web_user:createAction
+        _sylius:
+            template: "@PhpMobCms/tpls/security/register.html.twig"
+            form: PhpMob\CoreBundle\Form\Type\WebUserRegistrationType
+            event: register
+            flash: phpmob.user.register
+            redirect:
+                route: web_account_dashboard
+
 #web_security_request_password_reset_token:
 #    path: /forgotten-password
 #    methods: [GET, POST]

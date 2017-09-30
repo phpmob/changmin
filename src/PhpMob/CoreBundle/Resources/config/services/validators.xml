@@ -4,10 +4,10 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <imports>
-        <import resource="services/fixtures.xml"/>
-        <import resource="services/forms.xml"/>
-        <import resource="services/listeners.xml"/>
-        <import resource="services/validators.xml"/>
-    </imports>
+    <services>
+        <service class="PhpMob\CoreBundle\Validator\ReservedWordValidator">
+            <argument>%phpmob.security_reserved_words%</argument>
+            <tag name="validator.constraint_validator" alias="phpmob.reserved_word_validator" />
+        </service>
+    </services>
 </container>

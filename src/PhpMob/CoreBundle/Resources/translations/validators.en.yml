@@ -8,3 +8,29 @@ phpmob:
             not_blank: Please enter a group name.
             min: Group name must not be longer than {{ limit }} characters.
             max: Group name must be at least {{ limit }} characters long.
+    user:
+        username:
+            already_used: This username is already used, please login or use forgotten password.
+            max: Username must not be longer than {{ limit }} characters.
+            not_blank: Please enter your username.
+            unique: This username is already used.
+            reserved: This username is already taken.
+        email:
+            already_used: This email is already used, please login or use forgotten password.
+            max: Email must not be longer than {{ limit }} characters.
+            not_blank: Please enter your email.
+            invalid: This email is invalid.
+            unique: This email is already used.
+            registered: This email is already registered, please login or use forgotten password.
+        plainPassword:
+            not_blank: Please enter your password.
+            mismatch: The entered passwords don't match
+            wrong_current: Provided password is different than the current one.
+        password:
+            min: Password must be at least {{ limit }} characters long.
+            max: Password must not be longer than {{ limit }} characters.
+#            too_short: Your password must be at least {{length}} characters long.
+#            missing_letters: Your password must include at least one letter.
+#            require_case_diff: Your password must include both upper and lower case letters.
+#            missing_numbers: Your password must include at least one number.
+#            missing_special_character: Your password must contain at least one special character.

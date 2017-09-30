@@ -8,3 +8,30 @@ phpmob:
             not_blank: ชื่อต้องไม่เป็นค่าว่าง
             min: ชื่อควรมีความยาวไม่น้อยกว่า {{ limit }} ตัวอักษร
             max: ชื่อควรมีความยาวไม่เกิน {{ limit }} ตัวอักษร
+    user:
+        username:
+            already_used: Username นี้มีการลงทะเบียนแล้ว กรุณาเข้าสู่ระบบ หรือ เลือกเมนูลืมรหัสผ่าน
+            max: Username ต้องมีความยาวไม่เกิน {{ limit }} ตัวอักษร
+            not_blank: กรุณาระบุ Username
+            unique: Username ถูกใช้งานแล้ว
+            reserved: มีคนใช้งาน username นี้แล้ว
+        email:
+            already_used: อีเมลนี้มีการลงทะเบียนแล้ว กรุณาเข้าสู่ระบบ หรือ เลือกเมนูลืมรหัสผ่าน
+            max: อีเมลต้องมีความยาวไม่เกิน {{ limit }} ตัวอักษร
+            not_blank: กรุณาระบุอีเมลของคุณ
+            invalid: อีเมลนี้ไม่ถูกต้อง
+            unique: อีเมลนี้ถูกใช้งานแล้ว
+            registered: อีเมลนี้มีการลงทะเบียนแล้ว กรุณาเข้าสู่ระบบ หรือ เลือกเมนูลืมรหัสผ่าน
+        plainPassword:
+            not_blank: โปรดระบุรหัสผ่านของคุณ
+            mismatch: รหัสผ่านที่ระบุไม่ตรงกัน
+            wrong_current: ใช้รหัสที่แตกต่างจากรหัสผ่านปัจจุบัน
+        password:
+            min: รหัสผ่านต้องมีความยาวอย่างน้อย {{ limit }} ตัวอักษร
+            max: รหัสผ่านต้องมีความยาวไม่เกิน {{ limit }} ตัวอักษร
+#            too_short: Your password must be at least {{length}} characters long.
+#            missing_letters: Your password must include at least one letter.
+#            require_case_diff: Your password must include both upper and lower case letters.
+#            missing_numbers: Your password must include at least one number.
+#            missing_special_character: Your password must contain at least one special character.
+#            strength: Your password must contain at least one special character.

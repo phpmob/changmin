@@ -1,4 +1,4 @@
-{% extends '@PhpMobCms/tpls/default.html.twig' %}
+{% extends '@PhpMobCms/tpls/layout.html.twig' %}
 
 {% form_theme form '@PhpMobCms/tpls/form/default.html.twig' %}
 
@@ -13,9 +13,13 @@
 
         {{ form_row(form._username) }}
         {{ form_row(form._password) }}
+
         <input type="hidden" name="_csrf_web_security_token" value="{{ csrf_token('web_authenticate') }}">
         <button type="submit" class="btn btn-lg btn-primary w-100 mb-2">{{ "Login" }}</button>
+
         {{ form_row(form._remember_me) }}
+
+        <a class="btn btn-link" href="{{ path('web_security_register') }}">{{ "Have no account?" }}</a>
 
         {{ form_end(form, {'render_rest': false}) }}
     </div>
