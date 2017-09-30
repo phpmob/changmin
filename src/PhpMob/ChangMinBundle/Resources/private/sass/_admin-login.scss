@@ -1,36 +1,32 @@
-.login-container {
-    background-color: $chang-bg-color;
-    display: flex;
-    align-items: center;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+.window-login {
+    background: $chang-bg-color;
 
-    .card {
-        width: 350px;
-        padding: 40px 40px;
-        margin: 50px auto 25px;
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-    }
+    .container {
+        width: 380px;
+        min-height: 330px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
 
-    .avatar {
-        margin: 0 auto 2rem auto;
-    }
+        .card {
+            padding: 40px 40px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+        }
 
-    .form-control {
-        padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
-        font-size: $font-size-lg;
-        line-height: $input-btn-line-height-lg;
-        @include border-radius($input-border-radius-lg);
-    }
+        .avatar {
+            margin: 0 auto 2rem auto;
+        }
 
-    .btn {
-        width: 100%;
+        .form-control {
+            padding: $input-btn-padding-y-lg $input-btn-padding-x-lg;
+            font-size: $font-size-lg;
+            line-height: $input-btn-line-height-lg;
+            @include border-radius($input-border-radius-lg);
+        }
+
+        .btn {
+            width: 100%;
+        }
     }
 }

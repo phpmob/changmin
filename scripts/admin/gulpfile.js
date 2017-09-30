@@ -8,6 +8,8 @@ require('./private/tasks.js')(require, {
             "{src}/app/dist/static/js/*.js",
             "{node}/jquery/dist/jquery.js",
             "{node}/jquery-confirm/dist/jquery-confirm.min.js",
+            "{node}/jquery-validation/dist/jquery.validate.js",
+            "{node}/jquery-validation/dist/jquery.additional-methods.js",
             "{node}/pace-progress/pace.js",
             "{node}/tether/dist/js/tether.js",
             "{node}/popper.js/dist/umd/popper.js",
@@ -26,6 +28,7 @@ require('./private/tasks.js')(require, {
             "./sass/**"
         ],
         "css": [
+            "{node}/animate.css/animate.css",
             "{node}/jquery-confirm/dist/jquery-confirm.min.css",
             "{node}/pace-progress/themes/blue/pace-theme-center-simple.css",
             "{node}/selectize/dist/css/selectize.css",
@@ -38,7 +41,6 @@ require('./private/tasks.js')(require, {
             ["{output}/fonts", "./fonts/**"],
             ["{output}/img", "{src}/img/**"],
             ["{output}/fonts", "{src}/fonts/**"],
-            ["{output}/fonts", "{src}/photon/fonts/**"],
             ["{output}/fonts", "{node}/font-awesome/fonts/**"],
             ["{output}/fonts", "{node}/simple-line-icons/fonts/**"],
             ["{output}/flags", "{node}/flag-icon-css/flags/**"]

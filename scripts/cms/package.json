@@ -8,10 +8,12 @@
     "copyright": "Copyright 2017 Liverbool <nukboon@gmail.com>",
     "license": "MIT",
     "dependencies": {
+        "animate.css": "^3.5.2",
         "bootstrap": "4.0.0-beta",
         "font-awesome": "^4.7.0",
         "jquery": "^3.0.0",
         "jquery-confirm": "^3.3.1",
+        "jquery-validation": "~1.14.0",
         "popper.js": "^1.11.1",
         "tether": "latest",
         "zoom.js": "git+https://github.com/fat/zoom.js.git"

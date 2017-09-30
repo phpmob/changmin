@@ -8,6 +8,7 @@
     "copyright": "Copyright 2017 Liverbool <nukboon@gmail.com>",
     "license": "MIT",
     "dependencies": {
+        "animate.css": "^3.5.2",
         "bootstrap": "https://github.com/twbs/bootstrap.git#v4-dev",
         "chart.js": "^2.3.0",
         "codemirror": "^5.30.0",
@@ -17,6 +18,8 @@
         "font-awesome": "^4.7.0",
         "jquery": "^3.0.0",
         "jquery-confirm": "^3.3.1",
+        "jquery-validation": "~1.14.0",
+        "morris.js": "^0.5.0",
         "pace-progress": "^1.0.2",
         "popper.js": "^1.11.1",
         "primer-css": "^9.2.0",

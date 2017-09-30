@@ -1,0 +1,51 @@
+# This file is a part of the PhpMob package.
+# (c) Ishmael Doss <nukboon@gmail.com>
+
+web_security_login:
+    path: /login
+    methods: [GET]
+    defaults:
+        _controller: changmin.controller.security:loginAction
+        _sylius:
+            template: "@PhpMobCms/tpls/security/login.html.twig"
+
+web_security_login_check:
+    path: /login-check
+    methods: [POST]
+    defaults:
+        _controller: changmin.controller.security:checkAction
+
+web_security_logout:
+    path: /logout
+    methods: [GET]
+#
+#web_security_register:
+#    path: /register
+#    methods: [GET, POST]
+#    defaults:
+#        _controller: sylius.controller.customer:createAction
+#        _sylius:
+#            template: "@SyliusShop/register.html.twig"
+#            form: Sylius\Bundle\CoreBundle\Form\Type\Customer\CustomerRegistrationType
+#            event: register
+#            redirect:
+#                route: web_security_account_dashboard
+#            flash: sylius.customer.register
+#
+#web_security_request_password_reset_token:
+#    path: /forgotten-password
+#    methods: [GET, POST]
+#    defaults:
+#        _controller: sylius.controller.shop_user:requestPasswordResetTokenAction
+#        _sylius:
+#            template: "@SyliusShop/Account/requestPasswordReset.html.twig"
+#            redirect: web_security_login
+#
+#web_security_password_reset:
+#    path: /forgotten-password/{token}
+#    methods: [GET, POST]
+#    defaults:
+#        _controller: sylius.controller.shop_user:resetPasswordAction
+#        _sylius:
+#            template: "@SyliusShop/Account/resetPassword.html.twig"
+#            redirect: web_security_login

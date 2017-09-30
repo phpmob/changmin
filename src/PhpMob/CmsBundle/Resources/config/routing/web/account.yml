@@ -1,0 +1,17 @@
+# This file is a part of the PhpMob package.
+# (c) Ishmael Doss <nukboon@gmail.com>
+
+web_account_root:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: web_account_dashboard
+        permanent: true
+
+web_account_dashboard:
+    path: /dashboard
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: "@PhpMobCms/tpls/account/home.html.twig"

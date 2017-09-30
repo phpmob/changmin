@@ -6,9 +6,10 @@ import store from './redux/store';
 import App from './App';
 import Root from './Root';
 
-ReactDOM.render(
-    <Root store={store}><App /></Root>,
-    document.getElementById('root')
-);
+const ReactROOT = document.getElementById('root');
+
+if (ReactROOT) {
+    ReactDOM.render(<Root store={store}><App /></Root>, ReactROOT);
+}
 
 //registerServiceWorker();

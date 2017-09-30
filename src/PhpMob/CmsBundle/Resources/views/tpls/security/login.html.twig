@@ -1,0 +1,22 @@
+{% extends '@PhpMobCms/tpls/default.html.twig' %}
+
+{% form_theme form '@PhpMobCms/tpls/form/default.html.twig' %}
+
+{% block content %}
+    {% import '@PhpMobCms/tpls/macro/message.html.twig' as message %}
+
+    <div class="container container-login">
+        {{ form_start(form, {'action': path('web_security_login_check'), 'attr': {'novalidate': 'novalidate'}}) }}
+        {% if last_error %}
+            {{ message.error(last_error.messageKey|trans(last_error.messageData, 'security')) }}
+        {% endif %}
+
+        {{ form_row(form._username) }}
+        {{ form_row(form._password) }}
+        <input type="hidden" name="_csrf_web_security_token" value="{{ csrf_token('web_authenticate') }}">
+        <button type="submit" class="btn btn-lg btn-primary w-100 mb-2">{{ "Login" }}</button>
+        {{ form_row(form._remember_me) }}
+
+        {{ form_end(form, {'render_rest': false}) }}
+    </div>
+{% endblock %}

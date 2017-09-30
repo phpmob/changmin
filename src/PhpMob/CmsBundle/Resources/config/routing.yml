@@ -2,7 +2,7 @@ phpmob_cms_page_view:
     path: /{slug}
     methods: ['GET']
     requirements:
-        slug: .*
+        slug: "[^/]+"
     defaults:
         _controller: phpmob.controller.page:viewAction
         _sylius:

@@ -16,26 +16,29 @@
     <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
 </head>
 <body>
-<div class="container-fluid login-container">
-    <div class="card">
-        <div class="avatar avatar-lg">
-            <img class="img-avatar img-avatar-user"/>
+<div class="window window-login">
+    <div class="container">
+        <div class="card">
+            <div class="avatar avatar-lg">
+                <img class="img-avatar img-avatar-user"/>
+            </div>
+
+            {% if last_error %}
+                {{ messages.error(last_error.message) }}
+            {% endif %}
+
+            {{ form_start(form, {'action': path('changmin_admin_login_check'), 'attr': {'novalidate': 'novalidate'}}) }}
+            {{ form_row(form._username, { 'value': last_username|default('') }) }}
+            {{ form_row(form._password) }}
+            {{ form_row(form._remember_me) }}
+
+            <input type="hidden" name="_csrf_admin_security_token" value="{{ csrf_token('admin_authenticate') }}">
+            <button type="submit" class="btn btn-primary btn-lg">{{ 'ui.security.login_btn'|trans }}</button>
+
+            {{ form_end(form, {'render_rest': false}) }}
         </div>
-
-        {% if last_error %}
-            {{ messages.error(last_error.message) }}
-        {% endif %}
-
-        {{ form_start(form, {'action': path('changmin_admin_login_check'), 'attr': {'novalidate': 'novalidate'}}) }}
-        {{ form_row(form._username, { 'value': last_username|default('') }) }}
-        {{ form_row(form._password) }}
-        {{ form_row(form._remember_me) }}
-
-        <input type="hidden" name="_csrf_admin_security_token" value="{{ csrf_token('admin_authenticate') }}">
-        <button type="submit" class="btn btn-primary btn-lg">{{ 'ui.security.login_btn'|trans }}</button>
-
-        {{ form_end(form, {'render_rest': false}) }}
     </div>
 </div>
+<script src="{{ asset('assets/admin/js/app.js') }}"></script>
 </body>
 </html>
