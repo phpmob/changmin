@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="phpmob.settings.composite_provider" class="PhpMob\Settings\Provider\CompositeSettingProvider">
+            <argument type="service">
+                <service class="PhpMob\Settings\Provider\LocalSettingProvider"/>
+            </argument>
+            <argument type="service">
+                <service id="phpmob.settings.remote_provider" class="PhpMob\Settings\Provider\RemoteSettingProvider">
+                    <argument type="service" id="doctrine"/>
+                </service>
+            </argument>
+        </service>
+
+        <service id="phpmob.settings.schema_registry" class="PhpMob\Settings\Schema\SettingSchemaRegistry" lazy="true"/>
+        <service id="phpmob.settings.type_registry" class="PhpMob\Settings\Type\TypeRegistry"/>
+
+        <service id="phpmob.settings.transformer" class="PhpMob\Settings\Type\TypeTransformer">
+            <argument type="service" id="phpmob.settings.schema_registry"/>
+            <argument type="service" id="phpmob.settings.type_registry"/>
+        </service>
+
+        <service id="phpmob.settings.manager" class="PhpMob\Settings\Manager\SettingManager">
+            <argument type="service" id="doctrine"/>
+            <argument type="service" id="phpmob.settings.composite_provider"/>
+            <argument type="service" id="phpmob.settings.transformer"/>
+            <argument type="service" id="doctrine.orm.default_metadata_driver"/>
+        </service>
+    </services>
+</container>

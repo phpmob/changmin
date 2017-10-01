@@ -50,7 +50,7 @@ class AppKernel extends Kernel
             new \Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new \PhpMob\TwigModifyBundle\PhpMobTwigModifyBundle(),
-            new \PhpMob\SettingBundle\PhpMobSettingBundle(),
+            new \PhpMob\SettingsBundle\PhpMobSettingsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

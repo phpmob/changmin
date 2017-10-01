@@ -6,6 +6,13 @@
                                       http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <mapped-superclass name="PhpMob\ChangMinBundle\Model\AdminUser" table="phpmob_admin_user">
+        <indexes>
+            <index columns="username" name="IDX_USERNAME"/>
+            <index columns="username_canonical" name="IDX_USERNAME_CANONICAL"/>
+            <index columns="email" name="IDX_EMAIL"/>
+            <index columns="email_canonical" name="IDX_EMAIL_CANONICAL"/>
+        </indexes>
+
         <field name="displayName" type="string" length="100" nullable="true"/>
 
         <one-to-one field="picture" target-entity="PhpMob\ChangMinBundle\Model\AdminUserPictureInterface" mapped-by="owner">

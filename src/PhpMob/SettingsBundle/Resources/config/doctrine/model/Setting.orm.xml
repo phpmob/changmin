@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="PhpMob\Settings\Model\Setting" repository-class="PhpMob\SettingsBundle\Repository\SettingRepository"
+            table="phpmob_setting">
+
+        <indexes>
+            <index columns="section" name="IDX_SECTION"/>
+            <index columns="key" name="IDX_KEY"/>
+            <index columns="owner" name="IDX_OWNER"/>
+        </indexes>
+
+        <unique-constraints>
+            <unique-constraint columns="section,key,owner" name="UIDX_SETTING"/>
+        </unique-constraints>
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="section" type="string" length="100"/>
+        <field name="key" type="string" length="100"/>
+        <field name="value" type="text" nullable="true"/>
+        <field name="createdAt" type="datetime" nullable="true"/>
+        <field name="updatedAt" type="datetime" nullable="true"/>
+        <field name="owner" type="string" nullable="true"/>
+    </entity>
+</doctrine-mapping>

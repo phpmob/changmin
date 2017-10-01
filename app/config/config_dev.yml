@@ -39,3 +39,24 @@ monolog:
 
 #swiftmailer:
 #    delivery_addresses: ['me@example.com']
+
+doctrine:
+    orm:
+        mappings:
+            PhpMobSettings:
+                type: xml
+                is_bundle: false
+                prefix: PhpMob\Settings\Model
+                dir: '%kernel.project_dir%/src/PhpMob/SettingsBundle/Resources/config/doctrine/model'
+
+phpmob_settings:
+    schemas:
+        section1:
+            label: Section1
+            settings:
+                key1: ~
+        section2:
+            label: Section1
+            settings:
+                key1: ~
+                key2: ~
