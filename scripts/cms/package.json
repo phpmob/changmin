@@ -15,6 +15,7 @@
         "jquery-confirm": "^3.3.1",
         "jquery-validation": "~1.14.0",
         "popper.js": "^1.11.1",
+        "pwstrength-bootstrap": "^2.1.1",
         "tether": "latest",
         "zoom.js": "git+https://github.com/fat/zoom.js.git"
     },
