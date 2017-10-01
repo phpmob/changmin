@@ -18,7 +18,7 @@ use Psr\Cache\CacheItemPoolInterface;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class CachedSettingManager implements SettingManagerInterface
+class CachedManager implements SettingManagerInterface
 {
     /**
      * @var CacheItemPoolInterface
