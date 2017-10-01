@@ -5,9 +5,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="phpmob.settings.composite_provider" class="PhpMob\Settings\Provider\CompositeSettingProvider">
+        <service id="phpmob.settings.composite_provider" class="PhpMob\Settings\Provider\CompositeSettingProvider" lazy="true">
             <argument type="service">
-                <service class="PhpMob\Settings\Provider\LocalSettingProvider"/>
+                <service class="PhpMob\Settings\Provider\LocalSettingProvider">
+                    <argument type="service" id="phpmob.settings.schema_registry"/>
+                </service>
             </argument>
             <argument type="service">
                 <service id="phpmob.settings.remote_provider" class="PhpMob\Settings\Provider\RemoteSettingProvider">
@@ -17,14 +19,14 @@
         </service>
 
         <service id="phpmob.settings.schema_registry" class="PhpMob\Settings\Schema\SettingSchemaRegistry" lazy="true"/>
-        <service id="phpmob.settings.type_registry" class="PhpMob\Settings\Type\TypeRegistry"/>
+        <service id="phpmob.settings.type_registry" class="PhpMob\Settings\Type\TypeRegistry" lazy="true"/>
 
-        <service id="phpmob.settings.transformer" class="PhpMob\Settings\Type\TypeTransformer">
+        <service id="phpmob.settings.transformer" class="PhpMob\Settings\Type\TypeTransformer" lazy="true">
             <argument type="service" id="phpmob.settings.schema_registry"/>
             <argument type="service" id="phpmob.settings.type_registry"/>
         </service>
 
-        <service id="phpmob.settings.manager" class="PhpMob\Settings\Manager\SettingManager">
+        <service id="phpmob.settings.manager" class="PhpMob\Settings\Manager\SettingManager" lazy="true">
             <argument type="service" id="doctrine"/>
             <argument type="service" id="phpmob.settings.composite_provider"/>
             <argument type="service" id="phpmob.settings.transformer"/>

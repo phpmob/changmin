@@ -15,6 +15,7 @@ namespace PhpMob\Settings\Provider;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpMob\Settings\Model\Setting;
+use PhpMob\Settings\Schema\SettingSchemaRegistryInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
@@ -22,16 +23,16 @@ use PhpMob\Settings\Model\Setting;
 class LocalSettingProvider implements SettingProviderInterface
 {
     /**
-     * @var array
+     * @var SettingSchemaRegistryInterface
      */
-    private $settings;
+    private $schemaRegistry;
 
     /**
-     * @param array $settings
+     * @param SettingSchemaRegistryInterface $schemaRegistry
      */
-    public function __construct(array $settings = [])
+    public function __construct(SettingSchemaRegistryInterface $schemaRegistry)
     {
-        $this->settings = $settings;
+        $this->schemaRegistry = $schemaRegistry;
     }
 
     /**
@@ -39,7 +40,13 @@ class LocalSettingProvider implements SettingProviderInterface
      */
     public function findUserSettings(string $owner)
     {
-        return new ArrayCollection([]);
+        $settings = [];
+
+        foreach ($this->schemaRegistry->getOwners() as $section) {
+            $settings = array_merge($settings, $section->getSettings());
+        }
+
+        return new ArrayCollection($settings);
     }
 
     /**
@@ -47,13 +54,12 @@ class LocalSettingProvider implements SettingProviderInterface
      */
     public function findGlobalSettings()
     {
-        return new ArrayCollection(array_map(function ($setting) {
-            $object = new Setting();
-            $object->setSection($setting['section']);
-            $object->setKey($setting['key']);
-            $object->setValue($setting['value']);
+        $settings = [];
 
-            return $object;
-        }, $this->settings));
+        foreach ($this->schemaRegistry->getGlobals() as $section) {
+            $settings = array_merge($settings, $section->getSettings());
+        }
+
+        return new ArrayCollection($settings);
     }
 }
