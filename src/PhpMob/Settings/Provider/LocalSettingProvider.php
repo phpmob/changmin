@@ -15,6 +15,8 @@ namespace PhpMob\Settings\Provider;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpMob\Settings\Model\Setting;
+use PhpMob\Settings\Model\SettingInterface;
+use PhpMob\Settings\Schema\SettingSchema;
 use PhpMob\Settings\Schema\SettingSchemaRegistryInterface;
 
 /**
@@ -46,7 +48,7 @@ class LocalSettingProvider implements SettingProviderInterface
             $settings = array_merge($settings, $section->getSettings());
         }
 
-        return new ArrayCollection($settings);
+        return new ArrayCollection($this->populateSettings($settings, $owner));
     }
 
     /**
@@ -60,6 +62,27 @@ class LocalSettingProvider implements SettingProviderInterface
             $settings = array_merge($settings, $section->getSettings());
         }
 
-        return new ArrayCollection($settings);
+        return new ArrayCollection($this->populateSettings($settings));
+    }
+
+    /**
+     * @param SettingSchema[] $settings
+     * @param null|string $owner
+     *
+     * @return SettingInterface[]
+     */
+    private function populateSettings(array $settings, ?string $owner = null)
+    {
+        $objects = [];
+
+        foreach ($settings as $setting) {
+            $objects[] = $object = new Setting();
+            $object->setOwner($owner);
+            $object->setSection($setting->getSection()->getName());
+            $object->setKey($setting->getKey());
+            $object->setValue($setting->getValue());
+        }
+
+        return $objects;
     }
 }

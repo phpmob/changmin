@@ -31,18 +31,21 @@ class SettingSchemaRegistry implements SettingSchemaRegistryInterface
         'owners' => [],
     ];
 
+    public function __construct(array $sections = [])
+    {
+        foreach ($sections as $section => $data) {
+            $this->add($section, $data);
+        }
+    }
+
     /**
      * {@inheritdoc}
      */
     public function add($section, array $data): void
     {
-        if (!$data['enabled']) {
-            return;
-        }
+        $this->schemas[$section] = new Section($section, $data);
 
-        $this->schemas[$section] = new Section($data);
-
-        if ($data['ownered']) {
+        if ($data['owner_aware']) {
             $this->types['owners'][$section] = $this->schemas[$section];
         } else {
             $this->types['globals'][$section] = $this->schemas[$section];
@@ -54,11 +57,7 @@ class SettingSchemaRegistry implements SettingSchemaRegistryInterface
      */
     public function get($section, $key)
     {
-        if ($section = $this->getSection($section)) {
-            return $section->get($key);
-        }
-
-        return null;
+        return $this->getSection($section)->getSetting($key);
     }
 
     /**
@@ -67,7 +66,7 @@ class SettingSchemaRegistry implements SettingSchemaRegistryInterface
     public function getSection($section)
     {
         if (!array_key_exists($section, $this->schemas)) {
-            return null;
+            throw new \InvalidArgumentException("No section name `$section`.");
         }
 
         return $this->schemas[$section];
@@ -87,5 +86,13 @@ class SettingSchemaRegistry implements SettingSchemaRegistryInterface
     public function getOwners()
     {
         return $this->types['owners'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAll()
+    {
+        return $this->schemas;
     }
 }

@@ -29,12 +29,4 @@ class Blueprint
             $this->data[$key] = $value;
         }
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __get($key)
-    {
-        return $this->data[$key];
-    }
 }

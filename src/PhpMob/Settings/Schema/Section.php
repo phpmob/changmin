@@ -15,9 +15,6 @@ namespace PhpMob\Settings\Schema;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
- *
- * @property boolean $ownered
- * @property string $label
  */
 class Section
 {
@@ -31,15 +28,13 @@ class Section
      */
     private $settings = [];
 
-    public function __construct(array $data)
+    public function __construct($name, array $data)
     {
+        $this->data['name'] = $name;
+
         foreach ($data as $key => $value) {
             if ('settings' === $key) {
-                foreach ($value as $schemaKey => $schemaData) {
-                    if ($schemaData['enabled']) {
-                        $this->settings[$schemaKey] = new SettingSchema($schemaData);
-                    }
-                }
+                $this->initSettings($value);
             } else {
                 $this->data[$key] = $value;
             }
@@ -47,21 +42,60 @@ class Section
     }
 
     /**
-     * {@inheritdoc}
+     * @param array $settings
      */
-    public function __get($key)
+    private function initSettings(array $settings)
     {
-        return $this->data[$key];
+        foreach ($settings as $schemaKey => $schemaData) {
+            $this->settings[$schemaKey] = new SettingSchema($this, $schemaKey, $schemaData);
+        }
     }
 
     /**
-     * @param $key
-     *
-     * @return SettingSchema|null
+     * @return boolean
      */
-    public function get($key)
+    public function isOwnerAware()
     {
-        return array_key_exists($key, $this->settings) ? $this->settings[$key] : null;
+        return $this->data['owner_aware'];
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isEnabled()
+    {
+        return $this->data['enabled'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->data['label'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->data['name'];
+    }
+
+    /**
+     * @param string $key
+     *
+     * @return SettingSchema
+     * @throws \InvalidArgumentException
+     */
+    public function getSetting($key)
+    {
+        if (!array_key_exists($key, $this->settings)) {
+            throw new \InvalidArgumentException("No setting key `$key` in this section.`");
+        }
+
+        return $this->settings[$key];
     }
 
     /**
@@ -69,6 +103,6 @@ class Section
      */
     public function getSettings()
     {
-        return $this->settings;
+        return array_values($this->settings);
     }
 }

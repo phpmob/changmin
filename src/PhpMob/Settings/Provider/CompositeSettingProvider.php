@@ -47,7 +47,10 @@ class CompositeSettingProvider implements SettingProviderInterface
      */
     public function findUserSettings(string $owner)
     {
-        return $this->remoteProvider->findUserSettings($owner);
+        return $this->mergeSettings(
+            $this->remoteProvider->findUserSettings($owner),
+            $this->localProvider->findUserSettings($owner)
+        );
     }
 
     /**
@@ -55,8 +58,20 @@ class CompositeSettingProvider implements SettingProviderInterface
      */
     public function findGlobalSettings()
     {
-        $remotes = $this->remoteProvider->findGlobalSettings();
-        $locals = $this->localProvider->findGlobalSettings();
+        return $this->mergeSettings(
+            $this->remoteProvider->findGlobalSettings(),
+            $this->localProvider->findGlobalSettings()
+        );
+    }
+
+    /**
+     * @param Collection $remotes
+     * @param Collection $locals
+     *
+     * @return ArrayCollection
+     */
+    private function mergeSettings(Collection $remotes, Collection $locals)
+    {
         $settings = $remotes->toArray();
 
         /** @var SettingInterface $local */
@@ -77,10 +92,8 @@ class CompositeSettingProvider implements SettingProviderInterface
      */
     private function exists(Collection $remote, SettingInterface $object)
     {
-        return $remote->exists(function (SettingInterface $setting) use ($object) {
-            return $object->getSection() === $setting->getSection()
-                && $object->getKey() === $setting->getKey()
-                && $object->getOwner() === $setting->getOwner();
+        return $remote->exists(function (int $key, SettingInterface $setting) use ($object) {
+            return $setting->isEqual($object);
         });
     }
 }

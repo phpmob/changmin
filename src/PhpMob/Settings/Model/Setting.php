@@ -162,4 +162,22 @@ class Setting implements SettingInterface
     {
         $this->updatedAt = $updatedAt;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isEqual(SettingInterface $setting)
+    {
+        return $this->isEquals($setting->getSection(), $setting->getKey(), $setting->getOwner());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isEquals(string $section, string $key, ?string $owner = null)
+    {
+        return $section === $this->getSection()
+            && $key === $this->getKey()
+            && $owner === $this->getOwner();
+    }
 }

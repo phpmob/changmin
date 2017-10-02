@@ -62,4 +62,20 @@ interface SettingInterface
      * @param string $owner
      */
     public function setOwner(?string $owner): void;
+
+    /**
+     * @param SettingInterface $setting
+     *
+     * @return bool
+     */
+    public function isEqual(SettingInterface $setting);
+
+    /**
+     * @param string $section
+     * @param string $key
+     * @param null|string $owner
+     *
+     * @return bool
+     */
+    public function isEquals(string $section, string $key, ?string $owner = null);
 }

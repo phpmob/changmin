@@ -28,7 +28,8 @@ interface SettingSchemaRegistryInterface
      * @param $section
      * @param $key
      *
-     * @return null|SettingSchema
+     * @return SettingSchema
+     * @throws \InvalidArgumentException
      */
     public function get($section, $key);
 
@@ -36,6 +37,7 @@ interface SettingSchemaRegistryInterface
      * @param $section
      *
      * @return Section
+     * @throws \InvalidArgumentException
      */
     public function getSection($section);
 
@@ -48,4 +50,9 @@ interface SettingSchemaRegistryInterface
      * @return Section[]
      */
     public function getOwners();
+
+    /**
+     * @return Section[]
+     */
+    public function getAll();
 }

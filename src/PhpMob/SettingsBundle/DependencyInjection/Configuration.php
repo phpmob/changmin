@@ -38,7 +38,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('service')->defaultNull()->end()
-                        ->integerNode('lifetime')->defaultValue(3600)->end()
+                        ->integerNode('lifetime')->defaultValue(86400)->end()
                     ->end()
                 ->end()
                 ->arrayNode('schemas')
@@ -47,7 +47,7 @@ class Configuration implements ConfigurationInterface
                     ->prototype('array')
                         ->children()
                             ->scalarNode('enabled')->defaultTrue()->end()
-                            ->scalarNode('ownered')->defaultFalse()->end()
+                            ->scalarNode('owner_aware')->defaultFalse()->end()
                             ->scalarNode('label')->defaultNull()->end()
                             ->arrayNode('settings')
                                 // setting key
