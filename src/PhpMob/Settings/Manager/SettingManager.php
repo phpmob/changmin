@@ -20,6 +20,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use PhpMob\Settings\Model\Setting;
 use PhpMob\Settings\Model\SettingInterface;
 use PhpMob\Settings\Provider\SettingProviderInterface;
+use PhpMob\Settings\Schema\SettingSchemaRegistryInterface;
 use PhpMob\Settings\Type\TypeTransformerInterface;
 
 /**
@@ -31,6 +32,11 @@ class SettingManager implements SettingManagerInterface
      * @var ObjectManager
      */
     private $manager;
+
+    /**
+     * @var SettingSchemaRegistryInterface
+     */
+    private $schemaRegistry;
 
     /**
      * @var SettingProviderInterface
@@ -55,10 +61,12 @@ class SettingManager implements SettingManagerInterface
     public function __construct(
         ManagerRegistry $managerRegistry,
         SettingProviderInterface $provider,
+        SettingSchemaRegistryInterface $schemaRegistry,
         TypeTransformerInterface $transformer
     ) {
         $this->manager = $managerRegistry->getManagerForClass(Setting::class);
         $this->provider = $provider;
+        $this->schemaRegistry = $schemaRegistry;
         $this->transformer = $transformer;
 
         $this->globalSettings = new ArrayCollection();
@@ -127,10 +135,29 @@ class SettingManager implements SettingManagerInterface
     }
 
     /**
+     * @param $section
+     * @param null|string $owner
+     */
+    private function assertSectionScope($section, ?string $owner)
+    {
+        try {
+            $section = $this->schemaRegistry->getSection($section);
+        } catch (\InvalidArgumentException $e) {
+            throw new \LogicException($e->getMessage());
+        }
+
+        if (($owner && !$section->isOwnerAware()) || (!$owner && $section->isOwnerAware())) {
+            throw new \LogicException("Wrong section accessing.");
+        }
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function setSetting($section, $key, $value, ?string $owner, $autoFlush = false): void
     {
+        $this->assertSectionScope($section, $owner);
+
         $setting = $this->findSetting($section, $key, $owner) ?: new Setting();
         $setting->setOwner($owner);
         $setting->setSection($section);
@@ -142,7 +169,7 @@ class SettingManager implements SettingManagerInterface
 
         if ($autoFlush) {
             $this->manager->persist($setting);
-            $this->manager->flush($setting);
+            $this->manager->flush();
         }
     }
 
@@ -151,13 +178,12 @@ class SettingManager implements SettingManagerInterface
      */
     public function getSetting($section, $key, ?string $owner)
     {
-        if ($setting = $this->findSetting($section, $key, $owner)) {
-            $this->transformer->reverse($setting);
+        $this->assertSectionScope($section, $owner);
 
-            return $setting->getValue();
-        }
+        $setting = $this->findSetting($section, $key, $owner);
+        $this->transformer->reverse($setting);
 
-        return null;
+        return $setting->getValue();
     }
 
     /**
