@@ -77,7 +77,7 @@ class SettingSchemaRegistry implements SettingSchemaRegistryInterface
      */
     public function getGlobals()
     {
-        return $this->types['globals'];
+        return array_values($this->types['globals']);
     }
 
     /**
@@ -85,7 +85,7 @@ class SettingSchemaRegistry implements SettingSchemaRegistryInterface
      */
     public function getOwners()
     {
-        return $this->types['owners'];
+        return array_values($this->types['owners']);
     }
 
     /**
@@ -93,6 +93,6 @@ class SettingSchemaRegistry implements SettingSchemaRegistryInterface
      */
     public function getAll()
     {
-        return $this->schemas;
+        return array_values($this->schemas);
     }
 }
