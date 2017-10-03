@@ -16,7 +16,7 @@ namespace PhpMob\Settings\Schema;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class Section
+class Section implements \JsonSerializable
 {
     /**
      * @var array
@@ -104,5 +104,15 @@ class Section
     public function getSettings()
     {
         return array_values($this->settings);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    function jsonSerialize()
+    {
+        return array_merge($this->data, [
+            'settings' => $this->settings,
+        ]);
     }
 }

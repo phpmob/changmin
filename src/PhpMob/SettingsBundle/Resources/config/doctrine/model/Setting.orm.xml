@@ -2,9 +2,7 @@
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="PhpMob\Settings\Model\Setting" repository-class="PhpMob\SettingsBundle\Repository\SettingRepository"
-            table="phpmob_setting">
-
+    <entity name="PhpMob\Settings\Model\Setting" table="phpmob_settings">
         <indexes>
             <index columns="section" name="IDX_SECTION"/>
             <index columns="key" name="IDX_KEY"/>

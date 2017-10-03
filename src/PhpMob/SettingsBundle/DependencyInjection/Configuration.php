@@ -31,9 +31,6 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('template')
-                    ->defaultValue('@PhpMobSettings/default.html.twig')
-                ->end()
                 ->arrayNode('cache')
                     ->addDefaultsIfNotSet()
                     ->children()
@@ -78,17 +75,20 @@ class Configuration implements ConfigurationInterface
                                                         })
                                                     ->end()
                                                 ->end()
-                                                ->variableNode('constraints')
-                                                    ->info('Use constraits found in Symfony\Component\Validator\Constraints')
-                                                    ->defaultValue([])
-                                                    ->validate()
-                                                        ->always(function ($v) {
-                                                            if (!is_array($v)) {
-                                                                throw new InvalidTypeException();
-                                                            }
+                                                ->arrayNode('constraints')
+                                                    ->info('Use Symfony\Component\Validator\Constraints')
+                                                    ->useAttributeAsKey('name')
+                                                    ->prototype('variable')
+                                                        ->defaultValue([])
+                                                        ->validate()
+                                                            ->always(function ($v) {
+                                                                if (!is_array($v)) {
+                                                                    return [];
+                                                                }
 
-                                                            return $v;
-                                                        })
+                                                                return $v;
+                                                            })
+                                                        ->end()
                                                     ->end()
                                                 ->end()
                                             ->end()

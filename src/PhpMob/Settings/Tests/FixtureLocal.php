@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace PhpMob\Settings\Tests;
 
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
@@ -71,6 +72,13 @@ class FixtureLocal
                         'enabled' => true,
                         'blueprint' => [
                             'type' => TextType::class,
+                            'options' => [],
+                            'constraints' => [
+                                NotBlank::class => [
+                                    'optionX' => 'xoption',
+                                    'optionY' => 'yoption',
+                                ]
+                            ],
                         ],
                     ],
                     'bar' => [

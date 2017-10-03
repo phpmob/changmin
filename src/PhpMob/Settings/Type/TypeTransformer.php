@@ -42,30 +42,31 @@ class TypeTransformer implements TypeTransformerInterface
     }
 
     /**
-     * @param SettingInterface $setting
+     * @param string $section
+     * @param string $key
      *
      * @return TypeInterface
      */
-    private function resolverType(SettingInterface $setting)
+    private function resolverType(string $section, string $key)
     {
         return $this->typeRegistry->get(
-            $this->schemaRegistry->get($setting->getSection(), $setting->getKey())
+            $this->schemaRegistry->get($section, $key)->getType()
         );
     }
 
     /**
-     * @param SettingInterface $setting
+     * {@inheritdoc}
      */
-    public function transform(SettingInterface $setting)
+    public function transform(string $section, string $key, $value)
     {
-        $setting->setValue($this->resolverType($setting)->setter($setting->getValue()));
+        return $this->resolverType($section, $key)->setter($value);
     }
 
     /**
-     * @param SettingInterface $setting
+     * {@inheritdoc}
      */
-    public function reverse(SettingInterface $setting)
+    public function reverse(string $section, string $key, $value)
     {
-        $setting->setValue($this->resolverType($setting)->getter($setting->getValue()));
+        return $this->resolverType($section, $key)->getter($value);
     }
 }

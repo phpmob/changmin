@@ -16,7 +16,7 @@ namespace PhpMob\Settings\Schema;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class Blueprint
+class Blueprint implements \JsonSerializable
 {
     /**
      * @var array
@@ -28,5 +28,37 @@ class Blueprint
         foreach ($schema as $key => $value) {
             $this->data[$key] = $value;
         }
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->data['type'];
+    }
+
+    /**
+     * @return array
+     */
+    public function getOptions()
+    {
+        return $this->data['options'];
+    }
+
+    /**
+     * @return array
+     */
+    public function getConstraints()
+    {
+        return $this->data['constraints'];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    function jsonSerialize()
+    {
+        return $this->data;
     }
 }

@@ -16,16 +16,22 @@ namespace PhpMob\Settings\Schema;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class SettingSchema
+class SettingSchema implements \JsonSerializable
 {
     /**
      * @var array
      */
     private $data = [];
 
+    /**
+     * @var Section
+     */
+    private $section;
+
     public function __construct(Section $section, $key, array $schema)
     {
-        $this->data['section'] = $section;
+        $this->section = $section;
+        $this->data['section'] = $section->getName();
         $this->data['key'] = $key;
 
         foreach ($schema as $key => $value) {
@@ -74,6 +80,14 @@ class SettingSchema
     }
 
     /**
+     * @return string
+     */
+    public function getSectionName()
+    {
+        return $this->data['section'];
+    }
+
+    /**
      * @return Blueprint
      */
     public function getBlueprint()
@@ -86,6 +100,14 @@ class SettingSchema
      */
     public function getSection()
     {
-        return $this->data['section'];
+        return $this->section;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    function jsonSerialize()
+    {
+        return $this->data;
     }
 }

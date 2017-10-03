@@ -19,22 +19,22 @@ namespace PhpMob\Settings\Manager;
 interface SettingManagerInterface
 {
     /**
-     * @param $section
-     * @param $key
+     * @param string $section
+     * @param string $key
      * @param $value
      * @param null|string $owner
      * @param boolean $autoFlush
      */
-    public function setSetting($section, $key, $value, ?string $owner, $autoFlush = false): void;
+    public function setSetting(string $section, string $key, $value, ?string $owner, $autoFlush = false): void;
 
     /**
-     * @param $section
-     * @param $key
+     * @param string $section
+     * @param string $key
      * @param null|string $owner
      *
      * @return mixed
      */
-    public function getSetting($section, $key, ?string $owner);
+    public function getSetting(string $section, string $key, ?string $owner);
 
     /**
      * @param string $path

@@ -13,20 +13,26 @@ declare(strict_types=1);
 
 namespace PhpMob\Settings\Type;
 
-use PhpMob\Settings\Model\SettingInterface;
-
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
 interface TypeTransformerInterface
 {
     /**
-     * @param SettingInterface $setting
+     * @param string $section
+     * @param string $key
+     * @param mixed $value
+     *
+     * @return mixed
      */
-    public function transform(SettingInterface $setting);
+    public function transform(string $section, string $key, $value);
 
     /**
-     * @param SettingInterface $setting
+     * @param string $section
+     * @param string $key
+     * @param mixed $value
+     *
+     * @return mixed
      */
-    public function reverse(SettingInterface $setting);
+    public function reverse(string $section, string $key, $value);
 }

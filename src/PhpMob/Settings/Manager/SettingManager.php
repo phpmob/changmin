@@ -154,7 +154,7 @@ class SettingManager implements SettingManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function setSetting($section, $key, $value, ?string $owner, $autoFlush = false): void
+    public function setSetting(string $section, string $key, $value, ?string $owner, $autoFlush = false): void
     {
         $this->assertSectionScope($section, $owner);
 
@@ -162,10 +162,8 @@ class SettingManager implements SettingManagerInterface
         $setting->setOwner($owner);
         $setting->setSection($section);
         $setting->setKey($key);
-        $setting->setValue($value);
+        $setting->setValue($this->transformer->transform($section, $key, $value));
         $setting->setUpdatedAt(new \DateTime());
-
-        $this->transformer->transform($setting);
 
         if ($autoFlush) {
             $this->manager->persist($setting);
@@ -176,14 +174,13 @@ class SettingManager implements SettingManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getSetting($section, $key, ?string $owner)
+    public function getSetting(string $section, string $key, ?string $owner)
     {
         $this->assertSectionScope($section, $owner);
 
         $setting = $this->findSetting($section, $key, $owner);
-        $this->transformer->reverse($setting);
 
-        return $setting->getValue();
+        return $this->transformer->reverse($section, $key, $setting->getValue());
     }
 
     /**

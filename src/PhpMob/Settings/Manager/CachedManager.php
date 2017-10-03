@@ -60,7 +60,7 @@ class CachedManager implements SettingManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function setSetting($section, $key, $value, ?string $owner, $autoFlush = false): void
+    public function setSetting(string $section, string $key, $value, ?string $owner, $autoFlush = false): void
     {
         $cacheKey = $this->getCacheKey($section, $key, $owner);
 
@@ -78,7 +78,7 @@ class CachedManager implements SettingManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getSetting($section, $key, ?string $owner)
+    public function getSetting(string $section, string $key, ?string $owner)
     {
         $cacheKey = $this->getCacheKey($section, $key, $owner);
 

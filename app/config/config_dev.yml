@@ -56,7 +56,14 @@ phpmob_settings:
             settings:
                 key1: ~
         section2:
-            label: Section1
+            label: Section2
             settings:
                 key1: ~
-                key2: ~
+                key2:
+                    label: SectionKey2
+                    value: key2value
+                    blueprint:
+                        options:
+                            label: SectionKey2Label
+                        constraints:
+                            NotBlank: ~
