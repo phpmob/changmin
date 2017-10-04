@@ -29,6 +29,8 @@ class TypeRegistry implements TypeRegistryInterface
     public function __construct()
     {
         $this->add(new BooleanType());
+        $this->add(new DateTimeType());
+        $this->add(new DateType());
         $this->add(new DefaultType());
         $this->add(new JsonType());
         $this->add(new StringType());

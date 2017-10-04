@@ -83,7 +83,7 @@ class CachedManager implements SettingManagerInterface
         $cacheKey = $this->getCacheKey($section, $key, $owner);
 
         if ($this->cache->hasItem($cacheKey)) {
-            return $this->cache->getItem($key)->get();
+            return $this->cache->getItem($cacheKey)->get();
         }
 
         $value = $this->decoratedManager->getSetting($section, $key, $owner);

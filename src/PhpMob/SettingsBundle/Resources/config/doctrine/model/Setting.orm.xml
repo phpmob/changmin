@@ -5,12 +5,12 @@
     <entity name="PhpMob\Settings\Model\Setting" table="phpmob_settings">
         <indexes>
             <index columns="section" name="IDX_SECTION"/>
-            <index columns="key" name="IDX_KEY"/>
+            <index columns="key_name" name="IDX_KEY_NAME"/>
             <index columns="owner" name="IDX_OWNER"/>
         </indexes>
 
         <unique-constraints>
-            <unique-constraint columns="section,key,owner" name="UIDX_SETTING"/>
+            <unique-constraint columns="section,key_name,owner" name="UIDX_SETTING"/>
         </unique-constraints>
 
         <id name="id" type="integer" column="id">
@@ -18,7 +18,7 @@
         </id>
 
         <field name="section" type="string" length="100"/>
-        <field name="key" type="string" length="100"/>
+        <field name="key" column="key_name" type="string" length="100"/>
         <field name="value" type="text" nullable="true"/>
         <field name="createdAt" type="datetime" nullable="true"/>
         <field name="updatedAt" type="datetime" nullable="true"/>

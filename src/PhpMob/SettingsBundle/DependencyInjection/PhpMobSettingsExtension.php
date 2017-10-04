@@ -13,6 +13,7 @@ namespace PhpMob\SettingsBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
+use Symfony\Component\DependencyInjection\Reference;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader;
 
@@ -44,6 +45,16 @@ class PhpMobSettingsExtension extends Extension
 
         foreach ($config['schemas'] as $section => $data) {
             $schemaRegistryDef->addMethodCall('add', [$section, $data]);
+        }
+
+        if ($config['cache']['service']) {
+            $cachedDefinition = $container->getDefinition('phpmob.settings.cached_manager');
+            $cachedDefinition->setAbstract(false);
+            $cachedDefinition->setLazy(true);
+            $cachedDefinition->setDecoratedService('phpmob.settings.manager');
+            $cachedDefinition->setArgument(0, new Reference('phpmob.settings.cached_manager.inner'));
+            $cachedDefinition->setArgument(1, new Reference($config['cache']['service']));
+            $cachedDefinition->setArgument(2, $config['cache']['lifetime']);
         }
     }
 }

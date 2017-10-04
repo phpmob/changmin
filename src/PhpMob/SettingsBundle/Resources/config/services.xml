@@ -33,5 +33,18 @@
             <argument type="service" id="phpmob.settings.transformer"/>
             <argument type="service" id="doctrine.orm.default_metadata_driver"/>
         </service>
+
+        <service id="phpmob.settings.cached_manager" class="PhpMob\Settings\Manager\CachedManager" abstract="true"/>
+
+        <service id="phpmob.settings.template_helper" class="PhpMob\SettingsBundle\Twig\Helper\SettingHelper" public="false">
+            <argument type="service" id="phpmob.settings.manager" />
+            <tag name="templating.helper" alias="settings"/>
+        </service>
+
+        <service id="phpmob.settings.twig" class="PhpMob\SettingsBundle\Twig\Extension\SettingExtension" public="false">
+            <argument type="service" id="phpmob.settings.template_helper" />
+
+            <tag name="twig.extension"/>
+        </service>
     </services>
 </container>

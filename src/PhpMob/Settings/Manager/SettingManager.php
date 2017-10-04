@@ -207,7 +207,11 @@ class SettingManager implements SettingManagerInterface
      */
     public function get(string $path, ?string $owner)
     {
-        list($section, $key) = explode('.', $path);
+        @list($section, $key) = explode('.', $path);
+
+        if (empty($key)) {
+            throw new \InvalidArgumentException("The $path should be something like: `section.key`.");
+        }
 
         return $this->getSetting($section, $key, $owner);
     }
@@ -217,7 +221,11 @@ class SettingManager implements SettingManagerInterface
      */
     public function set(string $path, $value, ?string $owner): void
     {
-        list($section, $key) = explode('.', $path);
+        @list($section, $key) = explode('.', $path);
+
+        if (empty($key)) {
+            throw new \InvalidArgumentException("The $path should be something like: `section.key`.");
+        }
 
         $this->setSetting($section, $key, $value, $owner, true);
     }

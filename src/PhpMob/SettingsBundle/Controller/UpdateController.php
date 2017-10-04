@@ -84,7 +84,7 @@ class UpdateController extends Controller
     private function transformSettingValue(SettingInterface $setting)
     {
         return $this->get('phpmob.settings.transformer')
-            ->transform($setting->getSection(), $setting->getKey(), $setting->getValue());
+            ->reverse($setting->getSection(), $setting->getKey(), $setting->getValue());
     }
 
     /**
@@ -214,9 +214,9 @@ class UpdateController extends Controller
         }
 
         if ($owner) {
-            $allSections = $this->get('phpmob.settings.schema_registry')->getGlobals();
-        } else {
             $allSections = $this->get('phpmob.settings.schema_registry')->getOwners();
+        } else {
+            $allSections = $this->get('phpmob.settings.schema_registry')->getGlobals();
         }
 
         if (!$config['isHtml']) {
