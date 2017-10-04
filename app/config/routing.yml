@@ -30,12 +30,12 @@ phpmob_cms_page:
     resource: "@PhpMobCmsBundle/Resources/config/routing.yml"
     prefix: /page
 
-phpmob_cms_account:
-    resource: "@PhpMobCmsBundle/Resources/config/routing/web/account.yml"
+phpmob_account:
+    resource: "@PhpMobCoreBundle/Resources/config/routing/web/account.yml"
     prefix: /account
 
-phpmob_cms_security:
-    resource: "@PhpMobCmsBundle/Resources/config/routing/web/security.yml"
+phpmob_security:
+    resource: "@PhpMobCoreBundle/Resources/config/routing/web/security.yml"
     prefix: /
 
 phpmob_cms_view:

@@ -49,3 +49,17 @@ web_security_register:
 #        _sylius:
 #            template: "@SyliusShop/Account/resetPassword.html.twig"
 #            redirect: web_security_login
+
+web_security_request_verification_token:
+    path: /verify
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.web_user:requestVerificationTokenAction
+
+web_security_verification:
+    path: /verify/{token}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.web_user:verifyAction
+        _sylius:
+            redirect: web_account_dashboard

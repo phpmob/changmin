@@ -7,8 +7,9 @@ $(document).on('click', '[data-submit-form]', function () {
         .one('submit', function () {
             $el.attr('disabled', true).addClass('disabled');
         })
-        .find('button[type=submit]')
-        .click()
+        //.find('button[type=submit]')
+        //.click()
+        .submit()
     ;
 });
 

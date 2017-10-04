@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace PhpMob\CoreBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use PhpMob\CoreBundle\Context\SystemSettingContext;
 use PhpMob\CoreBundle\Model\WebUserInterface;
 use Sylius\Bundle\UserBundle\Security\UserLoginInterface;
 use Sylius\Bundle\UserBundle\UserEvents;
@@ -27,6 +28,11 @@ use Webmozart\Assert\Assert;
  */
 final class UserRegistrationListener
 {
+    /**
+     * @var SystemSettingContext
+     */
+    private $systemSettingContext;
+
     /**
      * @var ObjectManager
      */
@@ -53,6 +59,7 @@ final class UserRegistrationListener
     private $firewallContextName;
 
     /**
+     * @param SystemSettingContext $systemSettingContext
      * @param ObjectManager $userManager
      * @param GeneratorInterface $tokenGenerator
      * @param EventDispatcherInterface $eventDispatcher
@@ -60,12 +67,14 @@ final class UserRegistrationListener
      * @param string $firewallContextName
      */
     public function __construct(
+        SystemSettingContext $systemSettingContext,
         ObjectManager $userManager,
         GeneratorInterface $tokenGenerator,
         EventDispatcherInterface $eventDispatcher,
         UserLoginInterface $userLogin,
         $firewallContextName
     ) {
+        $this->systemSettingContext = $systemSettingContext;
         $this->userManager = $userManager;
         $this->tokenGenerator = $tokenGenerator;
         $this->eventDispatcher = $eventDispatcher;
@@ -82,6 +91,12 @@ final class UserRegistrationListener
 
         Assert::isInstanceOf($user, WebUserInterface::class);
         Assert::notNull($user);
+
+        if (!$this->systemSettingContext->get('security.user_verification')) {
+            $this->enableAndLogin($user);
+
+            return;
+        }
 
         $this->sendVerificationEmail($user);
     }

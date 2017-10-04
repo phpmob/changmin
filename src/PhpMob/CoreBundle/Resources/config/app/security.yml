@@ -1,0 +1,52 @@
+# TODO: @PhpMobCms/tpls should load from db
+
+twig:
+    globals:
+        cx_user_settings: "@phpmob.context.user_settings"
+
+phpmob_settings:
+    schemas:
+        security:
+            label: 'Security Settings'
+            settings:
+                user_verification:
+                    type: boolean
+                    label: 'Verify user registration?'
+                    value: true
+                    blueprint:
+                        type: Symfony\Component\Form\Extension\Core\Type\CheckboxType
+        emails:
+            label: 'Email Settings'
+            settings:
+                sender_name:
+                    label: 'Sender Name'
+                    value: 'PhpMob'
+                sender_address:
+                    label: 'Sender Address'
+                    value: 'no-reply@phpmob.com'
+                templating:
+                    type: yaml
+                    label: 'Email Templates'
+                    blueprint:
+                        type: PhpMob\CmsBundle\Form\Type\YamlType
+                    value: >
+                        user_registration:
+                            subject: "User Registration"
+                            template: "@PhpMobCms/tpls/email/registration.html.twig"
+                        verification_token:
+                            subject: "User Verification"
+                            template: "@PhpMobCms/tpls/email/verification.html.twig"
+
+sylius_mailer:
+    sender_adapter: sylius.email_sender.adapter.swiftmailer
+    renderer_adapter: sylius.email_renderer.adapter.twig
+    sender:
+        name: 'PhpMob.com'
+        address: no-reply@phpmob.com
+    emails:
+        user_registration:
+            subject: "User Registration"
+            template: "@PhpMobCms/tpls/email/registration.html.twig"
+        verification_token:
+            subject: "User Verification"
+            template: "@PhpMobCms/tpls/email/verification.html.twig"

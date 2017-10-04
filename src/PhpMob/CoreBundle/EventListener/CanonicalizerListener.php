@@ -40,11 +40,11 @@ final class CanonicalizerListener
      */
     public function canonicalize(LifecycleEventArgs $event): void
     {
-        $item = $event->getEntity();
+        $object = $event->getObject();
 
-        if ($item instanceof UserInterface) {
-            $item->setUsernameCanonical($this->canonicalizer->canonicalize($item->getUsername()));
-            $item->setEmailCanonical($this->canonicalizer->canonicalize($item->getEmail()));
+        if ($object instanceof UserInterface) {
+            $object->setUsernameCanonical($this->canonicalizer->canonicalize($object->getUsername()));
+            $object->setEmailCanonical($this->canonicalizer->canonicalize($object->getEmail()));
         }
     }
 

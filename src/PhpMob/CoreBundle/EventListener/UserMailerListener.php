@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace PhpMob\CoreBundle\EventListener;
 
+use PhpMob\CoreBundle\Context\SystemSettingContext;
 use PhpMob\CoreBundle\Event\Emails;
 use PhpMob\CoreBundle\Model\WebUserInterface;
 use Sylius\Bundle\UserBundle\EventListener\MailerListener;
@@ -27,11 +28,19 @@ use Webmozart\Assert\Assert;
 final class UserMailerListener extends MailerListener
 {
     /**
-     * @param SenderInterface $emailSender
+     * @var SystemSettingContext
      */
-    public function __construct(SenderInterface $emailSender)
+    private $systemSettingContext;
+
+    /**
+     * @param SenderInterface $emailSender
+     * @param SystemSettingContext $systemSettingContext
+     */
+    public function __construct(SenderInterface $emailSender, SystemSettingContext $systemSettingContext)
     {
         parent::__construct($emailSender);
+
+        $this->systemSettingContext = $systemSettingContext;
     }
 
     /**
@@ -41,6 +50,10 @@ final class UserMailerListener extends MailerListener
      */
     public function sendUserRegistrationEmail(GenericEvent $event)
     {
+        if ($this->systemSettingContext->get('security.user_verification')) {
+            return;
+        }
+
         $user = $event->getSubject();
 
         Assert::isInstanceOf($user, WebUserInterface::class);

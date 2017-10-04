@@ -1,0 +1,3 @@
+twig:
+    globals:
+        cx_system_settings: "@phpmob.context.system_settings"

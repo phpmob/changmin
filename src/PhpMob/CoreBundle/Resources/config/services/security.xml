@@ -5,7 +5,14 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service class="PhpMob\CoreBundle\EventListener\CanonicalizerListener">
+            <argument type="service" id="sylius.canonicalizer" />
+            <tag name="doctrine.event_listener" event="prePersist" />
+            <tag name="doctrine.event_listener" event="preUpdate" />
+        </service>
+
         <service class="PhpMob\CoreBundle\EventListener\UserRegistrationListener">
+            <argument type="service" id="phpmob.context.system_settings" />
             <argument type="service" id="sylius.manager.web_user" />
             <argument type="service" id="sylius.web_user.token_generator.email_verification" />
             <argument type="service" id="event_dispatcher" />
@@ -16,6 +23,7 @@
 
         <service class="PhpMob\CoreBundle\EventListener\UserMailerListener" decorates="sylius.listener.user_mailer_listener">
             <argument type="service" id="sylius.email_sender" />
+            <argument type="service" id="phpmob.context.system_settings" />
             <tag name="kernel.event_listener" event="sylius.user.password_reset.request.pin" method="sendResetPasswordPinEmail" />
             <tag name="kernel.event_listener" event="sylius.user.password_reset.request.token" method="sendResetPasswordTokenEmail" />
             <tag name="kernel.event_listener" event="sylius.user.email_verification.token" method="sendVerificationTokenEmail" />

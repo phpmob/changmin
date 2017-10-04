@@ -1,4 +1,4 @@
-{% set picture = app.user.picture|phpmob_imagine('24x24', true, asset('assets/account/img/avatar/white/leonardo-di-caprio.svg')) %}
+{% set picture = app.user.picture|default|phpmob_imagine('24x24', true, asset('assets/account/img/avatar/white/leonardo-di-caprio.svg')) %}
 {% embed "@PhpMobCms/tpls/header.html.twig" %}
     {% block toggle %}
         {{ include('@PhpMobCms/tpls/account/header/_toggle.html.twig') }}

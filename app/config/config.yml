@@ -7,6 +7,7 @@ imports:
 #    - { resource: "@PhpMobMediaBundle/Resources/config/app/phpcr.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/main.yml" }
     - { resource: "@PhpMobCoreBundle/Resources/config/app/main.yml" }
+    - { resource: "@PhpMobCoreBundle/Resources/config/app/security.yml" }
     - { resource: "config/phpmob_settings.yml" }
 
 #parameters:

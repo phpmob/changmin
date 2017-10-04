@@ -39,6 +39,9 @@ class YamlType extends AbstractType
     {
         $resolver->setDefaults(array(
             'inline_level' => 10,
+            'attr' => [
+                'data-code-mirror-mode' => 'yaml',
+            ],
         ));
     }
 
