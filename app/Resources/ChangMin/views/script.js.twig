@@ -21,6 +21,11 @@ ChangMin.updateMenu(function (menu) {
                 icon: 'fa fa-users',
                 label: 'User Groups',
                 link: '{{ path('phpmob_admin_user_group_index') }}',
+            },
+            settings: {
+                icon: 'fa fa-cog',
+                label: 'Settings',
+                link: '{{ path('phpmob_settings_section_update', { section: 'section2' }) }}',
             }
         }
     }));

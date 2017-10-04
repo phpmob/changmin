@@ -1,0 +1,46 @@
+{% extends "@ChangMin/layout.html.twig" %}
+{% form_theme form "@ChangMin/Form/default.html.twig" %}
+
+{% block title %}{{ "Settings" }}{% endblock %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb">
+        <span class="breadcrumb-item">
+            <i class="fa fa-home"></i> <a href="{{ path('changmin_admin_dashboard') }}">{{ 'Dashboard' }}</a>
+        </span>
+        <span class="breadcrumb-item active">{{ "Settings" }}</span>
+    </nav>
+{% endblock %}
+
+{% block toolbarHeader %}
+    <div class="float-right">
+        <button type="button" class="btn btn-sm btn-primary" data-submit-form="{{ 'settings' }}">
+            <i class="fa fa-check"></i> {{ 'Update Settings' }}
+        </button>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="pane-data-scrollable p-4">
+        <div class="row">
+            <div class="col-2">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+                    {% for sec in sections %}
+                        {% set isActive = sec.name == section.name %}
+                        <a class="nav-link {{ isActive ? ' active' : '' }}"
+                           href="{{ path('phpmob_settings_section_update', { section: sec.name }) }}">
+                            {{ sec.label|trans }}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-10">
+                <h2>{{ form.vars.label|trans }}</h2>
+                {{ form_start(form, { name: 'settings' }) }}
+                {{ form_errors(form) }}
+                {{ form_row(form, { label: false }) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

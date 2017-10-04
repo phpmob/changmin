@@ -33,6 +33,7 @@
         "liip/imagine-bundle": "^1.6",
         "ocramius/proxy-manager": "^2.1",
         "oneup/flysystem-bundle": "^2.0",
+        "phpmob/settings-bundle": "^1.0",
         "phpmob/twig-modify-bundle": "~1.0",
         "rollerworks/password-strength-validator": "^1.0",
         "sensio/distribution-bundle": "^5.0.19",

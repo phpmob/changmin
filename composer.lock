@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ab5c612051e1476eb86e2a9da4760c71",
+    "content-hash": "eb3aa060ffdbeeb3201a06bfce23eada",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3239,6 +3239,125 @@
                 "set"
             ],
             "time": "2015-05-17T12:39:23+00:00"
+        },
+        {
+            "name": "phpmob/settings",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpmob/settings.git",
+                "reference": "255048889863b678dc3323ca720c68c062d4f486"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpmob/settings/zipball/255048889863b678dc3323ca720c68c062d4f486",
+                "reference": "255048889863b678dc3323ca720c68c062d4f486",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/common": "^2.8",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "cache/filesystem-adapter": "^1.0",
+                "phpspec/phpspec": "^4.0",
+                "phpunit/phpunit": "^5.6",
+                "sylius-labs/coding-standard": "^1.0",
+                "symfony/form": "^3.3",
+                "symfony/validator": "^3.3"
+            },
+            "suggest": {
+                "cache/filesystem-adapter": "To use built-in \\PhpMob\\Settings\\Manager\\CachedManager."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpMob\\Settings\\": ""
+                },
+                "classmap": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ishmael Doss",
+                    "email": "nukboon@gmail.com"
+                }
+            ],
+            "description": "Just a settings library.",
+            "homepage": "https://github.com/phpmob/settings",
+            "keywords": [
+                "Settings",
+                "php"
+            ],
+            "time": "2017-10-04T11:17:38+00:00"
+        },
+        {
+            "name": "phpmob/settings-bundle",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpmob/settings-bundle.git",
+                "reference": "d6345664ae9ca84e067191e3c45afe493af2fba2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpmob/settings-bundle/zipball/d6345664ae9ca84e067191e3c45afe493af2fba2",
+                "reference": "d6345664ae9ca84e067191e3c45afe493af2fba2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1",
+                "phpmob/settings": "^1.0",
+                "symfony/form": "^3.3",
+                "symfony/validator": "^3.3"
+            },
+            "require-dev": {
+                "cache/filesystem-adapter": "^1.0",
+                "phpspec/phpspec": "^4.0",
+                "phpunit/phpunit": "^5.6",
+                "sylius-labs/coding-standard": "^1.0"
+            },
+            "suggest": {
+                "cache/filesystem-adapter": "To use built-in \\PhpMob\\Settings\\Manager\\CachedManager."
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpMob\\SettingsBundle\\": "src"
+                },
+                "classmap": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ishmael Doss",
+                    "email": "nukboon@gmail.com"
+                }
+            ],
+            "description": "Just a Symfony settings bundle.",
+            "homepage": "https://github.com/phpmob/settings-bundle",
+            "keywords": [
+                "Settings",
+                "php",
+                "settings-bundle"
+            ],
+            "time": "2017-10-04T11:45:55+00:00"
         },
         {
             "name": "phpmob/twig-modify-bundle",

@@ -10,6 +10,10 @@ phpmob_admin_core:
     resource: "@PhpMobCoreBundle/Resources/config/routing/admin/main.yml"
     prefix: /admin
 
+phpmob_admin_setting:
+    resource: "@PhpMobSettingsBundle/Resources/config/routing.xml"
+    prefix: /admin
+
 phpmob_admin_cms:
     resource: "@PhpMobCmsBundle/Resources/config/routing/admin/main.yml"
     prefix: /admin/cms

@@ -7,6 +7,7 @@ imports:
 #    - { resource: "@PhpMobMediaBundle/Resources/config/app/phpcr.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/main.yml" }
     - { resource: "@PhpMobCoreBundle/Resources/config/app/main.yml" }
+    - { resource: "config/phpmob_settings.yml" }
 
 #parameters:
 #    phpmob.flysystem.phpcr.connection: media
@@ -82,3 +83,47 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+phpmob_settings:
+    cache:
+        service: cache.flysystem
+    schemas:
+        section1:
+            label: Section1
+            settings:
+                key1: ~
+        section2:
+            label: Section2
+            settings:
+                key1:
+                    value: key1Value
+                key2:
+                    label: SectionKey2
+                    value: key2value
+                    blueprint:
+                        options:
+                            label: SectionKey2Label
+                        constraints:
+                            NotBlank: ~
+                gender:
+                    label: Gender
+                    value: f
+                    blueprint:
+                        type: Symfony\Component\Form\Extension\Core\Type\ChoiceType
+                        options:
+                            required: true
+                            choices:
+                                Man: m
+                                Feman: f
+                birthday:
+                    type: date
+                    label: Birthday
+                    value: "1988-02-10"
+                    blueprint:
+                        type: Symfony\Component\Form\Extension\Core\Type\BirthdayType
+                datetime:
+                    type: datetime
+                    label: DateTime
+                    value: ~
+                    blueprint:
+                        type: Symfony\Component\Form\Extension\Core\Type\DateTimeType
