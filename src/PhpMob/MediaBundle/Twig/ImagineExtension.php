@@ -67,8 +67,12 @@ class ImagineExtension extends \Twig_Extension
             $path = $path->getPath();
         }
 
-        if (empty($path)) {
+        if (empty($path) && $default) {
             return $default;
+        }
+
+        if (empty($path)) {
+            $path = 'img/default.png';
         }
 
         $runtimeConfig = [

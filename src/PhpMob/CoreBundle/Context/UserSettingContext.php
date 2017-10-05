@@ -33,6 +33,7 @@ class UserSettingContext
 
     /**
      * @param SettingManagerInterface $settingManager
+     * @param TokenStorageInterface $tokenStorage
      */
     public function __construct(SettingManagerInterface $settingManager, TokenStorageInterface $tokenStorage)
     {

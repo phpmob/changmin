@@ -2,6 +2,7 @@
 
 twig:
     globals:
+        cx_user: "@phpmob.context.user"
         cx_user_settings: "@phpmob.context.user_settings"
 
 phpmob_settings:
@@ -12,7 +13,7 @@ phpmob_settings:
                 user_verification:
                     type: boolean
                     label: 'Verify user registration?'
-                    value: true
+                    value: false
                     blueprint:
                         type: Symfony\Component\Form\Extension\Core\Type\CheckboxType
         emails:
@@ -29,7 +30,7 @@ phpmob_settings:
                     label: 'Email Templates'
                     blueprint:
                         type: PhpMob\CmsBundle\Form\Type\YamlType
-                    value: >
+                    value: |
                         user_registration:
                             subject: "User Registration"
                             template: "@PhpMobCms/tpls/email/registration.html.twig"

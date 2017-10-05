@@ -11,6 +11,10 @@ services:
         tags:
             - { name: twig.extension }
 
+    PhpMob\CmsBundle\Twig\PrintIfExtension:
+        tags:
+            - { name: twig.extension }
+
     PhpMob\CmsBundle\Twig\TemplateLoader:
         arguments:
             - "@phpmob.repository.template"

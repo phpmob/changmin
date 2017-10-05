@@ -31,6 +31,7 @@ web_security_register:
             flash: phpmob.user.register
             redirect:
                 route: web_account_dashboard
+                parameters: {}
 
 #web_security_request_password_reset_token:
 #    path: /forgotten-password
@@ -62,4 +63,6 @@ web_security_verification:
     defaults:
         _controller: sylius.controller.web_user:verifyAction
         _sylius:
-            redirect: web_account_dashboard
+            redirect:
+                route: web_account_dashboard
+                parameters: {}

@@ -40,6 +40,7 @@ final class RouteCheckerExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
+            new \Twig_Function('is_route', [$this, 'isRouteName']),
             new \Twig_Function('is_route_name', [$this, 'isRouteName']),
         ];
     }

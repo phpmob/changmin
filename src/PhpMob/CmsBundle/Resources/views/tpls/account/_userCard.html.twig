@@ -1,0 +1,13 @@
+<div class="card personal-card mb-4">
+    <img class="card-img-top" src="{{ 'img/default.png'|phpmob_imagine('100x180') }}" alt="cover">
+
+    <div class="card-body">
+        <a class="avatar avatar-lg" href="#">
+            <img class="img-avatar" src="{{ cx_user.picture|phpmob_imagine('72x72', false) }}" alt="cover">
+        </a>
+        <h4 class="card-title">{{ cx_user.displayName }}</h4>
+        <p class="card-text">
+            {{ cx_user.username }}
+        </p>
+    </div>
+</div>

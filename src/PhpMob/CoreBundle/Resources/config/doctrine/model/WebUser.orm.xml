@@ -7,6 +7,7 @@
 
     <mapped-superclass name="PhpMob\CoreBundle\Model\WebUser" table="phpmob_web_user">
         <field name="displayName" type="string" length="100" nullable="true"/>
+        <field name="statusMessage" type="string" length="255" nullable="true"/>
 
         <one-to-one field="picture" target-entity="PhpMob\CoreBundle\Model\WebUserPictureInterface" mapped-by="owner">
             <cascade>

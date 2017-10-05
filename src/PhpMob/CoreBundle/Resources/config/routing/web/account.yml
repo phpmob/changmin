@@ -15,3 +15,31 @@ web_account_dashboard:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: "@PhpMobCms/tpls/account/home.html.twig"
+
+web_account_profile_update:
+    path: /profile
+    methods: [GET, PUT]
+    defaults:
+        _controller: sylius.controller.web_user:updateAction
+        _sylius:
+            template: "@PhpMobCms/tpls/account/profile/update.html.twig"
+            form:
+                type: PhpMob\CoreBundle\Form\Type\WebUserType
+                options:
+                    validation_groups: [ profile_update ]
+            repository:
+                method: find
+                arguments:
+                    - "expr:service('phpmob.context.user').getUser()"
+            redirect:
+                route: web_account_profile_update
+                parameters: {}
+
+web_account_change_password:
+    path: /change-password
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.web_user:changePasswordAction
+        _sylius:
+            template: "@PhpMobCms/tpls/account/profile/password.html.twig"
+            redirect: web_account_dashboard

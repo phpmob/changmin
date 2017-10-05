@@ -1,0 +1,5 @@
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist">
+    <a class="nav-link {{ print_if('active', is_route('web_account_dashboard')) }}" href="{{ path('web_account_dashboard') }}">Dashboard</a>
+    <a class="nav-link {{ print_if('active', is_route('web_account_profile_update')) }}" href="{{ path('web_account_profile_update') }}">Profile</a>
+    <a class="nav-link {{ print_if('active', is_route('web_account_change_password')) }}" href="{{ path('web_account_change_password') }}">Change Password</a>
+</div>

@@ -1,4 +1,14 @@
 {% extends "@PhpMobCms/tpls/account/layout.html.twig" %}
 
 {% block content %}
+    <div class="row">
+        <div class="col-3">
+            {{ include("@PhpMobCms/tpls/account/_userCard.html.twig") }}
+            {{ include("@PhpMobCms/tpls/account/_menu.html.twig") }}
+        </div>
+
+        <div class="col-9">
+            {% block account_content %}{% endblock %}
+        </div>
+    </div>
 {% endblock %}

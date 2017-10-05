@@ -1,0 +1,26 @@
+@import "../private/sass/avatar";
+
+.personal-card {
+    .card-img-top {
+        height: 150px;
+    }
+
+    .card-body {
+        text-align: center;
+    }
+
+    .avatar {
+        $width: 100px;
+        $status-width: 12px;
+        @include avatar($width, $status-width);
+
+        img {
+            max-width: $width;
+            margin-top: -70px;
+            margin-bottom: 5px;
+            border: 3px solid #fff;
+            border-radius: 100%;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        }
+    }
+}

@@ -8,10 +8,5 @@
         <service id="phpmob.context.system_settings" class="PhpMob\CoreBundle\Context\SystemSettingContext" lazy="true">
             <argument type="service" id="phpmob.settings.manager"/>
         </service>
-
-        <service id="phpmob.context.user_settings" class="PhpMob\CoreBundle\Context\SystemSettingContext" lazy="true">
-            <argument type="service" id="phpmob.settings.manager"/>
-            <argument type="service" id="security.token_storage"/>
-        </service>
     </services>
 </container>

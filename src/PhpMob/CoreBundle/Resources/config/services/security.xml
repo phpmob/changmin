@@ -5,6 +5,15 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="phpmob.context.user" class="PhpMob\CoreBundle\Context\UserContext" lazy="true">
+            <argument type="service" id="security.token_storage"/>
+        </service>
+
+        <service id="phpmob.context.user_settings" class="PhpMob\CoreBundle\Context\SystemSettingContext" lazy="true">
+            <argument type="service" id="phpmob.settings.manager"/>
+            <argument type="service" id="security.token_storage"/>
+        </service>
+
         <service class="PhpMob\CoreBundle\EventListener\CanonicalizerListener">
             <argument type="service" id="sylius.canonicalizer" />
             <tag name="doctrine.event_listener" event="prePersist" />

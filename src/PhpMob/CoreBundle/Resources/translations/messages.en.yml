@@ -1,0 +1,5 @@
+phpmob:
+    form:
+        user:
+            picture: Picture
+            status_message: Status Message

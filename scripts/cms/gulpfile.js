@@ -10,6 +10,7 @@ require('./private/tasks.js')(require, {
             "{node}/jquery-confirm/dist/jquery-confirm.min.js",
             "{node}/jquery-validation/dist/jquery.validate.js",
             "{node}/jquery-validation/dist/jquery.additional-methods.js",
+            "{node}/noty/lib/noty.js",
             "{node}/tether/dist/js/tether.js",
             "{node}/popper.js/dist/umd/popper.js",
             "{node}/bootstrap/dist/js/bootstrap.js",
@@ -23,6 +24,7 @@ require('./private/tasks.js')(require, {
             "./sass/**"
         ],
         "css": [
+            "{node}/noty/lib/noty.css",
             "{node}/animate.css/animate.css",
             "{node}/jquery-confirm/dist/jquery-confirm.min.css",
             "{src}/css/**",

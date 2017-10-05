@@ -29,4 +29,14 @@ interface WebUserInterface extends BaseUserInterface, FileAwareInterface
      * @param string $displayName
      */
     public function setDisplayName(?string $displayName): void;
+
+    /**
+     * @return string
+     */
+    public function getStatusMessage(): string;
+
+    /**
+     * @param string|null $statusMessage
+     */
+    public function setStatusMessage(?string $statusMessage);
 }

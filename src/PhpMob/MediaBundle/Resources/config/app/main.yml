@@ -17,6 +17,12 @@ liip_imagine:
             filesystem:
                 data_root:
                     - "%phpmob.uploader.local_directory%"
+                bundle_resources:
+                    enabled: true
+                    access_control_type: whitelist
+                    access_control_list:
+                        - PhpMobMediaBundle
+
     filter_sets:
         strip:
             quality: "%phpmob.imagine.quality%"

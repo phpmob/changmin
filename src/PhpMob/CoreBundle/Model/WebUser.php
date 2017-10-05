@@ -20,6 +20,11 @@ class WebUser extends BaseUser implements WebUserInterface
     protected $displayName;
 
     /**
+     * @var string
+     */
+    protected $statusMessage;
+
+    /**
      * {@inheritdoc}
      */
     public function getFileBasePath()
@@ -61,5 +66,21 @@ class WebUser extends BaseUser implements WebUserInterface
     public function setDisplayName(?string $displayName): void
     {
         $this->displayName = $displayName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStatusMessage(): string
+    {
+        return (string) $this->statusMessage;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStatusMessage(?string $statusMessage)
+    {
+        $this->statusMessage = $statusMessage;
     }
 }
