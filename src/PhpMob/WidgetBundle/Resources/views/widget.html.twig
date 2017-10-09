@@ -1,0 +1,18 @@
+{%- block phpmob_widget -%}
+    {% set isAway = 'away' == options['visibility'] %}
+    {% set name = options['name'] %}
+    {% set attr_class = options['attr_class'] %}
+    {% set attr_style = options['attr_style'] %}
+    <div class="wg-container wg-container__{{ name }}{% if isAway %} wg--loaded{% endif %}{% if attr_class %} {{ attr_class }}{% endif %}"
+            {% if attr_style %} style="{{ attr_style|raw }}"{% endif %}
+         data-widget-name="{{ name }}"
+         data-widget-options="{{ options|json_encode(16) }}"
+         data-widget-user-options="{{ userOptions|json_encode(16) }}"
+    >
+        {% if isAway %}
+            <div class="wg-content">
+                {% block phpmob_widget_content %}{% endblock %}
+            </div>
+        {% endif %}
+    </div>
+{%- endblock phpmob_widget -%}

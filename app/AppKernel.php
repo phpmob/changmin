@@ -51,6 +51,8 @@ class AppKernel extends Kernel
             new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new \PhpMob\TwigModifyBundle\PhpMobTwigModifyBundle(),
             new \PhpMob\SettingsBundle\PhpMobSettingsBundle(),
+
+            new \PhpMob\WidgetBundle\PhpMobWidgetBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

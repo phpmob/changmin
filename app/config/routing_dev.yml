@@ -10,5 +10,10 @@ _errors:
     resource: '@TwigBundle/Resources/config/routing/errors.xml'
     prefix: /_error
 
+_widget_demo:
+    path: /_widget/demo
+    defaults:
+        _controller: PhpMobWidgetBundle:Widget:demo
+
 _main:
     resource: routing.yml

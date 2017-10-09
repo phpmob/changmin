@@ -1,0 +1,105 @@
+@keyframes wg-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes wg-pulse {
+    50% {
+        background: #0070ff;
+    }
+}
+
+.wg-loading, .wg-loading--double {
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 0.15rem solid white;
+    border-top-color: #0070ff;
+    animation: wg-spin 1s infinite linear;
+}
+
+button .wg-loading, button .wg-loading--double, a .wg-loading, a .wg-loading--double {
+    border-width: .1rem;
+    width: 13px;
+    height: 13px;
+    margin-right: 4px;
+}
+
+.wg-loading--double {
+    border-style: double;
+    border-width: .2rem;
+}
+
+button .wg-loading--double, a .wg-loading--double {
+    border-width: .1rem;
+}
+
+.wg-loading-pulse {
+    position: relative;
+    width: 4px;
+    height: 16px;
+    background: white;
+    animation: wg-pulse 750ms infinite;
+    animation-delay: 250ms;
+}
+
+.wg-loading-pulse:before, .wg-loading-pulse:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 10.66667px;
+    width: 4px;
+    background: white;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: wg-pulse 750ms infinite;
+}
+
+.wg-loading-pulse:before {
+    left: -8px;
+}
+
+.wg-loading-pulse:after {
+    left: 8px;
+    animation-delay: 500ms;
+}
+
+button .wg-loading-pulse, a .wg-loading-pulse {
+    width: 3px;
+    height: 11px;
+    margin-right: 10px;
+}
+
+button .wg-loading-pulse:before, button .wg-loading-pulse:after, a .wg-loading-pulse:before, a .wg-loading-pulse:after {
+    height: 5.66667px;
+    width: 3px;
+}
+
+button .wg-loading-pulse:before, a .wg-loading-pulse:before {
+    left: 5px;
+}
+
+button .wg-loading-pulse:after, a .wg-loading-pulse:after {
+    left: -5px;
+}
+
+button .wg-mask, a .wg-mask {
+    display: inline-block;
+}
+
+.wg-mask--over, .wg-mask--clear {
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(222, 222, 222, 0.85);
+}
+
+.wg-mask--clear {
+    background: rgba(222, 222, 222, 0.5);
+}
