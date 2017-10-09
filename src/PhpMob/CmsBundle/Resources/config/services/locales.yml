@@ -22,3 +22,17 @@ services:
         arguments:
             - "@sylius.context.locale"
             - "@translator"
+
+    phpmob.locale.provider:
+        public: true
+        class: PhpMob\CmsBundle\Provider\TranslationLocaleProvider
+        arguments:
+            - "@sylius.repository.locale"
+            - "%locale%"
+
+    PhpMob\CmsBundle\EventListener\DefaultLocaleDeletionSubscriber:
+        public: false
+        arguments:
+            - "@sylius.context.locale"
+        tags:
+            - { name: doctrine.event_subscriber }

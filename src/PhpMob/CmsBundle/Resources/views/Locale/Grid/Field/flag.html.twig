@@ -1,2 +1,10 @@
 {% set locales = data|split('_') %}
-<span class="flag-icon flag-icon-{{ locales[1]|default(locales[0]) }}"></span>
+{% set locale = locales[1]|default(locales[0])|lower %}
+{% set defaultLocale = options.vars.locale %}
+{% if defaultLocale|lower == locale|lower %}
+    <span class="badge badge-primary" title="Default" data-toggle="tooltip">
+        {{ data|flag_icon }}
+    </span>
+{% else %}
+    {{ data|flag_icon }}
+{% endif %}

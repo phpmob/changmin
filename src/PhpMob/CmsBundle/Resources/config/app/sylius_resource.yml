@@ -1,4 +1,6 @@
 sylius_resource:
+    translation:
+        locale_provider: phpmob.locale.provider
     resources:
         phpmob.page:
             classes:

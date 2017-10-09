@@ -18,6 +18,8 @@ sylius_grid:
                         align: center
                         width: 80px
                         template: "@PhpMobCms/Locale/Grid/Field/flag.html.twig"
+                        vars:
+                            locale: "%locale%"
                 code:
                     type: text
                     label: Code

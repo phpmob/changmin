@@ -7,6 +7,7 @@
     <imports>
         <import resource="services/fixtures.xml"/>
         <import resource="services/forms.xml"/>
+        <import resource="services/listeners.xml"/>
         <import resource="services/sylius.xml"/>
         <import resource="services/twigs.xml"/>
     </imports>
