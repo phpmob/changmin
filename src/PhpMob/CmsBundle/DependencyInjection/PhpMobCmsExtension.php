@@ -39,6 +39,8 @@ class PhpMobCmsExtension extends AbstractResourceExtension
 
         $this->registerResources('phpmob', $config['driver'], [], $container);
 
+        $container->setParameter('phpmob.locale_database_domains', $config['translation']['domains']);
+
         $loader->load('services.yml');
     }
 }

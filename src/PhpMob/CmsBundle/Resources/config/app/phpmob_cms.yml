@@ -1,0 +1,7 @@
+phpmob_cms:
+    translation:
+        domains:
+            - messages
+            - validators
+            - flashes
+            - security

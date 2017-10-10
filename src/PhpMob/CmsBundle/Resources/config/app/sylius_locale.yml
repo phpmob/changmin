@@ -1,2 +1,6 @@
 sylius_locale:
     locale: "%locale%"
+    resources:
+        locale:
+            classes:
+                model: PhpMob\CmsBundle\Model\Locale

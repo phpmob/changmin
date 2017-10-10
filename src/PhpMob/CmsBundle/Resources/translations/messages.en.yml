@@ -23,3 +23,6 @@ phpmob:
             type_abstract: Extendable Only
             options: Options
             defined_translations: Translation
+
+        locale:
+            translations: Translations

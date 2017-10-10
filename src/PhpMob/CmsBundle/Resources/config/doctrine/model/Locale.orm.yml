@@ -1,0 +1,7 @@
+PhpMob\CmsBundle\Model\Locale:
+    type: mappedSuperclass
+    table: phpmob_locale
+
+    fields:
+        translations:
+            type: json

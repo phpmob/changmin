@@ -30,7 +30,21 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
+                ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
+                ->arrayNode('translation')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->arrayNode('domains')
+                            ->addDefaultChildrenIfNoneSet()
+                            ->prototype('scalar')->defaultValue('messages')->end()
+                            ->validate()
+                                ->always(function ($v) {
+                                    return array_replace(['messages'], $v);
+                                })
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
             ->end()
         ;
 

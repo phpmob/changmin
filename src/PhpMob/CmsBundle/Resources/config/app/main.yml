@@ -1,4 +1,5 @@
 imports:
+    - { resource: "@PhpMobCmsBundle/Resources/config/app/phpmob_cms.yml" }
     #- { resource: "@PhpMobCmsBundle/Resources/config/app/phpmob_media.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/sylius_resource.yml" }
     - { resource: "@PhpMobCmsBundle/Resources/config/app/sylius_locale.yml" }

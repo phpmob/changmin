@@ -30,9 +30,22 @@ services:
             - "@sylius.repository.locale"
             - "%locale%"
 
-    PhpMob\CmsBundle\EventListener\DefaultLocaleDeletionSubscriber:
+    PhpMob\CmsBundle\EventListener\LocaleEventSubscriber:
         public: false
         arguments:
             - "@sylius.context.locale"
+            - "%phpmob.locale_database_domains%"
         tags:
             - { name: doctrine.event_subscriber }
+
+    PhpMob\CmsBundle\Form\Extension\LocaleExtensionType:
+        public: false
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\LocaleBundle\Form\Type\LocaleType }
+
+    PhpMob\CmsBundle\LocaleLoader\DatabaseLoader:
+        public: false
+        arguments:
+            - "@sylius.repository.locale"
+        tags:
+            - { name: translation.loader, alias: db }
