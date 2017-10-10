@@ -55,7 +55,10 @@ class AdminUserFactory extends AbstractExampleFactory implements ExampleFactoryI
         $user->setPlainPassword($options['password']);
         $user->setDisplayName($options['displayName']);
         $user->setEnabled($options['enabled']);
-        foreach ($options['roles'] as $role) {
+
+        $roles = array_replace(['ROLE_ADMINISTRATION_ACCESS'], $options['roles']);
+
+        foreach ($roles as $role) {
             $user->addRole($role);
         }
 
