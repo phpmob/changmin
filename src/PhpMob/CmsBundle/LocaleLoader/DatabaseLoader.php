@@ -41,7 +41,11 @@ class DatabaseLoader implements LoaderInterface
         $catalogue = new MessageCatalogue($localeCode);
 
         /** @var LocaleInterface $locale */
-        if (!$locale = $this->localeRepository->findOneBy(['code' => $localeCode])) {
+        try {
+            if (!$locale = $this->localeRepository->findOneBy(['code' => $localeCode])) {
+                return $catalogue;
+            }
+        } catch (\Exception $e) {
             return $catalogue;
         }
 
