@@ -5,8 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="toro.expression_language" class="PhpMob\Sylius\ExpressionLanguage\ExpressionLanguage" public="false"
-                 decorates="sylius.expression_language" />
+        <service class="PhpMob\Sylius\ExpressionLanguage\ExpressionLanguage" public="false" decorates="sylius.expression_language" />
 
         <service id="changmin.grid_field.text" class="PhpMob\Sylius\Grid\FieldType\TextFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>

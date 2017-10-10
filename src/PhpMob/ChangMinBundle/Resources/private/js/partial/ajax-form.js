@@ -24,7 +24,7 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
 
     $form
         .addClass('loading')
-        .append('<div class="' + ($form.data('loading') || 'toro-loading-pulse') + '"/>')
+        .append('<div class="' + ($form.data('loading') || 'changmin-loading-pulse') + '"/>')
     ;
 
     $.ajax({

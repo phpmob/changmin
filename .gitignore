@@ -20,7 +20,10 @@ node_modules/
 /web/media/
 /web/assets/
 /web/thumbnail
+
 /scripts/admin/private
+/scripts/cms/private
+/scripts/account/private
 
 
 /bin/*
