@@ -94,7 +94,7 @@ class LocaleEventSubscriber implements EventSubscriber
         // create fake domain file
         // http://symfony.com/doc/current/reference/dic_tags.html#translation-loader
         foreach ($domains as $domain) {
-            $file = sprintf('%s/../Resources/translations/%s.%s.db', __DIR__, $domain, strtolower($object->getCode()));
+            $file = sprintf('%s/../Resources/translations/%s.%s.db', dirname(__DIR__), $domain, strtolower($object->getCode()));
 
             if (!file_exists($file)) {
                 file_put_contents($file, '');
