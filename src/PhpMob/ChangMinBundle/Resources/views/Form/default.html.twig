@@ -222,7 +222,7 @@
             grid: true,
             query_search_key: 'search',
         }
-    }|merge_deep(chooser) %}
+    }|merge_deep(chooser|default([])) %}
     <div class="form-group">
         {{- form_label(form) -}}
         {{- form_widget(form, {
