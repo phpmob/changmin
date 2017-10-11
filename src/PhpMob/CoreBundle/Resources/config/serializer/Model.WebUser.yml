@@ -1,6 +1,12 @@
 PhpMob\CoreBundle\Model\WebUser:
     exclusion_policy: ALL
-    xml_root_name: sylius_web_user
+    xml_root_name: web_user
+
+    properties:
+        displayName:
+            expose: true
+            type: string
+            groups: [Private, Public]
 
     relations:
         -   rel: picture_70x70

@@ -6,20 +6,20 @@ Sylius\Component\User\Model\User:
         id:
             expose: true
             type: integer
-            groups: [Default]
+            groups: [Private, Public]
         username:
             expose: true
             type: string
-            groups: [Default]
+            groups: [Private, Public]
         email:
             expose: true
             type: string
-            groups: [Default]
+            groups: [Private, Public]
         enabled:
             expose: true
             type: boolean
-            groups: [Default]
+            groups: [Private]
         roles:
             expose: true
             type: array
-            groups: [Default]
+            groups: [Private]
