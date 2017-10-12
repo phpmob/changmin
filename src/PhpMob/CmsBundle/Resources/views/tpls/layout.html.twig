@@ -56,5 +56,9 @@
 {% block javascripts %}
     <script type="text/javascript" src="{{ asset('assets/cms/js/app.js?v='~phpmob_assets_version) }}"></script>
 {% endblock %}
+
+{% block flash %}
+    {{ include("@PhpMobCms/tpls/flash.html.twig") }}
+{% endblock %}
 </body>
 </html>

@@ -1,0 +1,18 @@
+{% if app.session is not null and app.session.started %}
+    {% set flashes = app.session.flashbag.all %}
+    {% if flashes|length %}
+        {% for type in ['success', 'error', 'info', 'warning'] %}
+            {% for flash in flashes[type]|default %}
+                {% set header = "changmin.ui.#{type}"|trans %}
+                {% if flash is iterable %}
+                    {% set text = flash.message|trans(flash.parameters, 'flashes') %}
+                {% else %}
+                    {% set text = flash|trans({}, 'flashes') %}
+                {% endif %}
+                <script>
+                    PhpMobCms.defers.push(function () {Noty['{{ type }}']('{{ "<h6>#{header}</h6>#{text}"|raw }}')});
+                </script>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+{% endif %}
