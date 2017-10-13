@@ -64,9 +64,17 @@ class UserContext
             case method_exists($user, $method = 'has'.ucfirst($path)):
                 break;
             default:
-                $method = 'get'.ucfirst($path);
+                $method = $path;
         }
 
         return call_user_func_array([$user, $method], [$args]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        return (string) $this->getUser();
     }
 }
