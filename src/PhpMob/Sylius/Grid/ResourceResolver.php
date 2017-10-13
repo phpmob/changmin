@@ -55,7 +55,7 @@ class ResourceResolver implements ResourcesResolverInterface
 
         $request = $requestConfiguration->getRequest();
         $criteria = ['criteria' => $requestConfiguration->getCriteria()];
-        $parameters = new Parameters(array_replace_recursive($criteria, $request->query->all()));
+        $parameters = new Parameters(array_replace_recursive($request->query->all(), $criteria));
 
         $gridView = $this->gridViewFactory->create($gridDefinition, $parameters, $requestConfiguration->getMetadata(), $requestConfiguration);
 
