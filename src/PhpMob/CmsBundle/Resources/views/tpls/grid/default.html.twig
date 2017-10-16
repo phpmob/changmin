@@ -2,6 +2,7 @@
 {% import '@PhpMobCms/tpls/grid/_table.html.twig' as table %}
 
 {% set definition = grid.definition %}
+{% set configuration = grid.requestConfiguration %}
 
 {% if definition.enabledFilters|length > 0 %}
     {# TODO #}
