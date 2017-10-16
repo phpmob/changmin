@@ -1,0 +1,83 @@
+{% macro basic(pager, options = {}) %}
+    {% import _self as self %}
+    {% set start = pager.currentPageOffsetStart %}
+    {% set to = pager.currentPageOffsetEnd %}
+    {% set of = pager.nbResults %}
+
+    <span class="text-muted mr-2">
+        <strong>{{ start }}-{{ to }}</strong> {{ "of" }} <strong>{{ of }}</strong>
+    </span>
+
+    <div class="btn-group btn-group-sm m-0">
+        {% if pager.hasPreviousPage %}
+            <a class="btn btn-outline-secondary" href="{{- self.href(pager.previousPage) -}}">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        {% else %}
+            <button class="btn btn-outline-secondary" disabled>
+                <i class="fa fa-angle-left"></i>
+            </button>
+        {% endif %}
+
+        <div class="btn-group btn-group-sm" role="group">
+            <button class="btn btn-outline-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                {{ pager.currentPage }}
+            </button>
+            {{ pagerfanta(pager, 'dropdown', options) }}
+        </div>
+        {% if pager.hasNextPage %}
+            <a class="btn btn-outline-secondary" href="{{- self.href(pager.nextPage) -}}">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        {% else %}
+            <button class="btn btn-outline-secondary" disabled>
+                <i class="fa fa-angle-right"></i>
+            </button>
+        {% endif %}
+    </div>
+{% endmacro %}
+
+{% macro mini(pager, options = {}) %}
+    {% import _self as self %}
+    {% set start = pager.currentPageOffsetStart %}
+    {% set to = pager.currentPageOffsetEnd %}
+    {% set of = pager.nbResults %}
+
+    <div class="input-group input-group-sm paginate">
+        <span class="input-group-btn">
+            {% if pager.hasPreviousPage %}
+                <a class="btn btn-default" href="{{ self.href(pager.previousPage) }}">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+            {% else %}
+                <button class="btn btn-default" disabled>
+                    <i class="fa fa-angle-left"></i>
+                </button>
+            {% endif %}
+
+            <div class="btn-group btn-group-sm">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                    {{ pager.currentPage }}
+                </button>
+                {{ pagerfanta(pager, 'dropdown', options) }}
+            </div>
+
+            {% if pager.hasNextPage %}
+                <a class="btn btn-default" href="{{- self.href(pager.nextPage) -}}">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            {% else %}
+                <button class="btn btn-default" disabled>
+                    <i class="fa fa-angle-right"></i>
+                </button>
+            {% endif %}
+        </span>
+    </div>
+{% endmacro %}
+
+{%- macro href(number) -%}
+        {{- path(
+            app.request.attributes.get('_route'),
+            app.request.attributes.get('_route_params')|merge(app.request.query.all)|merge({'page': number})
+        ) -}}
+{%- endmacro -%}

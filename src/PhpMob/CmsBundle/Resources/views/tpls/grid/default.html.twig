@@ -1,0 +1,37 @@
+{% import '@PhpMobCms/tpls/macro/message.html.twig' as message %}
+{% import '@PhpMobCms/tpls/grid/_table.html.twig' as table %}
+
+{% set definition = grid.definition %}
+
+{% if definition.enabledFilters|length > 0 %}
+    {# TODO #}
+{% endif %}
+
+{% if grid.data|length > 0 %}
+    {% set rows %}
+        {# to use default options render before headers #}
+        {% for row in grid.data %}
+            {{ table.row(grid, definition, row) }}
+        {% endfor %}
+    {% endset %}
+    {% set pagerOptions = configuration.vars.pagine|default(configuration.vars.pagers|default({ proximity: 5 })) %}
+    <table class="table table-sm table-grid">
+        <thead>
+        <tr>
+            {{ table.headers(grid, definition, app.request.attributes) }}
+        </tr>
+        </thead>
+        <tbody>
+            {{ rows|raw }}
+        </tbody>
+    </table>
+    <div class="paginate row justify-content-center">
+        {{ pagerfanta(grid.data, 'twitter_bootstrap4', pagerOptions) }}
+    </div>
+{% else %}
+    <div class="no-results justify-content-center">
+        <div class="align-self-center">
+            {{ message.default('No results to display', 'licon licon-info') }}
+        </div>
+    </div>
+{% endif %}
