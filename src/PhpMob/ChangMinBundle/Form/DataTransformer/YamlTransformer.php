@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace PhpMob\CmsBundle\Form\DataTransformer;
+namespace PhpMob\ChangMinBundle\Form\DataTransformer;
 
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Yaml\Yaml;

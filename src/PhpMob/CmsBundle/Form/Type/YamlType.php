@@ -11,45 +11,13 @@
 
 namespace PhpMob\CmsBundle\Form\Type;
 
-use PhpMob\CmsBundle\Form\DataTransformer\YamlTransformer;
-use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
+use PhpMob\ChangMinBundle\Form\Type\YamlType as BaseYamlType;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
+ *
+ * @deprecated use BaseYamlType
  */
-class YamlType extends AbstractType
+class YamlType extends BaseYamlType
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function buildForm(FormBuilderInterface $builder, array $options)
-    {
-        $builder
-            ->addModelTransformer(new YamlTransformer($options['inline_level']))
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(array(
-            'inline_level' => 10,
-            'attr' => [
-                'data-code-mirror-mode' => 'yaml',
-            ],
-        ));
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getParent()
-    {
-        return TextareaType::class;
-    }
 }
