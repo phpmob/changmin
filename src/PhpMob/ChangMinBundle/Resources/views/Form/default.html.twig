@@ -18,12 +18,6 @@
 
 {# Widgets #}
 
-{% block form_text_hint -%}
-    <small class="form-text form-text-hint text-muted">
-        {{ hint|raw }}
-    </small>
-{%- endblock form_text_hint %}
-
 {%- block form_label -%}
     {{ parent() }}
     {% if help is defined %}
@@ -35,45 +29,18 @@
     {% endif %}
 {%- endblock form_label -%}
 
-{% block form_widget_simple -%}
-    {% if type is not defined or type not in ['file', 'hidden'] %}
-        {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) -%}
-    {% endif %}
+{% block form_widget -%}
     {{- parent() -}}
-    {% if hint is defined %}
-        {{ block('form_text_hint') }}
-    {% endif %}
-{%- endblock form_widget_simple %}
-
-{% block textarea_widget -%}
-    {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) %}
-    {{- parent() -}}
-    {% if hint is defined %}
-        {{ block('form_text_hint') }}
-    {% endif %}
-{%- endblock textarea_widget %}
-
-{% block choice_widget_collapsed -%}
-    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) -%}
-    {{- parent() -}}
-    {% if hint is defined %}
-        {{ block('form_text_hint') }}
-    {% endif %}
-{%- endblock choice_widget_collapsed %}
+    {%- if hint is defined -%}
+        <small class="form-text form-text-hint text-muted">
+            {{ hint|raw }}
+        </small>
+    {%- endif -%}
+{%- endblock form_widget %}
 
 {% block form_errors -%}
     {%- if errors|length > 0 -%}
-        <div class="{% if form.parent %}invalid-feedback{% else %}alert alert-danger{% endif %}">
-            <ul class="list-unstyled mb-0">
-                {% set displayErrors = [] %}
-                {%- for error in errors -%}
-                    {% if error.message not in displayErrors %}
-                        <li>{{ error.message }}</li>
-                        {% set displayErrors = displayErrors|merge([error.message]) %}
-                    {% endif %}
-                {%- endfor -%}
-            </ul>
-        </div>
+        {{ parent() }}
     {%- else %}
         {% if not form.parent and not form.vars.valid %}
             <div class="alert alert-block alert-danger">
