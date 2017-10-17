@@ -1,3 +1,7 @@
+sylius:
+    ui:
+        code: Code
+
 changmin:
     ui:
         success: Success
