@@ -32,5 +32,9 @@ class ChangMinExtension extends AbstractResourceExtension
         $this->registerResources('changmin', $config['driver'], [], $container);
 
         $loader->load('services.xml');
+
+        if (class_exists('Sylius\\Component\\Taxonomy\\Model\\TaxonInterface', false)) {
+            $loader->load('taxons.xml');
+        }
     }
 }
