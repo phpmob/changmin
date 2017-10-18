@@ -11,8 +11,8 @@
 
 namespace PhpMob\ChangMinBundle\Form\Type;
 
+use PhpMob\ChangMinBundle\Doctrine\ORM\TaxonRepositoryInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
-use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\View\ChoiceView;
