@@ -14,11 +14,12 @@ declare(strict_types=1);
 namespace PhpMob\ChangMinBundle\Doctrine\ORM;
 
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
+use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface as BaseTaxonRepositoryInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface TaxonRepositoryInterface
+interface TaxonRepositoryInterface extends BaseTaxonRepositoryInterface
 {
     /**
      * @param null|string $rootCode

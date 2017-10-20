@@ -5,6 +5,22 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service class="PhpMob\ChangMinBundle\Fixture\TaxonFixture">
+            <argument type="service" id="sylius.manager.taxon"/>
+            <argument type="service">
+                <service class="PhpMob\ChangMinBundle\Fixture\TaxonFactory">
+                    <argument type="service" id="sylius.factory.taxon"/>
+                    <call method="setDefaultLocale">
+                        <argument>%locale%</argument>
+                    </call>
+                    <call method="setLocaleRepository">
+                        <argument type="service" id="sylius.repository.locale"/>
+                    </call>
+                </service>
+            </argument>
+            <tag name="sylius_fixtures.fixture"/>
+        </service>
+
         <service class="PhpMob\ChangMinBundle\Doctrine\ORM\TaxonRepository" decorates="sylius.repository.taxon">
             <argument type="service" id="sylius.manager.taxon"/>
             <argument>%sylius.model.taxon.class%</argument>

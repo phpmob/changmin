@@ -5,7 +5,7 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="changmin.fixture.admin_user" class="PhpMob\ChangMinBundle\Fixture\AdminUserFixture">
+        <service class="PhpMob\ChangMinBundle\Fixture\AdminUserFixture">
             <argument type="service" id="sylius.manager.admin_user"/>
             <argument type="service">
                 <service class="PhpMob\ChangMinBundle\Fixture\AdminUserFactory">
