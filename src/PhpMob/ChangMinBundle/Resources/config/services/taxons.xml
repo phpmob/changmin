@@ -10,6 +10,7 @@
             <argument type="service">
                 <service class="PhpMob\ChangMinBundle\Fixture\TaxonFactory">
                     <argument type="service" id="sylius.factory.taxon"/>
+                    <argument type="service" id="sylius.repository.taxon"/>
                     <call method="setDefaultLocale">
                         <argument>%locale%</argument>
                     </call>
@@ -23,7 +24,12 @@
 
         <service class="PhpMob\ChangMinBundle\Doctrine\ORM\TaxonRepository" decorates="sylius.repository.taxon">
             <argument type="service" id="sylius.manager.taxon"/>
-            <argument>%sylius.model.taxon.class%</argument>
+            <argument type="service">
+                <service class="Doctrine\ORM\Mapping\ClassMetadata">
+                    <factory service="sylius.manager.taxon" method="getClassMetadata"/>
+                    <argument>%sylius.model.taxon.class%</argument>
+                </service>
+            </argument>
         </service>
 
         <service class="PhpMob\ChangMinBundle\Form\Type\TaxonChoiceType">

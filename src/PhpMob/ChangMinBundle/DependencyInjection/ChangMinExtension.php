@@ -33,8 +33,8 @@ class ChangMinExtension extends AbstractResourceExtension
 
         $loader->load('services.xml');
 
-        if (class_exists('Sylius\\Component\\Taxonomy\\Model\\TaxonInterface', false)) {
-            $loader->load('taxons.xml');
+        if (interface_exists('Sylius\\Component\\Taxonomy\\Model\\TaxonInterface')) {
+            $loader->load('services/taxons.xml');
         }
     }
 }
