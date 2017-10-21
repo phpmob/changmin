@@ -2,6 +2,10 @@
     border: 1px solid $nav-tabs-border-color;
     border-top: none;
 
+    .card-translations & {
+        border: none;
+    }
+
     > .form-group:last-child {
         margin: 0;
     }

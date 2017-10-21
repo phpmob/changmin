@@ -1,7 +1,17 @@
 .selectize-control {
+    &.form-control {
+        padding: 0;
+        border: none;
+        border-radius: 0;
+    }
     .selectize-input {
         @include box-shadow($input-box-shadow);
         @include form-control-focus();
+        padding: 7px 8px;
+
+        &.dropdown-active + .selectize-dropdown {
+            border-radius: 0 0 $border-radius $border-radius;
+        }
     }
 
     &.is-invalid {
