@@ -24,6 +24,14 @@ class ChangMinExtension extends AbstractResourceExtension
     /**
      * {@inheritdoc}
      */
+    public function getAlias()
+    {
+        return 'changmin';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function load(array $config, ContainerBuilder $container)
     {
         $config = $this->processConfiguration($this->getConfiguration($config, $container), $config);
@@ -33,7 +41,7 @@ class ChangMinExtension extends AbstractResourceExtension
 
         $loader->load('services.xml');
 
-        if (interface_exists('Sylius\\Component\\Taxonomy\\Model\\TaxonInterface')) {
+        if ($config['taxonomy']) {
             $loader->load('services/taxons.xml');
         }
     }

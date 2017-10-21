@@ -46,6 +46,7 @@
         "merge-stream": "^1.0.0"
     },
     "scripts": {
-        "symlink": "ln -sf ../../src/PhpMob/ChangMinBundle/Resources/private ./"
+        "symlink": "ln -sf ../../src/PhpMob/ChangMinBundle/Resources/private ./",
+        "prepare": "npm run symlink"
     }
 }

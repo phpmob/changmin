@@ -1,0 +1,16 @@
+.selectize-control {
+    .selectize-input {
+        @include box-shadow($input-box-shadow);
+        @include form-control-focus();
+    }
+
+    &.is-invalid {
+        .selectize-input {
+            border-color: $form-feedback-invalid-color;
+        }
+    }
+
+    ~ .invalid-feedback {
+        display: block;
+    }
+}
