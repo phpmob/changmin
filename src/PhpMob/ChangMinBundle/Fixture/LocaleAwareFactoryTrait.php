@@ -13,50 +13,23 @@ declare(strict_types=1);
 
 namespace PhpMob\ChangMinBundle\Fixture;
 
-use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
 trait LocaleAwareFactoryTrait
 {
     /**
-     * @var RepositoryInterface
+     * @var TranslationLocaleProviderInterface
      */
-    private $localeRepository;
+    private $translationProvider;
 
     /**
-     * @var string
+     * @param TranslationLocaleProviderInterface $translationProvider
      */
-    protected $defaultLocale = 'th';
-
-    /**
-     * @param RepositoryInterface $localeRepository
-     */
-    public function setLocaleRepository(RepositoryInterface$localeRepository)
+    public function setTranslationProvider(TranslationLocaleProviderInterface $translationProvider)
     {
-        $this->localeRepository = $localeRepository;
-    }
-
-    /**
-     * @param string $defaultLocale
-     */
-    public function setDefaultLocale($defaultLocale)
-    {
-        $this->defaultLocale = $defaultLocale;
-    }
-
-    /**
-     * @return array
-     */
-    protected function getLocales()
-    {
-        /** @var LocaleInterface[] $locales */
-        $locales = $this->localeRepository->findAll();
-
-        foreach ($locales as $locale) {
-            yield $locale->getCode();
-        }
+        $this->translationProvider = $translationProvider;
     }
 
     /**
@@ -68,7 +41,7 @@ trait LocaleAwareFactoryTrait
     {
         $accessor = PropertyAccess::createPropertyAccessor();
 
-        foreach ($this->getLocales() as $localeCode) {
+        foreach ($this->translationProvider->getDefinedLocalesCodes() as $localeCode) {
             $object->setCurrentLocale($localeCode);
             $object->setFallbackLocale($localeCode);
 
@@ -76,9 +49,7 @@ trait LocaleAwareFactoryTrait
                 $value = $data[$property];
                 $value = is_string($value)
                     ? $value
-                    : (isset($value[$localeCode])
-                        ? $value[$localeCode]
-                        : $value[$this->defaultLocale])
+                    : $value[$localeCode]
                 ;
 
                 $accessor->setValue($object, $property, $value);

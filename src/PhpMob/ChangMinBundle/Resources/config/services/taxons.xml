@@ -11,11 +11,8 @@
                 <service class="PhpMob\ChangMinBundle\Fixture\TaxonFactory">
                     <argument type="service" id="sylius.factory.taxon"/>
                     <argument type="service" id="sylius.repository.taxon"/>
-                    <call method="setDefaultLocale">
-                        <argument>%locale%</argument>
-                    </call>
-                    <call method="setLocaleRepository">
-                        <argument type="service" id="sylius.repository.locale"/>
+                    <call method="setTranslationProvider">
+                        <argument type="service" id="sylius.translation_locale_provider"/>
                     </call>
                 </service>
             </argument>
