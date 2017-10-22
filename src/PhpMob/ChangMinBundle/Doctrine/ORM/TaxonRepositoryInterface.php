@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace PhpMob\ChangMinBundle\Doctrine\ORM;
 
+use Doctrine\ORM\QueryBuilder;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
 use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface as BaseTaxonRepositoryInterface;
 
@@ -22,9 +23,29 @@ use Sylius\Component\Taxonomy\Repository\TaxonRepositoryInterface as BaseTaxonRe
 interface TaxonRepositoryInterface extends BaseTaxonRepositoryInterface
 {
     /**
+     * @param $node
+     * @param int $number
+     */
+    public function moveDown($node, $number = 1);
+
+    /**
+     * @param $node
+     * @param int $number
+     */
+    public function moveUp($node, $number = 1);
+
+    /**
      * @param null|string $rootCode
      *
      * @return TaxonInterface[]
      */
     public function findNodesTreeSorted($rootCode = null);
+
+    /**
+     * @param string $locale
+     * @param null|string $parentCode
+     *
+     * @return QueryBuilder
+     */
+    public function createFilterQueryBuilder(string $locale, ?string $parentCode): QueryBuilder;
 }

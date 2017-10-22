@@ -1,0 +1,16 @@
+{% set root = resources.requestConfiguration.vars.root %}
+
+<div class="card">
+    <div class="card-body">
+        <div class="float-right">
+            <a href="{{ path('sylius_admin_taxon_create', { code: root.code }) }}" class="btn btn-outline-primary">
+                <i class="fa fa-plus"></i> {{ "Create Child" }}
+            </a>
+        </div>
+        <h4 class="card-title">{{ root.name }}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">{{ root.description }}</h6>
+        <div class="card-text">
+            {% include '@ChangMin/Grid/_default.html.twig' %}
+        </div>
+    </div>
+</div>

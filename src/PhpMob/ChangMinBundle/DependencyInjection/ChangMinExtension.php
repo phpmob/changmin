@@ -14,12 +14,13 @@ namespace PhpMob\ChangMinBundle\DependencyInjection;
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class ChangMinExtension extends AbstractResourceExtension
+class ChangMinExtension extends AbstractResourceExtension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
@@ -43,6 +44,29 @@ class ChangMinExtension extends AbstractResourceExtension
 
         if ($config['taxonomy']) {
             $loader->load('services/taxons.xml');
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function prepend(ContainerBuilder $container)
+    {
+        $config = $container->getExtensionConfig($this->getAlias());
+        $config = $this->processConfiguration(new Configuration(), $config);
+
+        if ($config['taxonomy']) {
+            $container->prependExtensionConfig('sylius_taxonomy', [
+                'resources' => [
+                    'taxon' => [
+                        'classes' => [
+                            'controller' => 'PhpMob\\ChangMinBundle\\Controller\\TaxonController',
+                            'repository' => 'PhpMob\\ChangMinBundle\\Doctrine\\ORM\\TaxonRepository',
+                            'form' => 'PhpMob\\ChangMinBundle\\Form\\Type\\TaxonType',
+                        ]
+                    ]
+                ]
+            ]);
         }
     }
 }

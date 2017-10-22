@@ -1,7 +1,13 @@
-<div class="btn-group btn-group-sm">
-    {% if definition.actionGroups.main is defined and definition.getActions('main')|length > 0 %}
-        {% for action in definition.getActions('main') %}
+{%- set mainActions -%}
+    {% if definition.actionGroups.main is defined %}
+        {% for action in definition.getEnabledActions('main') %}
             {{ sylius_grid_render_action(resources, action, null) }}
         {% endfor %}
     {% endif %}
-</div>
+{%- endset -%}
+
+{% if mainActions %}
+    <div class="btn-group btn-group-sm">
+        {{ mainActions|raw }}
+    </div>
+{% endif %}

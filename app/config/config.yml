@@ -9,6 +9,7 @@ imports:
     - { resource: "@PhpMobCoreBundle/Resources/config/app/main.yml" }
     - { resource: "@PhpMobCoreBundle/Resources/config/app/security.yml" }
     - { resource: "config/phpmob_settings.yml" }
+    - { resource: "config/taxonomy.yml" }
 
 #parameters:
 #    phpmob.flysystem.phpcr.connection: media

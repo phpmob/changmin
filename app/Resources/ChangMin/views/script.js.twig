@@ -22,11 +22,16 @@ ChangMin.updateMenu(function (menu) {
                 label: 'User Groups',
                 link: '{{ path('phpmob_admin_user_group_index') }}',
             },
+            taxonomy: {
+                icon: 'fa fa-sitemap',
+                label: 'Taxonomy',
+                link: '{{ path('sylius_admin_taxon_index') }}',
+            },
             settings: {
                 icon: 'fa fa-cog',
                 label: 'Settings',
                 link: '{{ path('phpmob_settings_section_update', { section: 'section2' }) }}',
-            }
+            },
         }
     }));
 });

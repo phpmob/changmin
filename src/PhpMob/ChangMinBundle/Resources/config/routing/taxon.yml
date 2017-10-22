@@ -1,0 +1,93 @@
+sylius_admin_taxon_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: ChangMin:Taxon:index.html.twig
+
+sylius_admin_taxon_create:
+    path: /create
+    methods: [GET, POST]
+    defaults:
+        _controller: sylius.controller.taxon:createAction
+        _sylius:
+            section: admin
+            template: ChangMin:Crud:create.html.twig
+            factory:
+                method: createWidthParent
+                arguments: [ "expr:service('sylius.repository.taxon').findOneByCode(defaultNull($code))" ]
+            redirect:
+                route: sylius_admin_taxon_index
+                parameters: { code: resource.root.code }
+            vars:
+                templates:
+                    form: ChangMin:Taxon:_form.html.twig
+
+sylius_admin_taxon_update:
+    path: /{id}/update
+    methods: [GET, PUT, PATCH]
+    defaults:
+        _controller: sylius.controller.taxon:updateAction
+        _sylius:
+            section: admin
+            template: ChangMin:Crud:update.html.twig
+            redirect:
+                route: sylius_admin_taxon_index
+                parameters: { code: resource.root.code }
+            vars:
+                route:
+                    index: sylius_admin_taxon_index
+                templates:
+                    form: ToroAdminBundle:Taxon:_form.html.twig
+
+sylius_admin_taxon_delete:
+    path: /{id}/delete
+    methods: [DELETE]
+    defaults:
+        _controller: sylius.controller.taxon:deleteAction
+        _sylius:
+            section: admin
+
+sylius_admin_taxon_move_up:
+    path: /{id}/up
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.taxon:moveUpAction
+        _sylius:
+            section: admin
+            redirect:
+                route: sylius_admin_taxon_index
+                parameters: { code: resource.root.code }
+
+sylius_admin_taxon_move_down:
+    path: /{id}/down
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.taxon:moveDownAction
+        _sylius:
+            section: admin
+            redirect:
+                route: sylius_admin_taxon_index
+                parameters: { code: resource.root.code }
+
+_sylius_admin_taxon_index:
+    path: /_taxons/{code}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.taxon:indexAction
+        _sylius:
+            section: admin
+            template: ChangMin:Taxon:_grid.html.twig
+            grid: sylius_admin_taxon
+            vars:
+                root: "expr:service('sylius.repository.taxon').findOneByCode(defaultNull($code))"
+
+_sylius_admin_taxon_roots:
+    path: /_roots
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.taxon:indexAction
+        _sylius:
+            template: ChangMin:Taxon:_roots.html.twig
+            repository:
+                method: findRootNodes

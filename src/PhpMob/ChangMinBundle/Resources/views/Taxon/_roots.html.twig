@@ -1,0 +1,32 @@
+{% import "@ChangMin/Macro/buttons.html.twig" as button %}
+{% set taxonCode = app.request.get('code') %}
+
+<h4>{{ "changmin.ui.taxonomy"|trans }}</h4>
+
+<table class="table table-sm table-bordered">
+    <thead>
+    <tr>
+        <th>{{ "Name" }}</th>
+        <th>{{ "Code" }}</th>
+        <th>{{ "Slug" }}</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for taxon in taxons %}
+        <tr{% if taxon.code == taxonCode %} style="font-weight: bold;"{% endif %}>
+            <td><a href="{{ path('sylius_admin_taxon_index', {code: taxon.code}) }}">{{ taxon.name }}</a></td>
+            <td>{{ taxon.code }}</td>
+            <td>{{ taxon.slug }}</td>
+            {% if app.request.get('actions') %}
+                <td class="grid-table-column-actions" width="60">
+                    {{ button.settings([
+                        button.edit(path('sylius_admin_taxon_update', {id: taxon.id})),
+                        button.delete(path('sylius_admin_taxon_delete', {id: taxon.id}), null, taxon.id)
+                    ]) }}
+                </td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

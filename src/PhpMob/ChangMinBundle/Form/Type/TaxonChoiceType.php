@@ -58,7 +58,7 @@ final class TaxonChoiceType extends AbstractType
                 continue;
             }
 
-            $level = $choice->data->getLevel() - $rootLevel - 1;
+            $level = $choice->data->getLevel() - $rootLevel;
             $choice->label = @str_repeat($dash, $level).$choice->label;
         }
     }

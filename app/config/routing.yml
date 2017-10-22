@@ -5,6 +5,10 @@ phpmob_changmin:
     resource: "@ChangMin/Resources/config/routing/routing.yml"
     prefix: /admin
 
+phpmob_changmin_taxon:
+    resource: "@ChangMin/Resources/config/routing/taxon.yml"
+    prefix: /admin/taxons
+
 phpmob_changmin_security:
     resource: "@ChangMin/Resources/config/routing/security.yml"
     prefix: /admin

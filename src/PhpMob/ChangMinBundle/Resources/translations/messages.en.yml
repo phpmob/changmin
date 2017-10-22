@@ -1,13 +1,24 @@
 sylius:
     ui:
         code: Code
+        taxons: Taxons
+        new_taxon: New Taxon
+        edit_taxon: Edit Taxon
 
 changmin:
     ui:
+        back: Back
+        taxonomy: Taxonomy
         success: Success
         error: Error
         warning: Warning
         info: Info
+        create: Create
+        edit: Edit
+        show: Show
+        delete: Delete
+        filter: Filter
+        clear_filters: Clear
     form:
         login:
             username: Username

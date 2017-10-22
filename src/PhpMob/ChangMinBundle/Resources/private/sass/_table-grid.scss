@@ -63,44 +63,6 @@
             }
         }
 
-        th, td {
-            .btn {
-                border-color: $input-border-color;
-            }
-            &.grid-table-column-actions {
-                text-align: center;
-                padding: 0.2rem;
-
-                > .btn-group-sm {
-                    > .btn {
-                        //font-size: 95%;
-                        padding: $input-btn-padding-y-sm / 2 $input-btn-padding-x-sm / 2;
-                    }
-                }
-
-                .dropdown {
-                    > .btn {
-                        //font-size: 95%;
-                        padding: $input-btn-padding-y-sm / 2 $input-btn-padding-x-sm;
-                    }
-                }
-
-                .dropdown-menu {
-                    padding: 0;
-                    border-radius: 0;
-
-                    .btn {
-                        display: block;
-                        border: none;
-                        width: 100%;
-                        text-align: left;
-                        border-radius: 0;
-                        padding: $input-btn-padding-y-sm + .2 $input-btn-padding-x-sm;
-                    }
-                }
-            }
-        }
-
         tr:nth-child(even) {
             background-color: #f5f5f4;
         }
@@ -128,6 +90,50 @@
                 display: block;
                 overflow-y: auto;
                 overflow-x: hidden;
+            }
+        }
+    }
+}
+
+.table {
+    th, td {
+        .btn {
+            border-color: $input-border-color;
+        }
+        &.grid-table-column-actions {
+            text-align: center;
+            padding: 0.2rem;
+
+            > .btn-group-sm {
+                > .btn {
+                    //font-size: 95%;
+                    padding: $input-btn-padding-y-sm / 2 $input-btn-padding-x-sm / 2;
+                }
+            }
+
+            .dropdown {
+                > .btn {
+                    //font-size: 95%;
+                    padding: $input-btn-padding-y-sm / 2 $input-btn-padding-x-sm;
+                }
+            }
+
+            .dropdown-menu {
+                padding: 0;
+                border-radius: 0;
+
+                .dropdown-item {
+                    padding: 0;
+                }
+
+                .btn {
+                    display: block;
+                    border: none;
+                    width: 100%;
+                    text-align: left;
+                    border-radius: 0;
+                    padding: $input-btn-padding-y-sm + .2 $input-btn-padding-x-sm;
+                }
             }
         }
     }

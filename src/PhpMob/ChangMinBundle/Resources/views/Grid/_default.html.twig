@@ -1,6 +1,7 @@
 {% import '@ChangMin/Macro/messages.html.twig' as messages %}
 {% import '@ChangMin/Grid/_table.html.twig' as table %}
 
+{% set grid = resources|default(grid|default) %}
 {% set definition = grid.definition %}
 
 {% if definition.enabledFilters|length > 0 %}

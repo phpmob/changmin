@@ -1,0 +1,57 @@
+{% extends "@ChangMin/layout.html.twig" %}
+{% set taxonCode = app.request.get('code') %}
+{%- set title -%}
+    <i class="fa fa-sitemap"></i> {{ "sylius.ui.taxons"|trans }}
+{%- endset -%}
+
+{% block title %}{{ title|raw }}{% endblock %}
+
+{% block breadcrumb %}
+    <nav class="breadcrumb">
+        <span class="breadcrumb-item">
+            <i class="fa fa-home"></i> <a href="{{ path('changmin_admin_dashboard') }}">{{ 'Dashboard' }}</a>
+        </span>
+        <span class="breadcrumb-item active">{{ title|raw }}</span>
+    </nav>
+{% endblock %}
+
+{% block toolbarHeader %}
+    <div class="row no-gutters align-items-center">
+        <div class="col-auto mr-auto pane-toolbar-actions">
+            {% if taxonCode %}
+                <a href="{{ path('sylius_admin_taxon_index') }}" class="btn btn-outline-secondary btn-sm">
+                    <i class="fa fa-chevron-left"></i> <span>{{ "sylius.ui.taxons"|trans }}</span>
+                </a>
+            {% endif %}
+            <a href="{{ path('sylius_admin_taxon_create') }}" class="btn btn-primary btn-sm">
+                <i class="fa fa-plus"></i> <span>{{ "sylius.ui.new_taxon"|trans }}</span>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block toolbarFooter %}
+{% endblock %}
+
+{% block content %}
+    <div class="table-grid">
+        {% if taxonCode %}
+            <div class="row">
+                <div class="col-md-4">
+                    <div style="padding: 1rem 0 0 1rem">
+                        {{ render(path('_sylius_admin_taxon_roots', { actions: true, code: taxonCode })) }}
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div style="padding: 1rem 1rem 0 0">
+                        {{ render(path('_sylius_admin_taxon_index', { code: taxonCode })) }}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div style="padding: 1rem">
+                {{ render(path('_sylius_admin_taxon_roots', { actions: true, code: taxonCode })) }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

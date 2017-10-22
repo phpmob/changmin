@@ -1,0 +1,81 @@
+{% macro default(url, message, id, icon, class) %}
+    <a class="btn btn-outline-primary {% if class is not empty %} {{ class }} {% endif %}" {% if id is not empty %} id="{{ id }}"{% endif %} href="{{ url }}">
+        {% if icon is not empty %}
+            <i class="{{ icon }}"></i>
+        {% endif %}
+        {{ message|trans }}
+    </a>
+{% endmacro %}
+
+{% macro show(url, message, id, class) %}
+    {% import _self as buttons %}
+
+    {% if message is empty %}
+        {% set message = 'changmin.ui.show'|trans %}
+    {% endif %}
+
+    {{ buttons.default(url, message, id, 'search') }}
+{% endmacro %}
+
+{% macro create(url, message, id) %}
+    {% import _self as buttons %}
+
+    {% if message is empty %}
+        {% set message = 'changmin.ui.create'|trans %}
+    {% endif %}
+
+    {{ buttons.default(url, message, id, 'plus', 'primary') }}
+{% endmacro %}
+
+{% macro edit(url, message, id) %}
+    {% import _self as buttons %}
+
+    {% if message is empty %}
+        {% set message = 'changmin.ui.edit'|trans %}
+    {% endif %}
+
+    {{ buttons.default(url, message, id, 'pencil') }}
+{% endmacro %}
+
+{% macro filter(message) %}
+    <button class="ui blue labeled icon button" type="submit">
+        <i class="icon search"></i> {{ message is empty ? 'changmin.ui.filter'|trans : message }}
+    </button>
+{% endmacro %}
+
+{% macro resetFilters(url, message) %}
+    <a class="ui labeled icon button" href="{{ url }}">
+        <i class="icon remove"></i> {{ message is empty ? 'changmin.ui.clear_filters'|trans : message }}
+    </a>
+{% endmacro %}
+
+{% macro delete(path, message, resourceId = null, icon = 'fa fa-trash-o') %}
+    <form action="{{ path }}" method="post" class="delete negative">
+        <input type="hidden" name="_method" value="DELETE">
+        <button class="btn btn-outline-danger" type="submit" data-delete-confirmation data-message="{{ 'Do you want to delete this item?' }}">
+            <i class="{{ icon }}"></i> {{ message is empty ? 'changmin.ui.delete'|trans : message }}
+        </button>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token(resourceId) }}" />
+    </form>
+{% endmacro %}
+
+{% macro submit(message) %}
+    <button class="btn btn-primary" type="submit">
+        <i class="ti-check"></i> {{ message is empty ? 'changmin.ui.create'|trans : message }}
+    </button>
+{% endmacro %}
+
+{% macro settings(actions) %}
+    <div class="dropdown text-center">
+        <button class="btn btn-sm btn-outline-secondary" type="button" data-toggle="dropdown">
+            <i class="fa fa-cog"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+            {% for action in actions %}
+                {#{% if syli us_is_granted(grid.metadata.applicationName ~ '.'~ grid.metadata.name ~'.'~action.name) %}#}
+                <li class="dropdown-item">{{ action|raw }}</li>
+                {#{% endif %}#}
+            {% endfor %}
+        </ul>
+    </div>
+{% endmacro %}

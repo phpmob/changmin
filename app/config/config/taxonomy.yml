@@ -1,0 +1,34 @@
+imports:
+    - { resource: "@ChangMin/Resources/config/grids/taxon.yml" }
+
+changmin:
+    taxonomy: true
+
+sylius_fixtures:
+    suites:
+        default:
+            fixtures:
+                taxon:
+                    priority: 0
+                    options:
+                        custom:
+                            -
+                                code: bank
+                                name: Banks
+                                description: Banks Description
+                                children:
+                                    -
+                                        code: bank-bbl
+                                        name: ธนาคารกรุงเทพ
+                                        slug: "bank/bbl"
+                                        description: ธนาคารกรุงเทพ
+                                    -
+                                        code: bank-bay
+                                        name: ธนาคารกรุงศรีอยุธยา
+                                        slug: "bank/bay"
+                                        description: ธนาคารกรุงศรีอยุธยา
+                                    -
+                                        code: bank-kbank
+                                        name: ธนาคารกสิกรไทย
+                                        slug: "bank/kbank"
+                                        description: ธนาคารกสิกรไทย

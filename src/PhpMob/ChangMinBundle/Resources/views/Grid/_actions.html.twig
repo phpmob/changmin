@@ -6,7 +6,7 @@
         </button>
         <ul class="dropdown-menu dropdown-menu-right">
             {% for action in actions %}
-                <li>{{ sylius_grid_render_action(grid, action, row) }}</li>
+                <li class="dropdown-item">{{ sylius_grid_render_action(grid, action, row) }}</li>
             {% endfor %}
         </ul>
     </div>
