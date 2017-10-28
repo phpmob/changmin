@@ -13,9 +13,9 @@ namespace PhpMob\ChangMinBundle\Form\Type;
 
 use PhpMob\ChangMinBundle\Doctrine\ORM\TaxonRepositoryInterface;
 use Sylius\Component\Taxonomy\Model\TaxonInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\View\ChoiceView;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\Options;
@@ -68,7 +68,7 @@ final class TaxonChoiceType extends AbstractType
      */
     public function getParent()
     {
-        return EntityType::class;
+        return ChoiceType::class;
     }
 
     /**
@@ -87,7 +87,6 @@ final class TaxonChoiceType extends AbstractType
                 'root' => null,
                 'root_code' => null,
                 'filter' => null,
-                'class' => $this->taxonRepository->getClassName(),
             ])
             ->setAllowedTypes('root', [TaxonInterface::class, 'string', 'null'])
             ->setAllowedTypes('root_code', ['string', 'null'])

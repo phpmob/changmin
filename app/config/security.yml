@@ -1,7 +1,7 @@
 parameters:
     changmin.security.regex_admin: "^/admin"
 #    changmin.security.regex_api: "^/api"
-    changmin.security.regex_web: "^/(?!admin|api/.*|api$)++"
+    changmin.security.regex_web: "^"
 
 security:
     providers:
