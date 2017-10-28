@@ -2,12 +2,12 @@
 
 {% block content %}
     <div class="row">
-        <div class="col-3">
+        <div class="col-12 col-md-4 col-lg-3">
             {{ include("@PhpMobCms/tpls/account/_userCard.html.twig") }}
             {{ include("@PhpMobCms/tpls/account/_menu.html.twig") }}
         </div>
 
-        <div class="col-9">
+        <div class="col-12 col-md-8 col-lg-9">
             {% block account_content %}{% endblock %}
         </div>
     </div>
