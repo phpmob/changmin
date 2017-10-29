@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\QueryBuilder;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 use Sylius\Bundle\TaxonomyBundle\Doctrine\ORM\TaxonRepository as BaseTaxonRepository;
+use Sylius\Component\Taxonomy\Model\TaxonInterface;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
@@ -66,11 +67,17 @@ class TaxonRepository extends BaseTaxonRepository implements TaxonRepositoryInte
             ->addOrderBy('o.left')
         ;
 
-        if (null !== $rootCode) {
+        /** @var TaxonInterface $root */
+        if (null !== $rootCode && $root = $this->findOneBy(['code' => $rootCode])) {
             $queryBuilder
-                ->join('o.root', 'root')
-                ->andWhere('root.code = :rootCode')
-                ->setParameter('rootCode', $rootCode)
+                ->addSelect('root')
+                ->addSelect('translation')
+                ->innerJoin('o.root', 'root')
+                ->innerJoin('o.translations', 'translation', 'WITH', 'translation.locale = :locale')
+                //->andWhere('o.root = :root')
+                ->andWhere($queryBuilder->expr()->between('o.left', $root->getLeft(), $root->getRight()))
+                //->setParameter('root', $root)
+                ->setParameter('locale', $root->getTranslation()->getLocale())
             ;
         }
 
