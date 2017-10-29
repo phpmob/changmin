@@ -153,6 +153,8 @@ abstract class File implements FileInterface
     public function setOwner($owner)
     {
         $this->owner = $owner;
+        $this->basePath = $owner->getFileBasePath();
+        $this->updatedAt = new \DateTime();
     }
 
     /**
