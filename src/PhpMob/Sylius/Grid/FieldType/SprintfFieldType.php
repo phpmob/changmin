@@ -21,7 +21,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-class TextFieldType implements FieldTypeInterface
+class SprintfFieldType implements FieldTypeInterface
 {
     /**
      * @var DataExtractorInterface
@@ -44,7 +44,7 @@ class TextFieldType implements FieldTypeInterface
         $value = $this->dataExtractor->get($field, $data);
         $field->setOptions($options);
 
-        return is_string($value) ? htmlspecialchars($value) : $value;
+        return sprintf($options['format'], is_string($value) ? htmlspecialchars($value) : $value);
     }
 
     /**
@@ -55,9 +55,11 @@ class TextFieldType implements FieldTypeInterface
         $resolver->setDefaults([
             'width' => 'auto',
             'align' => 'left',
+            'format' => '%s',
         ]);
 
         $resolver->setAllowedTypes('align', 'string');
+        $resolver->setAllowedTypes('width', 'string');
         $resolver->setAllowedTypes('width', 'string');
     }
 }
