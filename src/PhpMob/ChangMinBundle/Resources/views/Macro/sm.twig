@@ -5,24 +5,23 @@
     {% set btn_css = "btn btn-sm " ~ btn_css %}
 
     {% if transitions|length %}
-        <div class="dropdown box-inline">
+        <div class="dropdown d-inline">
             <button type="button" data-toggle="dropdown" class="dropdown-toggle ts-dropdown {{ btn_css }}">
-                <i class="fa fa-circle fa-color-{{ color }}"></i>
-                {{ sm_state_label(state) }} <i class="dropdown-caret"></i>
+                <i class="fa fa-circle fa-color-{{ color }}"></i> {{ sm_state_label(state) }}
             </button>
             <ul class="dropdown-menu">
                 {% for ts in transitions %}
                     {% set routing = path(route, {"id": object.id, "transition": ts.name}) %}
-                    <li class="ts-action ts-{{ ts.name }} ts-color-{{ ts.color }}">
+                    <li class="dropdown-item ts-action ts-{{ ts.name }} ts-color-{{ ts.color }}">
                         {% if form %}
                             <form action="{{ routing }}" method="post">
                                 <input type="hidden" name="_method" value="{{ method }}">
-                                <button type="submit" data-ts-action class="btn btn-secondary" data-requires-confirmation>
+                                <button type="submit" data-ts-action class="btn btn-secondary" data-confirmation>
                                     <i class="fa fa-circle fa-color-{{ ts.color }}"></i> {{ ts.label|trans|raw }}
                                 </button>
                             </form>
                         {% else %}
-                            <a href="{{ routing }}" data-method="{{ method }}" data-ts-action data-requires-confirmation>
+                            <a href="{{ routing }}" data-method="{{ method }}" data-ts-action data-confirmation>
                                 <i class="fa fa-circle fa-color-{{ ts.color }}"></i> {{ ts.label|trans|raw }}
                             </a>
                         {% endif %}
