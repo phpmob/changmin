@@ -25,5 +25,13 @@
         <service class="PhpMob\ChangMinBundle\Twig\Extension\RepeatExtension">
             <tag name="twig.extension"/>
         </service>
+
+        <service class="PhpMob\ChangMinBundle\Twig\StateMachineExtension">
+            <tag name="twig.extension"/>
+            <argument type="service" id="translator" />
+            <argument type="service" id="sm.factory" />
+            <argument>%changmin.sm.config%</argument>
+            <argument>%sm.configs%</argument>
+        </service>
     </services>
 </container>

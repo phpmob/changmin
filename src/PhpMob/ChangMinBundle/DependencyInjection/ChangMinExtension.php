@@ -38,6 +38,8 @@ class ChangMinExtension extends AbstractResourceExtension implements PrependExte
         $config = $this->processConfiguration($this->getConfiguration($config, $container), $config);
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
+        $container->setParameter('changmin.sm.config', $config['state_machine']);
+
         $this->registerResources('changmin', $config['driver'], [], $container);
 
         $loader->load('services.xml');
