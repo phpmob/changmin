@@ -26,7 +26,7 @@
             <tag name="twig.extension"/>
         </service>
 
-        <service class="PhpMob\ChangMinBundle\Twig\StateMachineExtension">
+        <service class="PhpMob\ChangMinBundle\Twig\Extension\StateMachineExtension">
             <tag name="twig.extension"/>
             <argument type="service" id="translator" />
             <argument type="service" id="sm.factory" />

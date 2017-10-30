@@ -5,52 +5,61 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service class="PhpMob\Sylius\ExpressionLanguage\ExpressionLanguage" public="false" decorates="sylius.expression_language" />
+        <service class="PhpMob\Sylius\ExpressionLanguage\ExpressionLanguage" public="false"
+                 decorates="sylius.expression_language"/>
 
-        <service id="changmin.grid_field.sprintf" class="PhpMob\Sylius\Grid\FieldType\SprintfFieldType" public="false">
+        <service class="PhpMob\Sylius\Grid\FieldType\SprintfFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <tag name="sylius.grid_field" type="sprintf"/>
         </service>
 
-        <service id="changmin.grid_field.text" class="PhpMob\Sylius\Grid\FieldType\TextFieldType" public="false">
+        <service class="PhpMob\Sylius\Grid\FieldType\TextFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <tag name="sylius.grid_field" type="text"/>
         </service>
 
-        <service id="changmin.grid_field.twig" class="PhpMob\Sylius\Grid\FieldType\TplFieldType" public="false">
+        <service class="PhpMob\Sylius\Grid\FieldType\TplFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <argument type="service" id="twig"/>
             <tag name="sylius.grid_field" type="tpl"/>
         </service>
 
-        <service id="changmin.grid_field.badge" class="PhpMob\Sylius\Grid\FieldType\BadgeFieldType" public="false">
+        <service class="PhpMob\Sylius\Grid\FieldType\BadgeFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <argument type="service" id="twig"/>
             <argument type="string">@ChangMin/Grid/Field/badge.html.twig</argument>
             <tag name="sylius.grid_field" type="badge"/>
         </service>
 
-        <service id="changmin.grid_field.localizeddate" class="PhpMob\Sylius\Grid\FieldType\LocalizedDateFieldType" public="false">
+        <service class="PhpMob\Sylius\Grid\FieldType\StateMachineFieldType" public="false">
+            <argument type="service" id="sylius.grid.data_extractor"/>
+            <argument type="service" id="twig"/>
+            <argument type="string">@ChangMin/Grid/Field/sm.html.twig</argument>
+            <tag name="sylius.grid_field" type="state_machine"/>
+        </service>
+
+        <service class="PhpMob\Sylius\Grid\FieldType\LocalizedDateFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <argument type="service" id="twig"/>
             <tag name="sylius.grid_field" type="localizeddate"/>
         </service>
 
-        <service id="changmin.grid_field.localizednumber" class="PhpMob\Sylius\Grid\FieldType\LocalizedNumberFieldType" public="false">
+        <service class="PhpMob\Sylius\Grid\FieldType\LocalizedNumberFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <tag name="sylius.grid_field" type="localizednumber"/>
         </service>
 
-        <service id="changmin.grid_field.number" class="PhpMob\Sylius\Grid\FieldType\NumberFieldType" public="false">
+        <service class="PhpMob\Sylius\Grid\FieldType\NumberFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <tag name="sylius.grid_field" type="number"/>
         </service>
 
-        <service id="changmin.resource_controller.resources_resolver.grid_aware" class="PhpMob\Sylius\Grid\ResourceResolver"
+        <service id="changmin.resource_controller.resources_resolver.grid_aware"
+                 class="PhpMob\Sylius\Grid\ResourceResolver"
                  decorates="sylius.resource_controller.resources_resolver" decoration-priority="-256">
-            <argument type="service" id="changmin.resource_controller.resources_resolver.grid_aware.inner" />
-            <argument type="service" id="sylius.grid.provider" />
-            <argument type="service" id="sylius.grid.resource_view_factory" />
+            <argument type="service" id="changmin.resource_controller.resources_resolver.grid_aware.inner"/>
+            <argument type="service" id="sylius.grid.provider"/>
+            <argument type="service" id="sylius.grid.resource_view_factory"/>
         </service>
     </services>
 </container>
