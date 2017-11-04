@@ -20,7 +20,6 @@
     {% set filterPath = path(route, params) %}
 
     <form name="criteria" action="{{ filterPath }}" class="table-grid-search form-inline">
-            <input type="hidden" name="criteria[{{ criteria.name }}][type]" value="contains">
             <div class="input-group input-group-sm">
                 <input type="text" placeholder="Search for..." autocomplete="off" class="form-control"
                        name="criteria[{{ criteria.name }}][value]"
@@ -31,6 +30,6 @@
                 {% endif %}
             </div>
             <button type="submit" class="btn btn-sm btn-outline-secondary ml-1"><i class="fa fa-search"></i></button>
-            <button type="button" class="btn btn-sm btn-outline-secondary ml-1" title="TODO: add filter"><i class="fa fa-plus"></i></button>
+            {#<button type="button" class="btn btn-sm btn-outline-secondary ml-1" title="TODO: add filter"><i class="fa fa-plus"></i></button>#}
     </form>
 {% endif %}

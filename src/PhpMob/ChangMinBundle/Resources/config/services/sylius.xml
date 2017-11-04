@@ -8,6 +8,14 @@
         <service class="PhpMob\Sylius\ExpressionLanguage\ExpressionLanguage" public="false"
                  decorates="sylius.expression_language"/>
 
+        <service class="PhpMob\Sylius\Grid\Form\Type\NumberFilterType">
+            <tag name="form.type" />
+        </service>
+
+        <service class="PhpMob\Sylius\Grid\Filter\NumberFilter">
+            <tag name="sylius.grid_filter" type="number" form-type="PhpMob\Sylius\Grid\Form\Type\NumberFilterType" />
+        </service>
+
         <service class="PhpMob\Sylius\Grid\FieldType\SprintfFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <tag name="sylius.grid_field" type="sprintf"/>
