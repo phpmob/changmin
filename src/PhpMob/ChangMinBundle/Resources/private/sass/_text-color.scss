@@ -1,14 +1,14 @@
 .text-color {
-    &-blue { color: color('blue') }
-    &-indigo { color: color('indigo') }
-    &-purple { color: color('purple') }
-    &-pink { color: color('pink') }
-    &-red { color: color('red') }
-    &-orange { color: color('orange') }
-    &-yellow { color: color('yellow') }
-    &-green { color: color('green') }
-    &-teal { color: color('teal') }
-    &-cyan { color: color('cyan') }
+    &-blue { color: $blue }
+    &-indigo { color: $indigo }
+    &-purple { color: $purple }
+    &-pink { color: $pink }
+    &-red { color: $red }
+    &-orange { color: $orange }
+    &-yellow { color: $yellow }
+    &-green { color: $green }
+    &-teal { color: $teal }
+    &-cyan { color: $cyan }
     &-primary { color: theme-color('primary') }
     &-secondary { color: theme-color('secondary') }
     &-success { color: theme-color('success') }

@@ -1,9 +1,7 @@
-$chang-base-color: darken($gray-500, 35%);
-$chang-bg-color: rgba($gray-200, .5);
-$chang-border-color: darken($gray-500, 10%);
-
-@import "../photon/sass/variables";
-@import "../photon/sass/mixins";
+$chang-base-color: darken($gray-500, 35%) !default;
+$chang-bg-color: rgba($gray-200, .5) !default;
+$chang-border-color: darken($gray-500, 10%) !default;
+$chang-sidebar-base-color: $gray-700 !default;
 
 @import "window";
 @import "text-color";

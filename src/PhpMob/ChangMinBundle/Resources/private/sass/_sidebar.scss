@@ -3,7 +3,7 @@
         display: flex;
         align-items: center;
         padding: .5rem .5rem;
-        background-color: rgba(#000, .01);
+        background-color: rgba($chang-sidebar-base-color, .01);
         //border-bottom: 1px solid $chang-border-color;
 
         img {
@@ -16,7 +16,7 @@
         h2 {
             display: inline-block;
             margin: 0 0 0 .5rem;
-            color: $gray-700;
+            color: $chang-sidebar-base-color;
             font-size: 1rem;
         }
 
@@ -32,7 +32,7 @@
     .nav-group-item {
         padding: 3px 10px 3px 25px;
         display: block;
-        color: lighten($gray-color, 10%);
+        color: lighten($chang-sidebar-base-color, 10%);
         text-decoration: none;
         white-space: nowrap;
         overflow: hidden;
@@ -45,7 +45,7 @@
 
         .fa {
             width: 18px; // Prevents a one pixel cutoff
-            color: lighten($gray-color, 20%);
+            color: lighten($chang-sidebar-base-color, 20%);
             margin-right: 5px;
             font-size: 16px;
             text-align: center;
@@ -57,6 +57,6 @@
         padding: 15px 10px 5px;
         font-size: 12px;
         font-weight: 500;
-        color: lighten($gray-color, 20%);
+        color: lighten($chang-sidebar-base-color, 20%);
     }
 }
