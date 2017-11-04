@@ -59,6 +59,10 @@ class StateMachineFieldType implements FieldTypeInterface
             $data = $this->dataExtractor->get($field, $data);
         }
 
+        if ('state' === $options['property'] && 'state' !== $field->getName()) {
+            $options['property'] = $field->getName();
+        }
+
         $field->setOptions($options);
 
         return $this->twig->render($options['template'], ['data' => $data, 'options' => $options]);
