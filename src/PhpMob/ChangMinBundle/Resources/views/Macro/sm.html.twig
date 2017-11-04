@@ -3,7 +3,7 @@
     {% set state = attribute(object, property) %}
     {% set transitions = sm_possibles(object) %}
     {% set color = sm_state_color(state) %}
-    {% set btn_css = "btn btn-outline-primary btn-sm " ~ btn_css %}
+    {% set btn_css = btn_css ? btn_css : "btn btn-outline-primary btn-sm " %}
 
     {% if transitions|length %}
         <div class="dropdown d-inline sm-dropdown">
