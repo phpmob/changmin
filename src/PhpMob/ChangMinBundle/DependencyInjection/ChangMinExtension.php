@@ -47,6 +47,10 @@ class ChangMinExtension extends AbstractResourceExtension implements PrependExte
         if ($config['taxonomy']) {
             $loader->load('services/taxons.xml');
         }
+
+        if (interface_exists('Sylius\\Component\\Locale\\Context\\LocaleContextInterface')) {
+            $loader->load('services/locale.xml');
+        }
     }
 
     /**

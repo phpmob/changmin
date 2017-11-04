@@ -1,9 +1,23 @@
 <?php
 
+/*
+ * This file is part of the PhpMob package.
+ *
+ * (c) Ishmael Doss <nukboon@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+declare(strict_types=1);
+
 namespace PhpMob\ChangMinBundle\Model;
 
 use Sylius\Component\User\Model\User as BaseUser;
 
+/**
+ * @author Ishmael Doss <nukboon@gmail.com>
+ */
 class AdminUser extends BaseUser implements AdminUserInterface
 {
     /**
@@ -15,6 +29,27 @@ class AdminUser extends BaseUser implements AdminUserInterface
      * @var string
      */
     protected $displayName;
+
+    /**
+     * @var string
+     */
+    protected $localeCode;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocaleCode(): ?string
+    {
+        return $this->localeCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocaleCode(?string $localeCode): void
+    {
+        $this->localeCode = $localeCode;
+    }
 
     /**
      * {@inheritdoc}

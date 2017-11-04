@@ -7,6 +7,7 @@
 
     <mapped-superclass name="PhpMob\ChangMinBundle\Model\AdminUser" table="phpmob_admin_user">
         <field name="displayName" type="string" length="100" nullable="true"/>
+        <field name="localeCode" type="string" length="5" nullable="true"/>
 
         <one-to-one field="picture" target-entity="PhpMob\ChangMinBundle\Model\AdminUserPictureInterface" mapped-by="owner">
             <cascade>

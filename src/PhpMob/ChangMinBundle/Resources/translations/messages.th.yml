@@ -24,6 +24,9 @@ changmin:
             username: Username
             password: Password
             remember_me: Remember Me?
+        admin_user:
+            locale_code: ภาษา
+            picture: รูปประจำตัว
 
 ui.security:
     login_title: Login

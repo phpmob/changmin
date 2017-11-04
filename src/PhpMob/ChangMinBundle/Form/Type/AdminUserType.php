@@ -12,6 +12,7 @@
 namespace PhpMob\ChangMinBundle\Form\Type;
 
 use Sylius\Bundle\UserBundle\Form\Type\UserType;
+use Symfony\Component\Form\Extension\Core\Type\LocaleType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
@@ -27,7 +28,14 @@ class AdminUserType extends UserType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('picture', AdminUserPictureType::class, [])
+            ->add('localeCode', LocaleType::class, [
+                'required' => false,
+                'label' => 'changmin.form.admin_user.locale_code',
+            ])
+            ->add('picture', AdminUserPictureType::class, [
+                'required' => false,
+                'label' => 'changmin.form.admin_user.picture',
+            ])
         ;
     }
 }
