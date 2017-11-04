@@ -1,0 +1,21 @@
+.text-color {
+    &-blue { color: $blue }
+    &-indigo { color: $indigo }
+    &-purple { color: $purple }
+    &-pink { color: $pink }
+    &-red { color: $red }
+    &-orange { color: $orange }
+    &-yellow { color: $yellow }
+    &-green { color: $green }
+    &-teal { color: $teal }
+    &-cyan { color: $cyan }
+    &-gray { color: $gray-600 }
+    &-primary { color: theme-color('primary') }
+    &-secondary { color: theme-color('secondary') }
+    &-success { color: theme-color('success') }
+    &-info { color: theme-color('info') }
+    &-warning { color: theme-color('warning') }
+    &-danger { color: theme-color('danger') }
+    &-light { color: theme-color('light') }
+    &-dark { color: theme-color('dark') }
+}
