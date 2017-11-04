@@ -1,6 +1,6 @@
 {% extends "@ChangMin/layout.html.twig" %}
 {% form_theme form configuration.vars.templates.theme|default('@ChangMin/Form/default.html.twig') %}
-{% set name = resource.code|default(
+{% set name = configuration.vars.namePath|default ? attribute(resource, configuration.vars.namePath) : resource.code|default(
     resource.name|default(
         resource.slug|default(
             resource.fullname|default(

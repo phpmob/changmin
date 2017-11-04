@@ -1,5 +1,5 @@
 {% extends "@ChangMin/layout.html.twig" %}
-{% set name = resource.code|default(
+{% set name = configuration.vars.namePath|default ? attribute(resource, configuration.vars.namePath) : resource.code|default(
     resource.name|default(
         resource.slug|default(
             resource.fullname|default(
