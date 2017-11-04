@@ -53,6 +53,10 @@ class AdminBasedLocaleContext implements LocaleContextInterface
             throw new LocaleNotFoundException();
         }
 
+        if (!$user->getLocaleCode()) {
+            throw new LocaleNotFoundException();
+        }
+
         return $user->getLocaleCode();
     }
 }
