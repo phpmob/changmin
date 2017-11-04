@@ -5,6 +5,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service class="PhpMob\ChangMinBundle\Twig\Extension\RouteExistsExtension">
+            <argument type="service" id="router" on-invalid="null"/>
+            <tag name="twig.extension"/>
+        </service>
+
         <service class="PhpMob\ChangMinBundle\Twig\Extension\SortByExtension">
             <tag name="twig.extension"/>
         </service>

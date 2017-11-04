@@ -1,13 +1,16 @@
+{% set editRoute = configuration.getRouteName('update') %}
 {% set backUrl = smart_referer(
     path(configuration.vars.route.name|default(configuration.getRouteName('index')), configuration.vars.route.parameters|default({}))
 ) %}
 
 <a class="btn btn-sm btn-outline-secondary" href="{{ backUrl }}">
-    <i class="fa fa-left-open"></i> {{ 'Back' }}
+    <i class="fa fa-left-open"></i> {{ 'changmin.ui.back'|trans }}
 </a>
 
-<div class="float-right">
-    <a class="btn btn-outline-primary btn-sm" href="{{ path(configuration.getRouteName('update'), {id: resource.id}) }}">
-        <i class="fa fa-pencil"></i> {{ 'Edit' }}
-    </a>
-</div>
+{% if is_route_exists(editRoute) %}
+    <div class="float-right">
+        <a class="btn btn-outline-primary btn-sm" href="{{ path(editRoute, {id: resource.id}) }}">
+            <i class="fa fa-pencil"></i> {{ 'changmin.ui.edit'|trans }}
+        </a>
+    </div>
+{% endif %}
