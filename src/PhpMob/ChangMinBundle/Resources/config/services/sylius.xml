@@ -57,11 +57,6 @@
             <tag name="sylius.grid_field" type="localizednumber"/>
         </service>
 
-        <service class="PhpMob\Sylius\Grid\FieldType\NumberFieldType" public="false">
-            <argument type="service" id="sylius.grid.data_extractor"/>
-            <tag name="sylius.grid_field" type="number"/>
-        </service>
-
         <service id="changmin.resource_controller.resources_resolver.grid_aware"
                  class="PhpMob\Sylius\Grid\ResourceResolver"
                  decorates="sylius.resource_controller.resources_resolver" decoration-priority="-256">

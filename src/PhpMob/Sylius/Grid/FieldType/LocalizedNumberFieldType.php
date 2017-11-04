@@ -47,12 +47,41 @@ class LocalizedNumberFieldType implements FieldTypeInterface
 
         $field->setOptions($options);
 
-        return twig_localized_number_filter(
-            $data,
-            $options['style'],
-            $options['type'],
-            $options['locale']
+        if ($options['divide'] && $options['multiply']) {
+            throw new \LogicException("Can't set `divide` and `multiply` in same time.");
+        }
+
+        if (null !== $options['divide']) {
+            $data = $data / $options['divide'];
+        }
+
+        if (null !== $options['multiply']) {
+            $data = $data * $options['multiply'];
+        }
+
+        $formatter = twig_get_number_formatter($options['locale'], $options['style']);
+
+        if ($options['precision']) {
+            $formatter->setAttribute($formatter::FRACTION_DIGITS, $options['precision']);
+        }
+
+        if ('currency' === $options['style']) {
+            return $formatter->formatCurrency($data, $options['currency']);
+        }
+
+        $typeValues = array(
+            'default' => $formatter::TYPE_DEFAULT,
+            'int32' => $formatter::TYPE_INT32,
+            'int64' => $formatter::TYPE_INT64,
+            'double' => $formatter::TYPE_DOUBLE,
+            'currency' => $formatter::TYPE_CURRENCY,
         );
+
+        if (!isset($typeValues[$options['type']])) {
+            throw new Twig_Error_Syntax(sprintf('The type "%s" does not exist. Known types are: "%s"', $options['type'], implode('", "', array_keys($typeValues))));
+        }
+
+        return $formatter->format($data, $typeValues[$options['type']]);
     }
 
     /**
@@ -66,6 +95,10 @@ class LocalizedNumberFieldType implements FieldTypeInterface
                 'align' => 'right',
                 'style' => 'decimal',
                 'type' => 'default',
+                'precision' => null,
+                'currency' => null,
+                'multiply' => null,
+                'divide' => null,
                 'locale' => null,
             ]
         );
@@ -74,6 +107,10 @@ class LocalizedNumberFieldType implements FieldTypeInterface
         $resolver->setAllowedTypes('width', 'string');
         $resolver->setAllowedTypes('style', 'string');
         $resolver->setAllowedTypes('type', 'string');
+        $resolver->setAllowedTypes('currency', ['null', 'string']);
+        $resolver->setAllowedTypes('precision', ['null', 'int']);
+        $resolver->setAllowedTypes('multiply', ['null', 'int']);
+        $resolver->setAllowedTypes('divide', ['null', 'int']);
         $resolver->setAllowedTypes('locale', ['string', 'null']);
     }
 }
