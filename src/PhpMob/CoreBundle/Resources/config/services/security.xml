@@ -5,6 +5,20 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="phpmob.user_impersonator" class="PhpMob\CoreBundle\Security\UserImpersonator" lazy="true">
+            <argument type="service" id="session" />
+            <argument type="string">%phpmob.security_firewall_context_name%%</argument>
+            <argument type="service" id="event_dispatcher" />
+        </service>
+
+        <service id="phpmob.controller.impersonate_user" class="PhpMob\CoreBundle\Controller\ImpersonateUserController">
+            <argument type="service" id="phpmob.user_impersonator" />
+            <argument type="service" id="security.authorization_checker" />
+            <argument type="service" id="sylius.web_user_provider.email_or_name_based" />
+            <argument type="service" id="router" />
+            <argument type="string">ROLE_ADMINISTRATION_ACCESS</argument>
+        </service>
+
         <service id="phpmob.context.user" class="PhpMob\CoreBundle\Context\UserContext" lazy="true">
             <argument type="service" id="security.token_storage"/>
         </service>

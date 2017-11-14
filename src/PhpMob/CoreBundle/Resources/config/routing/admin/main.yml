@@ -3,3 +3,9 @@ admin_web_user:
 
 admin_user_group:
     resource: "@PhpMobCoreBundle/Resources/config/routing/admin/user_group.yml"
+
+admin_impersonate_user:
+    path: /impersonate/{username}
+    defaults:
+        _controller: 'phpmob.controller.impersonate_user:impersonateAction'
+        username: $username
