@@ -142,7 +142,7 @@ abstract class File implements FileInterface
     /**
      * {@inheritdoc}
      */
-    public function getOwner(): ?FileAwareInterface
+    public function getOwner(): FileAwareInterface
     {
         return $this->owner;
     }
@@ -150,7 +150,7 @@ abstract class File implements FileInterface
     /**
      * {@inheritdoc}
      */
-    public function setOwner(?FileAwareInterface $owner)
+    public function setOwner(FileAwareInterface $owner)
     {
         $this->owner = $owner;
         $this->basePath = $owner->getFileBasePath();

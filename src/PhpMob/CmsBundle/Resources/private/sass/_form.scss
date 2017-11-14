@@ -2,3 +2,21 @@
 p.is-invalid {
     @extend .invalid-feedback;
 }
+
+.form-control-label {
+    &.required {
+        &:after {
+            content: '*';
+            color: $red;
+            margin-left: 4px;
+        }
+    }
+}
+
+.form-inline {
+    // date time select like!
+    select + select {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+}
