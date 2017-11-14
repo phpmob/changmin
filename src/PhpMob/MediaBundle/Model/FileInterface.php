@@ -56,15 +56,9 @@ interface FileInterface extends ResourceInterface, TimestampableInterface
      */
     public function setCaption($caption);
 
-    /**
-     * @return object
-     */
-    public function getOwner();
+    public function getOwner(): ?FileAwareInterface;
 
-    /**
-     * @param object|null $owner
-     */
-    public function setOwner($owner);
+    public function setOwner(?FileAwareInterface $owner);
 
     /**
      * @return string
