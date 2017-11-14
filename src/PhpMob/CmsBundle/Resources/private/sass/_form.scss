@@ -3,7 +3,7 @@ p.is-invalid {
     @extend .invalid-feedback;
 }
 
-.form-control-file.is-invalid ~ .invalid-feedback {
+.is-invalid ~ .invalid-feedback {
     display: block;
 }
 
