@@ -2,6 +2,7 @@
     {% spaceless %}
         {% if simple|default(false) %}
             {{ form_widget(form.file) }}
+            {{ form_errors(form.file) }}
         {% else %}
             {% set isCollection = form.parent.vars.allow_delete|default %}
             {% set removeAttr = isCollection ? {style: 'display: none'} : {} %}
@@ -24,6 +25,7 @@
                         </td>
                         <td class="file-widget">
                             {{ form_widget(form.file) }}
+                            {{ form_errors(form.file) }}
                             {% if caption %}
                                 {{ form_row(form.caption, { label: false }) }}
                             {% endif %}
@@ -40,6 +42,7 @@
                     <tr class="file-widget">
                         <td>
                             {{ form_widget(form.file) }}
+                            {{ form_errors(form.file) }}
                             {% if caption %}
                                 {{ form_widget(form.caption) }}
                             {% endif %}
