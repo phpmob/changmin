@@ -142,7 +142,7 @@
                 {% endfor %}
             {% endif %}
 
-            <div data-form-collection="list" class="row collection-list">
+            <div data-form-collection="list" class="collection-list">
                 {% for child in form %}
                     {{ macro.collection_item(child, allow_delete, button_delete_label, loop.index0) }}
                 {% endfor %}
