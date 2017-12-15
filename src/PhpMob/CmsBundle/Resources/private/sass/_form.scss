@@ -25,6 +25,11 @@ p.is-invalid {
 }
 
 // e.g. money_widget
+.selectize-input.invalid {
+  overflow: initial;
+}
+
+.selectize-input > p.is-invalid,
 .input-group-addon ~ .form-control.is-invalid ~ p.is-invalid {
   position: absolute;
   right: 0;
