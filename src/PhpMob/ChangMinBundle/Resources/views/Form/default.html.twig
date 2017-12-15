@@ -1,18 +1,5 @@
 {% use "bootstrap_4_layout.html.twig" %}
 
-{% block money_widget -%}
-    <div class="input-group{% if false == form.vars.valid %} is-invalid{% endif %}">
-        {%- set append = money_pattern starts with '{{' -%}
-        {%- if not append -%}
-            <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
-        {%- endif -%}
-        {{- block('form_widget_simple') -}}
-        {%- if append -%}
-            <span class="input-group-addon">{{ money_pattern|replace({ '{{ widget }}':''}) }}</span>
-        {%- endif -%}
-    </div>
-{%- endblock money_widget %}
-
 {%- block form_start -%}
     {% set method = method|upper %}
     {%- if method in ["GET", "POST"] -%}
