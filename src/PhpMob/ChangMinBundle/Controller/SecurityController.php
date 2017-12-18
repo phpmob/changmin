@@ -79,6 +79,15 @@ final class SecurityController
      */
     public function loginAction(Request $request): Response
     {
+        $session = $request->getSession();
+
+        # https://github.com/FriendsOfSymfony/FOSOAuthServerBundle/blob/master/Resources/doc/a_note_about_security.md
+        if ($request->attributes->has('_fos_oauth_server_authorize_enabled') && $session->has('_security.target_path')) {
+            if (false !== strpos($session->get('_security.target_path'), $this->generateUrl('fos_oauth_server_authorize'))) {
+                $session->set('_fos_oauth_server.ensure_logout', true);
+            }
+        }
+
         $alreadyLoggedInRedirectRoute = $request->attributes->get('_sylius')['logged_in_route'] ?? null;
 
         if ($alreadyLoggedInRedirectRoute && $this->authorizationChecker->isGranted('IS_AUTHENTICATED_FULLY')) {
