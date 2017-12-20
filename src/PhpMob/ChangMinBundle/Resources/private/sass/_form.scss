@@ -66,6 +66,11 @@
   min-width: 7rem;
   width: 100%;
 }
-.custom-file-control:lang(th)::before {
-  content: "เลือกไฟล์";
+.custom-file-control {
+  &:after {
+    content: attr(data-content) !important;
+  }
+  &:lang(th)::before {
+    content: "เลือกไฟล์";
+  }
 }
