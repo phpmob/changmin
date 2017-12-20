@@ -25,9 +25,9 @@
                     <label class="custom-file mb-2">
                         {{ form_widget(form.file, { attr: { class: 'custom-file-input' }}) }}
                         <span class="custom-file-control"></span>
+                        {{ form_errors(form.file) }}
                     </label>
                     {{ form_row(form.type) }}
-                    {{ form_errors(form.file) }}
                     {% if caption %}
                         {{ form_row(form.caption) }}
                     {% endif %}
