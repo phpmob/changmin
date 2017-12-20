@@ -7,52 +7,35 @@
             {% set isCollection = form.parent.vars.allow_delete|default %}
             {% set removeAttr = isCollection ? {style: 'display: none'} : {} %}
             {% set sizing = filter.sizing|default('100x100') %}
+            {% set width = sizing|split('x')[0] %}
             {% set default = defaultImagePreview|default(filter.default|default(phpmob_imagine.form_default_image_preview)) %}
             {% set inset = filter.inset is defined and filter.inset == true %}
             {% set caption = caption is not defined or caption == true %}
             {% set remove = remove is not defined or remove == true %}
             {% set imagePreview %}
                 <label for="{{ form.file.vars.id }}" style="cursor: pointer">
-                    <img src="{{ form.vars.data|phpmob_imagine(sizing, inset, default) }}">
+                    <img src="{{ form.vars.data|phpmob_imagine(sizing, inset, default) }}"
+                         style="width: {{ width }}px"
+                         class="align-self-center mr-3">
                 </label>
             {% endset %}
-            <table class="phpmob-image-widget">
-                {% if 'hidden' in form.type.vars.block_prefixes %}
-                    <tr>
-                        <td class="file-preview">
-                            {{ form_widget(form.type) }}
-                            {{ imagePreview|raw }}
-                        </td>
-                        <td class="file-widget">
-                            {{ form_widget(form.file) }}
-                            {{ form_errors(form.file) }}
-                            {% if caption %}
-                                {{ form_row(form.caption, { label: false }) }}
-                            {% endif %}
-                            {% if remove %}
-                                {{ form_row(form.shouldRemove, { label_attr: removeAttr }) }}
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% else %}
-                    <tr class="file-preview">
-                        <td rowspan="2">{{ imagePreview|raw }}</td>
-                        <td>{{ form_widget(form.type) }}</td>
-                    </tr>
-                    <tr class="file-widget">
-                        <td>
-                            {{ form_widget(form.file) }}
-                            {{ form_errors(form.file) }}
-                            {% if caption %}
-                                {{ form_widget(form.caption) }}
-                            {% endif %}
-                            {% if remove %}
-                                {{ form_row(form.shouldRemove, { label_attr: removeAttr }) }}
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endif %}
-            </table>
+            <div class="media phpmob-image-widget">
+                {{ imagePreview|raw }}
+                <div class="media-body">
+                    <label class="custom-file mb-2">
+                        {{ form_widget(form.file, { attr: { class: 'custom-file-input' }}) }}
+                        <span class="custom-file-control"></span>
+                    </label>
+                    {{ form_row(form.type) }}
+                    {{ form_errors(form.file) }}
+                    {% if caption %}
+                        {{ form_row(form.caption) }}
+                    {% endif %}
+                    {% if remove %}
+                        {{ form_row(form.shouldRemove, { label_attr: removeAttr }) }}
+                    {% endif %}
+                </div>
+            </div>
         {% endif %}
     {% endspaceless %}
 {% endblock %}

@@ -61,3 +61,11 @@
     bottom: -5px;
   }
 }
+
+.custom-file-input {
+  min-width: 7rem;
+  width: 100%;
+}
+.custom-file-control:lang(th)::before {
+  content: "เลือกไฟล์";
+}
