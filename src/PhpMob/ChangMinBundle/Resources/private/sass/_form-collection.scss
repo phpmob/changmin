@@ -1,0 +1,19 @@
+[data-form-collection="item"] {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  margin-bottom: .5rem;
+
+  [data-form-collection="widget"] {
+    flex: 1;
+  }
+  [data-form-collection="delete"] {
+    -ms-flex-item-align: center!important;
+    align-self: center!important;
+    margin-left: .5rem;
+  }
+}
+
+[data-form-collection="add"] {
+}
