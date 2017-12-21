@@ -8,11 +8,18 @@ use PhpMob\CoreBundle\Model\WebUserInterface;
 use PhpMob\ChangMinBundle\Fixture\AbstractExampleFactory;
 use PhpMob\ChangMinBundle\Fixture\ExampleFactoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
+use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Webmozart\Assert\Assert;
 
 class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInterface
 {
+    /**
+     * @var RepositoryInterface
+     */
+    private $localeRepository;
+
     /**
      * @var FactoryInterface
      */
@@ -28,12 +35,10 @@ class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInt
      */
     private $optionsResolver;
 
-    /**
-     * @param FactoryInterface $userFactory
-     */
-    public function __construct(FactoryInterface $userFactory)
+    public function __construct(FactoryInterface $userFactory, RepositoryInterface $localeRepository)
     {
         $this->userFactory = $userFactory;
+        $this->localeRepository = $localeRepository;
 
         $this->faker = \Faker\Factory::create();
         $this->optionsResolver = new OptionsResolver();
@@ -55,9 +60,30 @@ class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInt
         $user->setPlainPassword($options['password']);
         $user->setDisplayName($options['displayName']);
         $user->setEnabled($options['enabled']);
+        $user->setFirstName($options['firstName']);
+        $user->setLastName($options['lastName']);
+        $user->setPhoneNumber($options['phoneNumber']);
+        $user->setCountryCode($options['countryCode']);
+        $user->setLocaleCode($options['localeCode']);
+        $user->setBirthday($options['birthday']);
         $user->addRole('ROLE_USER');
 
         return $user;
+    }
+
+    public static function randomOneLocaleCode(RepositoryInterface $repository): \Closure
+    {
+        return function (Options $options) use ($repository) {
+            $objects = $repository->findAll();
+
+            if ($objects instanceof Collection) {
+                $objects = $objects->toArray();
+            }
+
+            Assert::notEmpty($objects);
+
+            return $objects[array_rand($objects)]->getCode();
+        };
     }
 
     /**
@@ -75,6 +101,22 @@ class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInt
             ->setDefault('displayName', function (Options $options) {
                 return $this->faker->name;
             })
+            ->setDefault('firstName', function (Options $options) {
+                return $this->faker->firstName;
+            })
+            ->setDefault('lastName', function (Options $options) {
+                return $this->faker->lastName;
+            })
+            ->setDefault('phoneNumber', function (Options $options) {
+                return $this->faker->phoneNumber;
+            })
+            ->setDefault('birthday', function (Options $options) {
+                return $this->faker->dateTime;
+            })
+            ->setDefault('countryCode', function (Options $options) {
+                return $this->faker->countryCode;
+            })
+            ->setDefault('localeCode', self::randomOneLocaleCode($this->localeRepository))
             ->setDefault('enabled', true)
             ->setAllowedTypes('enabled', 'bool')
             ->setDefault('password', 'password123')

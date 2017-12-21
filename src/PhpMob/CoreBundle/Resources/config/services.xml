@@ -11,4 +11,16 @@
         <import resource="services/listeners.xml"/>
         <import resource="services/validators.xml"/>
     </imports>
+
+    <services>
+        <service id="phpmob.oauth.user_provider" class="PhpMob\CoreBundle\OAuth\UserProvider" public="true">
+            <argument>%sylius.model.web_user.class%</argument>
+            <argument type="service" id="sylius.factory.web_user"/>
+            <argument type="service" id="sylius.repository.web_user"/>
+            <argument type="service" id="sylius.factory.oauth_user"/>
+            <argument type="service" id="sylius.repository.oauth_user"/>
+            <argument type="service" id="sylius.manager.web_user"/>
+            <argument type="service" id="sylius.canonicalizer"/>
+        </service>
+    </services>
 </container>

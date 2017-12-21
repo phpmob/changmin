@@ -6,6 +6,12 @@ sylius_fixtures:
                 logger: ~
 
             fixtures:
+                locale:
+                    name: "locale"
+                    options:
+                        custom:
+                            - { code: th }
+                            - { code: en }
                 web_user:
                     name: "web_user"
                     options:

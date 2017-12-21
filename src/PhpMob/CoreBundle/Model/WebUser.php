@@ -25,6 +25,36 @@ class WebUser extends BaseUser implements WebUserInterface
     protected $statusMessage;
 
     /**
+     * @var string
+     */
+    protected $firstName;
+
+    /**
+     * @var string
+     */
+    protected $lastName;
+
+    /**
+     * @var string
+     */
+    protected $phoneNumber;
+
+    /**
+     * @var \DateTime
+     */
+    protected $birthday;
+
+    /**
+     * @var string
+     */
+    protected $countryCode;
+
+    /**
+     * @var string
+     */
+    protected $localeCode;
+
+    /**
      * {@inheritdoc}
      */
     public function getFileBasePath()
@@ -43,7 +73,7 @@ class WebUser extends BaseUser implements WebUserInterface
     /**
      * {@inheritdoc}
      */
-    public function setPicture(?WebUserPictureInterface $picture): void
+    public function setPicture(?WebUserPictureInterface $picture = null): void
     {
         $this->picture = $picture ? ($picture->getFile() ? $picture : null) : null;
 
@@ -57,15 +87,15 @@ class WebUser extends BaseUser implements WebUserInterface
      */
     public function getDisplayName(): string
     {
-        return (string) ($this->displayName ? $this->displayName : $this->email);
+        return (string) ($this->displayName ?? ($this->getFullName() ?? $this->email));
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setDisplayName(?string $displayName): void
+    public function setDisplayName(?string $displayName = null): void
     {
-        $this->displayName = $displayName;
+        $this->displayName = (string)$displayName;
     }
 
     /**
@@ -79,8 +109,140 @@ class WebUser extends BaseUser implements WebUserInterface
     /**
      * {@inheritdoc}
      */
-    public function setStatusMessage(?string $statusMessage)
+    public function setStatusMessage(?string $statusMessage = null)
     {
-        $this->statusMessage = $statusMessage;
+        $this->statusMessage = (string)$statusMessage;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFirstName(): string
+    {
+        return (string)$this->firstName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setFirstName(?string $firstName = null): void
+    {
+        $this->firstName = (string)$firstName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLastName(): string
+    {
+        return (string)$this->lastName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLastName(?string $lastName = null): void
+    {
+        $this->lastName = (string)$lastName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getFullName(): string
+    {
+        return trim(sprintf('%s %s', $this->getFirstName(), $this->getLastName()));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getPhoneNumber(): string
+    {
+        return (string)$this->phoneNumber;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPhoneNumber(string $phoneNumber = null): void
+    {
+        $this->phoneNumber = (string)$phoneNumber;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBirthday(): ?\DateTime
+    {
+        return $this->birthday;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setBirthday(?\DateTime $birthday = null): void
+    {
+        $this->birthday = $birthday;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCountryCode(): string
+    {
+        return (string)$this->countryCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCountryCode(?string $countryCode = null): void
+    {
+        $this->countryCode = (string)$countryCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLocaleCode(): string
+    {
+        return (string)$this->localeCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLocaleCode(?string $localeCode = null): void
+    {
+        $this->localeCode = (string)$localeCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setEmailCanonical(?string $emailCanonical): void
+    {
+        parent::setEmailCanonical($emailCanonical);
+
+        if (!$this->email) {
+            $this->email = $emailCanonical;
+        }
+
+        if (!$this->usernameCanonical) {
+            $this->setUsernameCanonical($emailCanonical);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setUsernameCanonical(?string $usernameCanonical): void
+    {
+        parent::setUsernameCanonical($usernameCanonical);
+
+        if (!$this->username) {
+            $this->username = $usernameCanonical;
+        }
     }
 }

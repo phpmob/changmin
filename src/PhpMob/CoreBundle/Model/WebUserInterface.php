@@ -18,7 +18,7 @@ interface WebUserInterface extends BaseUserInterface, FileAwareInterface
     /**
      * @param null|WebUserPictureInterface $picture
      */
-    public function setPicture(?WebUserPictureInterface $picture): void;
+    public function setPicture(?WebUserPictureInterface $picture = null): void;
 
     /**
      * @return string
@@ -28,7 +28,7 @@ interface WebUserInterface extends BaseUserInterface, FileAwareInterface
     /**
      * @param string $displayName
      */
-    public function setDisplayName(?string $displayName): void;
+    public function setDisplayName(?string $displayName = null): void;
 
     /**
      * @return string
@@ -38,5 +38,70 @@ interface WebUserInterface extends BaseUserInterface, FileAwareInterface
     /**
      * @param string|null $statusMessage
      */
-    public function setStatusMessage(?string $statusMessage);
+    public function setStatusMessage(?string $statusMessage = null);
+
+    /**
+     * @return string
+     */
+    public function getFirstName(): string;
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName(?string $firstName = null): void;
+
+    /**
+     * @return string
+     */
+    public function getLastName(): string;
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName(?string $lastName = null): void;
+
+    /**
+     * @return string
+     */
+    public function getFullName(): string;
+
+    /**
+     * @return string
+     */
+    public function getPhoneNumber(): string;
+
+    /**
+     * @param string $phoneNumber
+     */
+    public function setPhoneNumber(string $phoneNumber = null): void;
+
+    /**
+     * @return \DateTime
+     */
+    public function getBirthday(): ?\DateTime;
+
+    /**
+     * @param \DateTime $birthday
+     */
+    public function setBirthday(?\DateTime $birthday = null): void;
+
+    /**
+     * @return string
+     */
+    public function getCountryCode(): string;
+
+    /**
+     * @param string $countryCode
+     */
+    public function setCountryCode(?string $countryCode = null): void;
+
+    /**
+     * @return string
+     */
+    public function getLocaleCode(): string;
+
+    /**
+     * @param string $localeCode
+     */
+    public function setLocaleCode(?string $localeCode = null): void;
 }
