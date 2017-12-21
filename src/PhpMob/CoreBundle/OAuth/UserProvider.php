@@ -124,9 +124,7 @@ class UserProvider extends UsernameOrEmailProvider implements AccountConnectorIn
             throw new AuthorizationException('phpmob.ui.oauth_response_not_found_email');
         }
 
-        if ($user->getEmailCanonical()) {
-            $user->setEmailCanonical($canonicalEmail);
-        }
+        $user->setEmailCanonical($canonicalEmail);
 
         if ($firstName = $response->getFirstName()) {
             $user->setFirstName($firstName);
@@ -159,7 +157,7 @@ class UserProvider extends UsernameOrEmailProvider implements AccountConnectorIn
     {
         /** @var UserOAuthInterface $oauth */
         $oauth = $this->oauthFactory->createNew();
-        $oauth->setIdentifier($response->getUsername());
+        $oauth->setIdentifier((string)$response->getUsername());
         $oauth->setProvider($response->getResourceOwner()->getName());
         $oauth->setAccessToken($response->getAccessToken());
         $oauth->setRefreshToken($response->getRefreshToken());
