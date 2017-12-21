@@ -24,6 +24,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Sylius\Component\User\Canonicalizer\CanonicalizerInterface;
 use Sylius\Component\User\Model\UserOAuthInterface;
 use Sylius\Component\User\Repository\UserRepositoryInterface;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -82,15 +83,21 @@ class UserProvider extends UsernameOrEmailProvider implements AccountConnectorIn
             return $oauth->getUser();
         }
 
-        if (null !== $response->getEmail()) {
-            $user = $this->userRepository->findOneByEmail($response->getEmail());
+        try {
+            if (null !== $response->getEmail()) {
+                $user = $this->userRepository->findOneByEmail($response->getEmail());
 
-            if (null !== $user) {
-                return $this->updateUserByOAuthUserResponse($user, $response);
+                if (null !== $user) {
+                    return $this->updateUserByOAuthUserResponse($user, $response);
+                }
             }
-        }
 
-        return $this->createUserByOAuthUserResponse($response);
+            return $this->createUserByOAuthUserResponse($response);
+        } catch (AuthenticationException $e) {
+            throw $e;
+        } catch (\Exception $e) {
+            throw new AuthorizationException();
+        }
     }
 
     /**
@@ -114,22 +121,22 @@ class UserProvider extends UsernameOrEmailProvider implements AccountConnectorIn
         $user = $this->userFactory->createNew();
 
         if (!$canonicalEmail = $this->canonicalizer->canonicalize($response->getEmail())) {
-            // TODO: error can't login/register
+            throw new AuthorizationException('phpmob.ui.oauth_response_not_found_email');
         }
 
-        if (!$user->getEmailCanonical()) {
+        if ($user->getEmailCanonical()) {
             $user->setEmailCanonical($canonicalEmail);
         }
 
-        if (!$firstName = $response->getFirstName()) {
+        if ($firstName = $response->getFirstName()) {
             $user->setFirstName($firstName);
         }
 
-        if (!$lastName = $response->getLastName()) {
+        if ($lastName = $response->getLastName()) {
             $user->setLastName($lastName);
         }
 
-        if (!$displayName = $response->getRealName()) {
+        if ($displayName = $response->getRealName()) {
             $user->setDisplayName($displayName);
         }
 
