@@ -10,3 +10,6 @@ phpmob:
             birthday: Birthday
             country_code: Country
             locale_code: Locale
+            gender: Gender
+            gender_female: Female
+            gender_man: Man

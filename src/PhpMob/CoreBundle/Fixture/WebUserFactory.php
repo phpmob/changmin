@@ -66,6 +66,7 @@ class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInt
         $user->setCountryCode($options['countryCode']);
         $user->setLocaleCode($options['localeCode']);
         $user->setBirthday($options['birthday']);
+        $user->setGender($options['gender']);
         $user->addRole('ROLE_USER');
 
         return $user;
@@ -106,6 +107,9 @@ class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInt
             })
             ->setDefault('lastName', function (Options $options) {
                 return $this->faker->lastName;
+            })
+            ->setDefault('gender', function (Options $options) {
+                return ['f', 'm'][rand(0, 1)];
             })
             ->setDefault('phoneNumber', function (Options $options) {
                 return $this->faker->phoneNumber;

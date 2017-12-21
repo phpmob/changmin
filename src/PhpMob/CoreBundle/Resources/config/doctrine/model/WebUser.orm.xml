@@ -13,6 +13,7 @@
         <field name="phoneNumber" type="string" length="30" nullable="true"/>
         <field name="firstName" type="string" length="30" nullable="true"/>
         <field name="lastName" type="string" length="30" nullable="true"/>
+        <field name="gender" type="string" length="1" nullable="true"/>
         <field name="birthday" type="datetime" nullable="true"/>
 
         <one-to-one field="picture" target-entity="PhpMob\CoreBundle\Model\WebUserPictureInterface" mapped-by="owner">

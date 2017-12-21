@@ -29,6 +29,7 @@ class WebUserFixture extends AbstractResourceFixture
             ->scalarNode('displayName')->end()
             ->scalarNode('firstName')->cannotBeEmpty()->end()
             ->scalarNode('lastName')->cannotBeEmpty()->end()
+            ->scalarNode('gender')->end()
             ->scalarNode('phoneNumber')->end()
             ->scalarNode('birthday')->end()
             ->scalarNode('countryCode')->end()

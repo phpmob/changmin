@@ -37,6 +37,11 @@ class WebUser extends BaseUser implements WebUserInterface
     /**
      * @var string
      */
+    protected $gender;
+
+    /**
+     * @var string
+     */
     protected $phoneNumber;
 
     /**
@@ -152,6 +157,22 @@ class WebUser extends BaseUser implements WebUserInterface
     public function getFullName(): string
     {
         return trim(sprintf('%s %s', $this->getFirstName(), $this->getLastName()));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setGender(?string $gender): void
+    {
+        $this->gender = $gender;
     }
 
     /**

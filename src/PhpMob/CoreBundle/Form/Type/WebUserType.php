@@ -4,6 +4,7 @@ namespace PhpMob\CoreBundle\Form\Type;
 
 use Sylius\Bundle\LocaleBundle\Form\Type\LocaleChoiceType;
 use Sylius\Bundle\UserBundle\Form\Type\UserType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -26,6 +27,14 @@ class WebUserType extends UserType
             ])
             ->add('lastName', TextType::class, [
                 'label' => 'phpmob.form.user.last_name',
+                'required' => false,
+            ])
+            ->add('gender', ChoiceType::class, [
+                'label' => 'phpmob.form.user.gender',
+                'choices' => array_flip([
+                    'm' => 'phpmob.form.user.gender_man',
+                    'f' => 'phpmob.form.user.gender_female',
+                ]),
                 'required' => false,
             ])
             ->add('phoneNumber', TelType::class, [

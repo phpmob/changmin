@@ -68,6 +68,16 @@ interface WebUserInterface extends BaseUserInterface, FileAwareInterface
     /**
      * @return string
      */
+    public function getGender(): ?string;
+
+    /**
+     * @param string $gender
+     */
+    public function setGender(?string $gender): void;
+
+    /**
+     * @return string
+     */
     public function getPhoneNumber(): string;
 
     /**

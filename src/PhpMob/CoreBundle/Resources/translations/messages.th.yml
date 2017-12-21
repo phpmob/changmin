@@ -1,12 +1,15 @@
 phpmob:
     form:
         user:
-            picture: Picture
-            status_message: Status Message
-            display_name: Display Name
-            first_name: First Name
-            last_name: Last Name
-            phone_number: Phone Number
-            birthday: Birthday
-            country_code: Country
-            locale_code: Locale
+            picture: รูปภาพ
+            status_message: สถานะ
+            display_name: ชื่อที่แสดง
+            first_name: ชื่อจริง
+            last_name: นามสกุล
+            phone_number: หมายเลขโทรศัพท์
+            birthday: วันเกิด
+            country_code: ประเทศ
+            locale_code: ภาษาที่ใช้
+            gender: เพศ
+            gender_female: หญิง
+            gender_man: ชาย
