@@ -1,0 +1,2 @@
+phpmob:
+    ui.oauth_response_not_found_email: No email received from resource owner.
