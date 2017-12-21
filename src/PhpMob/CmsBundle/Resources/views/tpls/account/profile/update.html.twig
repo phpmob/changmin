@@ -5,6 +5,13 @@
     <h1>{{ "Update Profile" }}</h1>
     {{ form_start(form, { method: 'PUT' }) }}
     {{ form_errors(form) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.phoneNumber) }}
+    {{ form_row(form.birthday) }}
+    {{ form_row(form.countryCode) }}
+    {{ form_row(form.localeCode) }}
+    {{ form_row(form.displayName) }}
     {{ form_row(form.statusMessage) }}
     {{ form_row(form.picture, { caption: false, remove: false }) }}
     {{ form_row(form._token) }}
