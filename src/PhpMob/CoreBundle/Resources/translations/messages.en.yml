@@ -3,3 +3,10 @@ phpmob:
         user:
             picture: Picture
             status_message: Status Message
+            display_name: Display Name
+            first_name: First Name
+            last_name: Last Name
+            phone_number: Phone Number
+            birthday: Birthday
+            country_code: Country
+            locale_code: Locale
