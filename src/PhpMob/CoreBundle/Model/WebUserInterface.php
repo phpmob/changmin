@@ -3,6 +3,7 @@
 namespace PhpMob\CoreBundle\Model;
 
 use PhpMob\MediaBundle\Model\FileAwareInterface;
+use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\User\Model\UserInterface as BaseUserInterface;
 
 /**
@@ -106,12 +107,12 @@ interface WebUserInterface extends BaseUserInterface, FileAwareInterface
     public function setCountryCode(?string $countryCode = null): void;
 
     /**
-     * @return string
+     * @return LocaleInterface
      */
-    public function getLocaleCode(): string;
+    public function getLocale(): ?LocaleInterface;
 
     /**
-     * @param string $localeCode
+     * @param LocaleInterface $locale
      */
-    public function setLocaleCode(?string $localeCode = null): void;
+    public function setLocale(?LocaleInterface $locale = null): void;
 }

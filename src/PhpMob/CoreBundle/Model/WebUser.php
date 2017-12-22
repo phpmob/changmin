@@ -2,6 +2,7 @@
 
 namespace PhpMob\CoreBundle\Model;
 
+use Sylius\Component\Locale\Model\LocaleInterface;
 use Sylius\Component\User\Model\User as BaseUser;
 
 /**
@@ -55,9 +56,9 @@ class WebUser extends BaseUser implements WebUserInterface
     protected $countryCode;
 
     /**
-     * @var string
+     * @var LocaleInterface
      */
-    protected $localeCode;
+    protected $locale;
 
     /**
      * {@inheritdoc}
@@ -226,17 +227,17 @@ class WebUser extends BaseUser implements WebUserInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocaleCode(): string
+    public function getLocaleCode(): ?LocaleInterface
     {
-        return (string)$this->localeCode;
+        return $this->locale;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setLocaleCode(?string $localeCode = null): void
+    public function setLocale(?LocaleInterface $locale = null): void
     {
-        $this->localeCode = (string)$localeCode;
+        $this->locale = $locale;
     }
 
     /**

@@ -50,8 +50,8 @@ class WebUserType extends UserType
                 'label' => 'phpmob.form.user.country_code',
                 'required' => false,
             ])
-            ->add('localeCode', LocaleChoiceType::class, [
-                'label' => 'phpmob.form.user.locale_code',
+            ->add('locale', LocaleChoiceType::class, [
+                'label' => 'phpmob.form.user.locale',
                 'required' => false,
             ])
             ->add('statusMessage', TextType::class, [

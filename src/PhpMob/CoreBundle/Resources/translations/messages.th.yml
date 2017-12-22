@@ -1,3 +1,7 @@
+sylius:
+    form:
+        locale:
+          select: เลือกภาษา
 phpmob:
     form:
         user:
@@ -9,7 +13,7 @@ phpmob:
             phone_number: หมายเลขโทรศัพท์
             birthday: วันเกิด
             country_code: ประเทศ
-            locale_code: ภาษาที่ใช้
+            locale: ภาษาที่ใช้
             gender: เพศ
             gender_female: หญิง
             gender_man: ชาย

@@ -73,6 +73,7 @@ abstract class ImageType extends AbstractResourceType
         $builder
             ->add('file', FileType::class, [
                 'label' => 'phpmob.form.image.file',
+                'attr' => ['accept' => 'image/*'],
                 'required' => false,
             ])
             ->add('caption', TextType::class, [

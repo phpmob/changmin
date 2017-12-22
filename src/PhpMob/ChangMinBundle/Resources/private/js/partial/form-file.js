@@ -1,26 +1,8 @@
 jQuery(document).on('change', 'input[type=file]', function () {
     var fieldVal = $(this).val();
     if (fieldVal !== undefined || fieldVal !== "") {
-        function showPreview(input, fileName, previewArea) {
-            function getExtension(filename) {
-                var parts = filename.split('.');
-                return parts[parts.length - 1];
-            }
-
-            function isImage(filename) {
-                var ext = getExtension(filename);
-                switch (ext.toLowerCase()) {
-                    case 'jpg':
-                    case 'gif':
-                    case 'bmp':
-                    case 'png':
-                        return true;
-                }
-
-                return false;
-            }
-
-            if (input.files && input.files[0] && isImage(fileName)) {
+        function preview(input, fileName, previewArea) {
+            if (input.files && input.files[0] && (/\.(gif|jpg|jpeg|png)$/i).test(fileName)) {
                 var reader = new FileReader();
 
                 reader.onload = function(e) {
@@ -39,7 +21,7 @@ jQuery(document).on('change', 'input[type=file]', function () {
         var $previewArea = jQuery('.phpmob-image-preview');
 
         if ($previewArea.length) {
-            showPreview(this, fileName, $previewArea);
+            preview(this, fileName, $previewArea);
         }
     }
 });

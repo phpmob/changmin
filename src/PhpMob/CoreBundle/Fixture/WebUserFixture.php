@@ -33,7 +33,7 @@ class WebUserFixture extends AbstractResourceFixture
             ->scalarNode('phoneNumber')->end()
             ->scalarNode('birthday')->end()
             ->scalarNode('countryCode')->end()
-            ->scalarNode('localeCode')->end()
+            ->scalarNode('locale')->end()
             ->booleanNode('enabled')->end()
             ->scalarNode('password')->cannotBeEmpty()->end()
         ;

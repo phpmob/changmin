@@ -1,3 +1,7 @@
+sylius:
+    form:
+        locale:
+          select: Select locale
 phpmob:
     form:
         user:
@@ -9,7 +13,7 @@ phpmob:
             phone_number: Phone Number
             birthday: Birthday
             country_code: Country
-            locale_code: Locale
+            locale: Locale
             gender: Gender
             gender_female: Female
             gender_man: Man
