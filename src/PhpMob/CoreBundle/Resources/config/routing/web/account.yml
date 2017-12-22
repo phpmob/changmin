@@ -18,7 +18,7 @@ web_account_dashboard:
 
 web_account_profile_update:
     path: /profile
-    methods: [GET, PUT]
+    methods: [GET, PATCH]
     defaults:
         _controller: sylius.controller.web_user:updateAction
         _sylius:
@@ -33,6 +33,26 @@ web_account_profile_update:
                     - "expr:service('phpmob.context.user').getUser()"
             redirect:
                 route: web_account_profile_update
+                parameters: {}
+
+web_account_profile_update_picture:
+    path: /profile-picture
+    methods: [GET, PATCH]
+    defaults:
+        _controller: sylius.controller.web_user:updateAction
+        _sylius:
+            flash: false
+            template: "@PhpMobCms/tpls/account/profile/update-picture.html.twig"
+            form:
+                type: PhpMob\CoreBundle\Form\Type\WebUserType
+                options:
+                    validation_groups: [ profile_update ]
+            repository:
+                method: find
+                arguments:
+                    - "expr:service('phpmob.context.user').getUser()"
+            redirect:
+                route: web_account_profile_update_picture
                 parameters: {}
 
 web_account_change_password:

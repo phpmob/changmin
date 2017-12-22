@@ -22,6 +22,9 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
@@ -71,6 +74,7 @@ abstract class ImageType extends AbstractResourceType
         }
 
         $builder
+            ->addEventListener(FormEvents::PRE_SUBMIT, [$this, 'convertBase64ImageListener'])
             ->add('file', FileType::class, [
                 'label' => 'phpmob.form.image.file',
                 'attr' => ['accept' => 'image/*'],
@@ -88,6 +92,30 @@ abstract class ImageType extends AbstractResourceType
                 'required' => false,
             ])
         ;
+    }
+
+    /**
+     * @param FormEvent $event
+     */
+    public function convertBase64ImageListener(FormEvent $event): void
+    {
+        $data = $event->getData();
+
+        if (is_string($base64String = $data['file'])) {
+            preg_match('/data:(.*);/', $base64String, $matchMime);
+            preg_match('/data:image\/(.*);base64/', $base64String, $matchExt);
+
+            $fileName = sprintf('%s.%s', uniqid(), $matchExt[1]);
+            $outputFile = sys_get_temp_dir().$fileName;
+            $fileResource = fopen($outputFile, 'wb' );
+            $base64Data = explode(',', $base64String);
+
+            fwrite($fileResource, base64_decode($base64Data[1]));
+            fclose($fileResource);
+
+            $data['file'] = new UploadedFile($outputFile, $fileName, $matchMime[1]);
+            $event->setData($data);
+        }
     }
 
     /**

@@ -13,10 +13,12 @@ declare(strict_types=1);
 
 namespace PhpMob\MediaBundle\Model;
 
+use Sylius\Component\Resource\Model\TimestampableInterface;
+
 /**
  * @author Ishmael Doss <nukboon@gmail.com>
  */
-interface FileAwareInterface
+interface FileAwareInterface extends TimestampableInterface
 {
     /**
      * @return string|null

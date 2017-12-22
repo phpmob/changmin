@@ -87,6 +87,7 @@ abstract class File implements FileInterface
         $this->updatedAt = new \DateTime();
 
         if ($this->owner) {
+            $this->owner->setUpdatedAt($this->updatedAt);
             $this->basePath = $this->owner->getFileBasePath();
         }
     }
@@ -154,7 +155,7 @@ abstract class File implements FileInterface
     {
         $this->owner = $owner;
         $this->basePath = $owner->getFileBasePath();
-        $this->updatedAt = new \DateTime();
+        $owner->setUpdatedAt($this->updatedAt = new \DateTime());
     }
 
     /**
