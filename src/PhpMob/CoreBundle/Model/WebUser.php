@@ -227,7 +227,7 @@ class WebUser extends BaseUser implements WebUserInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocaleCode(): ?LocaleInterface
+    public function getLocale(): ?LocaleInterface
     {
         return $this->locale;
     }
