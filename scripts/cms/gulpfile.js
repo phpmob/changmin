@@ -10,6 +10,8 @@ require('./private/tasks.js')(require, {
             "{node}/jquery-confirm/dist/jquery-confirm.min.js",
             "{node}/jquery-validation/dist/jquery.validate.js",
             "{node}/jquery-validation/dist/jquery.additional-methods.js",
+            "{node}/selectize/dist/js/standalone/selectize.min.js",
+            "{node}/changmin-chooser/index.js",
             "{node}/noty/lib/noty.js",
             "{node}/tether/dist/js/tether.js",
             "{node}/popper.js/dist/umd/popper.js",
@@ -27,6 +29,7 @@ require('./private/tasks.js')(require, {
             "{node}/noty/lib/noty.css",
             "{node}/animate.css/animate.css",
             "{node}/jquery-confirm/dist/jquery-confirm.min.css",
+            "{node}/selectize/dist/css/selectize.default.css",
             "{src}/css/**",
             "./css/**"
         ],
