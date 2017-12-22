@@ -106,7 +106,7 @@ class WebUserFactory extends AbstractExampleFactory implements ExampleFactoryInt
             ->setDefault('countryCode', function (Options $options) {
                 return $this->faker->countryCode;
             })
-            ->setDefault('locale', LazyOption::randomOneOrNull($this->localeRepository))
+            ->setDefault('locale', LazyOption::randomOne($this->localeRepository))
             ->setDefault('enabled', true)
             ->setAllowedTypes('enabled', 'bool')
             ->setDefault('password', 'password123')
