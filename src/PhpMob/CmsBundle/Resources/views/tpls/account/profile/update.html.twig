@@ -2,20 +2,38 @@
 {% form_theme form "@PhpMobCms/tpls/form/default.html.twig" %}
 
 {% block account_content %}
-    <h1>{{ "Update Profile" }}</h1>
-    {{ form_start(form, { method: 'PUT' }) }}
-    {{ form_errors(form) }}
-    {{ form_row(form.firstName) }}
-    {{ form_row(form.lastName) }}
-    {{ form_row(form.gender) }}
-    {{ form_row(form.phoneNumber) }}
-    {{ form_row(form.birthday) }}
-    {{ form_row(form.countryCode) }}
-    {{ form_row(form.locale) }}
-    {{ form_row(form.displayName) }}
-    {{ form_row(form.statusMessage) }}
-    {{ form_row(form.picture, { caption: false, remove: false }) }}
-    {{ form_row(form._token) }}
-    <button type="submit" class="btn btn-primary">{{ "Update" }}</button>
-    {{ form_end(form, { render_rest: false }) }}
+    <h1>{{ "Your Profile" }}</h1>
+
+    <div class="row">
+        <div class="col-12 col-md-8">
+
+            {{ form_start(form, { method: 'PATCH' }) }}
+            {{ form_errors(form) }}
+
+            {{ form_row(form.displayName) }}
+            {{ form_row(form.statusMessage) }}
+
+            <div class="row">
+                <div class="col-12 col-md-6">{{ form_row(form.firstName) }}</div>
+                <div class="col-12 col-md-6">{{ form_row(form.lastName) }}</div>
+            </div>
+
+            <div class="row">
+                <div class="col-12 col-md-2">{{ form_row(form.gender) }}</div>
+                <div class="col-12 col-md-5">{{ form_row(form.phoneNumber) }}</div>
+                <div class="col-12 col-md-5">{{ form_row(form.birthday) }}</div>
+            </div>
+
+            {{ form_row(form.countryCode) }}
+            {{ form_row(form.locale) }}
+
+            <button type="submit" class="btn btn-primary btn-lg w-100">{{ "Update" }}</button>
+
+            {{ form_row(form._token) }}
+            {{ form_end(form, { render_rest: false }) }}
+        </div>
+        <div class="col-12 col-md-3">
+            {{ render(path('web_account_profile_update_picture')) }}
+        </div>
+    </div>
 {% endblock %}

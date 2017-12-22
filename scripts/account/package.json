@@ -12,7 +12,6 @@
     },
     "devDependencies": {
         "gulp": "^3.9.1",
-        "gulp-chug": "^0.5",
         "gulp-concat": "^2.6.0",
         "gulp-debug": "^2.1.2",
         "gulp-if": "^2.0.0",
@@ -26,6 +25,6 @@
         "merge-stream": "^1.0.0"
     },
     "scripts": {
-        "symlink": "ln -sf ../../src/PhpMob/CmsBundle/Resources/private ./"
+        "postinstall": "gulp"
     }
 }

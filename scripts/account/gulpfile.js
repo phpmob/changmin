@@ -1,4 +1,4 @@
-require('./private/tasks.js')(require, {
+require('../cms/private/tasks.js')(require, {
     "paths": {
         "output": "../../web/assets/account",
         "js": [

@@ -1,0 +1,38 @@
+{% extends "@PhpMobCms/tpls/empty.html.twig" %}
+{% form_theme form "@PhpMobCms/tpls/form/default.html.twig" %}
+{% form_theme form.picture _self %}
+
+{% block content %}
+    {{ form_start(form, { method: 'PATCH', action: path('web_account_profile_update_picture'), attr: { class: 'profile-picture-form' } }) }}
+    {{ form_row(form.picture) }}
+    {{ form_row(form._token) }}
+    <button type="submit" class="btn btn-primary w-100" style="display: none;">
+        {{ "Upload" }}
+    </button>
+    {{ form_end(form, { render_rest: false }) }}
+{% endblock %}
+
+{% block phpmob_image_widget %}
+    {% spaceless %}
+        {% if simple|default(false) %}
+            {{ form_widget(form.file) }}
+            {{ form_errors(form.file) }}
+        {% else %}
+            {% set sizing = '200x200' %}
+            {% set width = sizing|split('x')[0] %}
+            {% set default = defaultImagePreview|default(filter.default|default(phpmob_imagine.form_default_image_preview)) %}
+
+            <div class="profile-picture-container">
+                <img src="{{ form.vars.data|phpmob_imagine(sizing, false, default) }}" class="profile-picture"/>
+            </div>
+
+            <label for="{{ form.file.vars.id }}" class="btn btn-outline-secondary mt-2 btn-browse">
+                เลือกไฟล์
+                {{ form_widget(form.file, { attr: { 'class': 'profile-picture-input' }}) }}
+            </label>
+
+            {{ form_errors(form.file) }}
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock %}

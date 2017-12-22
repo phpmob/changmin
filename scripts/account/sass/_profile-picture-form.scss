@@ -1,0 +1,19 @@
+.profile-picture-form {
+  .profile-picture {
+    width: 100%;
+    height: auto;
+  }
+
+  .btn-browse {
+    position: relative;
+    width: 100%;
+    display: block;
+
+    input {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
