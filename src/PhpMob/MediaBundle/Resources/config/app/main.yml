@@ -12,6 +12,7 @@ doctrine:
             phpmob_image_type: PhpMob\MediaBundle\Doctrine\DBAL\Type\ImageType
 
 liip_imagine:
+    driver: "%phpmob.imagine.driver%"
     loaders:
         default:
             filesystem:
@@ -26,11 +27,9 @@ liip_imagine:
     filter_sets:
         strip:
             quality: "%phpmob.imagine.quality%"
+            jpeg_quality: "%phpmob.imagine.quality%"
             data_loader: "%phpmob.imagine.loader%"
-            filters: ~
-        phpmob_imagine:
-            quality: "%phpmob.imagine.quality%"
-            data_loader: "%phpmob.imagine.loader%"
+            animated: true
             filters: ~
 
 twig:

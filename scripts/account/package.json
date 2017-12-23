@@ -8,7 +8,8 @@
     "copyright": "Copyright 2017 Liverbool <nukboon@gmail.com>",
     "license": "MIT",
     "dependencies": {
-        "bootstrap": "4.0.0-beta"
+        "bootstrap": "4.0.0-beta.2",
+        "croppie": "^2.5.1"
     },
     "devDependencies": {
         "gulp": "^3.9.1",

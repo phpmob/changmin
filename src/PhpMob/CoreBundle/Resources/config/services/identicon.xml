@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="phpmob.identicon_listener" class="PhpMob\CoreBundle\EventListener\UserIdenticonListener">
+            <tag name="doctrine.event_listener" event="onFlush" />
+            <argument type="service" id="phpmob.factory.web_user_picture" />
+            <argument type="service" id="changmin.factory.admin_user_picture" />
+            <argument type="service">
+                <service class="Identicon\Identicon"/>
+            </argument>
+            <argument/>
+            <argument/>
+        </service>
+    </services>
+</container>

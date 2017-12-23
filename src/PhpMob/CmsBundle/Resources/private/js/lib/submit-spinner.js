@@ -5,7 +5,7 @@ $.fn.spinner = function (type, side) {
     if ('remove' === type) {
         $el.find('submit-spinner').remove();
 
-        return;
+        return this;
     }
 
     $el[method](
@@ -15,4 +15,6 @@ $.fn.spinner = function (type, side) {
         '  <div class="bounce3"></div>\n' +
         '</div>'
     );
+
+    return this;
 };

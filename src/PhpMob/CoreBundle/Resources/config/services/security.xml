@@ -5,13 +5,13 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="phpmob.user_impersonator" class="PhpMob\CoreBundle\Security\UserImpersonator" lazy="true">
+        <service id="phpmob.user_impersonator" class="PhpMob\CoreBundle\Security\UserImpersonator" lazy="true" public="true">
             <argument type="service" id="session" />
             <argument type="string">%phpmob.security_firewall_context_name%%</argument>
             <argument type="service" id="event_dispatcher" />
         </service>
 
-        <service id="phpmob.controller.impersonate_user" class="PhpMob\CoreBundle\Controller\ImpersonateUserController">
+        <service id="phpmob.controller.impersonate_user" class="PhpMob\CoreBundle\Controller\ImpersonateUserController" public="true">
             <argument type="service" id="phpmob.user_impersonator" />
             <argument type="service" id="security.authorization_checker" />
             <argument type="service" id="sylius.web_user_provider.email_or_name_based" />
@@ -19,11 +19,11 @@
             <argument type="string">ROLE_ADMINISTRATION_ACCESS</argument>
         </service>
 
-        <service id="phpmob.context.user" class="PhpMob\CoreBundle\Context\UserContext" lazy="true">
+        <service id="phpmob.context.user" class="PhpMob\CoreBundle\Context\UserContext" lazy="true" public="true">
             <argument type="service" id="security.token_storage"/>
         </service>
 
-        <service id="phpmob.context.user_settings" class="PhpMob\CoreBundle\Context\SystemSettingContext" lazy="true">
+        <service id="phpmob.context.user_settings" class="PhpMob\CoreBundle\Context\SystemSettingContext" lazy="true" public="true">
             <argument type="service" id="phpmob.settings.manager"/>
             <argument type="service" id="security.token_storage"/>
         </service>

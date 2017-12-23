@@ -38,7 +38,7 @@ final class CanonicalizerListener
     /**
      * @param LifecycleEventArgs $event
      */
-    public function canonicalize(LifecycleEventArgs $event): void
+    private function canonicalize(LifecycleEventArgs $event): void
     {
         $object = $event->getObject();
 

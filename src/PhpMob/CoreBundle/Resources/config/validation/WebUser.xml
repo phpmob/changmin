@@ -20,13 +20,37 @@
                 <value>registration</value>
             </option>
         </constraint>
+        <property name="displayName">
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">200</option>
+                <option name="groups">
+                    <value>phpmob</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="statusMessage">
+            <constraint name="Length">
+                <option name="min">1</option>
+                <option name="max">200</option>
+                <option name="groups">
+                    <value>phpmob</value>
+                </option>
+            </constraint>
+        </property>
         <property name="picture">
             <constraint name="Image">
                 <option name="minWidth">200</option>
                 <option name="minHeight">200</option>
+                <option name="groups">
+                    <value>phpmob</value>
+                </option>
             </constraint>
             <constraint name="File">
                 <option name="maxSize">2M</option>
+                <option name="groups">
+                    <value>phpmob</value>
+                </option>
             </constraint>
         </property>
         <property name="username">

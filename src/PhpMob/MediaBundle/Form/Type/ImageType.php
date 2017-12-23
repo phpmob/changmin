@@ -15,6 +15,7 @@ namespace PhpMob\MediaBundle\Form\Type;
 
 use PhpMob\MediaBundle\Form\DataTransformer\ImageTypeTransformer;
 use PhpMob\MediaBundle\Registry\ImageTypeRegistry;
+use PhpMob\MediaBundle\Util\Base64ToFile;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -102,18 +103,8 @@ abstract class ImageType extends AbstractResourceType
         $data = $event->getData();
 
         if (is_string($base64String = $data['file'])) {
-            preg_match('/data:(.*);/', $base64String, $matchMime);
-            preg_match('/data:image\/(.*);base64/', $base64String, $matchExt);
+            $data['file'] = Base64ToFile::createUploadedFile($data['file']);
 
-            $fileName = sprintf('%s.%s', uniqid(), $matchExt[1]);
-            $outputFile = sys_get_temp_dir().$fileName;
-            $fileResource = fopen($outputFile, 'wb' );
-            $base64Data = explode(',', $base64String);
-
-            fwrite($fileResource, base64_decode($base64Data[1]));
-            fclose($fileResource);
-
-            $data['file'] = new UploadedFile($outputFile, $fileName, $matchMime[1]);
             $event->setData($data);
         }
     }

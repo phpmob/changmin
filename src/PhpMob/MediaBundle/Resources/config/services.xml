@@ -5,11 +5,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="phpmob.registry.image_types" class="PhpMob\MediaBundle\Registry\ImageTypeRegistry">
+        <service id="phpmob.registry.image_types" class="PhpMob\MediaBundle\Registry\ImageTypeRegistry" public="true">
             <argument>%phpmob.filters%</argument>
         </service>
 
-        <service id="phpmob.filesystem_uploader" class="PhpMob\MediaBundle\Uploader\FileUploader">
+        <service id="phpmob.filesystem_uploader" class="PhpMob\MediaBundle\Uploader\FileUploader" public="true">
             <argument type="service" id="oneup_flysystem.phpmob_filesystem"/>
         </service>
 

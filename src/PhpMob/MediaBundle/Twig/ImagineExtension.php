@@ -37,7 +37,7 @@ class ImagineExtension extends \Twig_Extension
      * @param CacheManager $cacheManager
      * @param string $filter
      */
-    public function __construct(CacheManager $cacheManager, $filter = 'phpmob_imagine')
+    public function __construct(CacheManager $cacheManager, $filter = 'strip')
     {
         $this->cacheManager = $cacheManager;
         $this->filter = $filter;

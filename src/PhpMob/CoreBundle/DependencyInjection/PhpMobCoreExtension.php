@@ -37,5 +37,13 @@ class PhpMobCoreExtension extends AbstractResourceExtension
         if ($config['security']['enabled']) {
             $loader->load('services/security.xml');
         }
+
+        if ($config['identicon']['enabled']) {
+            $loader->load('services/identicon.xml');
+
+            $definition = $container->getDefinition('phpmob.identicon_listener');
+            $definition->replaceArgument(3, $config['identicon']['size']);
+            $definition->replaceArgument(4, $config['identicon']['colors']);
+        }
     }
 }
