@@ -74,7 +74,7 @@ class Configuration implements ConfigurationInterface
                 ->arrayNode('imagine')
                     ->addDefaultsIfNotSet()
                     ->children()
-                        ->scalarNode('driver')->defaultValue('imagick')->end()
+                        ->scalarNode('driver')->defaultValue('gd')->end()
                         ->scalarNode('filter')->defaultValue('strip')->end()
                         ->scalarNode('quality')->defaultValue(100)->end()
                         ->scalarNode('data_loader')->defaultValue(null)->end()

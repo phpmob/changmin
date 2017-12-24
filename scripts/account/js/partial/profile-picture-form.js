@@ -4,9 +4,10 @@ $(document).on('change', '.profile-picture-input', function (e) {
     var $img = $('.profile-picture');
     var $form = $(this).closest('form');
     var $submit = $form.find('button[type=submit]');
+    var isPng = (/\.(png)$/i).test(this.value);
 
     function preview(input) {
-        if (input.files && input.files[0] && (/\.(gif|jpg|jpeg|png)$/i).test($(input).val())) {
+        if (input.files && input.files[0] && (/\.(gif|jpg|jpeg|png)$/i).test(input.value)) {
             var reader = new FileReader();
 
             reader.onload = function (e) {
@@ -33,6 +34,7 @@ $(document).on('change', '.profile-picture-input', function (e) {
             var fd = new FormData();
 
             $crop.croppie('result', {
+                format: isPng ? 'png' : 'jpeg',
                 type: 'base64',
                 size: 'original'
             }).then(function (resp) {
