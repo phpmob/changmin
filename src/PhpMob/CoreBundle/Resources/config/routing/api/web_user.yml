@@ -1,6 +1,0 @@
-sylius_api_web_user:
-    resource: |
-        alias: sylius.web_user
-        section: api
-        serialization_version: $version
-    type: sylius.resource_api

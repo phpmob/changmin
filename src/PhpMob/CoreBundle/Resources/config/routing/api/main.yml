@@ -1,5 +1,0 @@
-api_web_user:
-    resource: "@PhpMobCoreBundle/Resources/config/routing/api/web_user.yml"
-
-api_admin_user:
-    resource: "@PhpMobCoreBundle/Resources/config/routing/api/admin_user.yml"
