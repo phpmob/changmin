@@ -1,5 +1,5 @@
 liip_imagine_filter_runtime:
-    path: /cache/resolve/{filter}/rc/{hash}/{path}
+    path: /media/resolve/{filter}/rc/{hash}/{path}
     defaults:
         _controller: '%liip_imagine.controller.filter_runtime_action%'
     methods:
@@ -9,7 +9,7 @@ liip_imagine_filter_runtime:
         path: .+
 
 liip_imagine_filter:
-    path: /cache/resolve/{filter}/{path}
+    path: /media/resolve/{filter}/{path}
     defaults:
         _controller: '%liip_imagine.controller.filter_action%'
     methods:
@@ -19,7 +19,7 @@ liip_imagine_filter:
         path: .+
 
 phpmob_imagine_filter:
-    path: /phpmob/cache/resolve/{filter}/{path}
+    path: /media/imagine/{filter}/{path}
     defaults:
         _controller: PhpMobMediaBundle:Image:filterRuntime
     methods:
