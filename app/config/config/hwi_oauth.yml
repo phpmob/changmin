@@ -10,6 +10,8 @@ hwi_oauth:
             infos_url: http://127.0.0.1:8000/api/v1/user/info
             scope: profile email
             user_response_class: HWI\Bundle\OAuthBundle\OAuth\Response\PathUserResponse
+            options:
+                csrf: true
             paths:
                 identifier: id
                 nickname: username
