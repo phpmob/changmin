@@ -1,7 +1,0 @@
-jms_serializer:
-    metadata:
-        auto_detection: true
-        directories:
-            sylius-user:
-                namespace_prefix: "Sylius\\Component\\User"
-                path: "@PhpMobCoreBundle/Resources/config/serializer/SyliusUser"

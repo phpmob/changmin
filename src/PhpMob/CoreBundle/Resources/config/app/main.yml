@@ -4,6 +4,5 @@ imports:
     - { resource: "@PhpMobCoreBundle/Resources/config/app/sylius_fixtures.yml" }
     - { resource: "@PhpMobCoreBundle/Resources/config/app/sylius_user.yml" }
     - { resource: "@PhpMobCoreBundle/Resources/config/app/sylius_resource.yml" }
-    - { resource: "@PhpMobCoreBundle/Resources/config/app/jms_serializer.yml" }
     - { resource: "@PhpMobCoreBundle/Resources/config/app/twig.yml" }
     - { resource: "@PhpMobCoreBundle/Resources/config/grids/admin/main.yml" }
