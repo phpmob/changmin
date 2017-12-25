@@ -78,7 +78,7 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('filter')->defaultValue('strip')->end()
                         ->scalarNode('quality')->defaultValue(100)->end()
                         ->scalarNode('data_loader')->defaultValue(null)->end()
-                        ->scalarNode('form_default_image')->defaultValue('data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==')->end()
+                        ->scalarNode('default_image')->defaultValue('data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==')->end()
                     ->end()
                 ->end()
             ->end()

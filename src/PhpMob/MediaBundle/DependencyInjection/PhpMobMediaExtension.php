@@ -43,7 +43,7 @@ class PhpMobMediaExtension extends AbstractResourceExtension
         $container->setParameter('phpmob.imagine.driver', $config['imagine']['driver']);
         $container->setParameter('phpmob.imagine.filter', $config['imagine']['filter']);
         $container->setParameter('phpmob.imagine.quality', $config['imagine']['quality']);
-        $container->setParameter('phpmob.imagine.form_default_image', $config['imagine']['form_default_image']);
+        $container->setParameter('phpmob.imagine.default_image', $config['imagine']['default_image']);
 
         $loader->load('services.xml');
     }

@@ -28,6 +28,7 @@
         <service class="PhpMob\MediaBundle\Twig\ImagineExtension">
             <argument type="service" id="liip_imagine.cache.manager"/>
             <argument>%phpmob.imagine.filter%</argument>
+            <argument>%phpmob.imagine.default_image%</argument>
             <tag name="twig.extension"/>
         </service>
 

@@ -32,15 +32,15 @@ class ImagineExtension extends \Twig_Extension
     private $filter;
 
     /**
-     * Constructor.
-     *
-     * @param CacheManager $cacheManager
-     * @param string $filter
+     * @var string
      */
-    public function __construct(CacheManager $cacheManager, $filter = 'strip')
+    private $defaultImage;
+
+    public function __construct(CacheManager $cacheManager, string $filter = 'strip', string $defaultImage = null)
     {
         $this->cacheManager = $cacheManager;
         $this->filter = $filter;
+        $this->defaultImage = $defaultImage;
     }
 
     /**
@@ -72,7 +72,7 @@ class ImagineExtension extends \Twig_Extension
         }
 
         if (empty($path)) {
-            $path = 'img/default.png';
+            return $this->defaultImage;
         }
 
         $runtimeConfig = [

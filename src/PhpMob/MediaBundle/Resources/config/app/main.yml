@@ -42,7 +42,7 @@ twig:
         - "@PhpMobMedia/form.html.twig"
     globals:
         phpmob_imagine:
-            form_default_image_preview: "%phpmob.imagine.form_default_image%"
+            default_image: "%phpmob.imagine.default_image%"
 
 framework:
     cache:
