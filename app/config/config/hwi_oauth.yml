@@ -1,0 +1,21 @@
+hwi_oauth:
+    firewall_names: [web]
+    resource_owners:
+        phpmob:
+            type: oauth2
+            client_id: demo_client
+            client_secret: secret_demo_client
+            access_token_url: http://127.0.0.1:8000/oauth/v2/token
+            authorization_url: http://127.0.0.1:8000/oauth/v2/auth
+            infos_url: http://127.0.0.1:8000/api/v1/user/info
+            scope: profile
+            user_response_class: HWI\Bundle\OAuthBundle\OAuth\Response\PathUserResponse
+            paths:
+                identifier: id
+                nickname: username
+                realname: full_name
+                firstname: first_name
+                lastname: last_name
+                gender: gender
+                birthday: birthday
+                email: email

@@ -25,9 +25,9 @@ phpmob_admin_cms:
     resource: "@PhpMobCmsBundle/Resources/config/routing/admin/main.yml"
     prefix: /admin/cms
 
-phpmob_api_core:
-    resource: "@PhpMobCoreBundle/Resources/config/routing/api/main.yml"
-    prefix: /api/v{version}
+phpmob_oauth2:
+    resource: "routing/oauth2.yml"
+    prefix: /oauth2
 
 phpmob_media:
     resource: "@PhpMobMediaBundle/Resources/config/routing/main.yml"

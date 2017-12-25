@@ -54,6 +54,8 @@ class AppKernel extends Kernel
             new \PhpMob\SettingsBundle\PhpMobSettingsBundle(),
 
             new \PhpMob\WidgetBundle\PhpMobWidgetBundle(),
+            new \HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new \Http\HttplugBundle\HttplugBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -74,6 +74,15 @@ security:
                 path: web_security_logout
                 target: web_security_login
                 invalidate_session: false
+            oauth:
+                resource_owners:
+                    phpmob: "/oauth2/login/check-phpmob"
+                login_path: /login
+                use_forward: false
+                failure_path: /login
+
+                oauth_user_provider:
+                    service: phpmob.oauth.user_provider
             anonymous: true
 
         dev:
