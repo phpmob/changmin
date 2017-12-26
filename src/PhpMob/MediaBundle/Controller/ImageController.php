@@ -18,12 +18,13 @@ class ImageController extends Controller
 
     /**
      * @param string $path
-     * @param string $filter
+     * @param string $sizing
      * @param string $mode
+     * @param string $filter
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function filterRuntimeAction($path, $filter, $mode = 'inset')
+    public function filterRuntimeAction($path, $sizing, $mode = 'inset', $filter = 'strip')
     {
         if ($path instanceof ImageInterface) {
             $path = $path->getPath();
@@ -31,13 +32,13 @@ class ImageController extends Controller
 
         $runtimeConfig = [
             'thumbnail' => [
-                'size' => explode('x', strtolower($filter)),
+                'size' => explode('x', strtolower($sizing)),
                 'mode' => $mode,
             ],
         ];
 
         return $this->redirect(
-            $this->getImagineCacheManager()->getBrowserPath($path, 'phpmob_imagine', $runtimeConfig
+            $this->getImagineCacheManager()->getBrowserPath($path, $filter, $runtimeConfig
         ));
     }
 }
