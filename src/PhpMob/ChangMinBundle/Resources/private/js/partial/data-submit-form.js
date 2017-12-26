@@ -3,6 +3,10 @@ $(document).on('click', '[data-submit-form]', function () {
     var $el = $(this);
     var $form = $('form[name=' + $el.data('submit-form') + ']');
 
+    if (!$form.length) {
+        $form = $('form[data-name=' + $el.data('submit-form') + ']');
+    }
+
     $form
         .one('submit', function () {
             $el.attr('disabled', true).addClass('disabled');

@@ -145,7 +145,8 @@
 {%- endblock %}
 
 {% block sylius_translations_row -%}
-    <div class="card card-translations">
+    {%- set attr = attr|merge({class: ((attr.class|default) ~ ' card card-translations')|trim}) -%}
+    <div {{ block('widget_attributes') }}>
         <div class="card-header">
             <nav class="nav nav-tabs card-header-tabs justify-content-end">
                 {% for translation in form %}

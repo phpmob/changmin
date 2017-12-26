@@ -8,7 +8,7 @@ twig:
 phpmob_settings:
     schemas:
         security:
-            label: 'Security Settings'
+            label: 'Security'
             settings:
                 user_verification:
                     type: boolean
@@ -17,7 +17,7 @@ phpmob_settings:
                     blueprint:
                         type: Symfony\Component\Form\Extension\Core\Type\CheckboxType
         emails:
-            label: 'Email Settings'
+            label: 'Email'
             settings:
                 sender_name:
                     label: 'Sender Name'
@@ -25,18 +25,6 @@ phpmob_settings:
                 sender_address:
                     label: 'Sender Address'
                     value: 'no-reply@phpmob.com'
-                templating:
-                    type: yaml
-                    label: 'Email Templates'
-                    blueprint:
-                        type: PhpMob\CmsBundle\Form\Type\YamlType
-                    value: |
-                        user_registration:
-                            subject: "User Registration"
-                            template: "@PhpMobCms/tpls/email/registration.html.twig"
-                        verification_token:
-                            subject: "User Verification"
-                            template: "@PhpMobCms/tpls/email/verification.html.twig"
 
 sylius_mailer:
     sender_adapter: sylius.email_sender.adapter.swiftmailer
