@@ -19,6 +19,8 @@ $(document).on('click', '[data-submit-form]', function () {
 
 $(document).on('submit', 'form', function (e) {
     // disable button submit trigg eg. in toolbar
+    $('button,.btn').attr('disabled', true).addClass('disabled');
+
     if (this.name) {
         var $relateSubmitButton = $('[data-submit-form=' + this.name + ']');
 
