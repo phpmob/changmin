@@ -1,4 +1,11 @@
 services:
+    phpmob.locale.context_cached_composite:
+        public: false
+        class: PhpMob\CmsBundle\Context\CachedCompositeLocaleContext
+        decorates: sylius.context.locale.composite
+        arguments:
+            - "@phpmob.locale.context_cached_composite.inner"
+
     phpmob.locale.context_immutable:
         public: false
         class: Sylius\Component\Locale\Context\ImmutableLocaleContext
@@ -7,14 +14,22 @@ services:
         tags:
             - { name: sylius.context.locale, priority: -100 }
 
-    phpmob.locale.context_requested_base:
+    phpmob.locale.context_request_based:
         public: false
         class: Sylius\Bundle\LocaleBundle\Context\RequestBasedLocaleContext
         arguments:
             - "@request_stack"
             - "@sylius.locale_provider"
         tags:
-            - { name: sylius.context.locale, priority: -101 }
+            - { name: sylius.context.locale, priority: -200 }
+
+    phpmob.locale.context_provider_based:
+        public: false
+        class: Sylius\Component\Locale\Context\ProviderBasedLocaleContext
+        arguments:
+            - "@sylius.locale_provider"
+        tags:
+            - { name: sylius.context.locale, priority: -400 }
 
     phpmob.locale.add_defined_translation:
         public: true
@@ -43,6 +58,7 @@ services:
         tags:
             - { name: form.type_extension, extended_type: Sylius\Bundle\LocaleBundle\Form\Type\LocaleType }
 
+    # Deprecated
     PhpMob\CmsBundle\LocaleLoader\DatabaseLoader:
         public: false
         arguments:

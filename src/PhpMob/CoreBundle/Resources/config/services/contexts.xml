@@ -8,5 +8,10 @@
         <service id="phpmob.context.system_settings" class="PhpMob\CoreBundle\Context\SystemSettingContext" lazy="true">
             <argument type="service" id="phpmob.settings.manager"/>
         </service>
+
+        <service class="PhpMob\CoreBundle\Context\WebUserBasedLocaleContext" lazy="true">
+            <argument type="service" id="security.token_storage"/>
+            <tag name="sylius.context.locale" priority="-300"/>
+        </service>
     </services>
 </container>
