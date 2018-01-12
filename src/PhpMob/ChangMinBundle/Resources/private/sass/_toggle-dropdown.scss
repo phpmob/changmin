@@ -1,0 +1,25 @@
+.toggle-dropdown {
+    &.dropdown {
+        > .btn {
+            font-size: 95%;
+            padding: $input-btn-padding-y-sm / 2 $input-btn-padding-x-sm;
+        }
+    }
+
+    .dropdown-menu {
+        padding: 0;
+
+        .dropdown-item {
+            padding: 0;
+        }
+
+        .btn {
+            display: block;
+            border: none;
+            width: 100%;
+            text-align: left;
+            border-radius: 0;
+            //padding: $input-btn-padding-y-sm + .2 $input-btn-padding-x-sm;
+        }
+    }
+}

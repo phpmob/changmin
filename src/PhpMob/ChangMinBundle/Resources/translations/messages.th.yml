@@ -7,6 +7,8 @@ sylius:
 
 changmin:
     ui:
+        on: On
+        off: Off
         back: Back
         taxonomy: หมวดหมู่หลัก
         success: Success

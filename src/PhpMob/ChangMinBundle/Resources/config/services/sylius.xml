@@ -46,6 +46,13 @@
             <tag name="sylius.grid_field" type="state_machine"/>
         </service>
 
+        <service class="PhpMob\Sylius\Grid\FieldType\ToggleFieldType" public="false">
+            <argument type="service" id="sylius.grid.data_extractor"/>
+            <argument type="service" id="twig"/>
+            <argument type="string">@ChangMin/Grid/Field/toggle.html.twig</argument>
+            <tag name="sylius.grid_field" type="toggle"/>
+        </service>
+
         <service class="PhpMob\Sylius\Grid\FieldType\LocalizedDateFieldType" public="false">
             <argument type="service" id="sylius.grid.data_extractor"/>
             <argument type="service" id="twig"/>

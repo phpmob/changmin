@@ -44,7 +44,7 @@ class TextFieldType implements FieldTypeInterface
         $value = $this->dataExtractor->get($field, $data);
         $field->setOptions($options);
 
-        return is_string($value) ? htmlspecialchars($value) : $value;
+        return is_string($value) ? htmlspecialchars($value) : (is_array($value) ? implode(',', $value) : $value);
     }
 
     /**

@@ -1,0 +1,29 @@
+{% set value = attribute(data, options.property) %}
+<div class="dropdown d-inline toggle-dropdown">
+    <button type="button" data-toggle="dropdown" class="dropdown-toggle toggle-button {{ options.btn_css }}">
+        <i class="fa fa-circle text-color-{{ value ? 'green' : 'red' }}"></i> {{ (value ? options.on_label : options.off_label)|trans }}
+    </button>
+    <ul class="dropdown-menu">
+        {% set parameters = {'_method': 'PUT'} %}
+        {% for key, val in options.parameters %}
+            {% set parameters = parameters|merge({(key): attribute(data, 'id')}) %}
+        {% endfor %}
+        {% set routing = path(options.route, parameters) %}
+        <li class="dropdown-item toggle-action toggle-on text-color-green">
+            <form action="{{ routing }}" method="post">
+                <input type="hidden" name="enabled" value="1">
+                <button type="submit" data-toggle-action class="btn btn-outline-primary">
+                    <i class="fa fa-circle text-color-green"></i> {{ options.on_label|trans }}
+                </button>
+            </form>
+        </li>
+        <li class="dropdown-item toggle-action toggle-off text-color-red">
+            <form action="{{ routing }}" method="post">
+                <input type="hidden" name="enabled" value="0">
+                <button type="submit" data-toggle-action class="btn btn-outline-primary">
+                    <i class="fa fa-circle text-color-red"></i> {{ options.off_label|trans }}
+                </button>
+            </form>
+        </li>
+    </ul>
+</div>

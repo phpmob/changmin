@@ -27,7 +27,9 @@
                         <span class="custom-file-control"></span>
                         {{ form_errors(form.file) }}
                     </label>
-                    {{ form_row(form.type) }}
+                    {% if form.type is defined %}
+                        {{ form_row(form.type) }}
+                    {% endif %}
                     {% if caption %}
                         {{ form_row(form.caption) }}
                     {% endif %}
