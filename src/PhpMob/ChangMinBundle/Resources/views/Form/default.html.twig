@@ -105,6 +105,11 @@
         {{- widget|raw }}
         <span class="custom-control-indicator"></span>
         <span class="custom-control-description">{{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}</span>
+        {%- if hint is defined -%}
+            <span class="custom-control-hint text-muted">
+                {{ hint|raw }}
+            </span>
+        {%- endif -%}
         </label>
     {%- endif -%}
 {%- endblock checkbox_radio_label %}
