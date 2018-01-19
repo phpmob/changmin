@@ -28,7 +28,7 @@ class Base64ToFile
         preg_match('/data:(.*);/', $base64String, $matchMime);
         preg_match('/data:image\/(.*);base64/', $base64String, $matchExt);
 
-        $fileName = sprintf('%s.%s', uniqid(), $matchExt[1]);
+        $fileName = sprintf('/%s.%s', uniqid(), $matchExt[1]);
         $outputFile = sys_get_temp_dir() . $fileName;
         $fileResource = fopen($outputFile, 'wb');
         $base64Data = explode(',', $base64String);
