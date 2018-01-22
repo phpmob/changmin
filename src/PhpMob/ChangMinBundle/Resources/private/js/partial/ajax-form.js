@@ -9,7 +9,7 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
 
     var $form = $(this);
     var data = new FormData();
-    var url = $form.data('ajax-form') || $form.attr('action');
+    var url = $form.attr('action') || $form.data('ajax-form');
 
     $form.find('input[type=file]').each(function (i, f) {
         data.append(f.name, f.files[0] || "");
