@@ -37,9 +37,22 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
         cache: false,
         processData: false, // Don't process the files
         contentType: false, // Set content type to false as jQuery will tell the server its a query string request
-        success: function (res, textStatus, jqXHR) {
+        // all status
+        complete: function (jqXHR) {
             $submit.spinner('remove');
 
+            if (301 === jqXHR.status || 302 === jqXHR.status) {
+                window.location.href = jqXHR.responseJSON[$form.data('location') || 'location'];
+                return;
+            }
+
+            if($form.data('callback')) {
+                window[$form.data('callback')].call(this, $form, $res);
+                return;
+            }
+        },
+        // 200 status
+        success: function (res, textStatus, jqXHR) {
             var $res = $(res);
 
             // valid form
