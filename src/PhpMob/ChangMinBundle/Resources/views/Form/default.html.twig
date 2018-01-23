@@ -49,6 +49,38 @@
     {%- endif %}
 {%- endblock form_errors %}
 
+{% block checkbox_radio_label -%}
+    {#- Do not display the label if widget is not defined in order to prevent double label rendering -#}
+    {%- if widget is defined -%}
+        {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' custom-control-label')|trim}) -%}
+        {%- if required -%}
+            {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' required')|trim}) -%}
+        {%- endif -%}
+        {%- if parent_label_class is defined -%}
+            {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' ' ~ parent_label_class)|trim}) -%}
+        {%- endif -%}
+        {%- if label is not same as(false) and label is empty -%}
+            {%- if label_format is not empty -%}
+                {%- set label = label_format|replace({
+                    '%name%': name,
+                    '%id%': id,
+                }) -%}
+            {%- else -%}
+                {%- set label = name|humanize -%}
+            {%- endif -%}
+        {%- endif -%}
+        {{- widget|raw }}
+        <label for="{{ id }}" {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
+        {{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}
+        </label>
+        {%- if hint is defined -%}
+            <small class="custom-control-hint text-muted">
+                {{ hint|raw }}
+            </small>
+        {%- endif -%}
+    {%- endif -%}
+{%- endblock checkbox_radio_label %}
+
 {%- block custom_checkbox -%}
     <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
 {%- endblock -%}
@@ -59,60 +91,21 @@
 
 {% block checkbox_widget -%}
     {%- set parent_label_class = parent_label_class|default(label_attr.class|default('')) -%}
-    {%- set attr = attr|merge({class: attr.class|default('custom-control-input')}) -%}
-    {%- if 'checkbox-inline' in parent_label_class -%}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' custom-control-input')|trim}) -%}
+
+    <div class="custom-control custom-checkbox{{ not valid ? ' form-control is-invalid' }}{% if 'checkbox-inline' in parent_label_class %} custom-control-inline{% endif %}">
         {{- form_label(form, null, { widget: block('custom_checkbox') }) -}}
-    {%- else -%}
-        <div class="form-check">
-            {{- form_label(form, null, { widget: block('custom_checkbox') }) -}}
-        </div>
-    {%- endif -%}
+    </div>
 {%- endblock checkbox_widget %}
 
 {% block radio_widget -%}
     {%- set parent_label_class = parent_label_class|default(label_attr.class|default('')) -%}
-    {%- set attr = attr|merge({class: attr.class|default('custom-control-input')}) -%}
-    {%- if 'radio-inline' in parent_label_class -%}
-        {{- form_label(form, null, { widget: block('custom_radio') }) -}}
-    {%- else -%}
-        <div class="form-check">
-            {{- form_label(form, null, { widget: block('custom_radio') }) -}}
-        </div>
-    {%- endif -%}
-{%- endblock radio_widget %}
+    {%- set attr = attr|merge({class: (attr.class|default('') ~ ' custom-control-input')|trim}) -%}
 
-{% block checkbox_radio_label -%}
-    {#- Do not display the label if widget is not defined in order to prevent double label rendering -#}
-    {%- if widget is defined -%}
-        {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' custom-control custom-checkbox')|trim}) -%}
-        {%- if required -%}
-            {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' required')|trim}) -%}
-        {%- endif -%}
-        {%- if parent_label_class is defined -%}
-            {%- set label_attr = label_attr|merge({class: (label_attr.class|default('') ~ ' ' ~ parent_label_class)|trim}) -%}
-        {%- endif -%}
-        {%- if label is not same as(false) and label is empty -%}
-            {%- if label_format is not empty -%}
-                {%- set label = label_format|replace({
-                '%name%': name,
-                '%id%': id,
-                }) -%}
-            {%- else -%}
-                {%- set label = name|humanize -%}
-            {%- endif -%}
-        {%- endif -%}
-        <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
-        {{- widget|raw }}
-        <span class="custom-control-indicator"></span>
-        <span class="custom-control-description">{{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}</span>
-        </label>
-        {%- if hint is defined -%}
-            <small class="custom-control-hint text-muted">
-                {{ hint|raw }}
-            </small>
-        {%- endif -%}
-    {%- endif -%}
-{%- endblock checkbox_radio_label %}
+    <div class="custom-control custom-radio{{ not valid ? ' form-control is-invalid' }}{%- if 'radio-inline' in parent_label_class -%} custom-control-inline{% endif %}">
+        {{- form_label(form, null, { widget: block('custom_radio') }) -}}
+    </div>
+{%- endblock radio_widget %}
 
 {% block collection_widget -%}
     {% import '@ChangMin/Form/_macro.html.twig' as macro %}
