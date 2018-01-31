@@ -19,13 +19,13 @@ liip_imagine_filter:
         path: .+
 
 phpmob_imagine_filter:
-    path: /media/imagine/{filter}/{path}
+    path: /media/imagine/{sizing}/{path}
     defaults:
         _controller: PhpMobMediaBundle:Image:filterRuntime
     methods:
         - GET
     requirements:
-        filter: '^[0-9]+x[0-9]+'
+        sizing: '^[0-9]+x[0-9]+'
         path: .+
         mode: "inset|outbound"
 
