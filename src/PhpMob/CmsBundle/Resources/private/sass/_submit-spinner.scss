@@ -1,15 +1,28 @@
+.spinning {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center!important;
+  -webkit-box-align: center!important;
+  -ms-flex-align: center!important;
+  justify-content: center !important;
+}
+
 .submit-spinner {
   margin-left: 0.75rem;
   width: auto;
   text-align: center;
-  display: inline-block;
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center!important;
+  -webkit-box-align: center!important;
+  -ms-flex-align: center!important;
 }
 
 .submit-spinner > div {
   width: 6px;
   height: 6px;
   background-color: #fff;
-
+  margin: 0 .1rem;
   border-radius: 100%;
   display: inline-block;
   -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;

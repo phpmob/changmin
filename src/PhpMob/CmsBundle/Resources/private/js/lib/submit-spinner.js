@@ -3,11 +3,13 @@ $.fn.spinner = function (type, side) {
     var method = 'left' === side ? 'prepend' : 'append';
 
     if ('remove' === type) {
+        $el.removeClass('spinning');
         $el.find('submit-spinner').remove();
 
         return this;
     }
 
+    $el.addClass('spinning');
     $el[method](
         '<div class="submit-spinner">\n' +
         '  <div class="bounce1"></div>\n' +
