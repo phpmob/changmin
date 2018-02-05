@@ -15,7 +15,6 @@
             {{ table.row(grid, definition, row) }}
         {% endfor %}
     {% endset %}
-    {% set pagerOptions = configuration.vars.pagine|default(configuration.vars.pagers|default({ proximity: 5 })) %}
     <table class="table table-sm table-grid">
         <thead>
         <tr>
@@ -26,9 +25,13 @@
             {{ rows|raw }}
         </tbody>
     </table>
-    <div class="paginate row justify-content-center">
-        {{ pagerfanta(grid.data, 'twitter_bootstrap4', pagerOptions) }}
-    </div>
+
+    {% if configuration.vars.paginateDisabled is not defined or configuration.vars.paginateDisabled != true %}
+        <div class="paginate row justify-content-center">
+            {% set pagerOptions = configuration.vars.pagine|default(configuration.vars.pagers|default({ proximity: 5 })) %}
+            {{ pagerfanta(grid.data, 'twitter_bootstrap4', pagerOptions) }}
+        </div>
+    {% endif %}
 {% else %}
     <div class="no-results justify-content-center">
         <div class="align-self-center">
