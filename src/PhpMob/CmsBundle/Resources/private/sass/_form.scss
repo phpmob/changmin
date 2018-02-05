@@ -1,27 +1,28 @@
 // vsubmit
 p.is-invalid {
-    @extend .invalid-feedback;
+  @extend .invalid-feedback;
+  margin-bottom: 0;
 }
 
 .is-invalid ~ .invalid-feedback {
-    display: block;
+  display: block;
 }
 
 .form-control-label {
-    &.required {
-        &:after {
-            content: '*';
-            color: $red;
-            margin-left: 4px;
-        }
+  &.required {
+    &:after {
+      content: '*';
+      color: $red;
+      margin-left: 4px;
     }
+  }
 }
 
 .form-inline {
-    select + select {
-        margin-left: 4px;
-        margin-right: 4px;
-    }
+  select + select {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
 }
 
 // e.g. money_widget
@@ -29,7 +30,6 @@ p.is-invalid {
   overflow: initial;
 }
 
-.selectize-input > p.is-invalid,
 .input-group-addon ~ .form-control.is-invalid ~ p.is-invalid {
   position: absolute;
   right: 0;
@@ -49,6 +49,7 @@ p.is-invalid {
     bottom: -5px;
   }
 }
+
 .custom-control-hint {
   display: block;
 }

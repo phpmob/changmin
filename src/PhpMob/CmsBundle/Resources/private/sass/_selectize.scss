@@ -24,3 +24,9 @@
         display: block;
     }
 }
+
+.selectize-input > p.is-invalid {
+    color: $red !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
