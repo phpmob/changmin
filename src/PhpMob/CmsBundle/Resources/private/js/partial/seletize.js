@@ -1,5 +1,7 @@
 PhpMobCms.inits.push(function (scope) {
-    ChangMinChooser('[data-chooser]', scope);
+    if (typeof ChangMinChooser !== 'undefined') {
+        ChangMinChooser('[data-chooser]', scope);
+    }
 });
 
 window['user_avatar_render'] = function (data) {
@@ -13,4 +15,3 @@ window['user_avatar_render'] = function (data) {
     + '     </div>'
     + '</div>').xTemplate(data);
 };
-
