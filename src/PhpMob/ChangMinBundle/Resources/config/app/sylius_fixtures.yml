@@ -12,6 +12,12 @@ sylius_fixtures:
                         random: 30
                         custom:
                             -
+                                email: "root@phpmob.com"
+                                username: "root"
+                                password: "root1234"
+                                displayName: "Root User"
+                                roles: [ ROLE_ROOT ]
+                            -
                                 email: "admin@phpmob.com"
                                 username: "admin"
                                 password: "admin1234"
