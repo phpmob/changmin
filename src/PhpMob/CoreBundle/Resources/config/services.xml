@@ -13,6 +13,13 @@
     </imports>
 
     <services>
+        <service class="PhpMob\CoreBundle\Provider\MailerSettingsProvider"
+                 decoration-inner-name="phpmob.mailer.default_settings_provider"
+                 decorates="sylius.mailer.default_settings_provider">
+            <argument type="service" id="phpmob.mailer.default_settings_provider"/>
+            <argument type="service" id="phpmob.context.system_settings"/>
+        </service>
+
         <service id="phpmob.oauth.user_provider" class="PhpMob\CoreBundle\OAuth\UserProvider" public="true">
             <argument>%sylius.model.web_user.class%</argument>
             <argument type="service" id="sylius.factory.web_user"/>
