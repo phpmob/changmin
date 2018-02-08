@@ -37,29 +37,13 @@
     display: block;
 }
 
-// e.g. money_widget
 .selectize-input.invalid {
   overflow: initial;
 }
 
-.selectize-input > p.is-invalid,
-.input-group-addon ~ .form-control.is-invalid ~ p.is-invalid {
-  position: absolute;
-  right: 0;
-  background-color: $form-feedback-invalid-color;
-  color: #fff;
-  top: -40px;
-  padding: 2px 5px;
-  border-radius: $border-radius;
-
-  &:after {
-    left: 50%;
-    content: "";
-    border-width: 5px 5px 0;
-    border-top-color: $form-feedback-invalid-color;
-    position: absolute;
-    border-style: solid;
-    bottom: -5px;
+.input-group.is-invalid {
+  .input-group-text {
+    border-color: $form-feedback-invalid-color;
   }
 }
 
