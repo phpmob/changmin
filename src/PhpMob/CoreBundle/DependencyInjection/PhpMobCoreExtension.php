@@ -44,6 +44,7 @@ class PhpMobCoreExtension extends AbstractResourceExtension
             $definition = $container->getDefinition('phpmob.gravatar_listener');
             $definition->replaceArgument(2, $config['gravatar']['size']);
             $definition->replaceArgument(3, $config['gravatar']['imageset']);
+            $definition->replaceArgument(4, $config['gravatar']['rating']);
         }
     }
 }

@@ -11,6 +11,7 @@
             <argument type="service" id="changmin.factory.admin_user_picture" />
             <argument/>
             <argument/>
+            <argument/>
         </service>
     </services>
 </container>

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace PhpMob\CoreBundle\EventListener;
 
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\UnitOfWork;
@@ -37,24 +36,38 @@ final class GravatarListener
      */
     private $imageset;
 
+    /**
+     * @var string
+     */
+    private $rating;
+
     public function __construct(
         FactoryInterface $webUserFactory,
         FactoryInterface $adminUserFactory,
         int $size = 200,
-        ?string $imageset = null
+        ?string $imageset = null,
+        ?string $rating = null
     )
     {
         $this->webUserFactory = $webUserFactory;
         $this->adminUserFactory = $adminUserFactory;
         $this->size = $size;
 
-        $imagesets = ['mm', 'identicon', 'monsterid', 'wavatar'];
+        $imagesets = ['mm', 'identicon', 'monsterid', 'wavatar', 'retro', 'robohash'];
 
         if ($imageset && !in_array($imageset, $imagesets)) {
             throw new \InvalidArgumentException("Not supported `$imageset` imageset. Supported are :" . join(', ', $imagesets));
         }
 
         $this->imageset = $imageset ?? $imagesets[array_rand($imagesets)];
+
+        $ratings = ['g', 'pg', 'r', 'x'];
+
+        if ($rating && !in_array($rating, $ratings)) {
+            throw new \InvalidArgumentException("Not supported `$rating` rating. Supported are :" . join(', ', $ratings));
+        }
+
+        $this->rating = $rating ?? $ratings[array_rand($ratings)];
     }
 
     /**
@@ -89,10 +102,11 @@ final class GravatarListener
                 continue;
             }
 
-            $gravatar = file_get_contents(sprintf('http://www.gravatar.com/avatar/%s?d=%s&s=%s',
+            $gravatar = file_get_contents(sprintf('http://www.gravatar.com/avatar/%s?d=%s&s=%s&r=%s',
                 md5(strtolower($object->getEmail())),
+                $this->imageset,
                 $this->size,
-                $this->imageset
+                $this->rating
             ));
 
             $file = Base64ToFile::createUploadedFile('data:image/jpeg;base64,' . base64_encode($gravatar));
