@@ -38,12 +38,12 @@ class PhpMobCoreExtension extends AbstractResourceExtension
             $loader->load('services/security.xml');
         }
 
-        if ($config['identicon']['enabled']) {
-            $loader->load('services/identicon.xml');
+        if ($config['gravatar']['enabled']) {
+            $loader->load('services/gravatar.xml');
 
-            $definition = $container->getDefinition('phpmob.identicon_listener');
-            $definition->replaceArgument(3, $config['identicon']['size']);
-            $definition->replaceArgument(4, $config['identicon']['colors']);
+            $definition = $container->getDefinition('phpmob.gravatar_listener');
+            $definition->replaceArgument(3, $config['gravatar']['size']);
+            $definition->replaceArgument(4, $config['gravatar']['colors']);
         }
     }
 }

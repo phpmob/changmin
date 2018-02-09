@@ -58,8 +58,7 @@
         "symfony/symfony": "^3.4",
         "symfony/twig-bundle": "^3.3",
         "twig/extensions": "^1.5",
-        "twig/twig": "^2.0",
-        "yzalis/identicon": "^1.2"
+        "twig/twig": "^2.0"
     },
     "require-dev": {
         "sylius/taxonomy-bundle": "^1.0",

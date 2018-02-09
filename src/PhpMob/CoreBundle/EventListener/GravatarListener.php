@@ -9,14 +9,13 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\OnFlushEventArgs;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Doctrine\ORM\UnitOfWork;
-use Identicon\Identicon;
 use PhpMob\ChangMinBundle\Model\AdminUserInterface;
 use PhpMob\CoreBundle\Model\WebUserInterface;
 use PhpMob\MediaBundle\Model\ImageInterface;
 use PhpMob\MediaBundle\Util\Base64ToFile;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 
-final class UserIdenticonListener
+final class GravatarListener
 {
     /**
      * @var FactoryInterface
@@ -29,33 +28,33 @@ final class UserIdenticonListener
     private $adminUserFactory;
 
     /**
-     * @var Identicon
-     */
-    private $identicon;
-
-    /**
      * @var int
      */
     private $size;
 
     /**
-     * @var array
+     * @var string
      */
-    private $colors = [];
+    private $imageset;
 
     public function __construct(
         FactoryInterface $webUserFactory,
         FactoryInterface $adminUserFactory,
-        Identicon $identicon,
         int $size = 200,
-        array $colors = ['#007bff']
+        ?string $imageset = null
     )
     {
         $this->webUserFactory = $webUserFactory;
         $this->adminUserFactory = $adminUserFactory;
-        $this->identicon = $identicon;
         $this->size = $size;
-        $this->colors = $colors;
+
+        $imagesets = ['mm', 'identicon', 'monsterid', 'wavatar'];
+
+        if ($imageset && !in_array($imageset, $imagesets)) {
+            throw new \InvalidArgumentException("Not supported `$imageset` imageset. Supported are :" . join(', ', $imagesets));
+        }
+
+        $this->imageset = $imageset ?? $imagesets[array_rand($imagesets)];
     }
 
     /**
@@ -90,9 +89,13 @@ final class UserIdenticonListener
                 continue;
             }
 
-            $file = Base64ToFile::createUploadedFile(
-                $this->identicon->getImageDataUri($object->getUsername(), $this->size, $this->colors[array_rand($this->colors, 1)])
-            );
+            $gravatar = file_get_contents(sprintf('http://www.gravatar.com/avatar/%s?d=%s&s=%s',
+                md5(strtolower($object->getEmail())),
+                $this->size,
+                $this->imageset
+            ));
+
+            $file = Base64ToFile::createUploadedFile('data:image/jpeg;base64,' . base64_encode($gravatar));
 
             /** @var ImageInterface $picture */
             $picture = $isAdminUser ? $this->adminUserFactory->createNew() : $this->webUserFactory->createNew();
