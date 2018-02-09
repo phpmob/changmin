@@ -17,7 +17,7 @@
     <title>{{ title|striptags }}</title>
 
     <link rel="shortcut icon" href="{{ asset('assets/admin/img/favicon.png') }}">
-    <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/admin/css/style.css') }}?v={{ phpmob_assets_version }}" rel="stylesheet">
     {% modify cssmin %}
     <style type="text/css">{{ include('@ChangMin/style.css.twig') }}</style>
     {% endmodify %}
@@ -27,7 +27,7 @@
     {% block flash %}{{ include('@ChangMin/flash.html.twig') }}{% endblock %}
 {% endset %}
 <div id="root" style="opacity: 0"></div>
-<script src="{{ asset('assets/admin/js/app.js') }}"></script>
+<script src="{{ asset('assets/admin/js/app.js') }}?v={{ phpmob_assets_version }}"></script>
 {% modify jsmin %}
 <script>
     $(window).on('load', function () {
