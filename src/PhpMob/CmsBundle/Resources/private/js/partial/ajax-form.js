@@ -43,7 +43,7 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
             $buttons.attr('disabled', false);
 
             if($form.data('callback')) {
-                window[$form.data('callback')].call(this, $form, jqXHR);
+                window[$form.data('callback')].call(this, $form, null, jqXHR);
                 return;
             }
 
@@ -89,7 +89,7 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
             }
 
             if($form.data('callback')) {
-                window[$form.data('callback')].call(this, $form, $res);
+                window[$form.data('callback')].call(this, $form, $res, jqXHR);
                 return;
             }
 
