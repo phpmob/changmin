@@ -28,7 +28,7 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
     ;
 
     $submit.spinner('add');
-    $form.find('button,.btn').attr('disabled', true);
+    var $buttons = $form.find('button,.btn').attr('disabled', true);
 
     $.ajax({
         url: url,
@@ -40,21 +40,41 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
         // all status
         complete: function (jqXHR) {
             $submit.spinner('remove');
+            $buttons.attr('disabled', false);
 
-            if (301 === jqXHR.status || 302 === jqXHR.status) {
-                window.location.href = jqXHR.responseJSON[$form.data('location') || 'location'];
+            if($form.data('callback')) {
+                window[$form.data('callback')].call(this, $form, jqXHR);
                 return;
             }
 
-            if($form.data('callback')) {
-                window[$form.data('callback')].call(this, $form, $res);
-                return;
+            var location = jqXHR.getResponseHeader('x-sylius-location');
+
+            // should use `x-sylius-location`
+            if (301 === jqXHR.status || 302 === jqXHR.status) {
+                var _location = jqXHR.responseJSON[$form.data('location') || 'location'];
+
+                if (_location) {
+                    return window.location.href = _location;
+                }
+
+                if (location) {
+                    return window.location.href = location;
+                }
+
+                return window.location.reload();
+            }
+
+            if (location) {
+                return window.location.href = location;
             }
         },
         // 200 status
         success: function (res, textStatus, jqXHR) {
-            var $res = $(res);
+            if (!res) {
+                return;
+            }
 
+            var $res = $(res);
             // valid form
             if (!$res.find('.is-invalid').length) {
                 if ($form.data('reload')) {
