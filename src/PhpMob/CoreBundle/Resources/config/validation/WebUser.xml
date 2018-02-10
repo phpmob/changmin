@@ -9,6 +9,7 @@
             <option name="groups">
                 <value>phpmob</value>
                 <value>registration</value>
+                <value>profile_update</value>
             </option>
         </constraint>
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
@@ -18,6 +19,7 @@
             <option name="groups">
                 <value>phpmob</value>
                 <value>registration</value>
+                <value>profile_update</value>
             </option>
         </constraint>
         <property name="displayName">
@@ -26,6 +28,7 @@
                 <option name="max">200</option>
                 <option name="groups">
                     <value>phpmob</value>
+                    <value>profile_update</value>
                 </option>
             </constraint>
         </property>
@@ -35,23 +38,12 @@
                 <option name="max">200</option>
                 <option name="groups">
                     <value>phpmob</value>
+                    <value>profile_update</value>
                 </option>
             </constraint>
         </property>
         <property name="picture">
-            <constraint name="Image">
-                <option name="minWidth">200</option>
-                <option name="minHeight">200</option>
-                <option name="groups">
-                    <value>phpmob</value>
-                </option>
-            </constraint>
-            <constraint name="File">
-                <option name="maxSize">2M</option>
-                <option name="groups">
-                    <value>phpmob</value>
-                </option>
-            </constraint>
+            <constraint name="Valid"/>
         </property>
         <property name="username">
             <constraint name="NotBlank">
@@ -104,6 +96,7 @@
                 <option name="groups">
                     <value>phpmob</value>
                     <value>registration</value>
+                    <value>profile_update</value>
                 </option>
             </constraint>
             <constraint name="Length">
@@ -112,6 +105,7 @@
                 <option name="groups">
                     <value>phpmob</value>
                     <value>registration</value>
+                    <value>profile_update</value>
                 </option>
             </constraint>
             <constraint name="Email">
@@ -119,6 +113,7 @@
                 <option name="groups">
                     <value>phpmob</value>
                     <value>registration</value>
+                    <value>profile_update</value>
                 </option>
             </constraint>
         </property>
