@@ -1,6 +1,5 @@
 <div class="pane-data-scrollable p-4">
     {{ form_start(form, {
-        'action': path(configuration.vars.route.name|default(configuration.getRouteName('create')), configuration.vars.route.parameters|default({})),
         'attr': {'class': 'form', 'novalidate': 'novalidate'}
     }) }}
 
