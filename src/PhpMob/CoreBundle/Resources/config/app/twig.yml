@@ -1,3 +1,4 @@
 twig:
     globals:
         cx_system_settings: "@phpmob.context.system_settings"
+        cx_param: "@phpmob.context.parameter"

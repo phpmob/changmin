@@ -13,5 +13,9 @@
             <argument type="service" id="security.token_storage"/>
             <tag name="sylius.context.locale" priority="-300"/>
         </service>
+
+        <service id="phpmob.context.parameter" class="PhpMob\CoreBundle\Context\ParameterContext" lazy="true" public="true">
+            <argument type="service" id="service_container"/>
+        </service>
     </services>
 </container>
