@@ -3,6 +3,8 @@ var initScripting = function (scope)
 {
     SelectizeSetup('select, [data-chooser]', scope);
 
+    $('[data-form-type="collection"]', scope).CollectionForm();
+
     $('.holderjs', scope).each(function () {
         Holder.run({ images: this });
     });
