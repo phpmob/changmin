@@ -15,11 +15,13 @@ phpmob_settings:
         section1:
             label: Section1
             settings:
-                key1: ~
+                key1:
+                    label: Section1Key1
         section2:
             label: Section2
             settings:
                 key1:
+                    label: SectionKey1
                     value: key1Value
                 key2:
                     label: SectionKey2
