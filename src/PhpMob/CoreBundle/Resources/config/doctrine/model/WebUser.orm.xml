@@ -13,7 +13,7 @@
         <field name="firstName" type="string" length="30" nullable="true"/>
         <field name="lastName" type="string" length="30" nullable="true"/>
         <field name="gender" type="string" length="1" nullable="true"/>
-        <field name="birthday" type="datetime" nullable="true"/>
+        <field name="birthday" type="date" nullable="true"/>
 
         <many-to-one field="locale" target-entity="Sylius\Component\Locale\Model\LocaleInterface" fetch="EAGER">
             <join-column name="locale_id" referenced-column-name="id" nullable="true" />
