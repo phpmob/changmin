@@ -10,7 +10,6 @@ require('./private/tasks.js')(require, {
             "{node}/jquery-confirm/dist/jquery-confirm.min.js",
             "{node}/jquery-validation/dist/jquery.validate.js",
             "{node}/jquery-validation/dist/jquery.additional-methods.js",
-            "{node}/jquery-datetimepicker/build/jquery.datetimepicker.full.js",
             "{node}/pace-progress/pace.js",
             "{node}/tether/dist/js/tether.js",
             "{node}/popper.js/dist/umd/popper.js",
@@ -31,7 +30,6 @@ require('./private/tasks.js')(require, {
         "css": [
             "{node}/animate.css/animate.css",
             "{node}/jquery-confirm/dist/jquery-confirm.min.css",
-            "{node}/jquery-datetimepicker/build/jquery.datetimepicker.min.css",
             "{node}/pace-progress/themes/blue/pace-theme-center-simple.css",
             "{node}/selectize/dist/css/selectize.css",
             "{node}/table-resizer/table-resize.css",

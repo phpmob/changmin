@@ -6,7 +6,11 @@
 
     <services>
         <service class="PhpMob\ChangMinBundle\Form\Extension\ConvertRawDataFormExtension">
-            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType" />
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
+        </service>
+
+        <service class="PhpMob\ChangMinBundle\Form\Extension\DateTimeExtension">
+            <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\DateTimeType"/>
         </service>
 
         <service id="changmin.form.admin_user" class="PhpMob\ChangMinBundle\Form\Type\AdminUserType">
@@ -14,7 +18,7 @@
             <argument type="collection">
                 <argument>changmin</argument>
             </argument>
-            <tag name="form.type" />
+            <tag name="form.type"/>
         </service>
 
         <service id="changmin.form.admin_user_picture" class="PhpMob\ChangMinBundle\Form\Type\AdminUserPictureType">
