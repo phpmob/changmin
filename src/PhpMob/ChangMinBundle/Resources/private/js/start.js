@@ -18,6 +18,12 @@ var initScripting = function (scope)
     });
 
     $('[data-toggle="tooltip"]').tooltip();
+
+    // npm install --save jquery-datetimepicker
+    $.datetimepicker.setLocale(window['PHPMOB_LOCALE'] || 'en');
+    $('input[type=date],input[type=datetime]').datetimepicker({
+        format: "Y-m-d H:i",
+    }).attr('readonly', true);
 };
 
 $(function () {
