@@ -62,3 +62,9 @@
 .custom-control-hint {
   display: block;
 }
+
+.form-inline {
+  input[type=date] + input[type=time] {
+    margin-left: .5rem;
+  }
+}
