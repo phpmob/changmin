@@ -1,0 +1,5 @@
+$modal-xl: 1000px !default;
+
+@include media-breakpoint-up(xl) {
+  .modal-xl { max-width: $modal-xl; }
+}

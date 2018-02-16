@@ -2,7 +2,7 @@
  *  [data-reload] : bool | null
  *  [data-redirect] : url | null
  *  [data-callback] : string(name of function) | null
- *  [data-ajax-error] : string (Message for display) | null
+ *  [data-ajax-error] : string (Message to display) | null
  */
 $(document).on('submit', 'form[data-ajax-form]', function (e) {
     e.preventDefault();
@@ -10,9 +10,12 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
     var $form = $(this);
     var data = new FormData();
     var url = $form.attr('action') || $form.data('ajax-form');
+    var $submit = $form.find('button[type=submit]');
 
     $form.find('input[type=file]').each(function (i, f) {
-        data.append(f.name, f.files[0] || "");
+        if (f.files[0]) {
+            data.append(f.name, f.files[0]);
+        }
     });
 
     $.each($form.serializeArray(), function (i, f) {
@@ -20,12 +23,11 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
     });
 
     $form
-        .find('.alert-error').hide();
-
-    $form
         .addClass('loading')
-        .append('<div class="' + ($form.data('loading') || 'changmin-loading-pulse') + '"/>')
+        .find('.alert-error').hide()
     ;
+
+    var $buttons = $form.find('button,.btn').attr('disabled', true);
 
     $.ajax({
         url: url,
@@ -36,46 +38,73 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
         contentType: false, // Set content type to false as jQuery will tell the server its a query string request
         // all status
         complete: function (jqXHR) {
-            $form.removeClass('loading');
+            $buttons.attr('disabled', false);
 
-            if (301 === jqXHR.status || 302 === jqXHR.status) {
-                window.location.href = jqXHR.responseJSON[$form.data('location') || 'location'];
+            if($form.data('callback')) {
+                window[$form.data('callback')].call(this, $form, null, jqXHR);
                 return;
             }
 
-            if($form.data('callback')) {
-                window[$form.data('callback')].call(this, $form, $res);
-                return;
+            var location = jqXHR.getResponseHeader('x-sylius-location');
+
+            // should use `x-sylius-location`
+            if (301 === jqXHR.status || 302 === jqXHR.status) {
+                var _location = jqXHR.responseJSON[$form.data('location') || 'location'];
+
+                if (_location) {
+                    return window.location.href = _location;
+                }
+
+                if (location) {
+                    return window.location.href = location;
+                }
+
+                return window.location.reload();
+            }
+
+            if (location) {
+                return window.location.href = location;
             }
         },
         // 200 status
         success: function (res, textStatus, jqXHR) {
-            var $res = $(res);
-
-            if ($form.data('reload')) {
-                window.location.reload();
+            if (!res) {
                 return;
             }
 
-            if ($form.data('redirect')) {
-                window.location.href = $form.data('redirect');
-                return;
+            var $res = $(res);
+            // valid form
+            if (!$res.find('.is-invalid').length) {
+                if ($form.data('reload')) {
+                    window.location.reload();
+                    return;
+                }
+
+                if ($form.data('redirect')) {
+                    window.location.href = $form.data('redirect');
+                    return;
+                }
             }
 
             if($form.data('callback')) {
-                window[$form.data('callback')].call(this, $form);
+                window[$form.data('callback')].call(this, $form, $res, jqXHR);
+                return;
             }
 
-            $form.replaceWith($res);
-            $(document).trigger('dom-node-inserted', [$res]);
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-            $form.removeClass('loading');
-            if ($form.data('ajax-error')) {
-                $form
-                    .find('.alert-error').show()
-                    .find('.error-message').text($form.data('ajax-error'))
-                ;
+            var $resForm = $res.is('form') ? $res : $res.find('form');
+            $form.replaceWith($resForm);
+
+            $(document).trigger('dom-node-inserted', [$resForm]);
+
+            // activate modal
+            var $modal = $resForm.find('.modal');
+
+            if ($modal.length) {
+                $modal.modal('show');
+            }
+
+            if ($resForm.hasClass('modal')) {
+                $resForm.modal('show');
             }
         }
     });

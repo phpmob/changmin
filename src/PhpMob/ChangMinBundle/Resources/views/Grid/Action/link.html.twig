@@ -1,5 +1,9 @@
+{% from '@ChangMin/Macro/attrs.html.twig' import attrs %}
 {% set path = options.url is defined ? options.url : path(options.route, options.parameters|default([])) %}
-
-<a class="{{ options.class|default('btn btn-outline-primary') }}" href="{{ path }}">
-    {% if options.icon is defined %}<i class="{{ options.icon }}"></i> {% endif %}<span>{{ action.label|trans }}</span>
+{% set attr = attrs({
+    href: path,
+    class: options.class|default('btn btn-outline-primary'),
+}|merge(options.attr|default({}))) %}
+<a {{ attr|raw }}>
+    {% if options.icon is defined %}<i class="{{ options.icon }}"></i> {% endif %}<span>{{ options.label|default(action.label)|trans }}</span>
 </a>

@@ -1,5 +1,9 @@
+{% from '@ChangMin/Macro/attrs.html.twig' import attrs %}
 {% set path = options.link.url|default(path(options.link.route|default(grid.requestConfiguration.getRouteName('update')), options.link.parameters|default({'id': data.id}))) %}
-
-<a href="{{ path }}" class="{{ options.class|default('btn btn-outline-primary') }}">
+{% set attr = attrs({
+    href: path,
+    class: options.class|default('btn btn-outline-primary'),
+}|merge(options.attr|default({}))) %}
+<a {{ attr|raw }}>
     <i class="{{ action.icon|default('fa fa-pencil') }}"></i> <span>{{ (action.label|trans)|default('Edit') }}</span>
 </a>

@@ -2,6 +2,7 @@ var PHPMOB_ASSET_PATH = document.currentScript.src.replace('/js/app.js', '').spl
 var initScripting = function (scope)
 {
     SelectizeSetup('select, [data-chooser]', scope);
+    _AjaxEmbedded(scope);
 
     $('[data-form-type="collection"]', scope).CollectionForm();
 
