@@ -4,7 +4,7 @@ $.fn.spinner = function (type, side) {
 
     if ('remove' === type) {
         $el.removeClass('spinning');
-        $el.find('submit-spinner').remove();
+        $el.find('.submit-spinner').remove();
 
         return this;
     }

@@ -70,6 +70,8 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
         },
         // 200 status
         success: function (res, textStatus, jqXHR) {
+            $submit.spinner('remove');
+
             if (!res) {
                 return;
             }
