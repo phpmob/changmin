@@ -75,9 +75,15 @@ module.exports = function (require, config) {
             ;
     });
 
-    gulp.task('copy', function () {
+    gulp.task('copy', async function () {
+        function sleep(ms) {
+            return new Promise(function(resolve) { setTimeout(resolve, ms) });
+        }
+
         for (var i = 0; i < config['paths'].copy.length; i++) {
             var copy = config['paths'].copy[i];
+            // fix async copy not override
+            await sleep(100);
             gulp.src(copy[1]).pipe(gulp.dest(copy[0]));
         }
     });
