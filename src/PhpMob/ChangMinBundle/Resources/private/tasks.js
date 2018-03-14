@@ -107,7 +107,7 @@ module.exports = function (require, config) {
         for (var i = 0; i < config['paths'].copy.length; i++) {
             var copy = config['paths'].copy[i];
             // fix async copy not override
-            await sleep(100);
+            await sleep(200);
             gulp.src(copy[1]).pipe(gulp.dest(copy[0]));
         }
     });
