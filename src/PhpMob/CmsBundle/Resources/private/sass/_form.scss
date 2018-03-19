@@ -1,3 +1,28 @@
+.card-translations {
+  .card-header {
+    position: relative;
+
+    .nav-title {
+      position: absolute;
+      top: 0;
+      margin: 0;
+    }
+  }
+}
+
+.tab-pane.active {
+  > .card-translations {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: -1px;
+
+    .card-header {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+}
+
 // vsubmit
 p.is-invalid {
   @extend .invalid-feedback;
@@ -8,12 +33,14 @@ p.is-invalid {
   display: block;
 }
 
+// dedicated for form_errors :(
+// https://github.com/symfony/symfony/issues/26461
 .form-control-label {
   &.required {
-    &:after {
+    &:before {
       content: '*';
       color: $red;
-      margin-left: 4px;
+      margin-right: 4px;
     }
   }
 }

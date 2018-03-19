@@ -22,10 +22,12 @@
     }
 }
 
+// dedicated for form_errors :(
+// https://github.com/symfony/symfony/issues/26461
 .col-form-legend,
 .form-control-label {
     &.required {
-        &:after {
+        &:before {
             content: "*";
             margin-left: 4px;
             color: $red;
