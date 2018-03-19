@@ -46,6 +46,8 @@
 .input-group.is-invalid {
   .input-group-text {
     border-color: $form-feedback-invalid-color;
+    background-color: $form-feedback-invalid-color;
+    color: $white;
   }
 }
 
