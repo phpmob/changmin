@@ -44,11 +44,6 @@
             <tag name="kernel.event_listener" event="sylius.web_user.post_register" method="handleUserVerification" />
         </service>
 
-        <service class="PhpMob\CoreBundle\EventListener\RegisterVerificationFlashListener">
-            <argument type="service" id="session.flash_bag" on-invalid="null"/>
-            <tag name="kernel.event_listener" event="sylius.user.email_verification.token" method="addFlashMessage" />
-        </service>
-
         <service class="PhpMob\CoreBundle\EventListener\UserMailerListener" decorates="sylius.listener.user_mailer_listener">
             <argument type="service" id="sylius.email_sender" />
             <argument type="service" id="phpmob.context.system_settings" />
