@@ -11,7 +11,7 @@
     <form
     {% if app.debug or true %}novalidate {% endif %}name="{{ name }}" method="{{ form_method|lower }}"{% if action != '' %} action="{{ action }}"{% endif %}{% for attrname, attrvalue in attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}{% if multipart %} enctype="multipart/form-data"{% endif %}>
     {%- if form_method != method -%}
-        <input type="hidden" name="_method" value="{{ method }}"/>
+        <input type="hidden" name="_method" value="{{ method }}" />
     {%- endif -%}
 {%- endblock form_start -%}
 
@@ -27,6 +27,22 @@
            data-html="true"></i>
     {% endif %}
 {%- endblock form_label -%}
+
+
+{% block form_row -%}
+    {%- if compound is defined and compound -%}
+        {%- set element = 'fieldset' -%}
+    {%- endif -%}
+    <{{ element|default('div') }} class="form-group">
+    {{- form_label(form) -}}
+    {{- form_widget(form) -}}
+    {%- if hint is defined -%}
+        <small class="form-text form-text-hint text-muted">
+            {{ hint|raw }}
+        </small>
+    {%- endif -%}
+    </{{ element|default('div') }}>
+{%- endblock form_row %}
 
 {% block form_widget -%}
     {{- parent() -}}
@@ -155,7 +171,7 @@
             {% if prototypes|default is iterable %}
                 {% for key, subPrototype in prototypes %}
                     <input type="hidden" data-form-prototype="{{ key }}"
-                           value="{{ macro.collection_item(subPrototype, allow_delete, button_delete_label, '__name__')|e }}"/>
+                           value="{{ macro.collection_item(subPrototype, allow_delete, button_delete_label, '__name__')|e }}" />
                 {% endfor %}
             {% endif %}
 
