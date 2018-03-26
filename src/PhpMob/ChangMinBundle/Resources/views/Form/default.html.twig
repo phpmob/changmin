@@ -36,6 +36,9 @@
     <{{ element|default('div') }} class="form-group">
     {{- form_label(form) -}}
     {{- form_widget(form) -}}
+    {% if label is same as(false) %}
+        {{- form_errors(form) -}}
+    {% endif %}
     {%- if hint is defined -%}
         <small class="form-text form-text-hint text-muted">
             {{ hint|raw }}
