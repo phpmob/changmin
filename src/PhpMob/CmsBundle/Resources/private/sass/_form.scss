@@ -67,3 +67,11 @@ p.is-invalid {
 .custom-control-hint {
   display: block;
 }
+.custom-control.custom-radio,
+.custom-control.custom-checkbox + form-text-hint {
+  padding-left: 1.5rem;
+}
+
+.form-error-message * {
+  color: $red !important;
+}

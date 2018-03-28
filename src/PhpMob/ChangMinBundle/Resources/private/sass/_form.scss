@@ -37,7 +37,6 @@
 
 .is-invalid ~ .invalid-feedback {
     display: block;
-    color: $red !important;
 }
 
 .selectize-input.invalid {
@@ -73,4 +72,8 @@
   input[type=date] + input[type=time] {
     margin-left: .5rem;
   }
+}
+
+.form-error-message * {
+  color: $red !important;
 }
