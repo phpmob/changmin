@@ -37,6 +37,7 @@
 
 .is-invalid ~ .invalid-feedback {
     display: block;
+    color: $red !important;
 }
 
 .selectize-input.invalid {
