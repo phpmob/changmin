@@ -63,8 +63,9 @@
     content: "เลือกไฟล์";
   }
 }
-.custom-control-hint {
-  display: block;
+.custom-control.custom-radio,
+.custom-control.custom-checkbox + form-text-hint {
+  padding-left: 1.5rem;
 }
 
 .form-inline {

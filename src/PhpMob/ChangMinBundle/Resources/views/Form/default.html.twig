@@ -124,11 +124,6 @@
         <label for="{{ id }}" {% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>
         {{ label is not same as(false) ? (translation_domain is same as(false) ? label : label|trans({}, translation_domain)) -}}
         </label>
-        {%- if hint is defined -%}
-            <small class="custom-control-hint text-muted">
-                {{ hint|raw }}
-            </small>
-        {%- endif -%}
     {%- endif -%}
 {%- endblock checkbox_radio_label %}
 
