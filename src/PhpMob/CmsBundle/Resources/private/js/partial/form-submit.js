@@ -4,7 +4,9 @@ $(document).on('form:submit', 'form', function (e) {
     var $form = $(this);
     var $submit = $form.find('button[type=submit]');
 
-    $submit.spinner();
+    if ('undefined' === typeof $form.data('no-spin')) {
+        $submit.spinner();
+    }
 
     $form.find('button,.btn').attr('disabled', true);
 

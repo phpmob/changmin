@@ -27,7 +27,10 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
         .find('.alert-error').hide()
     ;
 
-    $submit.spinner('add');
+    if ('undefined' === typeof $form.data('no-spin')) {
+        $submit.spinner('add');
+    }
+
     var $buttons = $form.find('button,.btn').attr('disabled', true);
 
     $.ajax({

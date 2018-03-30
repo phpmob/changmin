@@ -27,6 +27,10 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
         .find('.alert-error').hide()
     ;
 
+    if ('undefined' === typeof $form.data('no-spin')) {
+        $submit.spinner('add');
+    }
+
     var $buttons = $form.find('button,.btn').attr('disabled', true);
 
     $.ajax({
@@ -38,6 +42,7 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
         contentType: false, // Set content type to false as jQuery will tell the server its a query string request
         // all status
         complete: function (jqXHR) {
+            $submit.spinner('remove');
             $buttons.attr('disabled', false);
 
             if($form.data('callback')) {
@@ -68,6 +73,8 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
         },
         // 200 status
         success: function (res, textStatus, jqXHR) {
+            $submit.spinner('remove');
+
             if (!res) {
                 return;
             }

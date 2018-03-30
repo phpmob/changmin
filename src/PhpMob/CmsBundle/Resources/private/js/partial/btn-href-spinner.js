@@ -6,6 +6,11 @@ $(document).on('click', 'a.btn', function (e) {
         return;
     }
 
-    $btn.spinner();
     $btn.addClass('disabled');
+
+    if ('undefined' !== typeof $btn.data('no-spin')) {
+        return;
+    }
+
+    $btn.spinner();
 });
