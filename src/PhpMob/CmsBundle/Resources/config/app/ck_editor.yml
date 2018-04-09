@@ -23,7 +23,7 @@ fm_elfinder:
                 #debug: true|false # defaults to false
                 roots:       # at least one root must be defined, defines root filemanager directories
                     public:
-                        url: media/cache/resolve/strip/public
+                        url: media/resolve/strip/public
                         tmb_path: "%kernel.root_dir%/../web/thumbnail"
                         tmb_url: /thumbnail
                         tmb_path_mode: 0755
