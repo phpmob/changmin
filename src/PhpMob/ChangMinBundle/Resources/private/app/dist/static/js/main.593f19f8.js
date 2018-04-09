@@ -207,7 +207,7 @@ module.exports = warning;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -637,7 +637,7 @@ if (false) {
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 function makeEmptyFunction(arg) {
@@ -679,7 +679,7 @@ module.exports = emptyFunction;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -964,7 +964,7 @@ module.exports = ReactUpdates;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -1288,7 +1288,7 @@ module.exports = exports["default"];
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -2396,7 +2396,7 @@ module.exports = DOMLazyTree;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -3017,7 +3017,7 @@ module.exports = emptyObject;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -3913,7 +3913,7 @@ module.exports = g;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -4402,7 +4402,7 @@ module.exports = EventPluginUtils;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -5072,7 +5072,7 @@ module.exports = LinkedValueUtils;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -5122,7 +5122,7 @@ module.exports = ReactComponentEnvironment;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @typechecks
- * 
+ *
  */
 
 /*eslint-disable no-self-compare */
@@ -5241,7 +5241,7 @@ module.exports = shouldUpdateReactComponent;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -6458,7 +6458,7 @@ function isPlainObject(value) {
       var array = this._array;
       var maxIndex = array.length - 1;
       var ii = 0;
-      return new Iterator(function() 
+      return new Iterator(function()
         {return ii > maxIndex ?
           iteratorDone() :
           iteratorValue(type, ii, array[reverse ? maxIndex - ii++ : ii++])}
@@ -6929,7 +6929,7 @@ function isPlainObject(value) {
 
     Repeat.prototype.__iterator = function(type, reverse) {var this$0 = this;
       var ii = 0;
-      return new Iterator(function() 
+      return new Iterator(function()
         {return ii < this$0.size ? iteratorValue(type, ii++, this$0._value) : iteratorDone()}
       );
     };
@@ -9127,7 +9127,7 @@ function isPlainObject(value) {
         return flipSequence;
       };
     }
-    reversedSequence.get = function(key, notSetValue) 
+    reversedSequence.get = function(key, notSetValue)
       {return iterable.get(useKeys ? key : -1 - key, notSetValue)};
     reversedSequence.has = function(key )
       {return iterable.has(useKeys ? key : -1 - key)};
@@ -9326,7 +9326,7 @@ function isPlainObject(value) {
         return this.cacheResult().__iterate(fn, reverse);
       }
       var iterations = 0;
-      iterable.__iterate(function(v, k, c) 
+      iterable.__iterate(function(v, k, c)
         {return predicate.call(context, v, k, c) && ++iterations && fn(v, k, this$0)}
       );
       return iterations;
@@ -9517,7 +9517,7 @@ function isPlainObject(value) {
     interposedSequence.size = iterable.size && iterable.size * 2 -1;
     interposedSequence.__iterateUncached = function(fn, reverse) {var this$0 = this;
       var iterations = 0;
-      iterable.__iterate(function(v, k) 
+      iterable.__iterate(function(v, k)
         {return (!iterations || fn(separator, iterations++, this$0) !== false) &&
         fn(v, iterations++, this$0) !== false},
         reverse
@@ -11689,7 +11689,7 @@ module.exports = ReactNoopUpdateQueue;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -11720,7 +11720,7 @@ module.exports = canDefineProperty;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -11827,7 +11827,7 @@ module.exports = ReactDOMComponentFlags;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -11890,7 +11890,7 @@ module.exports = accumulateInto;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -11964,7 +11964,7 @@ module.exports = getTextContentAccessor;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -12088,7 +12088,7 @@ module.exports = PooledClass.addPoolingTo(CallbackQueue);
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -12243,7 +12243,7 @@ module.exports = inputValueTracking;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -13346,7 +13346,7 @@ module.exports = instantiateReactComponent;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -13680,7 +13680,7 @@ module.exports = traverseAllChildren;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -15603,7 +15603,7 @@ function wrapMapToPropsConstant(getConstant) {
 // dependsOnOwnProps is used by createMapToPropsProxy to determine whether to pass props as args
 // to the mapToProps function being wrapped. It is also used by makePurePropsSelector to determine
 // whether mapToProps needs to be invoked when props have changed.
-// 
+//
 // A length of one signals that mapToProps does not depend on props from the parent component.
 // A length of zero is assumed to mean mapToProps is getting args via arguments or ...args and
 // therefore not reporting its length accurately..
@@ -15613,16 +15613,16 @@ function getDependsOnOwnProps(mapToProps) {
 
 // Used by whenMapStateToPropsIsFunction and whenMapDispatchToPropsIsFunction,
 // this function wraps mapToProps in a proxy function which does several things:
-// 
+//
 //  * Detects whether the mapToProps function being called depends on props, which
 //    is used by selectorFactory to decide if it should reinvoke on props changes.
-//    
+//
 //  * On first call, handles mapToProps if returns another function, and treats that
 //    new function as the true mapToProps for subsequent calls.
-//    
+//
 //  * On first call, verifies the first result is a plain object, in order to warn
 //    the developer that their mapToProps function is not returning a valid result.
-//    
+//
 function wrapMapToPropsFunc(mapToProps, methodName) {
   return function initProxySelector(dispatch, _ref) {
     var displayName = _ref.displayName;
@@ -17084,7 +17084,7 @@ module.exports = ReactChildren;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -17382,7 +17382,7 @@ module.exports = traverseAllChildren;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -17428,7 +17428,7 @@ module.exports = getIteratorFn;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -20421,7 +20421,7 @@ module.exports = ChangeEventPlugin;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -20515,7 +20515,7 @@ module.exports = ReactRef;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -22943,7 +22943,7 @@ module.exports = hyphenate;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  * @typechecks static-only
  */
 
@@ -23444,7 +23444,7 @@ module.exports = ReactDOMInput;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -25273,7 +25273,7 @@ module.exports = ReactCompositeComponent;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -25299,7 +25299,7 @@ module.exports = getNextDebugID;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -25324,7 +25324,7 @@ module.exports = REACT_ELEMENT_TYPE;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -25370,7 +25370,7 @@ module.exports = getIteratorFn;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -25547,7 +25547,7 @@ module.exports = ReactServerRenderingTransaction;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -26861,7 +26861,7 @@ module.exports = getNodeForCharacterOffset;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 var isTextNode = __webpack_require__(182);
@@ -27464,7 +27464,7 @@ module.exports = SelectEventPlugin;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -28337,7 +28337,7 @@ module.exports = ReactMarkupChecksum;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- * 
+ *
  */
 
 
@@ -29122,7 +29122,7 @@ exports['default'] = thunk;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__component_Menubar__ = __webpack_require__(274);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__component_Breadcrumb__ = __webpack_require__(276);
 var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var App=function(_Component){_inherits(App,_Component);function App(props){_classCallCheck(this,App);var _this=_possibleConstructorReturn(this,(App.__proto__||Object.getPrototypeOf(App)).call(this,props));window['ChangMin']=_this.api=new __WEBPACK_IMPORTED_MODULE_7__ChangMin__["a" /* default */](_this);window['_external_scripts']={};return _this;}_createClass(App,[{key:'componentDidMount',value:function componentDidMount(){var _this2=this;setTimeout(function(){var nonce='_'+__WEBPACK_IMPORTED_MODULE_7__ChangMin__["a" /* default */].makeid();// todo: componet context when support render as component type.
-window[nonce]=_this2;__WEBPACK_IMPORTED_MODULE_5_jquery___default()('script',_this2.refs.body).each(function(i,tag){if(tag.src&&!window['_external_scripts'][tag.src]){__WEBPACK_IMPORTED_MODULE_5_jquery___default()('<script src="'+tag.src+'"></script>').appendTo('body');window['_external_scripts'][tag.src]=true;}else{__WEBPACK_IMPORTED_MODULE_5_jquery___default()('<script>(function(context){'+__WEBPACK_IMPORTED_MODULE_5_jquery___default()(tag).text()+'})('+nonce+');</script>').appendTo('body');}});},1);}},{key:'render',value:function render(){var content=this.props.state.get('content');var sidebar=this.props.state.get('sidebar');var toolbar=this.props.state.get('toolbar');var menubar=this.props.state.get('menubar');var flash=this.props.state.get('flash');var breadcrumb=this.props.state.get('breadcrumb');return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'window'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'window-content'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_split_pane___default.a,{className:'pane-group',split:'vertical',minSize:50,defaultSize:220},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane pane-sidebar'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__component_Sidebar__["a" /* default */],{data:sidebar})),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane pane-body',ref:'body'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__component_Menubar__["a" /* default */],{data:menubar}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__component_Breadcrumb__["a" /* default */],{data:breadcrumb}),flash&&__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane-flash',dangerouslySetInnerHTML:{__html:flash}}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane-content'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__component_Toolbar__["a" /* default */],{data:toolbar,type:'header'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane-data',dangerouslySetInnerHTML:{__html:content}}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__component_Toolbar__["a" /* default */],{data:toolbar,type:'footer'}))))));}}]);return App;}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);App.propTypes={state:__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object,action:__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object};function mapStateToProps(state){return{state:state};}function mapDispatchToProps(dispatch){return{action:Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(Object.assign({},__WEBPACK_IMPORTED_MODULE_6__redux_reducer__["a" /* actions */]),dispatch)};}/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps,mapDispatchToProps)(App));
+window[nonce]=_this2;__WEBPACK_IMPORTED_MODULE_5_jquery___default()('script',_this2.refs.body).each(function(i,tag){if(tag.src&&!window['_external_scripts'][tag.src]){__WEBPACK_IMPORTED_MODULE_5_jquery___default()('<script src="'+tag.src+'"></script>').appendTo('body');window['_external_scripts'][tag.src]=true;}else{__WEBPACK_IMPORTED_MODULE_5_jquery___default()('<script>(function(context){'+__WEBPACK_IMPORTED_MODULE_5_jquery___default()(tag).text()+'})('+nonce+');</script>').appendTo('body');}});},300);}},{key:'render',value:function render(){var content=this.props.state.get('content');var sidebar=this.props.state.get('sidebar');var toolbar=this.props.state.get('toolbar');var menubar=this.props.state.get('menubar');var flash=this.props.state.get('flash');var breadcrumb=this.props.state.get('breadcrumb');return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'window'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'window-content'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_split_pane___default.a,{className:'pane-group',split:'vertical',minSize:50,defaultSize:220},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane pane-sidebar'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_8__component_Sidebar__["a" /* default */],{data:sidebar})),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane pane-body',ref:'body'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_10__component_Menubar__["a" /* default */],{data:menubar}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__component_Breadcrumb__["a" /* default */],{data:breadcrumb}),flash&&__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane-flash',dangerouslySetInnerHTML:{__html:flash}}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane-content'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__component_Toolbar__["a" /* default */],{data:toolbar,type:'header'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'pane-data',dangerouslySetInnerHTML:{__html:content}}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_9__component_Toolbar__["a" /* default */],{data:toolbar,type:'footer'}))))));}}]);return App;}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);App.propTypes={state:__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object,action:__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object};function mapStateToProps(state){return{state:state};}function mapDispatchToProps(dispatch){return{action:Object(__WEBPACK_IMPORTED_MODULE_3_redux__["b" /* bindActionCreators */])(Object.assign({},__WEBPACK_IMPORTED_MODULE_6__redux_reducer__["a" /* actions */]),dispatch)};}/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_redux__["b" /* connect */])(mapStateToProps,mapDispatchToProps)(App));
 
 /***/ }),
 /* 222 */
@@ -29532,7 +29532,7 @@ function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in ob
   selectorFactory, which has the signature:
 
     (dispatch, options) => (nextState, nextOwnProps) => nextFinalProps
-  
+
   connect passes its args to connectAdvanced as options, which will in turn pass them to
   selectorFactory each time a Connect component instance is instantiated or hot reloaded.
 
@@ -30986,7 +30986,7 @@ module.exports = exports['default'];
         default: return undefined
       }
     }
-    
+
     // OS version extraction
     var osVersion = '';
     if (result.windows) {

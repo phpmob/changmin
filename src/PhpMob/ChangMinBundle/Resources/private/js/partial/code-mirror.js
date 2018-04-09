@@ -1,4 +1,4 @@
-$(function () {
+window.CodeMirrorSetup = function () {
     var CodeMirrorInit = function (elId, mode) {
         if (window[elId] instanceof CodeMirror) {
             window[elId].refresh();
@@ -31,4 +31,4 @@ $(function () {
 
         CodeMirrorInit(elId, mode);
     });
-});
+};

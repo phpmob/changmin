@@ -1,6 +1,7 @@
 var PHPMOB_ASSET_PATH = document.currentScript.src.replace('/js/app.js', '').split('?')[0];
 var initScripting = function (scope)
 {
+    CodeMirrorSetup();
     SelectizeSetup('select, [data-chooser]', scope);
     _AjaxEmbedded(scope);
 

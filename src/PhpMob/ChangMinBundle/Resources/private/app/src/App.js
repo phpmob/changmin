@@ -40,7 +40,7 @@ class App extends Component {
                     $('<script>(function(context){' + $(tag).text() + '})(' + nonce + ');</script>').appendTo('body');
                 }
             });
-        }, 1)
+        }, 300)
     }
 
     render() {
