@@ -58,13 +58,13 @@ module.exports = function (require, config) {
 
     gulp.task('style', function () {
         var cssStream = gulp.src(config['paths'].css)
-            .pipe(concat('css-files.css'))
-        ;
+                .pipe(concat('css-files.css'))
+            ;
 
         var sassStream = gulp.src(config['paths'].sass)
-            .pipe(sass())
-            .pipe(concat('sass-files.scss'))
-        ;
+                .pipe(sass())
+                .pipe(concat('sass-files.scss'))
+            ;
 
         return merge(cssStream, sassStream)
             .pipe(order(['css-files.css', 'sass-files.scss']))
@@ -75,17 +75,17 @@ module.exports = function (require, config) {
             ;
     });
 
-    gulp.task('copy', async function () {
-        function sleep(ms) {
-            return new Promise(function(resolve) { setTimeout(resolve, ms) });
-        }
-
-        for (var i = 0; i < config['paths'].copy.length; i++) {
+    gulp.task('copy', function () {
+        var i = 0, howManyTimes = config['paths'].copy.length;
+        function f() {
             var copy = config['paths'].copy[i];
-            // fix async copy not override
-            await sleep(200);
             gulp.src(copy[1]).pipe(gulp.dest(copy[0]));
+            i++;
+            if( i < howManyTimes ){
+                setTimeout( f, 200 );
+            }
         }
+        f();
     });
 
     gulp.task('watching', function () {
