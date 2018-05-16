@@ -3,7 +3,6 @@ require('../cms/private/tasks.js')(require, {
         "node": "./node_modules",
         "output": "../../web/assets/account",
         "js": [
-            "{node}/croppie/croppie.js",
             "./js/partial/**",
             "./js/start.js"
         ],
@@ -11,7 +10,6 @@ require('../cms/private/tasks.js')(require, {
             "./sass/**"
         ],
         "css": [
-            "{node}/croppie/croppie.css",
             "./css/**"
         ],
         "copy": [
