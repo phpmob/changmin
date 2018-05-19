@@ -93,7 +93,9 @@ class WebUser extends BaseUser implements WebUserInterface
      */
     public function getDisplayName(): string
     {
-        return (string) ($this->displayName ?? ($this->getFullName() ?? $this->username));
+        return (string)($this->displayName ? $this->displayName : (
+            $this->getFullName() ? $this->getFullName() : $this->username
+        ));
     }
 
     /**
@@ -109,7 +111,7 @@ class WebUser extends BaseUser implements WebUserInterface
      */
     public function getStatusMessage(): string
     {
-        return (string) $this->statusMessage;
+        return (string)$this->statusMessage;
     }
 
     /**
