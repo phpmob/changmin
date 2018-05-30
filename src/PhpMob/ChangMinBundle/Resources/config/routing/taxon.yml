@@ -38,7 +38,7 @@ sylius_admin_taxon_update:
                 route:
                     index: sylius_admin_taxon_index
                 templates:
-                    form: ToroAdminBundle:Taxon:_form.html.twig
+                    form: ChangMin:Taxon:_form.html.twig
 
 sylius_admin_taxon_delete:
     path: /{id}/delete
