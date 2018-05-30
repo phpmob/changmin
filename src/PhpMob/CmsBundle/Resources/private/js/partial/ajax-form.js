@@ -70,10 +70,6 @@ $(document).on('submit', 'form[data-ajax-form]', function (e) {
             if (location) {
                 return window.location.href = location;
             }
-
-            if ($form.data('reload')) {
-                return window.location.reload();
-            }
         },
         // 200 status
         success: function (res, textStatus, jqXHR) {
