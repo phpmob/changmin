@@ -43,5 +43,9 @@
         <service class="League\Flysystem\AdapterInterface" id="phpmob.filesystem.adapter" public="true">
             <factory service="oneup_flysystem.phpmob_filesystem" method="getAdapter"/>
         </service>
+
+        <service class="PhpMob\MediaBundle\Controller\DownloadController" id="phpmob.controller.download" public="true">
+            <argument type="service" id="oneup_flysystem.phpmob_filesystem"/>
+        </service>
     </services>
 </container>
