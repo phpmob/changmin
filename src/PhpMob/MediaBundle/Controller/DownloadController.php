@@ -33,10 +33,11 @@ class DownloadController
             throw new NotFoundHttpException('Media not found: ' . $path);
         }
 
+        $mimetype = $this->filesystem->getMimetype($path);
         $content = $this->filesystem->read($path);
 
         $response = new Response($content);
-        $response->headers->set('Content-Type', $meta['mimetype']);
+        $response->headers->set('Content-Type', $mimetype);
         $response->headers->set('Content-Length', $meta['size']);
         $response->headers->set('Content-Transfer-Encoding', 'binary');
 
