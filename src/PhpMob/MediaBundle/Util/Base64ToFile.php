@@ -26,7 +26,7 @@ class Base64ToFile
     public static function createFileInfo(string $base64String): \SplFileInfo
     {
         preg_match('/data:(.*);/', $base64String, $matchMime);
-        preg_match('/data:image\/(.*);base64/', $base64String, $matchExt);
+        preg_match('|data:image/(.[a-zA-Z0-9]+);base64|', $base64String, $matchExt);
 
         $fileName = sprintf('/%s.%s', uniqid(), $matchExt[1]);
         $outputFile = sys_get_temp_dir() . $fileName;
